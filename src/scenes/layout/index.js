@@ -16,8 +16,8 @@ const Layout = ({ theme }) => (
 	<ThemeProvider theme={theme || lightTheme}>
 		<NavigationContainer>
 			<Stack.Navigator initialRouteName="Home">
-				<Stack.Screen name="Home" component={HomeScreen} />
-				<Stack.Screen name="Login" component={LoginScreen} />
+				<Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+				<Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	</ThemeProvider>

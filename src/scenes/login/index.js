@@ -14,16 +14,18 @@ const LoginScreen = ({navigation}) => (
 			<SC.Title>Welcome Back</SC.Title>
 			<SC.Text>Sign in to continue</SC.Text>
 			<Input 
-				placeholder= "UserName"></Input>
+				placeholder= "UserName"
+			/>
 			<Input 
-				placeholder= "Password" isPassword={true}></Input>
+				placeholder= "Password"
+				isPassword
+			/>
 			<ActionButton  
 				primary={true} 
 				title="Sign In" 
 				onPress={()=> navigation.navigate('Home')}
 			/>
 			<SC.Text>Did you forget your password?</SC.Text>
-			
 			<ActionButton
 				isOutlined={true}
 				title="Sign Up" 

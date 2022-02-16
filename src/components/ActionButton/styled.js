@@ -5,15 +5,12 @@ export const Container = styled.SafeAreaView`
 `
 
 export const Button = styled.TouchableHighlight`
-  background-color: ${props => props.primary && !props.isOutlined ? '#F99030' : '#fff'} ;
-  border: ${props => props.isOutlined? '1px solid #F99030' : '1px solid #fff'};
+  background-color: ${props => props.primary && !props.isOutlined ? props.theme.primaryButtonColor : props.theme.secondaryButtonColor} ;
+  border: ${props => props.isOutlined? `1px solid ${props.theme.primaryButtonColor}` : '1px solid #fff'};
   border-radius: 72px;
   padding: 20px;
   display: flex;
   align-items: center;
- 
-  
-  
 `
 
 export const Text = styled.Text`
