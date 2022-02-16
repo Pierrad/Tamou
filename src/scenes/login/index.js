@@ -1,10 +1,10 @@
 import React from 'react'
-import {Button} from 'react-native'
 import PropTypes from 'prop-types'
 
 import * as SC from './styled'
 import Input from '../../components/Input'
 import ActionButton from '../../components/ActionButton'
+
 
 
 const LoginScreen = ({navigation}) => (
@@ -17,14 +17,18 @@ const LoginScreen = ({navigation}) => (
 				placeholder= "UserName"></Input>
 			<Input 
 				placeholder= "Password" isPassword={true}></Input>
-			<Button
-				title="Go to Home" onPress={() => navigation.navigate('Home')}/>
-			<ActionButton 
-				title="Sign In" onPress={()=> navigation.navigate('Home')}/>
+			<ActionButton  
+				primary={true} 
+				title="Sign In" 
+				onPress={()=> navigation.navigate('Home')}
+			/>
 			<SC.Text>Did you forget your password?</SC.Text>
 			
-			<ActionButton 
-				title="Sign Up" onPress={()=> navigation.navigate('Home')}/>
+			<ActionButton
+				isOutlined={true}
+				title="Sign Up" 
+				onPress={()=> navigation.navigate('Home')} 
+			/>
 		</SC.Contain>
 	</SC.Container>
 )
