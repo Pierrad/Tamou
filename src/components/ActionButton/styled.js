@@ -13,6 +13,7 @@ export const Button = styled.TouchableHighlight`
   align-items: center;
   margin-right:30px;
   margin-left:30px;
+  top: -30px;
 `
 
 export const Text = styled.Text`

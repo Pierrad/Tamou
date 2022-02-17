@@ -4,7 +4,7 @@ export const Container = styled.SafeAreaView`
 `
 
 export const Input = styled.TextInput`
-top:40;
+top: 20px;
 
 
 
