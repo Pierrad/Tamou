@@ -8,29 +8,23 @@ const ConnectedHeader = (props) => {
 	return (
 		<SC.Container style={style}>
 			<SC.Content>
-				{theme.mode === 'light' ? (
-					<SC.BurgerIcon
-						onPress={onBurgerPress}
-					/>
-				) : (
-					<SC.BurgerWhiteIcon
-						onPress={onBurgerPress}
-					/>
-				)}
+				<SC.Burger
+					onPress={onBurgerPress}
+					name="menu"
+					size={24} 
+					color={theme.backgroundInverted}
+				/>
+
 				<SC.Title>{title}</SC.Title>
 			</SC.Content>
 			<SC.Content>
 				<SC.Notification>
-					{theme.mode === 'light' ? (
-						<SC.NotificationIcon
-							onPress={onNotificationPress}
-						/>
-					) : (
-						<SC.NotificationWhiteIcon
-							onPress={onNotificationPress}
-						/>
-					)}
-
+					<SC.NotificationI
+						onPress={onNotificationPress}
+						name="notifications"
+						size={24} 
+						color={theme.backgroundInverted}
+					/>
 					{numberOfNotification > 0 && (
 						<SC.NotificationNumberWrap>
 							<SC.NotificationNumber>{numberOfNotification}</SC.NotificationNumber>
