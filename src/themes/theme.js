@@ -8,6 +8,12 @@ export const darkTheme = {
 	pureWhite: '#ffffff',
 	pureBlack: '#000000',
 	background: '#000000',
+	love: '#F67272',
+	game: '#8A9DFF',
+	sport: '#EE89FF',
+	cook: '#7AF9A5',
+	study: '#FFB489',
+	pet: '#FF89B4',
 }
 export const lightTheme = {
 	mode: 'light',
@@ -19,4 +25,10 @@ export const lightTheme = {
 	pureWhite: '#ffffff',
 	pureBlack: '#000000',
 	background: '#ffffff',
+	love: '#F67272',
+	game: '#8A9DFF',
+	sport: '#EE89FF',
+	cook: '#7AF9A5',
+	study: '#FFB489',
+	pet: '#FF89B4',
 }
