@@ -1,12 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import HeartSvg from '../../assets/svg/heart.svg'
-import GameSvg from '../../assets/svg/game.svg'
-import SportSvg from '../../assets/svg/sport.svg'
-import CookSvg from '../../assets/svg/cook.svg'
-import StudySvg from '../../assets/svg/study.svg'
-import PetSvg from '../../assets/svg/pet.svg'
+import AntIcon from 'react-native-vector-icons/AntDesign'
+import IoIcon from 'react-native-vector-icons/Ionicons'
+import MIcon from 'react-native-vector-icons/MaterialIcons'
+import MMIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
 import * as SC from './styled'
@@ -26,37 +24,37 @@ const DashboardScreen = ({ theme }) => (
 		<SC.CardList>
 			<SC.DCard
 				title="Rencontre"
-				icon={<HeartSvg />}
+				icon={<AntIcon name="hearto" size={24} color={theme.background} />}
 				backgroundColor={theme.love}
 				onClick={() => {}}
 			/>
 			<SC.DCard
 				title="Jeu en ligne"
-				icon={<GameSvg />}
+				icon={<IoIcon name="game-controller-outline" size={24} color={theme.background} />}
 				backgroundColor={theme.game}
 				onClick={() => {}}
 			/>
 			<SC.DCard
 				title="Sport"
-				icon={<SportSvg />}
+				icon={<MIcon name="sports-basketball" size={24} color={theme.background} />}
 				backgroundColor={theme.sport}
 				onClick={() => {}}
 			/>
 			<SC.DCard
 				title="Cuisine"
-				icon={<CookSvg />}
+				icon={<MMIcon name="cookie" size={24} color={theme.background} />}
 				backgroundColor={theme.cook}
 				onClick={() => {}}
 			/>
 			<SC.DCard
 				title="Étude"
-				icon={<StudySvg />}
+				icon={<IoIcon name="pencil" size={24} color={theme.background} />}
 				backgroundColor={theme.study}
 				onClick={() => {}}
 			/>
 			<SC.DCard
 				title="Animaux"
-				icon={<PetSvg />}
+				icon={<MIcon name="pets" size={24} color={theme.background} />}
 				backgroundColor={theme.pet}
 				onClick={() => {}}
 			/>

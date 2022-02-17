@@ -1,8 +1,6 @@
 import styled from 'styled-components/native'
-import BurgerSvg from '../../assets/svg/burger.svg'
-import BurgerWhiteSvg from '../../assets/svg/burgerWhite.svg'
-import NotificationSvg from '../../assets/svg/notification.svg'
-import NotificationWhiteSvg from '../../assets/svg/notificationWhite.svg'
+import BurgerIcon from 'react-native-vector-icons/Feather'
+import NotificationIcon from 'react-native-vector-icons/Ionicons'
 
 export const Container = styled.SafeAreaView`
   display: flex;
@@ -15,17 +13,12 @@ export const Content = styled.View`
   flex-direction: row;
 `
 
-export const BurgerIcon = styled(BurgerSvg)`
+export const Burger = styled(BurgerIcon)`
   width: 24px;
   height: 24px;
-  margin-top: 6px;
+  margin-top: 1px;
 `
 
-export const BurgerWhiteIcon = styled(BurgerWhiteSvg)`
-  width: 24px;
-  height: 24px;
-  margin-top: 6px;
-`
 
 export const Title = styled.Text`
   font-family: "Poppins";
@@ -42,13 +35,7 @@ export const Notification = styled.View`
   margin-right: 15px;
 `
 
-export const NotificationIcon = styled(NotificationSvg)`
-  width: 24px;
-  height: 24px;
-  position: relative;
-`
-
-export const NotificationWhiteIcon = styled(NotificationWhiteSvg)`
+export const NotificationI = styled(NotificationIcon)`
   width: 24px;
   height: 24px;
   position: relative;
