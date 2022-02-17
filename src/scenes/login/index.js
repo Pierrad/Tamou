@@ -1,31 +1,55 @@
 import React from 'react'
-import {Button} from 'react-native'
 import PropTypes from 'prop-types'
 
 import * as SC from './styled'
 import Input from '../../components/Input'
 import ActionButton from '../../components/ActionButton'
+import Link from '../../components/Link'
+
 
 
 const LoginScreen = ({navigation}) => (
 	<SC.Container>
-		<SC.Text>Screen: Login</SC.Text>
-		<SC.Contain>
-			<SC.Title>Welcome Back</SC.Title>
-			<SC.Text>Sign in to continue</SC.Text>
-			<Input 
-				placeholder= "UserName"></Input>
-			<Input 
-				placeholder= "Password" isPassword={true}></Input>
-			<Button
-				title="Go to Home" onPress={() => navigation.navigate('Home')}/>
-			<ActionButton 
-				title="Sign In" onPress={()=> navigation.navigate('Home')}/>
-			<SC.Text>Did you forget your password?</SC.Text>
+		<SC.Head></SC.Head>
+		<SC.Contain1>
+			<SC.Title>Bon retour</SC.Title>
+			<SC.Subtitle>Connectez vous pour continuer</SC.Subtitle>
+			<SC.Contain2>
+				<Input 
+					placeholder= "UserName"
+					underlineColor='red'>
+				</Input>
+				<Input 
+					placeholder= "Password" isPassword={true}
+					underlineColor="black">
+				</Input>
+			</SC.Contain2>
+			<SC.Contain3>
+				<ActionButton  
+					primary={true} 
+					title="Connexion" 
+					onPress={()=> navigation.navigate('Home')}
+					underlayColor="orange"
+				/>
+			</SC.Contain3>
+			<SC.Contain4>
+				<SC.Text>Mot de passe oublié?</SC.Text>
+				<Link 
+					title = "Reinitialiser le mot de passe" 
+					onPress={()=> navigation.navigate('Home')}
+					underlayColor="none"
+				/>
 			
-			<ActionButton 
-				title="Sign Up" onPress={()=> navigation.navigate('Home')}/>
-		</SC.Contain>
+			</SC.Contain4>
+			<SC.Contain5>
+				<ActionButton
+					isOutlined={true}
+					title="Inscription" 
+					onPress={()=> navigation.navigate('Home')} 
+					underlayColor="silver"
+				/>
+			</SC.Contain5>
+		</SC.Contain1>
 	</SC.Container>
 )
 

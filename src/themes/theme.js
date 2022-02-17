@@ -3,8 +3,8 @@ export const darkTheme = {
 	backgroundColor: '#353c51',
 	primaryTextColor: '#F99030',
 	secondaryTextColor: '#ffffff',
-	primaryButtonColor: '#152642',
-	secondaryButtonColor: '#506680',
+	primaryButtonColor: '#F99030',
+	secondaryButtonColor: '#FFFFFF',
 	pureWhite: '#ffffff',
 	pureBlack: '#000000',
 	background: '#000000',
@@ -15,13 +15,15 @@ export const darkTheme = {
 	study: '#FFB489',
 	pet: '#FF89B4',
 }
+
+
 export const lightTheme = {
 	mode: 'light',
 	backgroundColor: '#ffffff',
 	primaryTextColor: '#F99030',
 	secondaryTextColor: '#333333',
-	primaryButtonColor: '#b9d6f3',
-	secondaryButtonColor: '#a1c9f1',
+	primaryButtonColor: '#F99030',
+	secondaryButtonColor: '#FFFFFF',
 	pureWhite: '#ffffff',
 	pureBlack: '#000000',
 	background: '#ffffff',

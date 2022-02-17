@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 
 import * as SC from './styled'
 
-const ActionButton = ({ title, onPress, primary, secondary, isOutlined, underlayColor}) => (
+const Link = ({title, onPress, primary, secondary, isOutlined, underlayColor }) => ( 
 	<SC.Container>
-		<SC.Button
+		<SC.Link
 			onPress={onPress}
 			primary={primary}
 			secondary={secondary}
@@ -20,20 +20,19 @@ const ActionButton = ({ title, onPress, primary, secondary, isOutlined, underlay
 			>
 				{title}
 			</SC.Text>
-		</SC.Button>
+		</SC.Link>
 	</SC.Container>
 
 )
 
-ActionButton.propTypes = {
+Link.propTypes = {
 	title: PropTypes.string,
 	onPress: PropTypes.func,
 	primary: PropTypes.bool,
 	secondary: PropTypes.bool,
 	isOutlined: PropTypes.bool,
 	underlayColor: PropTypes.string,
+	
 }
 
-export default ActionButton
-
-
+export default Link

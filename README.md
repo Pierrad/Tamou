@@ -9,6 +9,7 @@
 
 - Open a new terminal and go to project
 - Run ```npm install```
+- Run ```cd ios && pod install && cd ..```
 - Run ```npx react-native start```
 - Open a new terminal window in the same folder
 - Run ```npx react-native run-ios``` or ```npx react-native run-android```
