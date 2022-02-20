@@ -11,6 +11,7 @@ import HomeScreen from '../home'
 import LoginScreen from '../login'
 import DashboardScreen from '../dashboard'
 import RegisterScreen from '../register'
+import ResetScreen from '../reset'
 
 const Stack = createNativeStackNavigator()
 
@@ -22,6 +23,7 @@ const Layout = ({ theme }) => (
 				<Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
 				<Stack.Screen name="Dashboard" component={DashboardScreen} options={{ headerShown: false }} />
 				<Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
+				<Stack.Screen name="Reset" component={ResetScreen} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	</ThemeProvider>
