@@ -19,6 +19,10 @@ const HomeScreen = ({ navigation, onSwitchTheme, theme }) => (
 			onPress={() => navigation.navigate('Dashboard')}
 		/>
 		<Button
+			title="Go to register"
+			onPress={() => navigation.navigate('Register')}
+		/>
+		<Button
 			title="Go to reset"
 			onPress={() => navigation.navigate('Reset')}
 		/>
