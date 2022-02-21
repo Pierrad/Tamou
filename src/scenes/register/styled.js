@@ -6,7 +6,7 @@ export const Container = styled.SafeAreaView`
   background-color:#F99030;
 `
 export const Head = styled.View`
-padding: 70px;
+padding: 40px;
 `
 export const Title = styled.Text`
 padding:30px;
@@ -16,6 +16,26 @@ font-size: 24px;
 line-height: 30px;
 color: #000000;
 
+`
+
+export const NameApp = styled.Text`
+  font-weight:bold;
+  font-weight:800;
+  font-size:45px;
+  color: white;
+  text-align: center;
+  position: relative;
+  top:40px;
+`
+
+export const Caption = styled.Text`
+  color: grey;
+  text-align: center;
+  font-size:15px;
+  font-style:italic;
+  font-weight:normal;
+  position: relative;
+  top:40px;
 `
 
 export const Subtitle = styled.Text`
@@ -70,7 +90,7 @@ background-color:transparent;
 
 export const Contain5 = styled.SafeAreaView`
 margin-top:-20px;
-flex:3;
+flex:2;
 `
 
 

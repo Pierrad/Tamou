@@ -18,6 +18,26 @@ color: #000000;
 
 `
 
+export const NameApp = styled.Text`
+  font-weight:bold;
+  font-weight:800;
+  font-size:45px;
+  color: white;
+  text-align: center;
+  position: relative;
+  top:100px;
+`
+
+export const Caption = styled.Text`
+  color: grey;
+  text-align: center;
+  font-size:15px;
+  font-style:italic;
+  font-weight:normal;
+  position: relative;
+  top:100px;
+`
+
 export const Subtitle = styled.Text`
 margin-top:-50px;
 padding:30px;
@@ -53,14 +73,14 @@ export const Contain2 = styled.SafeAreaView`
 `
 
 export const Contain3 = styled.SafeAreaView`
-flex:3;
+flex:2;
 background-color:transparent;
 
 
 `
 
 export const Contain4 = styled.SafeAreaView`
-flex:3;
+flex:4;
 background-color:transparent;
 
 
