@@ -10,6 +10,8 @@ import Link from '../../components/Link'
 
 const RegisterScreen = ({navigation}) => (
 	<SC.Container>
+		<SC.NameApp>Tamou</SC.NameApp>
+		<SC.Caption>Rencontrer la bonne personne!</SC.Caption>
 		<SC.Head></SC.Head>
 		<SC.Contain1>
 			<SC.Contain2>
