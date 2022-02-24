@@ -1,14 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-
 import * as SC from './styled'
 
-const Input = ({ onChange, value, placeholder, type, isPassword, underlineColor }) => ( 
+const Input = ({ onChange, value, placeholder, type, isPassword, isPasswordViewable, setIsPasswordViewable }) => ( 
 	<SC.Container >
-		<SC.Input onChangeText = { onChange } value = { value } placeholder = {placeholder} keyboardType = {type} secureTextEntry = {isPassword} uunderlineColorAndroid = {underlineColor}/> 
+		<SC.Input
+			onChangeText={onChange}
+			value={value}
+			placeholder={placeholder}
+			keyboardType={type}
+			secureTextEntry={isPassword && !isPasswordViewable}
+		/>
+		{isPassword && (
+			<SC.Icon
+				name={isPasswordViewable ? 'eye-slash' : 'eye'}
+				size={20}
+				color="#000"
+				onPress={setIsPasswordViewable}
+			/>
+		)}
 	</SC.Container >
-
 )
 
 Input.propTypes = {
@@ -17,7 +29,8 @@ Input.propTypes = {
 	placeholder: PropTypes.string,
 	type: PropTypes.string,
 	isPassword: PropTypes.bool,
-	underlineColor: PropTypes.string,
+	isPasswordViewable: PropTypes.bool,
+	setIsPasswordViewable: PropTypes.func,
 }
 
 export default Input

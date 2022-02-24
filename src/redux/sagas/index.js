@@ -1,9 +1,9 @@
 import { spawn } from 'redux-saga/effects'
 
-// Sagas
 import themeSagas from './theme'
+import userSagas from './user'
 
-// Export the root saga
 export default function* rootSaga() {
 	yield spawn(themeSagas)
+	yield spawn(userSagas)
 }
