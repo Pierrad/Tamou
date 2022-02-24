@@ -71,6 +71,7 @@ const RegisterScreen = ({ navigation, onSubmit, isPending, theme, error, resetEr
 						placeholder="Email"
 						value={email}
 						onChange={setEmail}
+						keyboardType="email-address"
 					/>
 					<Input
 						placeholder="Nom"

@@ -1,5 +1,6 @@
 import { 
 	REGISTER_ERROR,
+	LOGIN_ERROR,
 	START_LOADING,
 	STOP_LOADING,
 } from '../actions/user'
@@ -28,7 +29,13 @@ const reducer = (state = initialState, {type, payload}) => {
 			...state,
 			loading: false,
 			error: ''
-		}	
+		}
+	case LOGIN_ERROR:
+		return {
+			...state,
+			loading: false,
+			error: payload
+		}
 	default:
 		return state
 	}

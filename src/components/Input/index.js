@@ -11,6 +11,8 @@ const Input = ({ onChange, value, placeholder, type, isPassword, isPasswordViewa
 			placeholder={placeholder}
 			keyboardType={type}
 			secureTextEntry={isPassword && !isPasswordViewable}
+			autoCorrect={false}
+			autoCapitalize='none'
 		/>
 		{isPassword && (
 			<SC.Icon
