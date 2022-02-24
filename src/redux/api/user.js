@@ -1,10 +1,11 @@
-import { API_URL } from '@env'
+import { Platform } from 'react-native'
+import { API_URL, API_URL_ANDROID } from '@env'
 
 
 // Registration
 export const register = async (payload) => {
 	try {
-		const res = await fetch(`${API_URL}/users/register`, {
+		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/register`, {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
