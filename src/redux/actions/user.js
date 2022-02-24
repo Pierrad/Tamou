@@ -1,2 +1,4 @@
 export const POST_REGISTER = 'POST_REGISTER'
 export const REGISTER_ERROR = 'REGISTER_ERROR'
+export const START_LOADING = 'START_LOADING'
+export const STOP_LOADING = 'STOP_LOADING'
