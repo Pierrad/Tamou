@@ -5,6 +5,8 @@ import { ThemeProvider } from 'styled-components/native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import { navigationRef } from '../../navigation/RootNavigation'
+
 import { lightTheme } from '../../themes/theme'
 
 import HomeScreen from '../home'
@@ -17,7 +19,7 @@ const Stack = createNativeStackNavigator()
 
 const Layout = ({ theme }) => (
 	<ThemeProvider theme={theme || lightTheme}>
-		<NavigationContainer>
+		<NavigationContainer ref={navigationRef}>
 			<Stack.Navigator initialRouteName="Home">
 				<Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
 				<Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />

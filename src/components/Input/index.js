@@ -6,7 +6,14 @@ import * as SC from './styled'
 
 const Input = ({ onChange, value, placeholder, type, isPassword, underlineColor }) => ( 
 	<SC.Container >
-		<SC.Input onChangeText = { onChange } value = { value } placeholder = {placeholder} keyboardType = {type} secureTextEntry = {isPassword} uunderlineColorAndroid = {underlineColor}/> 
+		<SC.Input
+			onChangeText={onChange}
+			value={value}
+			placeholder={placeholder}
+			keyboardType={type}
+			secureTextEntry={isPassword}
+			underlineColorAndroid={underlineColor}
+		/> 
 	</SC.Container >
 
 )

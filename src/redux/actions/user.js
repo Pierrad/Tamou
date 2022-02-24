@@ -1,0 +1,2 @@
+export const POST_REGISTER = 'POST_REGISTER'
+export const REGISTER_ERROR = 'REGISTER_ERROR'

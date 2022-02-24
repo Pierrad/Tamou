@@ -3,9 +3,11 @@ import { combineReducers } from 'redux'
 
 // Reducers
 import themeReducer from './theme'
+import userReducer from './user'
 
 const createRootReducer = combineReducers({
-	themeReducer
+	themeReducer,
+	userReducer,
 })
 
 export default createRootReducer
