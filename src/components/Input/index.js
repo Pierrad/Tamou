@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const Input = ({ onChange, value, placeholder, type, isPassword, isPasswordViewable, setIsPasswordViewable }) => ( 
-	<SC.Container >
+	<SC.Container>
 		<SC.Input
 			onChangeText={onChange}
 			value={value}

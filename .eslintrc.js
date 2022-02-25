@@ -32,7 +32,14 @@ module.exports = {
 		'semi': [
 			'error',
 			'never'
-		]
+		],
+		'key-spacing': [
+			2, 
+			{
+				'beforeColon': false,
+				'afterColon': true
+			}
+		],
 	},
 	'globals': {
 		'fetch': false

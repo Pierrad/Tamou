@@ -56,7 +56,7 @@ export const NotificationNumber = styled.Text`
 `
 
 
-export const AvatarWrapper = styled.View`
+export const AvatarWrapper = styled.TouchableOpacity`
   border-radius: 50px;
 `
 

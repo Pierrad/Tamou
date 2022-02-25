@@ -6,7 +6,7 @@ import {
 import * as Keychain from 'react-native-keychain'
 
 
-import { POST_REGISTER, REGISTER_ERROR, POST_LOGIN, LOGIN_ERROR, START_LOADING, STOP_LOADING, CHECK_EXISTING_SESSION } from '../actions/user'
+import { POST_REGISTER, REGISTER_ERROR, POST_LOGIN, LOGIN_ERROR, START_LOADING, STOP_LOADING, CHECK_EXISTING_SESSION, SET_USER } from '../actions/user'
 import { register, login } from '../api/user'
 import * as RootNavigation from '../../navigation/RootNavigation'
 
@@ -15,8 +15,8 @@ function* checkExistingSession() {
 	if (credentials) {
 		const authResponse = yield call(login, { email: credentials.username, password: credentials.password })
 		if (authResponse.success === true) {
-			yield put({ type: POST_LOGIN, payload: authResponse })
-			RootNavigation.navigate('Dashboard')
+			yield put({ type: SET_USER, payload: authResponse.data.user })
+			// RootNavigation.navigate('Dashboard')
 		}
 	}
 }

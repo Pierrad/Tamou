@@ -14,7 +14,6 @@ const ConnectedHeader = (props) => {
 					size={24} 
 					color={theme.backgroundInverted}
 				/>
-
 				<SC.Title>{title}</SC.Title>
 			</SC.Content>
 			<SC.Content>
@@ -31,17 +30,14 @@ const ConnectedHeader = (props) => {
 						</SC.NotificationNumberWrap>
 					)}
 				</SC.Notification>
-				<SC.AvatarWrapper>
+				<SC.AvatarWrapper onPress={onAvatarPress} >
 					<SC.Avatar
-						onPress={onAvatarPress} 
 						source={{
 							uri: avatar,
 						}}
 					/>
 				</SC.AvatarWrapper>
-
 			</SC.Content>
-
 		</SC.Container>
 	)}
 
