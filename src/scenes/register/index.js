@@ -98,7 +98,7 @@ const RegisterScreen = ({ navigation, onSubmit, isPending, theme, error, resetEr
 					<SC.Text>Vous avez déjà un compte?</SC.Text>
 					<Link
 						title="Connexion"
-						onPress={() => navigation.navigate('Home')}
+						onPress={() => navigation.navigate('Login')}
 						underlayColor="none"
 					/>
 				</SC.Contain5>

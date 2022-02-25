@@ -1,17 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 import * as SC from './styled'
 
-const ProfilScreen = ({ navigation, theme }) => {
+const ProfilScreen = ({ headerData, profilHeaderData, profilDetailData }) => {
+
 	return (
 		<SC.Container>
 			<SC.Content>
 				<SC.Header
-					onButtonPress={() => navigation.goBack()}
-					color={theme.pureBlack}
-					title="Profil"
+					{...headerData}
+				/>
+				<SC.ProfilTop 
+					{...profilHeaderData}
+				/>
+			</SC.Content>
+			<SC.Divider />
+			<SC.Content>
+				<SC.ProfilD
+					{...profilDetailData}
 				/>
 			</SC.Content>
 		</SC.Container>
@@ -19,20 +26,30 @@ const ProfilScreen = ({ navigation, theme }) => {
 }
 
 ProfilScreen.propTypes = {
-	theme: PropTypes.object,
-	navigation: PropTypes.shape({
-		navigate: PropTypes.func.isRequired,
-		goBack: PropTypes.func.isRequired,
-	}).isRequired,
+	headerData: PropTypes.shape({
+		onButtonPress: PropTypes.func,
+		color: PropTypes.string,
+		colorInverted: PropTypes.string,
+		title: PropTypes.string,
+		onDotPress: PropTypes.func,
+	}),
+	profilHeaderData: PropTypes.shape({
+		avatar: PropTypes.string,
+		name: PropTypes.string,
+		location: PropTypes.string,
+		onEditPress: PropTypes.func,
+	}),
+	profilDetailData: PropTypes.shape({
+		title: PropTypes.string,
+		fields: PropTypes.arrayOf(PropTypes.shape({
+			label: PropTypes.string,
+			value: PropTypes.string,
+			isEditable: PropTypes.bool,
+		})),
+	}),
 }
 
-const mapStateToProps = (state) => ({
-	theme: state.themeReducer.theme,
-})
 
-const mapDispatchToProps = () => ({
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilScreen)
+export default ProfilScreen
 
 

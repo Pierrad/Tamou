@@ -6,6 +6,7 @@ export const Container = styled.SafeAreaView`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `
 
 export const Content = styled.View`
@@ -18,7 +19,6 @@ export const Burger = styled(BurgerIcon)`
   height: 24px;
   margin-top: 1px;
 `
-
 
 export const Title = styled.Text`
   font-family: "Poppins";
@@ -33,6 +33,7 @@ export const Notification = styled.View`
   display: flex;
   position: relative;
   margin-right: 15px;
+  margin-top: 5px;
 `
 
 export const NotificationI = styled(NotificationIcon)`
@@ -57,10 +58,10 @@ export const NotificationNumber = styled.Text`
 
 
 export const AvatarWrapper = styled.TouchableOpacity`
-  border-radius: 50px;
 `
 
 export const Avatar = styled.Image`
-  width: 24px;
-  height: 24px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50px;
 `
