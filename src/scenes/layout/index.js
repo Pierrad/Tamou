@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components/native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import { CHECK_EXISTING_SESSION } from '../../redux/actions/user'
 import { navigationRef } from '../../navigation/RootNavigation'
 
 import { lightTheme } from '../../themes/theme'
@@ -14,6 +15,7 @@ import LoginScreen from '../login'
 import DashboardScreen from '../dashboard'
 import RegisterScreen from '../register'
 import ResetScreen from '../reset'
+import ProfilScreenWrapper from '../profil/wrapper'
 
 const Stack = createNativeStackNavigator()
 
@@ -31,6 +33,7 @@ const Layout = ({ theme, init }) => {
 					<Stack.Screen name="Dashboard" component={DashboardScreen} options={{ headerShown: false }} />
 					<Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
 					<Stack.Screen name="Reset" component={ResetScreen} options={{ headerShown: false }} />
+					<Stack.Screen name="Profil" component={ProfilScreenWrapper} options={{ headerShown: false }} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</ThemeProvider>
@@ -49,7 +52,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	init: () => dispatch({ type: 'CHECK_EXISTING_SESSION' })
+	init: () => dispatch({ type: CHECK_EXISTING_SESSION })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout)

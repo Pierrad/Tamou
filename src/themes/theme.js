@@ -10,6 +10,7 @@ const colors = {
 	study: '#FFB489',
 	pet: '#FF89B4',
 	error: '#FFCCCC',
+	lightGrey: '#898989',
 }
 
 export const darkTheme = {

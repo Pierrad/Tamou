@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 
 import * as SC from './styled'
 
-const Input = ({ onChange, value, placeholder, type, isPassword, isPasswordViewable, setIsPasswordViewable }) => ( 
-	<SC.Container >
+const Input = ({ style, onChange, value, placeholder, type, isPassword, isPasswordViewable, setIsPasswordViewable, label }) => ( 
+	<SC.Container style={style ? style[0] : 0}>
+		{label && <SC.Label>{label}</SC.Label>}
 		<SC.Input
 			onChangeText={onChange}
 			value={value}
@@ -26,6 +27,7 @@ const Input = ({ onChange, value, placeholder, type, isPassword, isPasswordViewa
 )
 
 Input.propTypes = {
+	style: PropTypes.array,
 	onChange: PropTypes.func,
 	value: PropTypes.string,
 	placeholder: PropTypes.string,
@@ -33,6 +35,7 @@ Input.propTypes = {
 	isPassword: PropTypes.bool,
 	isPasswordViewable: PropTypes.bool,
 	setIsPasswordViewable: PropTypes.func,
+	label: PropTypes.string,
 }
 
 export default Input

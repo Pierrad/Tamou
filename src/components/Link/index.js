@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import * as SC from './styled'
 
-const Link = ({title, onPress, primary, secondary, isOutlined, underlayColor }) => ( 
+const Link = ({ title, onPress, primary, secondary, isOutlined, underlayColor }) => ( 
 	<SC.Container>
 		<SC.Link
 			onPress={onPress}
@@ -22,7 +22,6 @@ const Link = ({title, onPress, primary, secondary, isOutlined, underlayColor }) 
 			</SC.Text>
 		</SC.Link>
 	</SC.Container>
-
 )
 
 Link.propTypes = {
@@ -32,7 +31,6 @@ Link.propTypes = {
 	secondary: PropTypes.bool,
 	isOutlined: PropTypes.bool,
 	underlayColor: PropTypes.string,
-	
 }
 
 export default Link

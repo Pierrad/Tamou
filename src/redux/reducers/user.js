@@ -3,11 +3,13 @@ import {
 	LOGIN_ERROR,
 	START_LOADING,
 	STOP_LOADING,
+	SET_USER,
 } from '../actions/user'
 
 const initialState = {
 	loading: false,
-	error: ''
+	error: '',
+	user: null
 }
 
 const reducer = (state = initialState, {type, payload}) => {
@@ -35,6 +37,11 @@ const reducer = (state = initialState, {type, payload}) => {
 			...state,
 			loading: false,
 			error: payload
+		}
+	case SET_USER:
+		return {
+			...state,
+			user: payload
 		}
 	default:
 		return state

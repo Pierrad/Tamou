@@ -7,6 +7,13 @@ export const Container = styled.SafeAreaView`
   position: relative;
 `
 
+export const Label = styled.Text`
+  font-family: 'Poppins';
+  font-size: 14px;
+  color: ${props => props.theme.lightGrey};
+  margin-bottom: 5px;
+`
+
 export const Input = styled.TextInput`
   font-family: "Poppins";
   border-bottom-width: 1px;
