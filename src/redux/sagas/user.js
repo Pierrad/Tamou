@@ -43,7 +43,7 @@ function* connect({ payload }) {
 
 	if (authResponse.success === true) {
 		yield put({ type: STOP_LOADING })
-		yield put({ type: POST_LOGIN, payload: authResponse })
+		yield put({ type: SET_USER, payload: authResponse.data.user })
 		yield call(Keychain.setGenericPassword, ...[payload.email, payload.password])
 		RootNavigation.navigate('Dashboard')
 	} else if (authResponse && authResponse.success === false) {

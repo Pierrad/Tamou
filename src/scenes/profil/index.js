@@ -7,20 +7,16 @@ const ProfilScreen = ({ headerData, profilHeaderData, profilDetailData }) => {
 
 	return (
 		<SC.Container>
-			<SC.Content>
-				<SC.Header
-					{...headerData}
-				/>
-				<SC.ProfilTop 
-					{...profilHeaderData}
-				/>
-			</SC.Content>
-			<SC.Divider />
-			<SC.Content>
-				<SC.ProfilD
-					{...profilDetailData}
-				/>
-			</SC.Content>
+			<SC.Wrapper>
+				<SC.Content>
+					<SC.Header {...headerData} />
+					<SC.ProfilTop {...profilHeaderData} />
+				</SC.Content>
+				<SC.Divider />
+				<SC.Content>
+					<SC.ProfilD {...profilDetailData} />
+				</SC.Content>
+			</SC.Wrapper>
 		</SC.Container>
 	)
 }
@@ -44,7 +40,6 @@ ProfilScreen.propTypes = {
 		fields: PropTypes.arrayOf(PropTypes.shape({
 			label: PropTypes.string,
 			value: PropTypes.string,
-			isEditable: PropTypes.bool,
 		})),
 	}),
 }

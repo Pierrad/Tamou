@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components/native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
+import { CHECK_EXISTING_SESSION } from '../../redux/actions/user'
 import { navigationRef } from '../../navigation/RootNavigation'
 
 import { lightTheme } from '../../themes/theme'
@@ -51,7 +52,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	init: () => dispatch({ type: 'CHECK_EXISTING_SESSION' })
+	init: () => dispatch({ type: CHECK_EXISTING_SESSION })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout)

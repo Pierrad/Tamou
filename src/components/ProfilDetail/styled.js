@@ -6,7 +6,8 @@ export const Container = styled.SafeAreaView`
   flex: 1;
 `
 
-export const Content = styled.View``
+export const Content = styled.View`
+`
 
 export const Title = styled.Text`
   font-family: 'Poppins';
@@ -15,7 +16,9 @@ export const Title = styled.Text`
   margin-bottom: 15px;
 `
 
-export const Fields = styled.ScrollView``
+export const Fields = styled.View`
+  margin-bottom: 100px;
+`
 
 export const Field = styled(Input)`
   margin-bottom: 15px;

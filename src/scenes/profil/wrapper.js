@@ -7,7 +7,6 @@ import ProfilScreen from './index'
 const ProfilScreenWrapper = (props) => {
 	const { user, navigation, theme } = props
 
-
 	const data = useMemo(() => ({
 		headerData: {
 			onButtonPress: () => navigation.goBack(),
@@ -26,22 +25,18 @@ const ProfilScreenWrapper = (props) => {
 				{
 					label: 'Nom',
 					value: user.name || 'John Doe',
-					isEditable: true,
 				},
 				{
 					label: 'Email',
 					value: user.email,
-					isEditable: true,
 				},
 				{
 					label: 'Username',
 					value: user.username,
-					isEditable: true,
 				},
 				{
 					label: 'Phrase d’accroche',
 					value: 'fmermffnejznrzf',
-					isEditable: true,
 				},
 			]
 		},
