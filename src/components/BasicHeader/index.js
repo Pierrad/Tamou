@@ -22,14 +22,17 @@ const BasicHeader = (props) => {
 					{title}
 				</SC.Title>
 			</SC.Content>
-			<SC.Content>
-				<SC.MenuIcon
-					onPress={onDotPress}
-					name="dots-three-vertical"
-					size={24}
-					color={color}
-				/>
-			</SC.Content>
+			{onDotPress && (
+				<SC.Content>
+					<SC.MenuIcon
+						onPress={onDotPress}
+						name="dots-three-vertical"
+						size={24}
+						color={color}
+					/>
+				</SC.Content>
+			)}
+			
 		</SC.Container>
 	)
 }

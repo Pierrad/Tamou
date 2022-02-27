@@ -16,6 +16,7 @@ import DashboardScreen from '../dashboard'
 import RegisterScreen from '../register'
 import ResetScreen from '../reset'
 import ProfilScreenWrapper from '../profil/wrapper'
+import NotificationScreenWrapper from '../notification/wrapper'
 
 const Stack = createNativeStackNavigator()
 
@@ -34,6 +35,7 @@ const Layout = ({ theme, init }) => {
 					<Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
 					<Stack.Screen name="Reset" component={ResetScreen} options={{ headerShown: false }} />
 					<Stack.Screen name="Profil" component={ProfilScreenWrapper} options={{ headerShown: false }} />
+					<Stack.Screen name="Notification" component={NotificationScreenWrapper} options={{ headerShown: false }} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</ThemeProvider>

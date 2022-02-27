@@ -11,6 +11,9 @@ const colors = {
 	pet: '#FF89B4',
 	error: '#FFCCCC',
 	lightGrey: '#898989',
+	lightOrange: '#F2EAE0',
+	veryLightGrey: '#E7E7E7',
+	red: '#FF0000',
 }
 
 export const darkTheme = {

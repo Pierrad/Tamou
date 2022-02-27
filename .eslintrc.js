@@ -15,7 +15,8 @@ module.exports = {
 		'sourceType': 'module'
 	},
 	'plugins': [
-		'react'
+		'react',
+		'react-hooks'
 	],
 	'rules': {
 		'indent': [
@@ -40,6 +41,7 @@ module.exports = {
 				'afterColon': true
 			}
 		],
+		'react-hooks/exhaustive-deps': 'warn',
 	},
 	'globals': {
 		'fetch': false
