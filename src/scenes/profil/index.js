@@ -1,22 +1,49 @@
-import React from 'react'
+import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import * as SC from './styled'
 
 const ProfilScreen = ({ headerData, profilHeaderData, profilDetailData }) => {
+	const [isModalVisible, setIsModalVisible] = useState(false)
+
+	const handleEditPress = () => {
+		setIsModalVisible(true)
+	}
+
+	const renderModal = useMemo(() => {
+		return (
+			<SC.Modal
+				transparent={true}
+				animationType="slide"
+				visible={isModalVisible}
+				onRequestClose={() => setIsModalVisible(!isModalVisible)}
+			>
+				<SC.Touchable onPress={() => setIsModalVisible(!isModalVisible)}>
+					<SC.BasicView>
+						<SC.Touchable onPress={() => {}}>
+							<SC.ModalView style={SC.ModalStyle.modalView}>
+								<SC.ModalPicker />
+							</SC.ModalView>
+						</SC.Touchable>
+					</SC.BasicView>
+				</SC.Touchable>
+			</SC.Modal>
+		)
+	}, [isModalVisible])
 
 	return (
 		<SC.Container>
 			<SC.Wrapper>
 				<SC.Content>
 					<SC.Header {...headerData} />
-					<SC.ProfilTop {...profilHeaderData} />
+					<SC.ProfilTop {...profilHeaderData} onEditPress={handleEditPress} />
 				</SC.Content>
 				<SC.Divider />
 				<SC.Content>
 					<SC.ProfilD {...profilDetailData} />
 				</SC.Content>
 			</SC.Wrapper>
+			{renderModal}
 		</SC.Container>
 	)
 }
