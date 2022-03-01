@@ -5,6 +5,7 @@ import AgePicker from '../../components/AgePicker'
 
 export const Container = styled.SafeAreaView`
   flex: 1;
+  background: ${(props) => props.theme.orange};
 `
 
 export const GenderPickerContainer = styled(GenderPicker)``
