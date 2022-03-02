@@ -1,6 +1,7 @@
 import styled from 'styled-components/native'
 import AIcon from 'react-native-vector-icons/AntDesign'
 
+import ToggleButtonC from '../ToggleButton'
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -17,26 +18,20 @@ export const Title = styled.Text`
   margin-top: 50px;
 `
 
-export const Inputs = styled.View`
+export const Buttons = styled.View`
   flex: 1;
+  width: 90%;
   justify-content: space-evenly;
-  align-items: center;
-  margin-bottom: 50px;
+  margin: 0px 20px 50px 20px;
 `
 
-export const Input = styled.TextInput`
-  font-family: 'Poppins';
-  font-weight: 900;
-  font-size: 50px;
-  color: ${(props) => props.theme.pureBlack};
-  border: 1px solid ${(props) => props.theme.veryLightGrey};
-  background-color: ${(props) => props.theme.pureWhite};
+export const ToggleButtonWrap = styled.View`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 20px;
-  border-radius: 10px;
+  width: 100%;
+  align-items: ${props => props.isOdd ? 'flex-start' : 'flex-end'};
 `
+
+export const ToggleButton = styled(ToggleButtonC)``
 
 export const Button = styled.TouchableOpacity`
   display: flex;
