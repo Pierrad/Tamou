@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 import BurgerIcon from 'react-native-vector-icons/Feather'
-import NotificationIcon from 'react-native-vector-icons/Ionicons'
+import IIcon from 'react-native-vector-icons/Ionicons'
 
 export const Container = styled.SafeAreaView`
   display: flex;
@@ -36,7 +36,7 @@ export const Notification = styled.View`
   margin-top: 5px;
 `
 
-export const NotificationI = styled(NotificationIcon)`
+export const Icon = styled(IIcon)`
   width: 24px;
   height: 24px;
   position: relative;

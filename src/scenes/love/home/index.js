@@ -14,6 +14,10 @@ const LoveHomeScreen = ({ navigation }) => (
 			onPress={() => navigation.navigate('Home')}
 		/>
 		<Button
+			title="Go to Love Dashboard"
+			onPress={() => navigation.navigate('LoveDashboard')}
+		/>
+		<Button
 			title="Go to Love survey"
 			onPress={() => navigation.navigate('LoveSurvey')}
 		/>

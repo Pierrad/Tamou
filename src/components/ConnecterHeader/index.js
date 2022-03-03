@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const ConnectedHeader = (props) => {
-	const { style, theme, title, onBurgerPress, onNotificationPress, numberOfNotification, onAvatarPress, avatar } = props
+	const { style, theme, title, onBurgerPress, onNotificationPress, numberOfNotification, onAvatarPress, avatar, onParametersPress } = props
 	return (
 		<SC.Container style={style}>
 			<SC.Content>
@@ -16,28 +16,40 @@ const ConnectedHeader = (props) => {
 				/>
 				<SC.Title>{title}</SC.Title>
 			</SC.Content>
-			<SC.Content>
-				<SC.Notification>
-					<SC.NotificationI
-						onPress={onNotificationPress}
-						name="notifications"
+			{onNotificationPress && numberOfNotification && onAvatarPress && avatar && (
+				<SC.Content>
+					<SC.Notification>
+						<SC.Icon
+							onPress={onNotificationPress}
+							name="notifications"
+							size={24} 
+							color={theme.backgroundInverted}
+						/>
+						{numberOfNotification > 0 && (
+							<SC.NotificationNumberWrap>
+								<SC.NotificationNumber>{numberOfNotification}</SC.NotificationNumber>
+							</SC.NotificationNumberWrap>
+						)}
+					</SC.Notification>
+					<SC.AvatarWrapper onPress={onAvatarPress} >
+						<SC.Avatar
+							source={{
+								uri: avatar,
+							}}
+						/>
+					</SC.AvatarWrapper>
+				</SC.Content>
+			)}
+			{onParametersPress && (
+				<SC.Content>
+					<SC.Icon
+						onPress={onParametersPress}
+						name="settings-outline"
 						size={24} 
 						color={theme.backgroundInverted}
 					/>
-					{numberOfNotification > 0 && (
-						<SC.NotificationNumberWrap>
-							<SC.NotificationNumber>{numberOfNotification}</SC.NotificationNumber>
-						</SC.NotificationNumberWrap>
-					)}
-				</SC.Notification>
-				<SC.AvatarWrapper onPress={onAvatarPress} >
-					<SC.Avatar
-						source={{
-							uri: avatar,
-						}}
-					/>
-				</SC.AvatarWrapper>
-			</SC.Content>
+				</SC.Content>
+			)}
 		</SC.Container>
 	)}
 
@@ -50,6 +62,7 @@ ConnectedHeader.propTypes = {
 	numberOfNotification: PropTypes.number,
 	onAvatarPress: PropTypes.func,
 	avatar: PropTypes.string,
+	onParametersPress: PropTypes.func,
 }
 
 export default ConnectedHeader
