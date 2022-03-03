@@ -4,11 +4,14 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const ActionButton = (props) => {
-	const { style, title, children, onPress, primary, secondary, isOutlined, underlayColor } = props
+	const { style, title, children, onPress, primary, secondary, isOutlined, underlayColor, textColor } = props
 
 	return (
 		<SC.Container 
 			style={style ? style[0] : {}}
+			primary={primary}
+			secondary={secondary}
+			isOutlined={isOutlined}
 		>
 			<SC.Button
 				onPress={onPress}
@@ -21,6 +24,7 @@ const ActionButton = (props) => {
 					primary={primary}
 					isOutlined={isOutlined}
 					secondary={secondary}
+					textColor={textColor}
 				>
 					{title}
 					{children}
@@ -39,6 +43,7 @@ ActionButton.propTypes = {
 	secondary: PropTypes.bool,
 	isOutlined: PropTypes.bool,
 	underlayColor: PropTypes.string,
+	textColor: PropTypes.string,
 }
 
 export default ActionButton
