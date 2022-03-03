@@ -1,10 +1,13 @@
 import styled from 'styled-components/native'
 import AIcon from 'react-native-vector-icons/AntDesign'
 
+import ToggleButtonC from '../ToggleButton'
+
 export const Container = styled.SafeAreaView`
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
 `
 
@@ -17,31 +20,20 @@ export const TitleWrapper = styled.View`
 export const Title = styled.Text`
   font-family: 'Poppins';
   font-weight: 800;
-  font-size: 30px;
+  font-size: 25px;
   color: ${(props) => props.theme.pureWhite};
   margin: 30px 20px;
 `
 
-export const Pickers = styled.View`
+export const Buttons = styled.View`
   flex: 1;
+  width: 90%;
   justify-content: space-evenly;
+  align-items: center;
   margin-bottom: 50px;
 `
 
-export const Picker = styled.TouchableOpacity`
-  border: 1px solid ${(props) => props.theme.veryLightGrey};
-  background-color: ${(props) => props.isSelected ? props.theme.veryLightGrey : 'transparent'};
-  border-radius: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-`
-
-export const Image = styled.Image`
-  width: 200px;
-  height: 200px;
-`
+export const ToggleButton = styled(ToggleButtonC)``
 
 export const Button = styled.TouchableOpacity`
   display: flex;

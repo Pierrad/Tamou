@@ -30,6 +30,10 @@ const HomeScreen = ({ navigation, onSwitchTheme, theme }) => (
 			title="Go to SurveyStepper"
 			onPress={() => navigation.navigate('SurveyStepper')}
 		/>
+		<Button
+			title="Go to Love Homepage"
+			onPress={() => navigation.navigate('LoveHome')}
+		/>
 		{theme && theme.mode === 'light' ? (
 			<Button title="Switch to Dark Theme" onPress={() => onSwitchTheme(darkTheme)} />
 		) : (

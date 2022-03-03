@@ -35,7 +35,7 @@ const SurveyStepperScreen = (props) => {
 	const submit = useCallback(() => {
 		console.log('submit')
 		navigation.navigate('Dashboard')
-	}, [])
+	}, [navigation])
 
 	const renderStep = useCallback((step) => {
 		switch (step) {
@@ -44,6 +44,7 @@ const SurveyStepperScreen = (props) => {
 				onArrowPress={genderValue ? nextStep : null}
 				onPickerPress={onPickerPress}
 				value={genderValue}
+				title="Je suis..."
 			/>
 		case 1:
 			return <SC.AgePickerContainer
