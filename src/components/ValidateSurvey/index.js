@@ -9,7 +9,7 @@ const ValidateSurvey = (props) => {
 	const { style, title, onArrowPress } = props
 	return (
 		<SC.Container style={style ? style[0] : {}}>
-			<SC.Title>{title}</SC.Title>
+			{title && <SC.Title>{title}</SC.Title>}
 			<LottieView source={require('../../assets/lottie/check.json')} autoPlay />
 			<SC.Button
 				onPress={onArrowPress}

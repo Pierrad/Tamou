@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import ConnectedHeader from '../../components/ConnecterHeader'
+import ConnectedHeader from '../../../components/ConnecterHeader'
 
 export const Container = styled.SafeAreaView`
   background-color: ${props => props.theme.background};
