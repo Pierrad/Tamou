@@ -14,6 +14,8 @@ const colors = {
 	lightOrange: '#F2EAE0',
 	veryLightGrey: '#E7E7E7',
 	red: '#FF0000',
+	refuse: '#FF2D2D',
+	green: '#7CFC00',
 }
 
 export const darkTheme = {

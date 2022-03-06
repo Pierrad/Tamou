@@ -1,8 +1,7 @@
 import React from 'react'
-import {Button} from 'react-native'
+import { Button } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-
 
 import * as SC from './styled'
 
@@ -20,6 +19,10 @@ const LoveHomeScreen = ({ navigation }) => (
 		<Button
 			title="Go to Love survey"
 			onPress={() => navigation.navigate('LoveSurvey')}
+		/>
+		<Button
+			title="Go to Love swipe"
+			onPress={() => navigation.navigate('LoveSwipe')}
 		/>
 	</SC.Container>
 )

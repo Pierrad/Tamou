@@ -24,6 +24,7 @@ import SurveyStepperScreenWrapper from '../surveyStepper/wrapper'
 import LoveHomeScreen from '../love/home'
 import LoveSurveyScreenWrapper from '../love/surveyStepper/wrapper'
 import LoveDashboardScreenWrapper from '../love/dashboard/wrapper'
+import LoveSwipeScreenWrapper from '../love/swipe/wrapper'
 
 const Stack = createNativeStackNavigator()
 
@@ -50,6 +51,7 @@ const Layout = ({ theme, init }) => {
 					<Stack.Screen name="LoveHome" component={LoveHomeScreen} options={{ headerShown: false }} />
 					<Stack.Screen name="LoveSurvey" component={LoveSurveyScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="LoveDashboard" component={LoveDashboardScreenWrapper} options={{ headerShown: false }} />
+					<Stack.Screen name="LoveSwipe" component={LoveSwipeScreenWrapper} options={{ headerShown: false }} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</ThemeProvider>
