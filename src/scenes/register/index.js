@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import * as SC from './styled'
 import Input from '../../components/Input'
 import ActionButton from '../../components/ActionButton'
 import Link from '../../components/Link'
-import { connect } from 'react-redux'
 import { POST_REGISTER, REGISTER_ERROR } from '../../redux/actions/user'
+import { validateEmail } from '../../helpers/stringHelpers'
 
 
 const RegisterScreen = ({ navigation, onSubmit, isPending, theme, error, resetError }) => {
@@ -18,7 +19,7 @@ const RegisterScreen = ({ navigation, onSubmit, isPending, theme, error, resetEr
 	const [canViewPassword, setCanViewPassword] = useState(false)
 
 	const handleSubmit = () => {
-		if (!isPending) {
+		if (!isPending && validateEmail(email)) {
 			onSubmit({
 				username: userName,
 				email: email,
@@ -71,7 +72,7 @@ const RegisterScreen = ({ navigation, onSubmit, isPending, theme, error, resetEr
 						placeholder="Email"
 						value={email}
 						onChange={setEmail}
-						keyboardType="email-address"
+						type="email-address"
 					/>
 					<Input
 						placeholder="Nom"

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
 
 import * as SC from './styled'
 import Input from '../../components/Input'
 import ActionButton from '../../components/ActionButton'
 import Link from '../../components/Link'
-import { connect } from 'react-redux'
 import { LOGIN_ERROR, POST_LOGIN } from '../../redux/actions/user'
+import { validateEmail } from '../../helpers/stringHelpers'
 
 
 const LoginScreen = ({ navigation, onSubmit, isPending, theme, error, resetError }) => {
@@ -15,7 +17,7 @@ const LoginScreen = ({ navigation, onSubmit, isPending, theme, error, resetError
 	const [canViewPassword, setCanViewPassword] = useState(false)
 
 	const handleSubmit = () => {
-		if (!isPending) {
+		if (!isPending && validateEmail(email)) {
 			onSubmit({
 				email: email,
 				password: password,
@@ -55,7 +57,7 @@ const LoginScreen = ({ navigation, onSubmit, isPending, theme, error, resetError
 						placeholder="Email"
 						value={email}
 						onChange={setEmail}
-						keyboardType="email-address"
+						type="email-address"
 					>
 					</Input>
 					<Input 
