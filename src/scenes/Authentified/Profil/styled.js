@@ -2,10 +2,10 @@ import styled from 'styled-components/native'
 
 import { StyleSheet } from 'react-native' 
 
-import BasicHeader from '../../components/BasicHeader'
-import ProfilHeader from '../../components/ProfilHeader'
-import ProfilDetail from '../../components/ProfilDetail'
-import PictureInput from '../../components/PictureInput'
+import BasicHeader from '../../../components/BasicHeader'
+import ProfilHeader from '../../../components/ProfilHeader'
+import ProfilDetail from '../../../components/ProfilDetail'
+import PictureInput from '../../../components/PictureInput'
 
 export const Container = styled.SafeAreaView`
   background-color: ${props => props.theme.background};
