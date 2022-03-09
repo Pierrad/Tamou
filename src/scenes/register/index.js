@@ -74,7 +74,7 @@ const RegisterScreen = (props) => {
 				<SC.Contain4>
 					<ActionButton
 						primary={true}
-						title={!isPending ? 'Inscription' : ''}
+						title={!isPending ? 'INSCRIPTION' : ''}
 						onPress={handleSubmit}
 						underlayColor="orange"
 					>

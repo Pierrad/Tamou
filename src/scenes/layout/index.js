@@ -14,7 +14,7 @@ import { lightTheme } from '../../themes/theme'
 import HomeScreen from '../home'
 import LoginScreenWrapper from '../login/wrapper'
 import RegisterScreenWrapper from '../register/wrapper'
-import ResetScreen from '../reset'
+import ResetScreenWrapper from '../reset/wrapper'
 
 import DashboardScreenWrapper from '../dashboard/wrapper'
 import ProfilScreenWrapper from '../profil/wrapper'
@@ -41,7 +41,7 @@ const Layout = ({ theme, init }) => {
 					<Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
 					<Stack.Screen name="Login" component={LoginScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Register" component={RegisterScreenWrapper} options={{ headerShown: false }} />
-					<Stack.Screen name="Reset" component={ResetScreen} options={{ headerShown: false }} />
+					<Stack.Screen name="Reset" component={ResetScreenWrapper} options={{ headerShown: false }} />
 					{/* Authentified screens */}
 					<Stack.Screen name="Dashboard" component={DashboardScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Profil" component={ProfilScreenWrapper} options={{ headerShown: false }} />
