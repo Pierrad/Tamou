@@ -38,10 +38,15 @@ export const Head = styled.View`
   background-color: ${props => props.theme.orange};
 `
 
+export const Head2 = styled.View`
+  padding: 100px 0px 200px 0px;
+  background-color: ${props => props.theme.orange};
+`
+
 export const NameApp = styled.Text`
   font-family: "Poppins";
-  font-weight:bold;
-  font-size:45px;
+  font-weight: bold;
+  font-size: 45px;
   color: ${props => props.theme.pureWhite};
   text-align: center;
   position: relative;
@@ -51,16 +56,15 @@ export const Caption = styled.Text`
   font-family: "Poppins";
   color: ${props => props.theme.pureWhite};
   text-align: center;
-  font-size:15px;
-  font-style:italic;
-  font-weight:normal;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: normal;
   position: relative;
 `
 
 export const Contain1 = styled.SafeAreaView`
   flex: 1;
   background-color: ${props => props.theme.background};
-  background:white;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   top: -30px;
@@ -85,7 +89,7 @@ export const Subtitle = styled.Text`
 `
 
 export const Contain3 = styled.SafeAreaView`
-  flex: 4;
+  flex: 6;
   justify-content: space-evenly;
   margin: 0px 30px 0px 30px;
   background-color: transparent;

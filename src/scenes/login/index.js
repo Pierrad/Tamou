@@ -54,7 +54,7 @@ const LoginScreen = (props) => {
 				<SC.Contain4>
 					<ActionButton  
 						primary={true} 
-						title="Connexion" 
+						title="CONNEXION" 
 						onPress={handleSubmit}
 						underlayColor="orange"
 					>	
@@ -72,7 +72,7 @@ const LoginScreen = (props) => {
 				<SC.Contain6>
 					<ActionButton
 						isOutlined={true}
-						title="Inscription" 
+						title="INSCRIPTION" 
 						onPress={()=> navigation.navigate('Register')} 
 						underlayColor="silver"
 					/>
