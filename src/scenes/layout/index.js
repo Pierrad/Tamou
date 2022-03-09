@@ -11,20 +11,20 @@ import { navigationRef } from '../../navigation/RootNavigation'
 
 import { lightTheme } from '../../themes/theme'
 
-import HomeScreen from '../home'
-import LoginScreenWrapper from '../login/wrapper'
-import RegisterScreenWrapper from '../register/wrapper'
-import ResetScreenWrapper from '../reset/wrapper'
+import HomeScreen from '../Home'
+import LoginScreenWrapper from '../Unauthentified/Login/wrapper'
+import RegisterScreenWrapper from '../Unauthentified/Register/wrapper'
+import ResetScreenWrapper from '../Unauthentified/Reset/wrapper'
 
-import DashboardScreenWrapper from '../dashboard/wrapper'
-import ProfilScreenWrapper from '../profil/wrapper'
-import NotificationScreenWrapper from '../notification/wrapper'
-import SurveyStepperScreenWrapper from '../surveyStepper/wrapper'
+import DashboardScreenWrapper from '../Authentified/Dashboard/wrapper'
+import ProfilScreenWrapper from '../Authentified/Profil/wrapper'
+import NotificationScreenWrapper from '../Authentified/Notification/wrapper'
+import SurveyStepperScreenWrapper from '../Authentified/SurveyStepper/wrapper'
 
-import LoveHomeScreen from '../love/home'
-import LoveSurveyScreenWrapper from '../love/surveyStepper/wrapper'
-import LoveDashboardScreenWrapper from '../love/dashboard/wrapper'
-import LoveSwipeScreenWrapper from '../love/swipe/wrapper'
+import LoveHomeScreen from '../Love/Home'
+import LoveSurveyScreenWrapper from '../Love/SurveyStepper/wrapper'
+import LoveDashboardScreenWrapper from '../Love/Dashboard/wrapper'
+import LoveSwipeScreenWrapper from '../Love/Swipe/wrapper'
 
 const Stack = createNativeStackNavigator()
 

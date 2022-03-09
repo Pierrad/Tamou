@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import * as SC from './styled'
-import Input from '../../components/Input'
-import ActionButton from '../../components/ActionButton'
+import Input from '../../../components/Input'
+import ActionButton from '../../../components/ActionButton'
 
 const ResetScreen = (props) => {
 	const { step, onSubmit } = props

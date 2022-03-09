@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import * as SC from './styled'
-import Input from '../../components/Input'
-import ActionButton from '../../components/ActionButton'
-import Link from '../../components/Link'
+import Input from '../../../components/Input'
+import ActionButton from '../../../components/ActionButton'
+import Link from '../../../components/Link'
 
 const RegisterScreen = (props) => {
 	const { navigation, onSubmit, isPending, theme, error } = props

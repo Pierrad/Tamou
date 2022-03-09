@@ -1,7 +1,7 @@
 import styled from 'styled-components/native'
 
-import BasicHeader from '../../components/BasicHeader'
-import NotificationCard from '../../components/NotificationCard'
+import BasicHeader from '../../../components/BasicHeader'
+import NotificationCard from '../../../components/NotificationCard'
 
 export const Container = styled.SafeAreaView`
   background-color: ${props => props.theme.background};
