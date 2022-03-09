@@ -12,11 +12,11 @@ import { navigationRef } from '../../navigation/RootNavigation'
 import { lightTheme } from '../../themes/theme'
 
 import HomeScreen from '../home'
-import LoginScreen from '../login'
-import RegisterScreen from '../register'
+import LoginScreenWrapper from '../login/wrapper'
+import RegisterScreenWrapper from '../register/wrapper'
 import ResetScreen from '../reset'
 
-import DashboardScreen from '../dashboard'
+import DashboardScreenWrapper from '../dashboard/wrapper'
 import ProfilScreenWrapper from '../profil/wrapper'
 import NotificationScreenWrapper from '../notification/wrapper'
 import SurveyStepperScreenWrapper from '../surveyStepper/wrapper'
@@ -39,11 +39,11 @@ const Layout = ({ theme, init }) => {
 				<Stack.Navigator initialRouteName="Home">
 					{/* Unauthentified screens */}
 					<Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-					<Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-					<Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
+					<Stack.Screen name="Login" component={LoginScreenWrapper} options={{ headerShown: false }} />
+					<Stack.Screen name="Register" component={RegisterScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Reset" component={ResetScreen} options={{ headerShown: false }} />
 					{/* Authentified screens */}
-					<Stack.Screen name="Dashboard" component={DashboardScreen} options={{ headerShown: false }} />
+					<Stack.Screen name="Dashboard" component={DashboardScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Profil" component={ProfilScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Notification" component={NotificationScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="SurveyStepper" component={SurveyStepperScreenWrapper} options={{ headerShown: false }} />

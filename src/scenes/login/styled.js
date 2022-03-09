@@ -9,8 +9,8 @@ export const Container = styled.SafeAreaView`
 export const ErrorContainer = styled.SafeAreaView`
   position: absolute;
   top: ${Platform.OS === 'ios' ? '10%' : '3%'};
-  left: 50%;
-  width: 40%;
+  left: 45%;
+  width: 50%;
   transform: translateX(-80px);
   background-color: ${props => props.theme.pureWhite};
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -25,7 +25,6 @@ export const Error = styled.Text`
   font-family: "Poppins";
   font-size: 15px;
   font-weight: bold;
-  text-transform: capitalize;
   width: 100%;
   display: flex;
   text-align: center;

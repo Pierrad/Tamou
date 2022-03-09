@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
 import * as SC from './styled'
 import Input from '../../components/Input'
 import ActionButton from '../../components/ActionButton'
 import Link from '../../components/Link'
-import { POST_REGISTER, REGISTER_ERROR } from '../../redux/actions/user'
-import { validateEmail } from '../../helpers/stringHelpers'
 
+const RegisterScreen = (props) => {
+	const { navigation, onSubmit, isPending, theme, error } = props
 
-const RegisterScreen = ({ navigation, onSubmit, isPending, theme, error, resetError }) => {
 	const [firstName, setFirstName] = useState('')
 	const [lastName, setLastName] = useState('')
 	const [userName, setUserName] = useState('')
@@ -19,23 +17,11 @@ const RegisterScreen = ({ navigation, onSubmit, isPending, theme, error, resetEr
 	const [canViewPassword, setCanViewPassword] = useState(false)
 
 	const handleSubmit = () => {
-		if (!isPending && validateEmail(email)) {
-			onSubmit({
-				username: userName,
-				email: email,
-				password: password,
-			})
-		}
-	}
-
-	useEffect(() => {
-		resetError()
-	}, [resetError])
-
-	if (error) {
-		setTimeout(() => {
-			resetError()
-		}, 5000)
+		onSubmit({
+			username: userName,
+			email: email,
+			password: password,
+		})
 	}
 
 	return (
@@ -116,19 +102,6 @@ RegisterScreen.propTypes = {
 	isPending: PropTypes.bool.isRequired,
 	theme: PropTypes.object,
 	error: PropTypes.string,
-	resetError: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = (state) => ({
-	isPending: state.userReducer.loading,
-	error: state.userReducer.error,
-	theme: state.themeReducer.theme,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-	onSubmit: (input) => dispatch({ type: POST_REGISTER, payload: input }),
-	resetError: () => dispatch({ type: REGISTER_ERROR, payload: '' }),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen)
-
+export default RegisterScreen

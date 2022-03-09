@@ -1,15 +1,15 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import AntIcon from 'react-native-vector-icons/AntDesign'
 import IoIcon from 'react-native-vector-icons/Ionicons'
 import MIcon from 'react-native-vector-icons/MaterialIcons'
 import MMIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-
 import * as SC from './styled'
 
-const DashboardScreen = ({ theme, navigation, user }) => {
+const DashboardScreen = (props) => {
+	const { theme, navigation, user } = props
+
 	const { username } = user 
 
 	return (
@@ -29,7 +29,7 @@ const DashboardScreen = ({ theme, navigation, user }) => {
 					title="Rencontre"
 					icon={<AntIcon name="hearto" size={24} color={theme.background} />}
 					backgroundColor={theme.love}
-					onClick={() => {}}
+					onClick={() => navigation.navigate('LoveSurvey')}
 				/>
 				<SC.DCard
 					title="Jeu en ligne"
@@ -77,14 +77,4 @@ DashboardScreen.propTypes = {
 	}),
 }
 
-const mapStateToProps = (state) => ({
-	theme: state.themeReducer.theme,
-	user: state.userReducer.user,
-})
-
-const mapDispatchToProps = () => ({
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreen)
-
-
+export default DashboardScreen

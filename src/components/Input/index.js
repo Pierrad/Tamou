@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { validateEmail } from '../../helpers/stringHelpers'
+import { validateEmail, validatePassword } from '../../helpers/stringHelpers'
 
 import * as SC from './styled'
 
@@ -19,6 +19,8 @@ const Input = ({ style, onChange, value, placeholder, type, isPassword, isPasswo
 				autoCorrect={false}
 				autoCapitalize='none'
 				isEmailValid={type === 'email-address' && validateEmail(value)}
+				isPassword={isPassword}
+				isPasswordValid={isPassword && validatePassword(value)}
 			/>
 			{isPassword && (
 				<SC.Icon
