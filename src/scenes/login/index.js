@@ -1,39 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import * as SC from './styled'
 import Input from '../../components/Input'
 import ActionButton from '../../components/ActionButton'
 import Link from '../../components/Link'
-import { connect } from 'react-redux'
-import { LOGIN_ERROR, POST_LOGIN } from '../../redux/actions/user'
 
 
-const LoginScreen = ({ navigation, onSubmit, isPending, theme, error, resetError }) => {
+const LoginScreen = (props) => {
+	const { navigation, isPending, theme, error, onSubmit } = props
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [canViewPassword, setCanViewPassword] = useState(false)
 
 	const handleSubmit = () => {
-		if (!isPending) {
-			onSubmit({
-				email: email,
-				password: password,
-			})
-		}
+		onSubmit({ email, password })
 	}
 
-	useEffect(() => {
-		resetError()
-	}, [resetError])
-
-	if (error) {
-		setTimeout(() => {
-			resetError()
-		}, 5000)
-	}
-
-	
 	return (
 		<SC.Container>
 			{error.length > 0 && (
@@ -55,7 +38,7 @@ const LoginScreen = ({ navigation, onSubmit, isPending, theme, error, resetError
 						placeholder="Email"
 						value={email}
 						onChange={setEmail}
-						keyboardType="email-address"
+						type="email-address"
 					>
 					</Input>
 					<Input 
@@ -104,23 +87,10 @@ LoginScreen.propTypes = {
 	navigation: PropTypes.shape({
 		navigate: PropTypes.func.isRequired,
 	}).isRequired,
-	onSubmit: PropTypes.func.isRequired,
 	isPending: PropTypes.bool.isRequired,
 	theme: PropTypes.object,
 	error: PropTypes.string,
-	resetError: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = (state) => ({
-	isPending: state.userReducer.loading,
-	error: state.userReducer.error,
-	theme: state.themeReducer.theme,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-	onSubmit: (input) => dispatch({ type: POST_LOGIN, payload: input }),
-	resetError: () => dispatch({ type: LOGIN_ERROR, payload: '' }),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
-
+export default LoginScreen

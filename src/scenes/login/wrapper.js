@@ -1,0 +1,68 @@
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
+import { LOGIN_ERROR, POST_LOGIN } from '../../redux/actions/user'
+import { validateEmail } from '../../helpers/stringHelpers'
+
+import LoginScreen from './index'
+
+const LoginScreenWrapper = (props) => {
+	const { navigation, onSubmit, isPending, error, resetError, theme } = props
+
+	const handleSubmit = (values) => {
+		if (!isPending && validateEmail(values.email)) {
+			onSubmit({
+				email: values.email,
+				password: values.password,
+			})
+		}
+	}
+
+	useEffect(() => {
+		resetError()
+	}, [resetError])
+
+	if (error) {
+		setTimeout(() => {
+			resetError()
+		}, 5000)
+	}
+
+
+	return (
+		<LoginScreen
+			navigation={navigation}
+			isPending={isPending}
+			error={error}
+			resetError={resetError}
+			theme={theme}
+			onSubmit={handleSubmit}
+		/>
+	)
+}
+
+LoginScreenWrapper.propTypes = {
+	navigation: PropTypes.shape({
+		navigate: PropTypes.func.isRequired,
+	}).isRequired,
+	onSubmit: PropTypes.func.isRequired,
+	isPending: PropTypes.bool.isRequired,
+	theme: PropTypes.object,
+	error: PropTypes.string,
+	resetError: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+	isPending: state.userReducer.loading,
+	error: state.userReducer.error,
+	theme: state.themeReducer.theme,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	onSubmit: (input) => dispatch({ type: POST_LOGIN, payload: input }),
+	resetError: () => dispatch({ type: LOGIN_ERROR, payload: '' }),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreenWrapper)
+
