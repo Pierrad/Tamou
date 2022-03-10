@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 
 import * as SC from './styled'
 
-const LoveDashboardScreen = ({ theme }) => {
+const LoveDashboardScreen = (props) => {
+	const { theme, translations } = props
 
 	const cards = [
 		{
@@ -59,12 +60,12 @@ const LoveDashboardScreen = ({ theme }) => {
 	return (
 		<SC.Container>
 			<SC.Header 
-				title="Rencontre"
+				title={translations.title}
 				onBurgerPress={() => {}}
 				onParametersPress={() => {console.log('')}}
 				theme={theme}
 			/>
-			<SC.Title>Vos matchs</SC.Title>
+			<SC.Title>{translations.subtitle}</SC.Title>
 			<SC.MatchList
 				data={cards}
 				renderItem={renderMatchCard}
@@ -72,7 +73,7 @@ const LoveDashboardScreen = ({ theme }) => {
 				contentContainerStyle={SC.styles.flatList}
 			/>
 			<SC.Button
-				title="Swippez"
+				title={translations.cta}
 				onPress={() => {}}
 				underlayColor={theme.love}
 				textColor={theme.pureWhite}
@@ -88,6 +89,7 @@ LoveDashboardScreen.propTypes = {
 		navigate: PropTypes.func.isRequired,
 		goBack: PropTypes.func.isRequired,
 	}).isRequired,
+	translations: PropTypes.objectOf(PropTypes.string),
 }
 
 export default LoveDashboardScreen

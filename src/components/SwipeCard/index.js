@@ -7,6 +7,7 @@ import {
 	UIManager,
 } from 'react-native'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import * as SC from './styled'
 
@@ -17,6 +18,8 @@ const SWIPE_OUT_DURATION = 250
 
 const SwipeCard = (props) => {
 	const { style, image, title, subtitle, age, onLike, onDislike } = props
+	const { t } = useTranslation()
+
 	const [isRight, setIsRight] = useState(false)
 	const [isLeft, setIsLeft] = useState(false)
 
@@ -108,12 +111,12 @@ const SwipeCard = (props) => {
 				<SC.Subtitle>{subtitle}</SC.Subtitle>
 				{isRight && (
 					<SC.Like>
-						<SC.Text>Like</SC.Text>
+						<SC.Text>{t('love_swipe_screen_like')}</SC.Text>
 					</SC.Like>
 				)}
 				{isLeft && (
 					<SC.Dislike>
-						<SC.Text>Dislike</SC.Text>
+						<SC.Text>{t('love_swipe_screen_dislike')}</SC.Text>
 					</SC.Dislike>
 				)}
 			</Animated.View>

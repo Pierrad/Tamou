@@ -1,18 +1,20 @@
 import React, { useMemo } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import SwipeScreen from './index'
 
 const SwipeScreenWrapper = (props) => {
 	const { theme, navigation } = props 
+	const { t } = useTranslation()
 
 	const headerData = useMemo(() => ({
 		onButtonPress: () => navigation.goBack(),
 		color: theme.backgroundInverted,
 		colorInverted: theme.background,
-		title: 'Swipe',
-	}), [navigation, theme])
+		title: t('love_swipe_title'),
+	}), [navigation, t, theme.background, theme.backgroundInverted])
 
 
 	return (

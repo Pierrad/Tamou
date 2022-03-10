@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const SurveyStepperScreen = (props) => {
-	const { theme, navigation } = props
+	const { theme, navigation, translations } = props
 	const [step, setStep] = useState(0)
 	const [genderValue, setGenderValue] = useState('')
 	// eslint-disable-next-line no-unused-vars
@@ -44,11 +44,12 @@ const SurveyStepperScreen = (props) => {
 				onArrowPress={genderValue ? nextStep : null}
 				onPickerPress={onPickerPress}
 				value={genderValue}
-				title="Je suis..."
+				title={translations.genderTitle}
 			/>
 		case 1:
 			return <SC.AgePickerContainer
 				onArrowPress={onAgePress}
+				title={genderValue === 'male' ? translations.ageMaleTitle : translations.ageFemaleTitle}
 			/>
 		case 2:
 			return <SC.CategoriesPickerContainer
@@ -56,16 +57,17 @@ const SurveyStepperScreen = (props) => {
 				theme={theme}
 				onCategoryPress={onCategoryPress}
 				values={categoryValues}
+				title={translations.categoriesTitle}
 			/>
 		case 3:
 			return <SC.ValidateSurveyContainer
 				onArrowPress={submit}
-				title="Bienvenue !"
+				title={translations.completeTitle}
 			/>
 		default:
 			return null
 		}
-	}, [categoryValues, genderValue, nextStep, onAgePress, onCategoryPress, submit, theme])
+	}, [categoryValues, genderValue, nextStep, onAgePress, onCategoryPress, submit, theme, translations])
 
 	return (
 		<SC.Container>
@@ -79,6 +81,7 @@ SurveyStepperScreen.propTypes = {
 	navigation: PropTypes.shape({
 		navigate: PropTypes.func.isRequired,
 	}).isRequired,
+	translations: PropTypes.objectOf(PropTypes.string),
 }
 
 export default SurveyStepperScreen

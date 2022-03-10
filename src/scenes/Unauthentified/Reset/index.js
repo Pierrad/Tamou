@@ -6,10 +6,10 @@ import Input from '../../../components/Input'
 import ActionButton from '../../../components/ActionButton'
 
 const ResetScreen = (props) => {
-	const { step, onSubmit } = props
+	const { step, onSubmit, translations } = props
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
-	const [repeatPassword, setRepeatPassword] = useState('')
+	const [confirmPassword, setconfirmPassword] = useState('')
 	const [code, setCode] = useState('')
 	const [canViewPassword, setCanViewPassword] = useState(false)
 
@@ -20,17 +20,17 @@ const ResetScreen = (props) => {
 	const renderEmailRequest = () => (
 		<SC.Container>
 			<SC.Head>
-				<SC.NameApp>Tamou</SC.NameApp>
-				<SC.Caption>Rencontrer la bonne personne!</SC.Caption>
+				<SC.NameApp>{translations.appName}</SC.NameApp>
+				<SC.Caption>{translations.appSlogan}</SC.Caption>
 			</SC.Head>		
 			<SC.Contain1>
 				<SC.Contain2>
-					<SC.Title>Réinitialiser votre mot de passe</SC.Title>
-					<SC.Subtitle>Nous allons envoyer un code de réiniatialisation à l’adresse mail suivante</SC.Subtitle>
+					<SC.Title>{translations.title}</SC.Title>
+					<SC.Subtitle>{translations.subtitle}</SC.Subtitle>
 				</SC.Contain2>
 				<SC.Contain3>
 					<Input 
-						placeholder="Email"
+						placeholder={translations.emailFieldPlaceholder}
 						value={email}
 						onChange={setEmail}
 						type="email-address"
@@ -40,7 +40,7 @@ const ResetScreen = (props) => {
 				<SC.Contain4>
 					<ActionButton  
 						primary={true} 
-						title="ENVOYER LE CODE" 
+						title={translations.submitButtonLabel}
 						onPress={handleSubmit}
 						underlayColor="orange"
 					/>
@@ -52,21 +52,21 @@ const ResetScreen = (props) => {
 	const renderCodeRequest = () => (
 		<SC.Container>
 			<SC.Head2>
-				<SC.NameApp>Tamou</SC.NameApp>
-				<SC.Caption>Rencontrer la bonne personne!</SC.Caption>
+				<SC.NameApp>{translations.appName}</SC.NameApp>
+				<SC.Caption>{translations.appSlogan}</SC.Caption>
 			</SC.Head2>		
 			<SC.Contain1>
 				<SC.Contain2>
-					<SC.Title>Réinitialiser votre mot de passe</SC.Title>
+					<SC.Title>{translations.title}</SC.Title>
 				</SC.Contain2>
 				<SC.Contain3>
 					<Input 
-						placeholder="Code"
+						placeholder={translations.codeFieldPlaceholder}
 						value={code}
 						onChange={setCode}
 					/>
 					<Input
-						placeholder="Nouveau mot de passe"
+						placeholder={translations.passwordFieldPlaceholder}
 						isPassword={true}
 						value={password}
 						onChange={setPassword}
@@ -74,10 +74,10 @@ const ResetScreen = (props) => {
 						setIsPasswordViewable={() => setCanViewPassword(!canViewPassword)}
 					/>
 					<Input
-						placeholder="Répéter le mot de passe"
+						placeholder={translations.confirmPasswordFieldPlaceholder}
 						isPassword={true}
-						value={repeatPassword}
-						onChange={setRepeatPassword}
+						value={confirmPassword}
+						onChange={setconfirmPassword}
 						isPasswordViewable={canViewPassword}
 						setIsPasswordViewable={() => setCanViewPassword(!canViewPassword)}
 					/>
@@ -85,7 +85,7 @@ const ResetScreen = (props) => {
 				<SC.Contain4>
 					<ActionButton  
 						primary={true} 
-						title="REINITIALISER" 
+						title={translations.submitNewPasswordButtonLabel}
 						onPress={handleSubmit}
 						underlayColor="orange"
 					/>
@@ -102,6 +102,7 @@ const ResetScreen = (props) => {
 ResetScreen.propTypes = {
 	step: PropTypes.number.isRequired,
 	onSubmit: PropTypes.func.isRequired,
+	translations: PropTypes.objectOf(PropTypes.string),
 }
 
 export default ResetScreen

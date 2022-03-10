@@ -7,7 +7,7 @@ import ActionButton from '../../../components/ActionButton'
 import Link from '../../../components/Link'
 
 const RegisterScreen = (props) => {
-	const { navigation, onSubmit, isPending, theme, error } = props
+	const { navigation, onSubmit, isPending, theme, error, translations } = props
 
 	const [firstName, setFirstName] = useState('')
 	const [lastName, setLastName] = useState('')
@@ -32,22 +32,22 @@ const RegisterScreen = (props) => {
 				</SC.ErrorContainer>
 			)}
 			<SC.Head>
-				<SC.NameApp>TANDUR</SC.NameApp>
-				<SC.Caption>Rencontrer la bonne personne!</SC.Caption>
+				<SC.NameApp>{translations.appName}</SC.NameApp>
+				<SC.Caption>{translations.appSlogan}</SC.Caption>
 			</SC.Head>
 			<SC.Contain1>
 				<SC.Contain2>
-					<SC.Title>Bienvenue</SC.Title>
-					<SC.Subtitle>Inscrivez vous pour continuer</SC.Subtitle>
+					<SC.Title>{translations.title}</SC.Title>
+					<SC.Subtitle>{translations.subtitle}</SC.Subtitle>
 				</SC.Contain2>
 				<SC.Contain3>
 					<Input
-						placeholder="Nom d'utilisateur"
+						placeholder={translations.pseudoFieldPlaceholder}
 						value={userName}
 						onChange={setUserName}
 					/>
 					<Input
-						placeholder="Mot de passe"
+						placeholder={translations.passwordFieldPlaceholder}
 						isPassword={true}
 						value={password}
 						onChange={setPassword}
@@ -55,18 +55,18 @@ const RegisterScreen = (props) => {
 						setIsPasswordViewable={() => setCanViewPassword(!canViewPassword)}
 					/>
 					<Input
-						placeholder="Email"
+						placeholder={translations.emailFieldPlaceholder}
 						value={email}
 						onChange={setEmail}
 						type="email-address"
 					/>
 					<Input
-						placeholder="Nom"
+						placeholder={translations.lastnameFieldPlaceholder}
 						value={lastName}
 						onChange={setLastName}
 					/>
 					<Input
-						placeholder="Prénom"
+						placeholder={translations.firstnameFieldPlaceholder}
 						value={firstName}
 						onChange={setFirstName}
 					/>
@@ -74,7 +74,7 @@ const RegisterScreen = (props) => {
 				<SC.Contain4>
 					<ActionButton
 						primary={true}
-						title={!isPending ? 'INSCRIPTION' : ''}
+						title={!isPending ? translations.submitButtonLabel : ''}
 						onPress={handleSubmit}
 						underlayColor="orange"
 					>
@@ -82,9 +82,9 @@ const RegisterScreen = (props) => {
 					</ActionButton>
 				</SC.Contain4>
 				<SC.Contain5>
-					<SC.Text>Vous avez déjà un compte?</SC.Text>
+					<SC.Text>{translations.alreadyHaveAccountButtonLabel}</SC.Text>
 					<Link
-						title="Connexion"
+						title={translations.alreadyHaveAccountButtonAction}
 						onPress={() => navigation.navigate('Login')}
 						underlayColor="none"
 					/>
@@ -102,6 +102,7 @@ RegisterScreen.propTypes = {
 	isPending: PropTypes.bool.isRequired,
 	theme: PropTypes.object,
 	error: PropTypes.string,
+	translations: PropTypes.objectOf(PropTypes.string),
 }
 
 export default RegisterScreen

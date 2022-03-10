@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import RegisterScreen from './index'
 import { connect } from 'react-redux'
@@ -8,6 +9,22 @@ import { validateEmail, validatePassword } from '../../../helpers/stringHelpers'
 
 const RegisterScreenWrapper = (props) => {
 	const { navigation, onSubmit, isPending, error, resetError, theme } = props
+	const { t } = useTranslation()
+
+	const translations = {
+		appName: t('app_name'),
+		appSlogan: t('app_slogan'),
+		title: t('login_screen_title'),
+		subtitle: t('login_screen_subtitle'),
+		submitButtonLabel: t('register_screen_submit_button'),
+		pseudoFieldPlaceholder: t('register_screen_pseudo_field_placeholder'),
+		emailFieldPlaceholder: t('register_screen_email_field_placeholder'),
+		passwordFieldPlaceholder: t('register_screen_password_field_placeholder'),
+		firstnameFieldPlaceholder: t('register_screen_firstname_field_placeholder'),
+		lastnameFieldPlaceholder: t('register_screen_lastname_field_placeholder'),
+		alreadyHaveAccountButtonLabel: t('register_screen_already_have_account_button_label'),
+		alreadyHaveAccountButtonAction: t('register_screen_already_have_account_button_action')
+	}
 
 	const handleSubmit = (values) => {
 		if (!isPending && validateEmail(values.email) && validatePassword(values.password)) {
@@ -35,6 +52,7 @@ const RegisterScreenWrapper = (props) => {
 			error={error}
 			theme={theme}
 			onSubmit={handleSubmit}
+			translations={translations}
 		/>
 	)
 }

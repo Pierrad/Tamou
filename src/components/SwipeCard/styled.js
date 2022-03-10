@@ -36,26 +36,26 @@ export const Like = styled.View`
 	position: absolute;
 	top: 5%;
 	left: 5%;
-	width: 80px;
 	height: 40px;
 	border-radius: 5px;
 	border: 1px solid ${props => props.theme.green};
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0px 5px;
 `
 
 export const Dislike = styled.View`
 	position: absolute;
 	top: 5%;
 	right: 5%;
-	width: 80px;
 	height: 40px;
 	border-radius: 5px;
 	border: 1px solid ${props => props.theme.red};
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0px 5px;
 `
 
 export const Text = styled.Text`

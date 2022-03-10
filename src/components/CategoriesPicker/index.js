@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const CategoriesPicker = (props) => {
-	const { style, theme, onArrowPress, onCategoryPress, values } = props
+	const { style, theme, onArrowPress, onCategoryPress, values, title } = props
 	return (
 		<SC.Container style={style ? style[0] : {}}>
-			<SC.Title>Je suis là pour...</SC.Title>
+			<SC.Title>{title}</SC.Title>
 			<SC.Buttons>
 				<SC.ToggleButtonWrap
 					isOdd
@@ -80,6 +80,7 @@ CategoriesPicker.propTypes = {
 	onArrowPress: PropTypes.func,
 	onCategoryPress: PropTypes.func,
 	values: PropTypes.array,
+	title: PropTypes.string
 }
 
 export default CategoriesPicker

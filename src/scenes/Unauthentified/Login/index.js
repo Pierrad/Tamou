@@ -8,7 +8,7 @@ import Link from '../../../components/Link'
 
 
 const LoginScreen = (props) => {
-	const { navigation, isPending, theme, error, onSubmit } = props
+	const { navigation, isPending, theme, error, onSubmit, translations } = props
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [canViewPassword, setCanViewPassword] = useState(false)
@@ -25,24 +25,24 @@ const LoginScreen = (props) => {
 				</SC.ErrorContainer>
 			)}
 			<SC.Head>
-				<SC.NameApp>Tamou</SC.NameApp>
-				<SC.Caption>Rencontrer la bonne personne!</SC.Caption>
+				<SC.NameApp>{translations.appName}</SC.NameApp>
+				<SC.Caption>{translations.appSlogan}</SC.Caption>
 			</SC.Head>
 			<SC.Contain1>
 				<SC.Contain2>
-					<SC.Title>Bon retour</SC.Title>
-					<SC.Subtitle>Connectez vous pour continuer</SC.Subtitle>
+					<SC.Title>{translations.title}</SC.Title>
+					<SC.Subtitle>{translations.subtitle}</SC.Subtitle>
 				</SC.Contain2>
 				<SC.Contain3>
 					<Input 
-						placeholder="Email"
+						placeholder={translations.emailFieldPlaceholder}
 						value={email}
 						onChange={setEmail}
 						type="email-address"
 					>
 					</Input>
 					<Input 
-						placeholder="Mot de passe"
+						placeholder={translations.passwordFieldPlaceholder}
 						value={password}
 						onChange={setPassword}
 						isPassword={true}
@@ -54,7 +54,7 @@ const LoginScreen = (props) => {
 				<SC.Contain4>
 					<ActionButton  
 						primary={true} 
-						title="CONNEXION" 
+						title={translations.submitButtonLabel}
 						onPress={handleSubmit}
 						underlayColor="orange"
 					>	
@@ -62,9 +62,9 @@ const LoginScreen = (props) => {
 					</ActionButton>
 				</SC.Contain4>
 				<SC.Contain5>
-					<SC.Text>Mot de passe oublié?</SC.Text>
+					<SC.Text>{translations.forgotPasswordButtonLabel}</SC.Text>
 					<Link 
-						title="Reinitialiser le mot de passe" 
+						title={translations.forgotPasswordButtonAction}
 						onPress={()=> navigation.navigate('Reset')}
 						underlayColor="none"
 					/>
@@ -72,12 +72,11 @@ const LoginScreen = (props) => {
 				<SC.Contain6>
 					<ActionButton
 						isOutlined={true}
-						title="INSCRIPTION" 
+						title={translations.registerButtonLabel} 
 						onPress={()=> navigation.navigate('Register')} 
 						underlayColor="silver"
 					/>
 				</SC.Contain6>
-			
 			</SC.Contain1>
 		</SC.Container>
 	)
@@ -91,6 +90,7 @@ LoginScreen.propTypes = {
 	theme: PropTypes.object,
 	error: PropTypes.string,
 	onSubmit: PropTypes.func.isRequired,
+	translations: PropTypes.objectOf(PropTypes.string),
 }
 
 export default LoginScreen
