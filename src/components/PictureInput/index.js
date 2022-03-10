@@ -1,10 +1,11 @@
 import React from 'react'
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker'
-
+import { useTranslation } from 'react-i18next'
 
 import * as SC from './styled'
 
 const PictureInput = () => {
+	const { t } = useTranslation()
 
 	const handleLibraryPress = () => {
 		launchImageLibrary({
@@ -28,11 +29,11 @@ const PictureInput = () => {
 		<SC.Container>
 			<SC.Touchable onPress={handleLibraryPress}>
 				<SC.Icon name="photo-library" size={50} color="#000" />
-				<SC.Text>Choisir depuis la galerie</SC.Text>
+				<SC.Text>{t('profil_screen_choose_from_galery')}</SC.Text>
 			</SC.Touchable>
 			<SC.Touchable onPress={handleCameraPress}>
 				<SC.Icon name="photo-camera" size={50} color="#000" />
-				<SC.Text>Prendre une photo</SC.Text>
+				<SC.Text>{t('profil_screen_take_a_picture')}</SC.Text>
 			</SC.Touchable>
 		</SC.Container>
 	)

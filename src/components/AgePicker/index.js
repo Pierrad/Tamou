@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const AgePicker = (props) => {
-	const { style, onArrowPress } = props
+	const { style, onArrowPress, title } = props
 	const [day, setDay] = useState('')
 	const [month, setMonth] = useState('')
 	const [year, setYear] = useState('')
@@ -18,7 +18,7 @@ const AgePicker = (props) => {
 
 	return (
 		<SC.Container style={style ? style[0] : {}}>
-			<SC.Title>Je suis né le...</SC.Title>
+			<SC.Title>{title}</SC.Title>
 			<SC.Inputs>
 				<SC.Input
 					placeholder="JJ"
@@ -55,6 +55,7 @@ const AgePicker = (props) => {
 AgePicker.propTypes = {
 	style: PropTypes.array,
 	onArrowPress: PropTypes.func,
+	title: PropTypes.string,
 }
 
 export default AgePicker

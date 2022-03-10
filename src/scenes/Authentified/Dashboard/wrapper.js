@@ -1,17 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 import DashboardScreen from './index'
-import { connect } from 'react-redux'
 
 const DashboardScreenWrapper = (props) => {
 	const { theme, navigation, user } = props
+	const { t } = useTranslation()
+
+	const translations = {
+		hello: t('dashboard_screen_hello', { name: user.username }),
+		categories: t('dashboard_screen_personal_categories'),
+		loveCategoryTitle: t('category_love'),
+		gameCategoryTitle: t('category_game'),
+		sportCategoryTitle: t('category_sport'),
+		cookingCategoryTitle: t('category_cook'),
+		studyCategoryTitle: t('category_study'),
+		petCategoryTitle: t('category_pet'),
+	}
 
 	return (
 		<DashboardScreen 
 			navigation={navigation}
 			theme={theme}
-			user={user}
+			translations={translations}
 		/>
 	)
 }

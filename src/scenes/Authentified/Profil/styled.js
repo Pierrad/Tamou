@@ -15,6 +15,7 @@ export const Container = styled.SafeAreaView`
 
 export const Wrapper = styled.ScrollView`
   flex: 1;
+  opacity: ${props => props.isModalVisible ? 0.5 : 1};
 `
 
 export const Content = styled.View`

@@ -33,7 +33,7 @@ const ProfilScreen = ({ headerData, profilHeaderData, profilDetailData }) => {
 
 	return (
 		<SC.Container>
-			<SC.Wrapper>
+			<SC.Wrapper isModalVisible={isModalVisible}>
 				<SC.Content>
 					<SC.Header {...headerData} />
 					<SC.ProfilTop {...profilHeaderData} onEditPress={handleEditPress} />

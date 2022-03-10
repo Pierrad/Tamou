@@ -1,27 +1,29 @@
 import React, { useMemo, useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 import NotificationScreen from './index'
 
 const NotificationScreenWrapper = (props) => {
 	const { navigation, theme } = props
+	const { t } = useTranslation()
 
 	const [notifications, setNotifications] = useState([
 		{
 			isNew: true,
-			dateAgo: 'Il y a 2h',
-			title: 'Vous avez reçu un nouveau message de John Doe',
+			dateAgo: t('notification_screen_new_notification_date_ago', { time: '2h' }),
+			title: t('notification_screen_new_message_from', { name: 'John Doe' }),
 		},
 		{
 			isNew: true,
-			dateAgo: 'Il y a 3h',
-			title: 'Vous avez reçu un nouveau match avec John Doe',
+			dateAgo: t('notification_screen_new_notification_date_ago', { time: '3h' }),
+			title: t('notification_screen_new_match_with', { name: 'John Doe' }),
 		},
 		{
 			isNew: false,
-			dateAgo: 'Il y a 4h',
-			title: 'N\'hésitez pas à découvrir de nouvelles catégories !',
+			dateAgo: t('notification_screen_new_notification_date_ago', { time: '4h' }),
+			title: t('notification_screen_push_discover_category'),
 		},
 	])
 
@@ -34,8 +36,8 @@ const NotificationScreenWrapper = (props) => {
 		onButtonPress: () => navigation.goBack(),
 		color: theme.backgroundInverted,
 		colorInverted: theme.background,
-		title: 'Notification',
-	}), [navigation, theme])
+		title: t('notification_screen_title'),
+	}), [navigation, t, theme.background, theme.backgroundInverted])
 
 	const renderNotificationScreen = useCallback(() => (
 		<NotificationScreen

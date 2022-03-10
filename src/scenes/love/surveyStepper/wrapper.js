@@ -1,11 +1,13 @@
 import React, { useMemo } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import SurveyStepperScreen from './index'
 
 const SurveyStepperScreenWrapper = (props) => {
 	const { theme, navigation } = props 
+	const { t } = useTranslation()
 
 	const researchToggles = [
 		{
@@ -140,8 +142,8 @@ const SurveyStepperScreenWrapper = (props) => {
 		onButtonPress: () => navigation.goBack(),
 		color: theme.background,
 		colorInverted: theme.backgroundInverted,
-		title: 'À propos de moi',
-	}), [navigation, theme])
+		title: t('love_survey_stepper_title'),
+	}), [navigation, t, theme.background, theme.backgroundInverted])
 
 	return (
 		<SurveyStepperScreen
