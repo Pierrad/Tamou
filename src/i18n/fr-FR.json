@@ -55,6 +55,7 @@
     "initial_survey_stepper_gender_title": "Je suis...",
     "initial_survey_stepper_age_male_title": "Je suis né le...",
     "initial_survey_stepper_age_female_title": "Je suis née le...",
+    "initial_survey_stepper_age_error": "Vous devez avoir plus de 18 ans pour continuer l'inscription.",
     "initial_survey_stepper_choose_categories_title": "Je suis là pour...",
     "initial_survey_stepper_complete": "Bienvenue !",
     "love_dashboard_title": "Rencontre",

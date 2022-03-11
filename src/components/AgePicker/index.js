@@ -11,7 +11,7 @@ const AgePicker = (props) => {
 
 	const handleArrowPress = () => {
 		if (day && month && year) {
-			onArrowPress(`${day}/${month}/${year}`)
+			onArrowPress(new Date(year, parseInt(month)-1, parseInt(day)+1))
 		}
 	}
 

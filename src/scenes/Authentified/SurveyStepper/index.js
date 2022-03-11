@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
+import { isBirthdayIsValid } from '../../../helpers/dateHelpers'
+
 import * as SC from './styled'
 
 const SurveyStepperScreen = (props) => {
@@ -8,8 +10,9 @@ const SurveyStepperScreen = (props) => {
 	const [step, setStep] = useState(0)
 	const [genderValue, setGenderValue] = useState('')
 	// eslint-disable-next-line no-unused-vars
-	const [ageValue, setAgeValue] = useState('')
+	const [ageValue, setAgeValue] = useState(new Date())
 	const [categoryValues, setCategoryValues] = useState([])
+	const [error, setError] = useState('')
 
 	const nextStep = useCallback(() => {
 		setStep(step + 1)
@@ -20,9 +23,14 @@ const SurveyStepperScreen = (props) => {
 	}
 
 	const onAgePress = useCallback((value) => {
-		setAgeValue(value)
-		nextStep()
-	}, [nextStep])
+		if (isBirthdayIsValid(value)) {
+			setAgeValue(value.valueOf())
+			setError('')
+			nextStep()
+		} else {
+			setError(translations.birthdayError)
+		}
+	}, [nextStep, translations.birthdayError])
 	
 	const onCategoryPress = useCallback((value) => {
 		if (categoryValues.includes(value)) {
@@ -71,6 +79,11 @@ const SurveyStepperScreen = (props) => {
 
 	return (
 		<SC.Container>
+			{error.length > 0 && (
+				<SC.ErrorContainer>
+					<SC.Error>{error}</SC.Error>
+				</SC.ErrorContainer>
+			)}
 			{renderStep(step)}
 		</SC.Container>
 	)
