@@ -21,10 +21,9 @@ export const Burger = styled(BurgerIcon)`
 `
 
 export const Title = styled.Text`
-  font-family: "Poppins";
+  font-family: "Poppins-Bold";
   font-size: 18px;
   line-height: 27px;
-  font-weight: bold;
   color: ${props => props.theme.primaryTextColor};
   margin-left: 17px;
 `
@@ -53,7 +52,8 @@ export const NotificationNumberWrap = styled.View`
 
 export const NotificationNumber = styled.Text`
   font-size: 10px;
-  font-family: "Poppins";
+  font-family: "Poppins-Regular";
+  line-height: 12px;
 `
 
 

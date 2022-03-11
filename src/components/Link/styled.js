@@ -5,17 +5,10 @@ export const Container = styled.SafeAreaView`
 `
 
 export const Link = styled.TouchableHighlight`
-
   align-items: center;
-
- 
- 
-  
-  
 `
 
 export const Text = styled.Text`
-
-
-color: #F99030;
+  font-family: 'Poppins-Regular';
+  color: #F99030;
 `

@@ -19,6 +19,6 @@ export const Touchable = styled.TouchableOpacity`
 export const Icon = styled(MIcon)``
 
 export const Text = styled.Text`
-  font-family: 'Poppins';
+  font-family: 'Poppins-Regular';
   font-size: 15px;
 `

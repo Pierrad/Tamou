@@ -19,9 +19,8 @@ export const Image = styled.Image`
 `
 
 export const Text = styled.Text`
-  font-family: 'Poppins';
+  font-family: 'Poppins-Bold';
   font-size: 14px;
-  font-weight: bold;
   color: #fff;
   position: absolute;
   bottom: 5%;

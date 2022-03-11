@@ -16,8 +16,7 @@ export const Button = styled.TouchableHighlight`
 `
 
 export const Text = styled.Text`
-  font-family: "Poppins";
-  font-weight: bold;
+  font-family: "Poppins-Bold";
   color: ${props => props.textColor ? props.textColor : (props.primary && !props.isOutlined) ? '#fff' : '#838383'};
   font-size: 18px;
 `

@@ -18,9 +18,8 @@ export const Wrap = styled.View`
 `
 
 export const Title = styled.Text`
-  font-family: "Poppins";
+  font-family: "Poppins-Bold";
   font-size: 18px;
-  font-weight: bold;
   color: ${props => props.theme.pureWhite};
   margin-left: 17px;
 `
