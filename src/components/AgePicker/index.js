@@ -27,6 +27,7 @@ const AgePicker = (props) => {
 					onChangeText={(text) => setDay(text)}
 					value={day}
 					placeholderTextColor='#898989'
+					textAlign={'center'}
 				/>
 				<SC.Input
 					placeholder="MM"
@@ -35,6 +36,7 @@ const AgePicker = (props) => {
 					onChangeText={(text) => setMonth(text)}
 					value={month}
 					placeholderTextColor='#898989'
+					textAlign={'center'}
 				/>
 				<SC.Input
 					placeholder="AAAA"
@@ -43,6 +45,7 @@ const AgePicker = (props) => {
 					onChangeText={(text) => setYear(text)}
 					value={year}
 					placeholderTextColor='#898989'
+					textAlign={'center'}
 				/>
 			</SC.Inputs>
 			<SC.Button

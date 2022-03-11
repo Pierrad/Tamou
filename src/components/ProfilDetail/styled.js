@@ -10,7 +10,7 @@ export const Content = styled.View`
 `
 
 export const Title = styled.Text`
-  font-family: 'Poppins';
+  font-family: 'Poppins-Regular';
   font-size: 24px;
   color: ${props => props.theme.orange};
   margin-bottom: 15px;

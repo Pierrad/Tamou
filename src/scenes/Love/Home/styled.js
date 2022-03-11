@@ -8,6 +8,7 @@ export const Container = styled.SafeAreaView`
 `
 
 export const Text = styled.Text`
+  font-family: 'Poppins-Regular';
   font-size: 20px;
   color: ${props => props.theme.primaryTextColor};
 `

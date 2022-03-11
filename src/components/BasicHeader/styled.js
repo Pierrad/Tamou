@@ -28,9 +28,8 @@ export const Button = styled.TouchableHighlight`
 export const ChevronLeft = styled(FIcon)``
 
 export const Title = styled.Text`
-  font-family: 'Poppins';
+  font-family: 'Poppins-Bold';
   font-size: 30px;
-  font-weight: bold;
   color: ${props => props.color || props.theme.pureWhite};
   margin-left: 40px;
 `

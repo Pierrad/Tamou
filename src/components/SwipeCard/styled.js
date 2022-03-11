@@ -17,9 +17,8 @@ export const Title = styled.Text`
 	position: absolute;
 	bottom: 5%;
 	left: 5%;
-	font-family: 'Poppins';
+	font-family: 'Poppins-Bold';
 	font-size: 20px;
-	font-weight: bold;
 	color: ${props => props.theme.pureWhite};
 `
 
@@ -27,7 +26,7 @@ export const Subtitle = styled.Text`
 	position: absolute;
 	bottom: 2%;
 	left: 5%;
-	font-family: 'Poppins';
+	font-family: 'Poppins-Regular';
 	font-size: 14px;
 	color: ${props => props.theme.pureWhite};
 `
@@ -59,9 +58,8 @@ export const Dislike = styled.View`
 `
 
 export const Text = styled.Text`
-	font-family: 'Poppins';
+	font-family: 'Poppins-Bold';
 	font-size: 20px;
-	font-weight: bold;
 	color: ${props => props.theme.pureWhite};
 `
 

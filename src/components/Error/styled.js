@@ -26,9 +26,8 @@ export const Lottie = styled(LottieView)`
 export const Text = styled.Text`
   position: relative;
   color: ${props => props.theme.error};
-  font-family: "Poppins";
+  font-family: "Poppins-Bold";
   font-size: 15px;
-  font-weight: bold;
   display: flex;
   text-align: center;
   align-items: center;

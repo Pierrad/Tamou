@@ -11,8 +11,7 @@ export const Head = styled.View`
 `
 
 export const NameApp = styled.Text`
-  font-family: "Poppins";
-  font-weight:bold;
+  font-family: "Poppins-Bold";
   font-size:45px;
   color: ${props => props.theme.pureWhite};
   text-align: center;
@@ -20,12 +19,10 @@ export const NameApp = styled.Text`
 `
 
 export const Caption = styled.Text`
-  font-family: "Poppins";
+  font-family: "Poppins-Italic";
   color: ${props => props.theme.pureWhite};
   text-align: center;
-  font-size:15px;
-  font-style:italic;
-  font-weight:normal;
+  font-size: 15px;
   position: relative;
 `
 
@@ -46,15 +43,13 @@ export const Contain2 = styled.SafeAreaView`
 `
 
 export const Title = styled.Text`
-  font-family: "Poppins";
-  font-weight: bold;
-  font-weight: 800;
+  font-family: "Poppins-Bold";
   font-size: 24px;
   color: #000000;
 `
 
 export const Subtitle = styled.Text`
-  font-family: "Poppins";
+  font-family: "Poppins-Regular";
   color:#898A8D;
 `
 
@@ -81,7 +76,7 @@ export const Contain6 = styled.SafeAreaView`
 `
 
 export const Text = styled.Text`
-  font-family: "Poppins";
+  font-family: "Poppins-Regular";
   font-size: 16px;
   line-height: 20px;
   color: #898A8D;

@@ -25,13 +25,13 @@ export const Avatar = styled.Image`
 `
 
 export const Name = styled.Text`
-  font-family: 'Poppins';
+  font-family: 'Poppins-Regular';
   font-size: 20px;
   color: ${props => props.theme.backgroundInverted};
 `
 
 export const Location = styled.Text`
-  font-family: 'Poppins';
+  font-family: 'Poppins-Regular';
   font-size: 16px;
   color: ${props => props.theme.backgroundInverted};
 `

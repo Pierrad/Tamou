@@ -10,8 +10,7 @@ export const Container = styled.SafeAreaView`
 `
 
 export const Title = styled.Text`
-  font-family: 'Poppins';
-  font-weight: 800;
+  font-family: 'Poppins-Bold';
   font-size: 45px;
   color: ${(props) => props.theme.pureWhite};
   margin-top: 50px;
@@ -26,7 +25,7 @@ export const Button = styled.TouchableOpacity`
   padding: 10px;
   position: absolute;
   top: 92%;
-  right: 10%;
+  right: 6%;
 `
 
 export const Icon = styled(AIcon)``

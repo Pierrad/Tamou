@@ -15,14 +15,13 @@ export const Wrapper = styled.View`
 `
 
 export const Date = styled.Text`
-  font-family: 'Poppins';
+  font-family: 'Poppins-Regular';
   font-size: 12px;
   margin-bottom: 20px;
 `
 
 export const Text = styled.Text`
-  font-family: 'Poppins';
-  font-weight: bold;
+  font-family: 'Poppins-Bold';
   font-size: 16px;
 `
 
@@ -40,6 +39,5 @@ export const DeleteOption = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
 `
-
 
 export const Icon = styled(FIcon)``

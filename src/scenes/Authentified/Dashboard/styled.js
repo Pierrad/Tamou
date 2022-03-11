@@ -15,16 +15,15 @@ export const Header = styled(ConnectedHeader)`
 `
 
 export const Title = styled.Text`
-  font-family: "Poppins";
+  font-family: "Poppins-Bold";
   font-size: 24px;
-  font-weight: bold;
   margin: 20px 15px 10px 15px;
   color: ${props => props.theme.backgroundInverted};
 `
 
 export const CardList = styled.View`
   flex: 1;
-  margin: 20px 15px 100px 15px;
+  margin: 20px 15px 60px 15px;
 `
 
 export const DCard = styled(DomainCard)``
