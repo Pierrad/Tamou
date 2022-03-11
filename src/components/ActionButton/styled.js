@@ -5,7 +5,6 @@ export const Container = styled.SafeAreaView`
   border: ${props => props.isOutlined ? `1px solid ${props.theme.primaryButtonColor}` : '1px solid #fff'};
   border-radius: 50px;
   height: 60px;
-
 `
 
 export const Button = styled.TouchableHighlight`
@@ -14,7 +13,6 @@ export const Button = styled.TouchableHighlight`
   justify-content: center;
   align-items: center;
   border-radius: 50px;
-
 `
 
 export const Text = styled.Text`
@@ -23,3 +21,5 @@ export const Text = styled.Text`
   color: ${props => props.textColor ? props.textColor : (props.primary && !props.isOutlined) ? '#fff' : '#838383'};
   font-size: 18px;
 `
+
+export const Spinner = styled.ActivityIndicator``
