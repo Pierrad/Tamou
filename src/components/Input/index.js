@@ -21,6 +21,7 @@ const Input = ({ style, onChange, value, placeholder, type, isPassword, isPasswo
 				isEmailValid={type === 'email-address' && validateEmail(value)}
 				isPassword={isPassword}
 				isPasswordValid={isPassword && validatePassword(value)}
+				placeholderTextColor='#898989'
 			/>
 			{isPassword && (
 				<SC.Icon

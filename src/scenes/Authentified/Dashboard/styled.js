@@ -19,6 +19,7 @@ export const Title = styled.Text`
   font-size: 24px;
   font-weight: bold;
   margin: 20px 15px 10px 15px;
+  color: ${props => props.theme.backgroundInverted};
 `
 
 export const CardList = styled.View`
