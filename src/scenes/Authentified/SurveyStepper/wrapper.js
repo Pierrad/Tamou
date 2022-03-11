@@ -15,6 +15,7 @@ const SurveyStepperScreenWrapper = (props) => {
 		ageFemaleTitle: t('initial_survey_stepper_age_female_title'),
 		categoriesTitle: t('initial_survey_stepper_choose_categories_title'),
 		completeTitle: t('initial_survey_stepper_complete'),
+		birthdayError: t('initial_survey_stepper_age_error')
 	}
 
 	return (
