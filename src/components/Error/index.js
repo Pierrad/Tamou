@@ -9,6 +9,10 @@ const Error = (props) => {
 	if (error.length > 0) {
 		return (
 			<SC.Container>
+				<SC.Lottie
+					source={require('../../assets/lottie/error.json')}
+					autoPlay
+				/>
 				<SC.Text>{error}</SC.Text>
 			</SC.Container>
 		)

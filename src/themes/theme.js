@@ -9,7 +9,7 @@ const colors = {
 	cook: '#7AF9A5',
 	study: '#FFB489',
 	pet: '#FF89B4',
-	error: '#FF1A1A',
+	error: '#F3564D',
 	lightGrey: '#898989',
 	lightOrange: '#F2EAE0',
 	veryLightGrey: '#E7E7E7',
