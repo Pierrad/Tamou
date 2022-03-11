@@ -83,6 +83,5 @@ export const Text = styled.Text`
   text-align:center;
 `
 
-export const Spinner = styled.ActivityIndicator``
 
 

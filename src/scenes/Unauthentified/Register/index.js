@@ -7,7 +7,7 @@ import ActionButton from '../../../components/ActionButton'
 import Link from '../../../components/Link'
 
 const RegisterScreen = (props) => {
-	const { navigation, onSubmit, isPending, theme, translations } = props
+	const { navigation, onSubmit, isPending, translations } = props
 
 	const [firstName, setFirstName] = useState('')
 	const [lastName, setLastName] = useState('')
@@ -69,12 +69,11 @@ const RegisterScreen = (props) => {
 				<SC.Contain4>
 					<ActionButton
 						primary={true}
-						title={!isPending ? translations.submitButtonLabel : ''}
+						title={translations.submitButtonLabel}
 						onPress={handleSubmit}
 						underlayColor="orange"
-					>
-						{isPending && <SC.Spinner color={theme.pureWhite} />}
-					</ActionButton>
+						isPending={isPending}
+					/>
 				</SC.Contain4>
 				<SC.Contain5>
 					<SC.Text>{translations.alreadyHaveAccountButtonLabel}</SC.Text>
@@ -95,7 +94,6 @@ RegisterScreen.propTypes = {
 	}).isRequired,
 	onSubmit: PropTypes.func.isRequired,
 	isPending: PropTypes.bool.isRequired,
-	theme: PropTypes.object,
 	translations: PropTypes.objectOf(PropTypes.string),
 }
 
