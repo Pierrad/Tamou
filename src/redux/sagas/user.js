@@ -5,7 +5,8 @@ import {
 } from 'redux-saga/effects'
 import * as Keychain from 'react-native-keychain'
 
-import { POST_REGISTER, REGISTER_ERROR, POST_LOGIN, LOGIN_ERROR, START_LOADING, STOP_LOADING, CHECK_EXISTING_SESSION, SET_USER } from '../actions/user'
+import { POST_REGISTER, POST_LOGIN, START_LOADING, STOP_LOADING, CHECK_EXISTING_SESSION, SET_USER } from '../actions/user'
+import { SET_ERROR } from '../actions/app'
 import { register, login } from '../api/user'
 import * as RootNavigation from '../../navigation/RootNavigation'
 import { translateMessage } from '../../helpers/apiHelpers'
@@ -33,7 +34,7 @@ function* registration({ payload }) {
 		RootNavigation.navigate('Login')
 	} else if (authResponse && authResponse.success === false) {
 		yield put({ type: STOP_LOADING })
-		yield put({ type: REGISTER_ERROR, payload: translateMessage(authResponse.data.message) })
+		yield put({ type: SET_ERROR, payload: translateMessage(authResponse.data.message) })
 	}
 }
 
@@ -42,8 +43,6 @@ function* connect({ payload }) {
 
 	const authResponse = yield call(login, payload)
 
-	console.log(authResponse)
-
 	if (authResponse.success === true) {
 		yield put({ type: STOP_LOADING })
 		yield put({ type: SET_USER, payload: authResponse.data.user })
@@ -51,7 +50,7 @@ function* connect({ payload }) {
 		RootNavigation.navigate('Dashboard')
 	} else if (authResponse && authResponse.success === false) {
 		yield put({ type: STOP_LOADING })
-		yield put({ type: LOGIN_ERROR, payload: translateMessage(authResponse.data.message) })
+		yield put({ type: SET_ERROR, payload: translateMessage(authResponse.data.message) })
 	}
 }
 

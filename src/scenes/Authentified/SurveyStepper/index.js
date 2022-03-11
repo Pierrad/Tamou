@@ -6,13 +6,12 @@ import { isBirthdayIsValid } from '../../../helpers/dateHelpers'
 import * as SC from './styled'
 
 const SurveyStepperScreen = (props) => {
-	const { theme, navigation, translations } = props
+	const { theme, translations, onSubmit, onError } = props
 	const [step, setStep] = useState(0)
 	const [genderValue, setGenderValue] = useState('')
 	// eslint-disable-next-line no-unused-vars
 	const [ageValue, setAgeValue] = useState(new Date())
 	const [categoryValues, setCategoryValues] = useState([])
-	const [error, setError] = useState('')
 
 	const nextStep = useCallback(() => {
 		setStep(step + 1)
@@ -25,12 +24,11 @@ const SurveyStepperScreen = (props) => {
 	const onAgePress = useCallback((value) => {
 		if (isBirthdayIsValid(value)) {
 			setAgeValue(value.valueOf())
-			setError('')
 			nextStep()
 		} else {
-			setError(translations.birthdayError)
+			onError(translations.birthdayError)
 		}
-	}, [nextStep, translations.birthdayError])
+	}, [nextStep, onError, translations.birthdayError])
 	
 	const onCategoryPress = useCallback((value) => {
 		if (categoryValues.includes(value)) {
@@ -40,11 +38,6 @@ const SurveyStepperScreen = (props) => {
 		}
 	}, [categoryValues])
 	
-	const submit = useCallback(() => {
-		console.log('submit')
-		navigation.navigate('Dashboard')
-	}, [navigation])
-
 	const renderStep = useCallback((step) => {
 		switch (step) {
 		case 0:
@@ -69,21 +62,16 @@ const SurveyStepperScreen = (props) => {
 			/>
 		case 3:
 			return <SC.ValidateSurveyContainer
-				onArrowPress={submit}
+				onArrowPress={onSubmit}
 				title={translations.completeTitle}
 			/>
 		default:
 			return null
 		}
-	}, [categoryValues, genderValue, nextStep, onAgePress, onCategoryPress, submit, theme, translations])
+	}, [categoryValues, genderValue, nextStep, onAgePress, onCategoryPress, onSubmit, theme, translations])
 
 	return (
 		<SC.Container>
-			{error.length > 0 && (
-				<SC.ErrorContainer>
-					<SC.Error>{error}</SC.Error>
-				</SC.ErrorContainer>
-			)}
 			{renderStep(step)}
 		</SC.Container>
 	)
@@ -91,10 +79,9 @@ const SurveyStepperScreen = (props) => {
 
 SurveyStepperScreen.propTypes = {
 	theme: PropTypes.object,
-	navigation: PropTypes.shape({
-		navigate: PropTypes.func.isRequired,
-	}).isRequired,
 	translations: PropTypes.objectOf(PropTypes.string),
+	onSubmit: PropTypes.func,
+	onError: PropTypes.func,
 }
 
 export default SurveyStepperScreen

@@ -5,10 +5,8 @@ import { ThemeProvider } from 'styled-components/native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-
 import { CHECK_EXISTING_SESSION } from '../../redux/actions/user'
 import { navigationRef } from '../../navigation/RootNavigation'
-
 import { lightTheme } from '../../themes/theme'
 
 import HomeScreen from '../Home'
@@ -26,16 +24,31 @@ import LoveSurveyScreenWrapper from '../Love/SurveyStepper/wrapper'
 import LoveDashboardScreenWrapper from '../Love/Dashboard/wrapper'
 import LoveSwipeScreenWrapper from '../Love/Swipe/wrapper'
 
+import Error from '../../components/Error'
+
 const Stack = createNativeStackNavigator()
 
-const Layout = ({ theme, init }) => {
+const Layout = (props) => {
+	const { theme, init, error, resetError } = props
+
 	useEffect(() => {
 		init()
 	}, [init])
 
+	useEffect(() => {
+		resetError()
+	}, [resetError])
+
+	if (error) {
+		setTimeout(() => {
+			resetError()
+		}, 5000)
+	}
+
 	return (
 		<ThemeProvider theme={theme || lightTheme}>
 			<NavigationContainer ref={navigationRef}>
+				<Error error={error} />
 				<Stack.Navigator initialRouteName="Home">
 					{/* Unauthentified screens */}
 					<Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
@@ -62,15 +75,19 @@ Layout.propTypes = {
 	theme: PropTypes.shape({
 		mode: PropTypes.string,
 	}),
-	init: PropTypes.func.isRequired
+	init: PropTypes.func,
+	error: PropTypes.string,
+	resetError: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
-	theme: state?.themeReducer?.theme
+	theme: state?.themeReducer?.theme,
+	error: state?.appReducer?.error
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	init: () => dispatch({ type: CHECK_EXISTING_SESSION })
+	init: () => dispatch({ type: CHECK_EXISTING_SESSION }),
+	resetError: () => dispatch({ type: 'RESET_ERROR' })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout)
