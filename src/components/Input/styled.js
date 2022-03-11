@@ -17,7 +17,8 @@ export const Label = styled.Text`
 export const Input = styled.TextInput`
   font-family: "Poppins";
   border-bottom-width: 1px;
-  border-bottom-color: ${props => (props.keyboardType === 'email-address' || props.isPassword) && props.value.length ? ((props.isEmailValid || props.isPasswordValid) ? props.theme.green : props.theme.red) : props.theme.honeydew}
+  border-bottom-color: ${props => (props.keyboardType === 'email-address' || props.isPassword) && props.value.length ? ((props.isEmailValid || props.isPasswordValid) ? props.theme.green : props.theme.red) : props.theme.honeydew};
+  color: ${props => props.theme.backgroundInverted};
 `
 
 export const Icon = styled(Ficon)`
