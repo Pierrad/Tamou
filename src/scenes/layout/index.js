@@ -15,6 +15,7 @@ import HomeScreen from '../Home'
 import LoginScreenWrapper from '../Unauthentified/Login/wrapper'
 import RegisterScreenWrapper from '../Unauthentified/Register/wrapper'
 import ResetScreenWrapper from '../Unauthentified/Reset/wrapper'
+import SplashScreenWrapper from '../Unauthentified/Splash'
 
 import DashboardScreenWrapper from '../Authentified/Dashboard/wrapper'
 import ProfilScreenWrapper from '../Authentified/Profil/wrapper'
@@ -25,6 +26,7 @@ import LoveHomeScreen from '../Love/Home'
 import LoveSurveyScreenWrapper from '../Love/SurveyStepper/wrapper'
 import LoveDashboardScreenWrapper from '../Love/Dashboard/wrapper'
 import LoveSwipeScreenWrapper from '../Love/Swipe/wrapper'
+
 
 const Stack = createNativeStackNavigator()
 
@@ -42,6 +44,7 @@ const Layout = ({ theme, init }) => {
 					<Stack.Screen name="Login" component={LoginScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Register" component={RegisterScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Reset" component={ResetScreenWrapper} options={{ headerShown: false }} />
+					<Stack.Screen name="Splash" component={SplashScreenWrapper} options={{ headerShown: false }} />
 					{/* Authentified screens */}
 					<Stack.Screen name="Dashboard" component={DashboardScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Profil" component={ProfilScreenWrapper} options={{ headerShown: false }} />
