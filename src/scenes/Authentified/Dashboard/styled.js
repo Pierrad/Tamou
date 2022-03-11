@@ -18,12 +18,12 @@ export const Title = styled.Text`
   font-family: "Poppins";
   font-size: 24px;
   font-weight: bold;
-  margin: 10px 15px 10px 15px;
+  margin: 20px 15px 10px 15px;
 `
 
 export const CardList = styled.View`
   flex: 1;
-  margin: 0px 15px;
+  margin: 20px 15px 100px 15px;
 `
 
 export const DCard = styled(DomainCard)``
