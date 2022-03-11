@@ -7,7 +7,7 @@ import ActionButton from '../../../components/ActionButton'
 import Link from '../../../components/Link'
 
 const RegisterScreen = (props) => {
-	const { navigation, onSubmit, isPending, theme, error, translations } = props
+	const { navigation, onSubmit, isPending, theme, translations } = props
 
 	const [firstName, setFirstName] = useState('')
 	const [lastName, setLastName] = useState('')
@@ -26,11 +26,6 @@ const RegisterScreen = (props) => {
 
 	return (
 		<SC.Container>
-			{error.length > 0 && (
-				<SC.ErrorContainer>
-					<SC.Error>{error}</SC.Error>
-				</SC.ErrorContainer>
-			)}
 			<SC.Head>
 				<SC.NameApp>{translations.appName}</SC.NameApp>
 				<SC.Caption>{translations.appSlogan}</SC.Caption>
@@ -101,7 +96,6 @@ RegisterScreen.propTypes = {
 	onSubmit: PropTypes.func.isRequired,
 	isPending: PropTypes.bool.isRequired,
 	theme: PropTypes.object,
-	error: PropTypes.string,
 	translations: PropTypes.objectOf(PropTypes.string),
 }
 

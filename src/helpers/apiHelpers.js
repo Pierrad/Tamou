@@ -8,6 +8,8 @@ export const translateMessage = (msg) => {
 		return 'Les champs sont invalides.'
 	case 'User already exists':
 		return 'Cet utilisateur existe déjà.'
+	case 'Username already exists':
+		return 'Ce nom d\'utilisateur existe déjà.'
 	case 'Invalid password. Must contain uppercase, lowercase, digits, symbols, length between 8 to 100, no spaces':
 		return 'Le mot de passe est invalide. Il doit contenir au moins une majuscule, une minuscule, un chiffre, un symbole et doit contenir entre 6 et 30 caractères.'
 	case 'Internal error': 

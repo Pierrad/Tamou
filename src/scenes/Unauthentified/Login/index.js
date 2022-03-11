@@ -8,7 +8,7 @@ import Link from '../../../components/Link'
 
 
 const LoginScreen = (props) => {
-	const { navigation, isPending, theme, error, onSubmit, translations } = props
+	const { navigation, isPending, theme, onSubmit, translations } = props
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [canViewPassword, setCanViewPassword] = useState(false)
@@ -19,11 +19,6 @@ const LoginScreen = (props) => {
 
 	return (
 		<SC.Container>
-			{error.length > 0 && (
-				<SC.ErrorContainer>
-					<SC.Error>{error}</SC.Error>
-				</SC.ErrorContainer>
-			)}
 			<SC.Head>
 				<SC.NameApp>{translations.appName}</SC.NameApp>
 				<SC.Caption>{translations.appSlogan}</SC.Caption>
@@ -88,7 +83,6 @@ LoginScreen.propTypes = {
 	}).isRequired,
 	isPending: PropTypes.bool.isRequired,
 	theme: PropTypes.object,
-	error: PropTypes.string,
 	onSubmit: PropTypes.func.isRequired,
 	translations: PropTypes.objectOf(PropTypes.string),
 }
