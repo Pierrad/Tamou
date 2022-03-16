@@ -5,8 +5,8 @@ import {
 } from 'redux-saga/effects'
 import * as Keychain from 'react-native-keychain'
 
-import { POST_REGISTER, POST_LOGIN, START_LOADING, STOP_LOADING, CHECK_EXISTING_SESSION, SET_USER, POST_REQUEST_PASSWORD_CHANGE, POST_RESET_PASSWORD } from '../actions/user'
-import { INCREMENT_STEP, RESET_STEP, SET_ERROR, SET_VALIDATION } from '../actions/app'
+import { POST_REGISTER, POST_LOGIN, CHECK_EXISTING_SESSION, SET_USER, POST_REQUEST_PASSWORD_CHANGE, POST_RESET_PASSWORD } from '../actions/user'
+import { INCREMENT_STEP, RESET_STEP, SET_ERROR, SET_VALIDATION, START_LOADING, STOP_LOADING } from '../actions/app'
 import { register, login, requestPasswordChange, resetPassword } from '../api/user'
 import * as RootNavigation from '../../navigation/RootNavigation'
 import { translateMessage } from '../../helpers/apiHelpers'

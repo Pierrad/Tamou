@@ -5,6 +5,8 @@ import {
 	RESET_VALIDATION,
 	INCREMENT_STEP,
 	RESET_STEP,
+	START_LOADING,
+	STOP_LOADING,
 } from '../actions/app'
 
 const initialState = {
@@ -15,6 +17,18 @@ const initialState = {
 
 const reducer = (state = initialState, {type, payload}) => {
 	switch(type) {
+	case START_LOADING:
+		return {
+			...state,
+			loading: true,
+			error: ''
+		}
+	case STOP_LOADING:
+		return {
+			...state,
+			loading: false,
+			error: ''
+		}
 	case SET_ERROR:
 		return {
 			...state,

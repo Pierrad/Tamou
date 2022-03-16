@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const DomainCard = ({ style, backgroundColor, icon, title, onClick }) => (
-	<SC.Container style={style}>
+	<SC.Container style={style ? {...style[0], ...SC.style.container} : SC.style.container}>
 		<SC.Content
 			backgroundColor={backgroundColor}
 			onPress={onClick}

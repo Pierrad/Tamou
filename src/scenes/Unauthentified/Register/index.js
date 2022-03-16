@@ -32,7 +32,7 @@ const RegisterScreen = (props) => {
 				<SC.NameApp>{translations.appName}</SC.NameApp>
 				<SC.Caption>{translations.appSlogan}</SC.Caption>
 			</SC.Head>
-			<SC.Contain1>
+			<SC.Contain1 style={SC.style.container}>
 				<SC.Contain2>
 					<SC.Title>{translations.title}</SC.Title>
 					<SC.Subtitle>{translations.subtitle}</SC.Subtitle>
@@ -77,7 +77,7 @@ const RegisterScreen = (props) => {
 						isPending={isPending}
 					/>
 				</SC.Contain4>
-				<SC.Contain5>
+				<SC.Contain5 style={SC.style.contain}>
 					<SC.Text>{translations.alreadyHaveAccountButtonLabel}</SC.Text>
 					<Link
 						title={translations.alreadyHaveAccountButtonAction}
@@ -85,6 +85,7 @@ const RegisterScreen = (props) => {
 						underlayColor="none"
 					/>
 				</SC.Contain5>
+				<SC.Hide />
 			</SC.Contain1>
 		</SC.Container>
 	)

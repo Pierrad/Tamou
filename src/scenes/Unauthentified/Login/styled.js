@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import { StyleSheet } from 'react-native'
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -28,17 +29,16 @@ export const Caption = styled.Text`
 
 export const Contain1 = styled.SafeAreaView`
   flex: 1;
-  background-color: ${props => props.theme.PRIMARY_BACKGROUND_COLOR};
-  background:white;
+  background-color: ${props => props.theme.pureWhite};
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   top: -30px;
+  position: relative;
 `
 
 export const Contain2 = styled.SafeAreaView`
   flex:1;
-  background-color: ${props => props.theme.PRIMARY_BACKGROUND_COLOR};
-  background: transparent;
+  background-color: ${props => props.theme.pureWhite};
   margin: 30px 30px 0px 30px;
 `
 
@@ -57,13 +57,11 @@ export const Contain3 = styled.SafeAreaView`
   flex: 4;
   justify-content: space-evenly;
   margin: 0px 30px 0px 30px;
-  background-color: transparent;
 `
 
 export const Contain4 = styled.SafeAreaView`
   flex:2;
   margin: 0px 30px 0px 30px;
-  background-color:transparent;
 `
 
 export const Contain5 = styled.SafeAreaView`
@@ -73,6 +71,15 @@ export const Contain5 = styled.SafeAreaView`
 export const Contain6 = styled.SafeAreaView`
   flex: 1;
   margin: 30px 30px 0px 30px;
+  background: transparent;
+`
+
+export const Hide = styled.View`
+  position: absolute;
+  bottom: -10%;
+  width: 100%;
+  height: 50px;
+  background-color: ${props => props.theme.pureWhite};
 `
 
 export const Text = styled.Text`
@@ -86,3 +93,19 @@ export const Text = styled.Text`
 export const Spinner = styled.ActivityIndicator``
 
 
+export const style = StyleSheet.create({
+	container: {
+		shadowColor: '#000',
+		shadowOffset: {
+			width: 0,
+			height: 2,
+		},
+		shadowOpacity: 0.25,
+		shadowRadius: 3.84,
+		elevation: 5,
+	},
+	contain: {
+		zIndex: 10,
+		elevation: 10,
+	}
+})

@@ -23,7 +23,7 @@ const LoginScreen = (props) => {
 				<SC.NameApp>{translations.appName}</SC.NameApp>
 				<SC.Caption>{translations.appSlogan}</SC.Caption>
 			</SC.Head>
-			<SC.Contain1>
+			<SC.Contain1 style={SC.style.container}>
 				<SC.Contain2>
 					<SC.Title>{translations.title}</SC.Title>
 					<SC.Subtitle>{translations.subtitle}</SC.Subtitle>
@@ -64,7 +64,7 @@ const LoginScreen = (props) => {
 						underlayColor="none"
 					/>
 				</SC.Contain5>
-				<SC.Contain6>
+				<SC.Contain6 style={SC.style.contain}>
 					<ActionButton
 						isOutlined={true}
 						title={translations.registerButtonLabel} 
@@ -72,6 +72,7 @@ const LoginScreen = (props) => {
 						underlayColor="silver"
 					/>
 				</SC.Contain6>
+				<SC.Hide />
 			</SC.Contain1>
 		</SC.Container>
 	)
