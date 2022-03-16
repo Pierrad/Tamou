@@ -13,6 +13,7 @@ import HomeScreen from '../Home'
 import LoginScreenWrapper from '../Unauthentified/Login/wrapper'
 import RegisterScreenWrapper from '../Unauthentified/Register/wrapper'
 import ResetScreenWrapper from '../Unauthentified/Reset/wrapper'
+import SplashScreen from '../Unauthentified/Splash'
 
 import DashboardScreenWrapper from '../Authentified/Dashboard/wrapper'
 import ProfilScreenWrapper from '../Authentified/Profil/wrapper'
@@ -55,6 +56,7 @@ const Layout = (props) => {
 					<Stack.Screen name="Login" component={LoginScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Register" component={RegisterScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Reset" component={ResetScreenWrapper} options={{ headerShown: false }} />
+					<Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
 					{/* Authentified screens */}
 					<Stack.Screen name="Dashboard" component={DashboardScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Profil" component={ProfilScreenWrapper} options={{ headerShown: false }} />
