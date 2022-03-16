@@ -7,7 +7,7 @@ import ActionButton from '../../../components/ActionButton'
 
 
 const SplashScreenWrapper = (props) => {
-	const { navigation, isSelected} = props
+	const { navigation} = props
 
 	const [scroll, setScroll] = useState(0)
 
