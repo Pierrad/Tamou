@@ -29,4 +29,7 @@ If you have problems with ios, you can
 
 - Make a form component that can handle array of fields, values, validation ? 
 - Better way to handle icons ?
-- Handle pending state in Action Button
+- Enable dark mode on Swipe love page
+- Block app in portrait mode
+- Make button and some element not flat
+
