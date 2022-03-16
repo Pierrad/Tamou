@@ -14,7 +14,11 @@ const ResetScreen = (props) => {
 	const [canViewPassword, setCanViewPassword] = useState(false)
 
 	const handleSubmit = () => {
-		onSubmit({ email })
+		if (step === 0 && email) {
+			onSubmit({ email })
+		} else {
+			onSubmit({ password, confirmPassword, code })
+		}
 	}
 
 	const renderEmailRequest = () => (
@@ -95,7 +99,7 @@ const ResetScreen = (props) => {
 	)
 
 	return (
-		step === 1 ? renderEmailRequest() : renderCodeRequest()
+		step === 0 ? renderEmailRequest() : renderCodeRequest()
 	)
 }
 

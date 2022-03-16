@@ -30,6 +30,8 @@
     "reset_screen_new_password_field_placeholder": "Nouveau mot de passe",
     "reset_screen_confirm_password_field_placeholder": "Confirmer le nouveau mot de passe",
     "reset_screen_submit_new_password_button_label": "RÉINITIALISER",
+    "reset_screen_error_message": "Vous devez remplir tout les champs.",
+    "reset_screen_error_message_password": "Les mots de passe ne correspondent pas.",
     "dashboard_screen_hello": "Bonjour {{name}}",
     "dashboard_screen_personal_categories": "Vos catégories",
     "category_love": "Rencontre",

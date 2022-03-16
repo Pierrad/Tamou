@@ -21,6 +21,8 @@ const RegisterScreen = (props) => {
 			username: userName,
 			email: email,
 			password: password,
+			firstname: firstName,
+			lastname: lastName,
 		})
 	}
 

@@ -7,7 +7,7 @@ import * as SC from './styled'
 
 const GameHomeScreen = ({ navigation }) => (
 	<SC.Container>
-		<SC.Text>Recontre - Home Screen</SC.Text>
+		<SC.Text>Jeu en ligne - Home Screen</SC.Text>
 		<Button
 			title="Go to App Home"
 			onPress={() => navigation.navigate('Home')}
@@ -15,6 +15,10 @@ const GameHomeScreen = ({ navigation }) => (
 		<Button
 			title="Go to Game survey"
 			onPress={() => navigation.navigate('GameSurvey')}
+		/>
+		<Button
+			title="Go to Game Dashboard"
+			onPress={() => navigation.navigate('GameDashboard')}
 		/>
 	</SC.Container>
 )
