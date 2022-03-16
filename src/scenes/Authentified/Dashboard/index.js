@@ -33,7 +33,8 @@ const DashboardScreen = (props) => {
 					title={translations.gameCategoryTitle}
 					icon={<IoIcon name="game-controller-outline" size={24} color={theme.background} />}
 					backgroundColor={theme.game}
-					onClick={() => {}}
+					onClick={() => navigation.navigate('GameSurvey')}
+
 				/>
 				<SC.DCard
 					title={translations.sportCategoryTitle}
