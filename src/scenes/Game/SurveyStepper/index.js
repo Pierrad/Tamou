@@ -26,7 +26,7 @@ const SurveyStepperScreen = (props) => {
 	
 	const submit = useCallback(() => {
 		console.log('submit')
-		navigation.navigate('LoveDashboard')
+		navigation.navigate('GameDashboard')
 	}, [navigation])
 
 	const renderStep = useCallback((step) => {

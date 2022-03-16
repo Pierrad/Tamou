@@ -27,6 +27,7 @@ import LoveSwipeScreenWrapper from '../Love/Swipe/wrapper'
 
 import GameHomeScreen from '../Game/Home'
 import GameSurveyScreenWrapper from '../Game/SurveyStepper/wrapper'
+import GameDashboardScreenWrapper from '../Game/Dashboard/wrapper'
 
 import Error from '../../components/Error'
 
@@ -73,6 +74,7 @@ const Layout = (props) => {
 					{/* Game screens */}
 					<Stack.Screen name="GameHome" component={GameHomeScreen} options={{ headerShown: false }} />
 					<Stack.Screen name="GameSurvey" component={GameSurveyScreenWrapper} options={{ headerShown: false }} />
+					<Stack.Screen name="GameDashboard" component={GameDashboardScreenWrapper} options={{ headerShown: false }} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</ThemeProvider>

@@ -65,6 +65,11 @@
     "love_survey_stepper_title": "À propos de moi",
     "love_swipe_title": "Swipe",
     "love_swipe_screen_like": "J'aime",
-    "love_swipe_screen_dislike": "Je n'aime pas"
+    "love_swipe_screen_dislike": "Je n'aime pas",
+    "game_dashboard_title": "Jeu en ligne",
+    "game_dashboard_subtitle": "Vos jeux",
+    "game_dashboard_empty_state_subtitle": "Vous n'avez pas encore de jeux",
+    "game_dashboard_cta_swipe": "Ajouter un jeu"
+
   }
 }
