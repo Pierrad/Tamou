@@ -35,7 +35,11 @@ const HomeScreen = ({ navigation, onSwitchTheme, theme }) => (
 			onPress={() => navigation.navigate('LoveHome')}
 		/>
 		<Button
-			title="Go to Love SplashScreen"
+			title="Go to Game Homepage"
+			onPress={() => navigation.navigate('GameHome')}
+		/>
+		<Button
+			title="Go to SplashScreen"
 			onPress={() => navigation.navigate('Splash')}
 		/>
 		{theme && theme.mode === 'light' ? (

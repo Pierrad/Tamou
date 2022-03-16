@@ -25,6 +25,9 @@ import LoveSurveyScreenWrapper from '../Love/SurveyStepper/wrapper'
 import LoveDashboardScreenWrapper from '../Love/Dashboard/wrapper'
 import LoveSwipeScreenWrapper from '../Love/Swipe/wrapper'
 
+import GameHomeScreen from '../Game/Home'
+import GameSurveyScreenWrapper from '../Game/SurveyStepper/wrapper'
+
 import Error from '../../components/Error'
 
 const Stack = createNativeStackNavigator()
@@ -67,6 +70,9 @@ const Layout = (props) => {
 					<Stack.Screen name="LoveSurvey" component={LoveSurveyScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="LoveDashboard" component={LoveDashboardScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="LoveSwipe" component={LoveSwipeScreenWrapper} options={{ headerShown: false }} />
+					{/* Game screens */}
+					<Stack.Screen name="GameHome" component={GameHomeScreen} options={{ headerShown: false }} />
+					<Stack.Screen name="GameSurvey" component={GameSurveyScreenWrapper} options={{ headerShown: false }} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</ThemeProvider>
