@@ -6,7 +6,7 @@ import Input from '../../../components/Input'
 import ActionButton from '../../../components/ActionButton'
 
 const ResetScreen = (props) => {
-	const { step, onSubmit, translations } = props
+	const { step, onSubmit, translations, isLoading } = props
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [confirmPassword, setconfirmPassword] = useState('')
@@ -27,7 +27,7 @@ const ResetScreen = (props) => {
 				<SC.NameApp>{translations.appName}</SC.NameApp>
 				<SC.Caption>{translations.appSlogan}</SC.Caption>
 			</SC.Head>		
-			<SC.Contain1>
+			<SC.Contain1 style={SC.style.container}>
 				<SC.Contain2>
 					<SC.Title>{translations.title}</SC.Title>
 					<SC.Subtitle>{translations.subtitle}</SC.Subtitle>
@@ -41,14 +41,16 @@ const ResetScreen = (props) => {
 					>
 					</Input>
 				</SC.Contain3>
-				<SC.Contain4>
+				<SC.Contain4 style={SC.style.contain}>
 					<ActionButton  
 						primary={true} 
 						title={translations.submitButtonLabel}
 						onPress={handleSubmit}
 						underlayColor="orange"
+						isPending={isLoading}
 					/>
 				</SC.Contain4>
+				<SC.Hide />
 			</SC.Contain1>
 		</SC.Container>
 	)
@@ -59,7 +61,7 @@ const ResetScreen = (props) => {
 				<SC.NameApp>{translations.appName}</SC.NameApp>
 				<SC.Caption>{translations.appSlogan}</SC.Caption>
 			</SC.Head2>		
-			<SC.Contain1>
+			<SC.Contain1 style={SC.style.container}>
 				<SC.Contain2>
 					<SC.Title>{translations.title}</SC.Title>
 				</SC.Contain2>
@@ -86,14 +88,16 @@ const ResetScreen = (props) => {
 						setIsPasswordViewable={() => setCanViewPassword(!canViewPassword)}
 					/>
 				</SC.Contain3>
-				<SC.Contain4>
+				<SC.Contain4 style={SC.style.contain}>
 					<ActionButton  
 						primary={true} 
 						title={translations.submitNewPasswordButtonLabel}
 						onPress={handleSubmit}
 						underlayColor="orange"
+						isPending={isLoading}
 					/>
 				</SC.Contain4>
+				<SC.Hide />
 			</SC.Contain1>
 		</SC.Container>
 	)
@@ -107,6 +111,7 @@ ResetScreen.propTypes = {
 	step: PropTypes.number.isRequired,
 	onSubmit: PropTypes.func.isRequired,
 	translations: PropTypes.objectOf(PropTypes.string),
+	isLoading: PropTypes.bool,
 }
 
 export default ResetScreen

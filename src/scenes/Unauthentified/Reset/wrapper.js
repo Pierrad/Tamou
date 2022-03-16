@@ -9,7 +9,7 @@ import { validatePassword } from '../../../helpers/stringHelpers'
 import { SET_ERROR } from '../../../redux/actions/app'
 
 const ResetScreenWrapper = (props) => {
-	const { navigation, theme, step, requestPasswordChange, resetPassword, setError } = props
+	const { navigation, theme, step, requestPasswordChange, resetPassword, setError, loading } = props
 	const { t } = useTranslation()
 
 	const translations = {
@@ -50,6 +50,7 @@ const ResetScreenWrapper = (props) => {
 			step={step}
 			onSubmit={onSubmit}
 			translations={translations}
+			isLoading={loading}
 		/>
 	)
 }
@@ -64,10 +65,12 @@ ResetScreenWrapper.propTypes = {
 	requestPasswordChange: PropTypes.func,
 	resetPassword: PropTypes.func,
 	setError: PropTypes.func,
+	loading: PropTypes.bool,
 }
 
 const mapStateToProps = (state) => ({
 	step: state.appReducer.step,
+	loading: state.appReducer.loading,
 })
 
 const mapDispatchToProps = (dispatch) => ({

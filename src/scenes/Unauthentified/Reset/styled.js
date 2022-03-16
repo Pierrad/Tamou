@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import { StyleSheet, Platform } from 'react-native'
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -6,12 +7,12 @@ export const Container = styled.SafeAreaView`
 `
 
 export const Head = styled.View`
-  padding: 200px 0px 150px 0px;
+  padding: ${Platform.OS === 'ios' ? '200px 0px 150px 0px' : '200px 0px 100px 0px'};
   background-color: ${props => props.theme.orange};
 `
 
 export const Head2 = styled.View`
-  padding: 100px 0px 200px 0px;
+  padding: ${Platform.OS === 'ios' ? '100px 0px 200px 0px' : '100px 0px 100px 0px'};
   background-color: ${props => props.theme.orange};
 `
 
@@ -37,6 +38,8 @@ export const Contain1 = styled.SafeAreaView`
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   top: -30px;
+  position: relative;
+  margin-bottom: ${Platform.OS === 'ios' ? '0px' : '30px'};
 `
 
 export const Contain2 = styled.SafeAreaView`
@@ -76,3 +79,30 @@ export const Text = styled.Text`
   color: #898A8D;
   text-align:center;
 `
+
+export const Hide = styled.View`
+  position: absolute;
+  bottom: -10%;
+  width: 100%;
+  height: 80px;
+  background-color: ${props => props.theme.pureWhite};
+`
+
+export const style = StyleSheet.create({
+	container: {
+		shadowColor: '#000',
+		shadowOffset: {
+			width: 0,
+			height: 2,
+		},
+		shadowOpacity: 0.25,
+		shadowRadius: 3.84,
+		elevation: 5,
+	},
+	contain: {
+		zIndex: 10,
+		elevation: 10,
+	}
+})
+
+

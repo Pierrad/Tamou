@@ -8,7 +8,7 @@ const ActionButton = (props) => {
 
 	return (
 		<SC.Container 
-			style={style ? style[0] : {}}
+			style={style ? {...style[0], ...SC.style.container} : SC.style.container}
 			primary={primary}
 			secondary={secondary}
 			isOutlined={isOutlined}

@@ -7,7 +7,7 @@ const HomeCard = (props) => {
 	const { style, image, text, onPress } = props
 
 	return (
-		<SC.Container style={style ? style[0] : {}}>
+		<SC.Container style={style ? {...style[0], ...SC.style.container} : SC.style.container}>
 			<SC.ImageWrapper onPress={onPress}>
 				<SC.Image
 					source={{
