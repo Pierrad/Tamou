@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
 import ResetScreen from './index'
+import { POST_REQUEST_PASSWORD_CHANGE, POST_RESET_PASSWORD } from '../../../redux/actions/user'
+import { validatePassword } from '../../../helpers/stringHelpers'
+import { SET_ERROR } from '../../../redux/actions/app'
 
 const ResetScreenWrapper = (props) => {
-	const { navigation, theme } = props
+	const { navigation, theme, step, requestPasswordChange, resetPassword, setError } = props
 	const { t } = useTranslation()
-	const [step, setStep] = useState(1)
 
 	const translations = {
 		appName: t('app_name'),
@@ -24,12 +26,20 @@ const ResetScreenWrapper = (props) => {
 	}	
 
 	const onSubmit = (values) => {
-		if (step === 1 && values.email) {
-			setStep(step + 1)
-			return
+		if (step === 0 && values.email) {
+			requestPasswordChange({
+				email: values.email
+			})
 		}
-		if (step === 2) {
-			navigation.navigate('Login')
+		if (step === 1 && values.code && validatePassword(values.password) && (values.password === values.confirmPassword)) {
+			resetPassword({
+				code: values.code,
+				password: values.password,
+			})
+		} else if (values.code === '') {
+			setError(t('reset_screen_error_message'))
+		} else if (values.password !== values.confirmPassword) {
+			setError(t('reset_screen_error_message_password'))
 		}
 	}
 
@@ -46,16 +56,24 @@ const ResetScreenWrapper = (props) => {
 
 ResetScreenWrapper.propTypes = {
 	navigation: PropTypes.shape({
-		navigate: PropTypes.func.isRequired,
-		goBack: PropTypes.func.isRequired,
+		navigate: PropTypes.func,
+		goBack: PropTypes.func,
 	}).isRequired,
 	theme: PropTypes.object,
+	step: PropTypes.number,
+	requestPasswordChange: PropTypes.func,
+	resetPassword: PropTypes.func,
+	setError: PropTypes.func,
 }
 
-const mapStateToProps = () => ({
+const mapStateToProps = (state) => ({
+	step: state.appReducer.step,
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
+	requestPasswordChange: (input) => dispatch({ type: POST_REQUEST_PASSWORD_CHANGE, payload: input }),
+	resetPassword: (input) => dispatch({ type: POST_RESET_PASSWORD, payload: input }),
+	setError: (input) => dispatch({ type: SET_ERROR, payload: input })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResetScreenWrapper)

@@ -6,7 +6,7 @@ import {
 
 const initialState = {
 	loading: false,
-	user: null
+	user: null,
 }
 
 const reducer = (state = initialState, {type, payload}) => {

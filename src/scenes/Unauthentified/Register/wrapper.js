@@ -27,11 +27,13 @@ const RegisterScreenWrapper = (props) => {
 	}
 
 	const handleSubmit = (values) => {
-		if (!isPending && values.username && validateEmail(values.email) && validatePassword(values.password)) {
+		if (!isPending && values.username && validateEmail(values.email) && validatePassword(values.password) && values.firstname && values.lastname) {
 			onSubmit({
 				username: values.username,
 				email: values.email,
 				password: values.password,
+				firstname: values.firstname,
+				lastname: values.lastname
 			})
 		}
 	}

@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { CHECK_EXISTING_SESSION } from '../../redux/actions/user'
+import { RESET_ERROR, RESET_VALIDATION } from '../../redux/actions/app'
+
 import { navigationRef } from '../../navigation/RootNavigation'
 import { lightTheme } from '../../themes/theme'
 
@@ -30,11 +32,12 @@ import GameSurveyScreenWrapper from '../Game/SurveyStepper/wrapper'
 import GameDashboardScreenWrapper from '../Game/Dashboard/wrapper'
 
 import Error from '../../components/Error'
+import Validation from '../../components/Validation'
 
 const Stack = createNativeStackNavigator()
 
 const Layout = (props) => {
-	const { theme, init, error, resetError } = props
+	const { theme, init, error, validation, resetError, resetValidation } = props
 
 	useEffect(() => {
 		init()
@@ -42,11 +45,13 @@ const Layout = (props) => {
 
 	useEffect(() => {
 		resetError()
-	}, [resetError])
+		resetValidation()
+	}, [resetError, resetValidation])
 
-	if (error) {
+	if (error || validation) {
 		setTimeout(() => {
 			resetError()
+			resetValidation()
 		}, 5000)
 	}
 
@@ -54,6 +59,7 @@ const Layout = (props) => {
 		<ThemeProvider theme={theme || lightTheme}>
 			<NavigationContainer ref={navigationRef}>
 				<Error error={error} />
+				<Validation validation={validation} />
 				<Stack.Navigator initialRouteName="Home">
 					{/* Unauthentified screens */}
 					<Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
@@ -87,17 +93,21 @@ Layout.propTypes = {
 	}),
 	init: PropTypes.func,
 	error: PropTypes.string,
+	validation: PropTypes.string,
 	resetError: PropTypes.func,
+	resetValidation: PropTypes.func
 }
 
 const mapStateToProps = (state) => ({
 	theme: state?.themeReducer?.theme,
-	error: state?.appReducer?.error
+	error: state?.appReducer?.error,
+	validation: state?.appReducer?.validation
 })
 
 const mapDispatchToProps = (dispatch) => ({
 	init: () => dispatch({ type: CHECK_EXISTING_SESSION }),
-	resetError: () => dispatch({ type: 'RESET_ERROR' })
+	resetError: () => dispatch({ type: RESET_ERROR }),
+	resetValidation: () => dispatch({ type: RESET_VALIDATION })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout)
