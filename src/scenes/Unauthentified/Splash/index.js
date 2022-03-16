@@ -6,7 +6,8 @@ import * as SC from './styled'
 import ActionButton from '../../../components/ActionButton'
 
 
-const SplashScreenWrapper = () => {
+const SplashScreenWrapper = (props) => {
+	const { navigation, isSelected} = props
 
 	const [scroll, setScroll] = useState(0)
 
@@ -83,7 +84,7 @@ const SplashScreenWrapper = () => {
 					<ActionButton
 						primary={false} 
 						title="Commencer" 
-			
+						onPress={() => navigation.navigate('Register')}
 					
 					/>
 				</SC.ContainButton>
@@ -98,10 +99,10 @@ const SplashScreenWrapper = () => {
 				<SC.NameApp>Tamou</SC.NameApp>
 				<SC.Caption>Rencontrer la bonne personne!</SC.Caption>
 				<SC.DotWrapper>
-					<SC.Dot />
-					<SC.Dot />
-					<SC.Dot />
-					<SC.Dot />
+					<SC.Dot isSelected={scroll == 0}/>
+					<SC.Dot isSelected={scroll == 1}/>
+					<SC.Dot isSelected={scroll == 2}/>
+					<SC.Dot isSelected={scroll == 3}/>
 				</SC.DotWrapper>
 			</SC.Contain1>
 			{scrollArrow}
@@ -113,6 +114,7 @@ SplashScreenWrapper.propTypes = {
 	navigation: PropTypes.shape({
 		navigate: PropTypes.func.isRequired,
 	}).isRequired,
+	isSelected: PropTypes.bool,
 }
 
 export default SplashScreenWrapper

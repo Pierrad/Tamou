@@ -83,7 +83,8 @@ export const DotWrapper = styled.View`
 export const Dot = styled.View`
   height: 10px;
   width: 10px;
-  background-color: #EEEEEE;
+  background-color: ${props => props.theme.pureWhite};
+  opacity: ${props => props.isSelected ? '1' : '0.33'};
   border-radius: 20px;
   
 `
