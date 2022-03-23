@@ -32,7 +32,7 @@ export const Contain1 = styled.SafeAreaView`
   background-color: ${props => props.theme.pureWhite};
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  top: -30px;
+  top: -60px;
   position: relative;
 `
 

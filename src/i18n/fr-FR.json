@@ -20,6 +20,7 @@
     "register_screen_password_field_placeholder": "Mot de passe",
     "register_screen_firstname_field_placeholder": "Prénom",
     "register_screen_lastname_field_placeholder": "Nom",
+    "register_screen_birthday_field_placeholder": "DD/MM/YYYY",
     "register_screen_already_have_account_button_label": "Vous avez déjà un compte?",
     "register_screen_already_have_account_button_action": "Connexion",
     "reset_screen_title": "Réinitialiser votre mot de passe",

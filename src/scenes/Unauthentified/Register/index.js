@@ -15,6 +15,7 @@ const RegisterScreen = (props) => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [canViewPassword, setCanViewPassword] = useState(false)
+	const [birthday, setBirthday] = useState('')
 
 	const handleSubmit = () => {
 		onSubmit({
@@ -23,6 +24,7 @@ const RegisterScreen = (props) => {
 			password: password,
 			firstname: firstName,
 			lastname: lastName,
+			birthday: birthday,
 		})
 	}
 
@@ -66,6 +68,13 @@ const RegisterScreen = (props) => {
 						placeholder={translations.firstnameFieldPlaceholder}
 						value={firstName}
 						onChange={setFirstName}
+					/>
+					<Input
+						placeholder={translations.birthdayFieldPlaceholder}
+						value={birthday}
+						onChange={setBirthday}
+						type="date"
+						
 					/>
 				</SC.Contain3>
 				<SC.Contain4>

@@ -22,6 +22,7 @@ const RegisterScreenWrapper = (props) => {
 		passwordFieldPlaceholder: t('register_screen_password_field_placeholder'),
 		firstnameFieldPlaceholder: t('register_screen_firstname_field_placeholder'),
 		lastnameFieldPlaceholder: t('register_screen_lastname_field_placeholder'),
+		birthdayFieldPlaceholder: t('register_screen_birthday_field_placeholder'),
 		alreadyHaveAccountButtonLabel: t('register_screen_already_have_account_button_label'),
 		alreadyHaveAccountButtonAction: t('register_screen_already_have_account_button_action')
 	}
@@ -33,7 +34,8 @@ const RegisterScreenWrapper = (props) => {
 				email: values.email,
 				password: values.password,
 				firstname: values.firstname,
-				lastname: values.lastname
+				lastname: values.lastname,
+				birthday: values.birthday
 			})
 		}
 	}
