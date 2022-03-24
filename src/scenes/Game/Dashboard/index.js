@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ConnectedHeader from '../../../components/ConnecterHeader'
 
 import * as SC from './styled'
 
 const GameDashboardScreen = (props) => {
-	const { theme, translations } = props
+	const { theme, translations, headerData } = props
 
 
 	const cards = [
@@ -37,12 +38,7 @@ const GameDashboardScreen = (props) => {
 
 	return (
 		<SC.Container>
-			<SC.Header 
-				title={translations.title}
-				onSettingsPress={() => {}}
-				onParametersPress={() => {console.log('')}}
-				theme={theme}
-			/>
+			<SC.Header {...headerData} />
 			<SC.Title>{translations.subtitle}</SC.Title>
 			<SC.MatchList
 				data={cards}
@@ -63,11 +59,8 @@ const GameDashboardScreen = (props) => {
 
 GameDashboardScreen.propTypes = {
 	theme: PropTypes.object,
-	navigation: PropTypes.shape({
-		navigate: PropTypes.func.isRequired,
-		goBack: PropTypes.func.isRequired,
-	}).isRequired,
 	translations: PropTypes.objectOf(PropTypes.string),
+	headerData: PropTypes.shape(ConnectedHeader.propTypes)
 }
 
 export default GameDashboardScreen

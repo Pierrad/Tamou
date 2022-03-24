@@ -14,7 +14,8 @@ const DashboardScreen = (props) => {
 		<SC.Container>
 			<SC.Header 
 				title={translations.hello}
-				onSettingsPress={() => navigation.navigate('Settings')}
+				onButtonPress={() => navigation.navigate('Settings')}
+				leftIconName="settings"
 				onNotificationPress={() => navigation.navigate('Notification')}
 				numberOfNotification={5}
 				onAvatarPress={() => navigation.navigate('Profil')}

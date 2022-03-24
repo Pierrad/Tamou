@@ -14,7 +14,7 @@ export const Content = styled.View`
   flex-direction: row;
 `
 
-export const SettingsIcon = styled(FIcon)`
+export const LeftIcon = styled(FIcon)`
   width: 24px;
   height: 24px;
   margin-top: 1px;

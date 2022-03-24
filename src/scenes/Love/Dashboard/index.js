@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ConnectedHeader from '../../../components/ConnecterHeader'
 
 import * as SC from './styled'
 
 const LoveDashboardScreen = (props) => {
-	const { theme, translations } = props
+	const { theme, translations, onButtonPress, headerData } = props
 
 	const cards = [
 		{
@@ -59,12 +60,7 @@ const LoveDashboardScreen = (props) => {
 
 	return (
 		<SC.Container>
-			<SC.Header 
-				title={translations.title}
-				onSettingsPress={() => {}}
-				onParametersPress={() => {console.log('')}}
-				theme={theme}
-			/>
+			<SC.Header {...headerData} />
 			<SC.Title>{translations.subtitle}</SC.Title>
 			<SC.MatchList
 				data={cards}
@@ -74,7 +70,7 @@ const LoveDashboardScreen = (props) => {
 			/>
 			<SC.Button
 				title={translations.cta}
-				onPress={() => {}}
+				onPress={onButtonPress}
 				underlayColor={theme.love}
 				textColor={theme.pureWhite}
 				style={SC.styles.button}
@@ -85,11 +81,9 @@ const LoveDashboardScreen = (props) => {
 
 LoveDashboardScreen.propTypes = {
 	theme: PropTypes.object,
-	navigation: PropTypes.shape({
-		navigate: PropTypes.func.isRequired,
-		goBack: PropTypes.func.isRequired,
-	}).isRequired,
 	translations: PropTypes.objectOf(PropTypes.string),
+	onButtonPress: PropTypes.func,
+	headerData: PropTypes.shape(ConnectedHeader.propTypes)
 }
 
 export default LoveDashboardScreen
