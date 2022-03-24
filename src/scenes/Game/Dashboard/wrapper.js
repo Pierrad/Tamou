@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
@@ -15,10 +15,18 @@ const GameDashboardScreenWrapper = (props) => {
 		cta: t('game_dashboard_cta_swipe'),
 	}
 
+	const headerData = useMemo(() => ({
+		onButtonPress: () => navigation.navigate('Dashboard'),
+		title: translations.title,
+		leftIconName: 'chevron-left',
+		onParametersPress: () => {console.log('')},
+		theme: theme
+	}), [navigation, theme, translations.title])
+
 	return (
 		<GameDashboardScreen
 			theme={theme}
-			navigation={navigation}
+			headerData={headerData}
 			translations={translations}
 		/>
 	)

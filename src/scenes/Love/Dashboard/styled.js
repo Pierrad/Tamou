@@ -32,7 +32,7 @@ export const MatchList = styled.FlatList`
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
-  margin: 10px 15px 0px 15px;
+  margin: 10px 5px 0px 10px;
 `
 
 export const MatchCard = styled(HomeCard)`

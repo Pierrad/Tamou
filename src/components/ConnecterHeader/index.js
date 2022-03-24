@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const ConnectedHeader = (props) => {
-	const { style, theme, title, onSettingsPress, onNotificationPress, numberOfNotification, onAvatarPress, avatar, onParametersPress } = props
+	const { style, theme, title, onButtonPress, leftIconName, onNotificationPress, numberOfNotification, onAvatarPress, avatar, onParametersPress } = props
 	return (
 		<SC.Container style={style}>
 			<SC.Content>
-				<SC.SettingsIcon
-					onPress={onSettingsPress}
-					name="settings"
+				<SC.LeftIcon
+					onPress={onButtonPress}
+					name={leftIconName}
 					size={24} 
 					color={theme.backgroundInverted}
 				/>
@@ -57,7 +57,8 @@ ConnectedHeader.propTypes = {
 	style: PropTypes.array,
 	theme: PropTypes.object,
 	title: PropTypes.string,
-	onSettingsPress: PropTypes.func,
+	onButtonPress: PropTypes.func,
+	leftIconName: PropTypes.string,
 	onNotificationPress: PropTypes.func,
 	numberOfNotification: PropTypes.number,
 	onAvatarPress: PropTypes.func,

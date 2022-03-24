@@ -14,7 +14,7 @@ export const ImageWrapper = styled.TouchableOpacity`
 `
 
 export const Image = styled.Image`
-  width: 165px;
+  width: 85%;
   height: 100%;
   border-radius: 10px;
 `
