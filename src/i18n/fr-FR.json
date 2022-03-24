@@ -23,7 +23,7 @@
     "register_screen_already_have_account_button_label": "Vous avez déjà un compte?",
     "register_screen_already_have_account_button_action": "Connexion",
     "reset_screen_title": "Réinitialiser votre mot de passe",
-    "reset_screen_subtitle": "Nous allons envoyer un code de réiniatialisation à l’adresse mail suivante",
+    "reset_screen_subtitle": "Nous allons envoyer un code de réinitialisation à l’adresse mail suivante",
     "reset_screen_email_field_placeholder": "Adresse e-mail",
     "reset_screen_submit_button": "ENVOYER LE CODE",
     "reset_screen_code_field_placeholder": "Code de réinitialisation",
@@ -71,7 +71,7 @@
     "game_dashboard_title": "Jeu en ligne",
     "game_dashboard_subtitle": "Vos jeux",
     "game_dashboard_empty_state_subtitle": "Vous n'avez pas encore de jeux",
-    "game_dashboard_cta_swipe": "Ajouter un jeu"
-
+    "game_dashboard_cta_swipe": "Ajouter un jeu",
+    "settings_screen_title": "Paramètres"
   }
 }

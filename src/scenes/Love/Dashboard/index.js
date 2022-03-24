@@ -61,7 +61,7 @@ const LoveDashboardScreen = (props) => {
 		<SC.Container>
 			<SC.Header 
 				title={translations.title}
-				onBurgerPress={() => {}}
+				onSettingsPress={() => {}}
 				onParametersPress={() => {console.log('')}}
 				theme={theme}
 			/>
