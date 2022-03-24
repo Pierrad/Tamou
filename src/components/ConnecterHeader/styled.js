@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import BurgerIcon from 'react-native-vector-icons/Feather'
+import FIcon from 'react-native-vector-icons/Feather'
 import IIcon from 'react-native-vector-icons/Ionicons'
 
 export const Container = styled.SafeAreaView`
@@ -14,7 +14,7 @@ export const Content = styled.View`
   flex-direction: row;
 `
 
-export const Burger = styled(BurgerIcon)`
+export const SettingsIcon = styled(FIcon)`
   width: 24px;
   height: 24px;
   margin-top: 1px;

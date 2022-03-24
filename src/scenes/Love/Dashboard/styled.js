@@ -9,6 +9,7 @@ export const Container = styled.SafeAreaView`
   background-color: ${props => props.theme.background};
   flex: 1;
   position: relative;
+  width: 100%;
 `
 
 export const Header = styled(ConnectedHeader)`
