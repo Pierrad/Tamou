@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import * as SC from './styled'
 import Input from '../../../components/Input'
 import ActionButton from '../../../components/ActionButton'
 import Link from '../../../components/Link'
+import DismissKeyboardHOC from '../../../helpers/useDismissKeyboardView'
+
+import * as SC from './styled'
+
 
 
 const LoginScreen = (props) => {
@@ -24,28 +27,30 @@ const LoginScreen = (props) => {
 				<SC.Caption>{translations.appSlogan}</SC.Caption>
 			</SC.Head>
 			<SC.Contain1 style={SC.style.container}>
-				<SC.Contain2>
-					<SC.Title>{translations.title}</SC.Title>
-					<SC.Subtitle>{translations.subtitle}</SC.Subtitle>
-				</SC.Contain2>
-				<SC.Contain3>
-					<Input 
-						placeholder={translations.emailFieldPlaceholder}
-						value={email}
-						onChange={setEmail}
-						type="email-address"
-					>
-					</Input>
-					<Input 
-						placeholder={translations.passwordFieldPlaceholder}
-						value={password}
-						onChange={setPassword}
-						isPassword={true}
-						isPasswordViewable={canViewPassword}
-						setIsPasswordViewable={() => setCanViewPassword(!canViewPassword)}
-					>
-					</Input>
-				</SC.Contain3>
+				<DismissKeyboardHOC flex={5}>
+					<SC.Contain2>
+						<SC.Title>{translations.title}</SC.Title>
+						<SC.Subtitle>{translations.subtitle}</SC.Subtitle>
+					</SC.Contain2>
+					<SC.Contain3>
+						<Input 
+							placeholder={translations.emailFieldPlaceholder}
+							value={email}
+							onChange={setEmail}
+							type="email-address"
+						>
+						</Input>
+						<Input 
+							placeholder={translations.passwordFieldPlaceholder}
+							value={password}
+							onChange={setPassword}
+							isPassword={true}
+							isPasswordViewable={canViewPassword}
+							setIsPasswordViewable={() => setCanViewPassword(!canViewPassword)}
+						>
+						</Input>
+					</SC.Contain3>
+				</DismissKeyboardHOC>
 				<SC.Contain4>
 					<ActionButton  
 						primary={true} 
