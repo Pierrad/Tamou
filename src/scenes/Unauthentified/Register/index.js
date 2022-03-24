@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import * as SC from './styled'
 import Input from '../../../components/Input'
 import ActionButton from '../../../components/ActionButton'
 import Link from '../../../components/Link'
+import DismissKeyboardHOC from '../../../helpers/useDismissKeyboardView'
+
+import * as SC from './styled'
 
 const RegisterScreen = (props) => {
 	const { navigation, onSubmit, isPending, translations } = props
@@ -33,41 +35,43 @@ const RegisterScreen = (props) => {
 				<SC.Caption>{translations.appSlogan}</SC.Caption>
 			</SC.Head>
 			<SC.Contain1 style={SC.style.container}>
-				<SC.Contain2>
-					<SC.Title>{translations.title}</SC.Title>
-					<SC.Subtitle>{translations.subtitle}</SC.Subtitle>
-				</SC.Contain2>
-				<SC.Contain3>
-					<Input
-						placeholder={translations.pseudoFieldPlaceholder}
-						value={userName}
-						onChange={setUserName}
-					/>
-					<Input
-						placeholder={translations.passwordFieldPlaceholder}
-						isPassword={true}
-						value={password}
-						onChange={setPassword}
-						isPasswordViewable={canViewPassword}
-						setIsPasswordViewable={() => setCanViewPassword(!canViewPassword)}
-					/>
-					<Input
-						placeholder={translations.emailFieldPlaceholder}
-						value={email}
-						onChange={setEmail}
-						type="email-address"
-					/>
-					<Input
-						placeholder={translations.lastnameFieldPlaceholder}
-						value={lastName}
-						onChange={setLastName}
-					/>
-					<Input
-						placeholder={translations.firstnameFieldPlaceholder}
-						value={firstName}
-						onChange={setFirstName}
-					/>
-				</SC.Contain3>
+				<DismissKeyboardHOC flex={8}>
+					<SC.Contain2>
+						<SC.Title>{translations.title}</SC.Title>
+						<SC.Subtitle>{translations.subtitle}</SC.Subtitle>
+					</SC.Contain2>
+					<SC.Contain3>
+						<Input
+							placeholder={translations.pseudoFieldPlaceholder}
+							value={userName}
+							onChange={setUserName}
+						/>
+						<Input
+							placeholder={translations.passwordFieldPlaceholder}
+							isPassword={true}
+							value={password}
+							onChange={setPassword}
+							isPasswordViewable={canViewPassword}
+							setIsPasswordViewable={() => setCanViewPassword(!canViewPassword)}
+						/>
+						<Input
+							placeholder={translations.emailFieldPlaceholder}
+							value={email}
+							onChange={setEmail}
+							type="email-address"
+						/>
+						<Input
+							placeholder={translations.lastnameFieldPlaceholder}
+							value={lastName}
+							onChange={setLastName}
+						/>
+						<Input
+							placeholder={translations.firstnameFieldPlaceholder}
+							value={firstName}
+							onChange={setFirstName}
+						/>
+					</SC.Contain3>
+				</DismissKeyboardHOC>
 				<SC.Contain4>
 					<ActionButton
 						primary={true}

@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import * as SC from './styled'
 import Input from '../../../components/Input'
 import ActionButton from '../../../components/ActionButton'
+import DismissKeyboardHOC from '../../../helpers/useDismissKeyboardView'
+
+import * as SC from './styled'
 
 const ResetScreen = (props) => {
 	const { step, onSubmit, translations, isLoading } = props
@@ -28,19 +30,21 @@ const ResetScreen = (props) => {
 				<SC.Caption>{translations.appSlogan}</SC.Caption>
 			</SC.Head>		
 			<SC.Contain1 style={SC.style.container}>
-				<SC.Contain2>
-					<SC.Title>{translations.title}</SC.Title>
-					<SC.Subtitle>{translations.subtitle}</SC.Subtitle>
-				</SC.Contain2>
-				<SC.Contain3>
-					<Input 
-						placeholder={translations.emailFieldPlaceholder}
-						value={email}
-						onChange={setEmail}
-						type="email-address"
-					>
-					</Input>
-				</SC.Contain3>
+				<DismissKeyboardHOC flex={8}>
+					<SC.Contain2>
+						<SC.Title>{translations.title}</SC.Title>
+						<SC.Subtitle>{translations.subtitle}</SC.Subtitle>
+					</SC.Contain2>
+					<SC.Contain3>
+						<Input 
+							placeholder={translations.emailFieldPlaceholder}
+							value={email}
+							onChange={setEmail}
+							type="email-address"
+						>
+						</Input>
+					</SC.Contain3>
+				</DismissKeyboardHOC>
 				<SC.Contain4 style={SC.style.contain}>
 					<ActionButton  
 						primary={true} 
@@ -62,32 +66,34 @@ const ResetScreen = (props) => {
 				<SC.Caption>{translations.appSlogan}</SC.Caption>
 			</SC.Head2>		
 			<SC.Contain1 style={SC.style.container}>
-				<SC.Contain2>
-					<SC.Title>{translations.title}</SC.Title>
-				</SC.Contain2>
-				<SC.Contain3>
-					<Input 
-						placeholder={translations.codeFieldPlaceholder}
-						value={code}
-						onChange={setCode}
-					/>
-					<Input
-						placeholder={translations.passwordFieldPlaceholder}
-						isPassword={true}
-						value={password}
-						onChange={setPassword}
-						isPasswordViewable={canViewPassword}
-						setIsPasswordViewable={() => setCanViewPassword(!canViewPassword)}
-					/>
-					<Input
-						placeholder={translations.confirmPasswordFieldPlaceholder}
-						isPassword={true}
-						value={confirmPassword}
-						onChange={setconfirmPassword}
-						isPasswordViewable={canViewPassword}
-						setIsPasswordViewable={() => setCanViewPassword(!canViewPassword)}
-					/>
-				</SC.Contain3>
+				<DismissKeyboardHOC flex={10}>
+					<SC.Contain2>
+						<SC.Title>{translations.title}</SC.Title>
+					</SC.Contain2>
+					<SC.Contain3>
+						<Input 
+							placeholder={translations.codeFieldPlaceholder}
+							value={code}
+							onChange={setCode}
+						/>
+						<Input
+							placeholder={translations.passwordFieldPlaceholder}
+							isPassword={true}
+							value={password}
+							onChange={setPassword}
+							isPasswordViewable={canViewPassword}
+							setIsPasswordViewable={() => setCanViewPassword(!canViewPassword)}
+						/>
+						<Input
+							placeholder={translations.confirmPasswordFieldPlaceholder}
+							isPassword={true}
+							value={confirmPassword}
+							onChange={setconfirmPassword}
+							isPasswordViewable={canViewPassword}
+							setIsPasswordViewable={() => setCanViewPassword(!canViewPassword)}
+						/>
+					</SC.Contain3>
+				</DismissKeyboardHOC>
 				<SC.Contain4 style={SC.style.contain}>
 					<ActionButton  
 						primary={true} 
