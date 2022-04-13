@@ -4,7 +4,9 @@ import AIcon from 'react-native-vector-icons/AntDesign'
 import BasicHeader from '../../../components/BasicHeader'
 import SwipeCard from '../../../components/SwipeCard'
 
-export const Container = styled.SafeAreaView``
+export const Container = styled.SafeAreaView`
+background-color: ${props => props.theme.background};
+`
 
 export const Header = styled(BasicHeader)`
   margin: 5px 15px 0px 15px;

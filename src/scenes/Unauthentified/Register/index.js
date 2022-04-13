@@ -89,11 +89,11 @@ const RegisterScreen = (props) => {
 							value={firstName}
 							onChange={setFirstName}
 						/>
-                        <Input
+						<Input
 						    placeholder={translations.birthdayFieldPlaceholder}
 						    value={birthday}
-                            onChange={handleBirthday}
-                        />
+							onChange={handleBirthday}
+						/>
 					</SC.Contain3>
 				</DismissKeyboardHOC>
 					
