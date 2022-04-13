@@ -5,6 +5,7 @@ import Input from '../../../components/Input'
 import ActionButton from '../../../components/ActionButton'
 import Link from '../../../components/Link'
 import DismissKeyboardHOC from '../../../helpers/useDismissKeyboardView'
+import { isBirthdayIsValid } from '../../../helpers/dateHelpers'
 
 import * as SC from './styled'
 
@@ -17,15 +18,33 @@ const RegisterScreen = (props) => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [canViewPassword, setCanViewPassword] = useState(false)
+	const [birthday, setBirthday] = useState('')
 
 	const handleSubmit = () => {
-		onSubmit({
-			username: userName,
-			email: email,
-			password: password,
-			firstname: firstName,
-			lastname: lastName,
-		})
+		const splitBirthday = birthday.split('/')
+		const date = new Date(parseInt(splitBirthday[2]), parseInt(splitBirthday[1])-1, parseInt(splitBirthday[0])+1)
+		if(birthday.length==10 && isBirthdayIsValid(date)){
+			console.log(date)
+			onSubmit({
+				username: userName,
+				email: email,
+				password: password,
+				firstname: firstName,
+				lastname: lastName,
+				birthday: birthday,
+			})
+		}
+	}
+
+	const handleBirthday = (value) => {
+		if(birthday.length == 1){
+			setBirthday(value + '/')
+		}else if (birthday.length == 4){
+			setBirthday(value + '/')
+		}else if(birthday.length <=9){
+			setBirthday(value)
+		}
+
 	}
 
 	return (
@@ -70,8 +89,14 @@ const RegisterScreen = (props) => {
 							value={firstName}
 							onChange={setFirstName}
 						/>
+                        <Input
+						    placeholder={translations.birthdayFieldPlaceholder}
+						    value={birthday}
+                            onChange={handleBirthday}
+                        />
 					</SC.Contain3>
 				</DismissKeyboardHOC>
+					
 				<SC.Contain4>
 					<ActionButton
 						primary={true}
