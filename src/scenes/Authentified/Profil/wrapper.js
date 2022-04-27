@@ -1,13 +1,18 @@
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
 import ProfilScreen from './index'
+import { POST_NEW_PROFIL_PICTURE } from '../../../redux/actions/user'
 
 const ProfilScreenWrapper = (props) => {
-	const { user, navigation, theme } = props
+	const { user, navigation, theme, updateProfilPicture } = props
 	const { t } = useTranslation()
+
+	const handleSubmitPicture = useCallback((picture) => {
+		updateProfilPicture({ picture, token: user.token.token })
+	}, [updateProfilPicture, user.token.token])
 
 	const data = useMemo(() => ({
 		headerData: {
@@ -18,9 +23,10 @@ const ProfilScreenWrapper = (props) => {
 			onDotPress: () => {},
 		},
 		profilHeaderData: {
-			avatar: user.imageProfile || 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
+			avatar: user.avatar || 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
 			name: user.name || t('basic_name'),
 			location: user.location || t('basic_location'),
+			onEditPress: handleSubmitPicture,
 		},
 		profilDetailData: {
 			title: t('profil_screen_subtitle'),
@@ -43,7 +49,7 @@ const ProfilScreenWrapper = (props) => {
 				},
 			]
 		},
-	}), [theme.backgroundInverted, theme.background, t, user.imageProfile, user.name, user.location, user.email, user.username, navigation])
+	}), [theme.backgroundInverted, theme.background, t, user.avatar, user.name, user.location, user.email, user.username, handleSubmitPicture, navigation])
 
 	return (
 		<ProfilScreen {...data} />
@@ -59,10 +65,14 @@ ProfilScreenWrapper.propTypes = {
 	user: PropTypes.shape({
 		username: PropTypes.string.isRequired,
 		email: PropTypes.string.isRequired,
-		imageProfile: PropTypes.string,
+		avatar: PropTypes.string,
 		name: PropTypes.string,
 		location: PropTypes.string,
+		token: PropTypes.shape({
+			token: PropTypes.string,
+		}),
 	}),
+	updateProfilPicture: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
@@ -70,7 +80,8 @@ const mapStateToProps = (state) => ({
 	user: state.userReducer.user,
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
+	updateProfilPicture: (input) => dispatch({ type: POST_NEW_PROFIL_PICTURE, payload: input })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilScreenWrapper)
