@@ -35,17 +35,21 @@ const RegisterScreen = (props) => {
 			})
 		}
 	}
-
+	
 	const handleBirthday = (value) => {
-		if(birthday.length == 1){
-			setBirthday(value + '/')
-		}else if (birthday.length == 4){
-			setBirthday(value + '/')
-		}else if(birthday.length <=9){
+		if(birthday.length > value.length){
 			setBirthday(value)
+		}else{
+			if(birthday.length == 1){
+				setBirthday(value + '/')
+			}else if (birthday.length == 4){
+				setBirthday(value + '/')
+			}else if(birthday.length <=9){
+				setBirthday(value)
+			}
 		}
-
 	}
+
 
 	return (
 		<SC.Container>

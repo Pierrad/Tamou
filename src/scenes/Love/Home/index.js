@@ -24,6 +24,10 @@ const LoveHomeScreen = ({ navigation }) => (
 			title="Go to Love swipe"
 			onPress={() => navigation.navigate('LoveSwipe')}
 		/>
+		<Button
+			title="Go to Love match"
+			onPress={() => navigation.navigate('LoveMatch')}
+		/>
 	</SC.Container>
 )
 
