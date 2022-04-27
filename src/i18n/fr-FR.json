@@ -76,6 +76,9 @@
     "game_dashboard_subtitle": "Vos jeux",
     "game_dashboard_empty_state_subtitle": "Vous n'avez pas encore de jeux",
     "game_dashboard_cta_swipe": "Ajouter un jeu",
-    "settings_screen_title": "Paramètres"
+    "settings_screen_title": "Paramètres",
+    "game_partner_subtitle": "Vos partenaires",
+    "game_partner_find_new_player": "Trouver un nouveau joueur",
+    "game_partner_search_placeholder": "Rechercher un joueur..."
   }
 }
