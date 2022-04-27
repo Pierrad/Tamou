@@ -24,7 +24,6 @@ const RegisterScreen = (props) => {
 		const splitBirthday = birthday.split('/')
 		const date = new Date(parseInt(splitBirthday[2]), parseInt(splitBirthday[1])-1, parseInt(splitBirthday[0])+1)
 		if(birthday.length==10 && isBirthdayIsValid(date)){
-			console.log(date)
 			onSubmit({
 				username: userName,
 				email: email,
@@ -94,8 +93,8 @@ const RegisterScreen = (props) => {
 							onChange={setFirstName}
 						/>
 						<Input
-						    placeholder={translations.birthdayFieldPlaceholder}
-						    value={birthday}
+							placeholder={translations.birthdayFieldPlaceholder}
+							value={birthday}
 							onChange={handleBirthday}
 						/>
 					</SC.Contain3>
