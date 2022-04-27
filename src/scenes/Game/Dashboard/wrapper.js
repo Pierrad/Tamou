@@ -28,6 +28,7 @@ const GameDashboardScreenWrapper = (props) => {
 			theme={theme}
 			headerData={headerData}
 			translations={translations}
+			navigation={navigation}
 		/>
 	)
 }

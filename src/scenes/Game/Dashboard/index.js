@@ -5,25 +5,25 @@ import ConnectedHeader from '../../../components/ConnecterHeader'
 import * as SC from './styled'
 
 const GameDashboardScreen = (props) => {
-	const { theme, translations, headerData } = props
+	const { theme, translations, headerData, navigation } = props
 
 
 	const cards = [
 		{
 			image: 'https://www.pedagojeux.fr/wp-content/uploads/2019/11/1280x720_LoL.jpg',
-			onPress: () => {},
+			onPress: () => navigation.navigate('GamePartner'),
 		},
 		{
 			image: 'https://seeklogo.com/images/V/valorant-logo-FAB2CA0E55-seeklogo.com.png',
-			onPress: () => {},
+			onPress: () => navigation.navigate('GamePartner'),
 		},
 		{
 			image: 'https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_Minecraft.jpg',
-			onPress: () => {},
+			onPress: () => navigation.navigate('GamePartner'),
 		},
 		{
 			image: 'https://cdn2.unrealengine.com/7up-v2-3840x2160-e11fc91a84d6.jpg',
-			onPress: () => {},
+			onPress: () => navigation.navigate('GamePartner'),
 		},
 		
 	]
@@ -60,7 +60,11 @@ const GameDashboardScreen = (props) => {
 GameDashboardScreen.propTypes = {
 	theme: PropTypes.object,
 	translations: PropTypes.objectOf(PropTypes.string),
-	headerData: PropTypes.shape(ConnectedHeader.propTypes)
+	headerData: PropTypes.shape(ConnectedHeader.propTypes),
+	navigation: PropTypes.shape({
+		navigate: PropTypes.func.isRequired,
+		goBack: PropTypes.func.isRequired,
+	}).isRequired,
 }
 
 export default GameDashboardScreen

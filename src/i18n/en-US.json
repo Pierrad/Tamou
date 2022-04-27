@@ -73,6 +73,9 @@
     "game_dashboard_subtitle": "Your games",
     "game_dashboard_empty_state_subtitle": "You don't have any games yet",
     "game_dashboard_cta_swipe": "Add a game",
-    "settings_screen_title": "Settings"
+    "settings_screen_title": "Settings",
+    "game_partner_subtitle": "Your partners",
+    "game_partner_find_new_player": "Find a new player",
+    "game_partner_search_placeholder": "Search for a player..."
   }
 }
