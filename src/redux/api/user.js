@@ -1,5 +1,6 @@
 import { Platform } from 'react-native'
 import { API_URL, API_URL_ANDROID } from '@env'
+const FormData = global.FormData
 
 export const register = async (payload) => {
 	try {
@@ -78,6 +79,27 @@ export const resetPassword = async (payload) => {
 				otp: payload.code,
 				password: payload.password,
 			})
+		})
+
+		const json = await res.json()
+		return json
+	} catch(err) {
+		return {error: true, message: err?.response?.data?.message || 'Internal error'}
+	}
+}
+
+export const uploadUserPicture = async (payload) => {
+	try {
+		const data = new FormData()
+		data.append('file', payload.picture)
+		console.log(data)
+		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/profilePic`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'multipart/form-data; charset=utf-8;',
+				'Authorization': payload.token,
+			},
+			body: data
 		})
 
 		const json = await res.json()

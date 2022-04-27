@@ -1,18 +1,25 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker'
 import { useTranslation } from 'react-i18next'
 
 import * as SC from './styled'
 
-const PictureInput = () => {
+const PictureInput = ({ onChange }) => {
 	const { t } = useTranslation()
+
+	console.log(onChange)
 
 	const handleLibraryPress = () => {
 		launchImageLibrary({
 			mediaType: 'photo',
 			quality: 1,
 		}, (response) => {
-			console.log('response', response)
+			onChange({
+				uri: response.assets[0].uri.replace('file://', ''),
+				name: response.assets[0].fileName,
+				type: response.assets[0].type,
+			})
 		})
 	}
 
@@ -20,8 +27,9 @@ const PictureInput = () => {
 		launchCamera({
 			mediaType: 'photo',
 			quality: 1,
+			includeBase64: true,
 		}, (response) => {
-			console.log('response', response)
+			onChange(response.assets[0].uri)
 		})
 	}
 
@@ -39,6 +47,8 @@ const PictureInput = () => {
 	)
 }
 
-PictureInput.propTypes = {}
+PictureInput.propTypes = {
+	onChange: PropTypes.func,
+}
 
 export default PictureInput

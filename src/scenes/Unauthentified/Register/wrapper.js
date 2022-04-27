@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import { connect } from 'react-redux'
 
 import RegisterScreen from './index'
-import { connect } from 'react-redux'
 import { POST_REGISTER } from '../../../redux/actions/user'
 import { validateEmail, validatePassword } from '../../../helpers/stringHelpers'
 

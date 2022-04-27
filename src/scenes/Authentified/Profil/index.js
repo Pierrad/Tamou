@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import * as SC from './styled'
@@ -9,6 +9,10 @@ const ProfilScreen = ({ headerData, profilHeaderData, profilDetailData }) => {
 	const handleEditPress = () => {
 		setIsModalVisible(true)
 	}
+
+	const handlePictureChange = useCallback((value) => {
+		profilHeaderData.onEditPress(value)
+	}, [profilHeaderData])
 
 	const renderModal = useMemo(() => {
 		return (
@@ -22,14 +26,14 @@ const ProfilScreen = ({ headerData, profilHeaderData, profilDetailData }) => {
 					<SC.BasicView>
 						<SC.Touchable onPress={() => {}}>
 							<SC.ModalView style={SC.ModalStyle.modalView}>
-								<SC.ModalPicker />
+								<SC.ModalPicker onChange={handlePictureChange} />
 							</SC.ModalView>
 						</SC.Touchable>
 					</SC.BasicView>
 				</SC.Touchable>
 			</SC.Modal>
 		)
-	}, [isModalVisible])
+	}, [handlePictureChange, isModalVisible])
 
 	return (
 		<SC.Container>

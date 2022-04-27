@@ -8,7 +8,7 @@ import MMIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import * as SC from './styled'
 
 const DashboardScreen = (props) => {
-	const { theme, navigation, translations } = props
+	const { theme, navigation, translations, avatar } = props
 
 	return (
 		<SC.Container>
@@ -19,7 +19,7 @@ const DashboardScreen = (props) => {
 				onNotificationPress={() => navigation.navigate('Notification')}
 				numberOfNotification={5}
 				onAvatarPress={() => navigation.navigate('Profil')}
-				avatar="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+				avatar={avatar}
 				theme={theme}
 			/>
 			<SC.Title>{translations.categories}</SC.Title>
@@ -73,6 +73,7 @@ DashboardScreen.propTypes = {
 		goBack: PropTypes.func.isRequired,
 	}).isRequired,
 	translations: PropTypes.objectOf(PropTypes.string),
+	avatar: PropTypes.string,
 }
 
 export default DashboardScreen

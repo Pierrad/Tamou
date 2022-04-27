@@ -25,6 +25,7 @@ const DashboardScreenWrapper = (props) => {
 			navigation={navigation}
 			theme={theme}
 			translations={translations}
+			avatar={user.avatar}
 		/>
 	)
 }
@@ -37,6 +38,7 @@ DashboardScreenWrapper.propTypes = {
 	}).isRequired,
 	user: PropTypes.shape({
 		username: PropTypes.string.isRequired,
+		avatar: PropTypes.string.isRequired,
 	}),
 }
 
