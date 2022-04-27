@@ -5,7 +5,7 @@ import { validateEmail, validatePassword } from '../../helpers/stringHelpers'
 
 import * as SC from './styled'
 
-const Input = ({ style, onChange, value, placeholder, type, isPassword, isPasswordViewable, setIsPasswordViewable, label }) => {
+const Input = ({ style, onChange, value, placeholder, type, isPassword, isPasswordViewable, setIsPasswordViewable, label, onKeyPress}) => {
 
 	return (
 		<SC.Container style={style ? style[0] : 0}>
@@ -22,6 +22,7 @@ const Input = ({ style, onChange, value, placeholder, type, isPassword, isPasswo
 				isPassword={isPassword}
 				isPasswordValid={isPassword && validatePassword(value)}
 				placeholderTextColor='#898989'
+				onKeyPress={onKeyPress}
 			/>
 			{isPassword && (
 				<SC.Icon
@@ -45,6 +46,7 @@ Input.propTypes = {
 	isPasswordViewable: PropTypes.bool,
 	setIsPasswordViewable: PropTypes.func,
 	label: PropTypes.string,
+	onKeyPress: PropTypes.func
 }
 
 export default Input
