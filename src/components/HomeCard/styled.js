@@ -1,5 +1,6 @@
 import styled from 'styled-components/native'
 import { StyleSheet } from 'react-native'
+import AIcon from 'react-native-vector-icons/AntDesign'
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -11,6 +12,7 @@ export const Container = styled.SafeAreaView`
 export const ImageWrapper = styled.TouchableOpacity`
   width: auto;
   height: auto;
+  position: relative;
 `
 
 export const Image = styled.Image`
@@ -27,6 +29,15 @@ export const Text = styled.Text`
   bottom: 5%;
   left: 5%;
 `
+
+export const SelectBox = styled.View`
+  position: absolute;
+  top: 5%;
+  right: 20%;
+  z-index: 10;
+`
+
+export const SelectIcon = styled(AIcon)``
 
 export const style = StyleSheet.create({
 	container: {
