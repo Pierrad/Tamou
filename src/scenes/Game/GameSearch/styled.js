@@ -1,10 +1,9 @@
 import styled from 'styled-components/native'
 import { StyleSheet } from 'react-native'
-import IIcon from 'react-native-vector-icons/Ionicons'
 
 import ConnectedHeader from '../../../components/ConnecterHeader'
-import PlayerCard from '../../../components/PlayerCard'
 import ActionButton from '../../../components/ActionButton'
+import HomeCard from '../../../components/HomeCard'
 
 export const Container = styled.SafeAreaView`
   background-color: ${props => props.theme.background};
@@ -19,38 +18,37 @@ export const Header = styled(ConnectedHeader)`
   height: auto;
 `
 
-export const Box = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center; 
-  margin: 30px 15px 10px 15px;
-`
-
 export const Title = styled.Text`
   font-family: "Poppins-Bold";
   font-size: 24px;
+  margin: 20px 15px 20px 15px;
   color: ${props => props.theme.backgroundInverted};
-`
-
-export const Icon = styled(IIcon)`
-  width: 24px;
-  height: 24px;
-  margin-top: 1px;
 `
 
 export const SearchInput = styled.TextInput`
-  font-family: "Poppins-Regular";
-  color: ${props => props.theme.backgroundInverted};
-  width: 90%;
+  margin: 0 15px 20px 15px;
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 10px;
   font-size: 16px;
+  font-family: "Poppins-Regular";
 `
 
-export const Partners = styled.View`
-  padding: 10px 15px;
+export const MatchList = styled.FlatList`
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  margin: 10px 15px 0px 15px;
 `
 
-export const Card = styled(PlayerCard)``
+export const MatchCard = styled(HomeCard)`
+  flex: 1;
+  height: 230px;
+  margin-bottom: 15px;
+  max-width: 200px;
+`
 
 export const Button = styled(ActionButton)`
   position: absolute;
@@ -62,6 +60,10 @@ export const Button = styled(ActionButton)`
 `
 
 export const styles = StyleSheet.create({
+	flatList: {
+		flex: 1,
+		display: 'flex',
+	},
 	button: {
 		elevation: 5,
 	}

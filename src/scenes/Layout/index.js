@@ -33,6 +33,7 @@ import GameHomeScreen from '../Game/Home'
 import GameSurveyScreenWrapper from '../Game/SurveyStepper/wrapper'
 import GameDashboardScreenWrapper from '../Game/Dashboard/wrapper'
 import GamePartnerWrapper from '../Game/GamePartner/wrapper'
+import GameSearchWrapper from '../Game/GameSearch/wrapper'
 
 import Error from '../../components/Error'
 import Validation from '../../components/Validation'
@@ -87,6 +88,7 @@ const Layout = (props) => {
 					<Stack.Screen name="GameSurvey" component={GameSurveyScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="GameDashboard" component={GameDashboardScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="GamePartner" component={GamePartnerWrapper} options={{ headerShown: false }} />
+					<Stack.Screen name="GameSearch" component={GameSearchWrapper} options={{ headerShown: false }} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</ThemeProvider>

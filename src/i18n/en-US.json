@@ -76,6 +76,10 @@
     "settings_screen_title": "Settings",
     "game_partner_subtitle": "Your partners",
     "game_partner_find_new_player": "Find a new player",
-    "game_partner_search_placeholder": "Search for a player..."
+    "game_partner_search_placeholder": "Search for a player...",
+    "game_search_title": "Online game",
+    "game_search_subtitle": "Search for a game",
+    "game_search_cta_label": "Add selected games",
+    "game_search_input_placeholder": "League of legends..."
   }
 }

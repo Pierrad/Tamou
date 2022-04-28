@@ -48,7 +48,7 @@ const GameDashboardScreen = (props) => {
 			/>
 			<SC.Button
 				title={translations.cta}
-				onPress={() => {}}
+				onPress={() => navigation.navigate('GameSearch')}
 				underlayColor={theme.game}
 				textColor={theme.pureWhite}
 				style={SC.styles.button}
