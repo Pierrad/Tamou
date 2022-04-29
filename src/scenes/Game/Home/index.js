@@ -28,6 +28,10 @@ const GameHomeScreen = ({ navigation }) => (
 			title="Go to Game Search"
 			onPress={() => navigation.navigate('GameSearch')}
 		/>
+		<Button
+			title="Go to Game Swipe"
+			onPress={() => navigation.navigate('GameSwipe')}
+		/>
 	</SC.Container>
 )
 
