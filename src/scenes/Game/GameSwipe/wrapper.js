@@ -67,6 +67,7 @@ const GameSwipeWrapper = (props) => {
 	const onDislike = () => {
 		console.log('onDislike')
 	}
+	
 	const card = {
 		image: 'https://i.pinimg.com/originals/bf/4d/40/bf4d401aa059647cc24cc8408f203e44.png',
 		title: '@The_Lion_Vassal',
