@@ -84,6 +84,7 @@
     "game_search_subtitle": "Rechercher un jeu",
     "game_search_cta_label": "Ajouter la sélection",
     "game_search_input_placeholder": "League of legends...",
-    "game_swipe_title": "Recherche"
+    "game_swipe_title": "Recherche",
+    "game_partner_profile_cta_label": "Messagerie"
   }
 }
