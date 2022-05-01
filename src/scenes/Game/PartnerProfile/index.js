@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import * as SC from './styled'
 
-const GamePartner = props => {
+const PartnerProfile = props => {
 	const { theme, translations, goBack, user, isInSwipeMode, onLike, onDislike } = props
 
 	const renderOthers = Object.keys(user.others).map((other, i) => (
@@ -61,18 +61,18 @@ const GamePartner = props => {
 	)
 }
 
-GamePartner.propTypes = {
+PartnerProfile.propTypes = {
 	theme: PropTypes.object,
 	translations: PropTypes.objectOf(PropTypes.string),
 	goBack: PropTypes.func,
-	user: PropTypes.objectOf(PropTypes.shape({
+	user: PropTypes.shape({
 		name: PropTypes.string,
-		rank: PropTypes.string,
+		rank: PropTypes.number,
 		others: PropTypes.object,
-	})),
+	}),
 	isInSwipeMode: PropTypes.bool,
 	onLike: PropTypes.func,
 	onDislike: PropTypes.func,
 }
 
-export default GamePartner
+export default PartnerProfile

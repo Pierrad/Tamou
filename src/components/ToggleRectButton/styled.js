@@ -1,6 +1,8 @@
 import styled from 'styled-components/native'
 
-export const Container = styled.SafeAreaView``
+export const Container = styled.SafeAreaView`
+  width: 200px;
+`
 
 export const Button = styled.TouchableHighlight`
   display: flex;
@@ -11,7 +13,6 @@ export const Button = styled.TouchableHighlight`
 		? (props.backgroundSelectedColor || props.theme.pureWhite)
 		: (props.backgroundColor || props.theme.pureWhite)};
   border-radius: 10px;
-  width: 200px;
   border: 1px solid ${props => props.isSelected ? props.theme.pureWhite : (props.borderColor || props.theme.pureBlack)};
 `
 

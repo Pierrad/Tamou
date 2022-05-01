@@ -22,6 +22,7 @@ import ProfilScreenWrapper from '../Authentified/Profil/wrapper'
 import NotificationScreenWrapper from '../Authentified/Notification/wrapper'
 import SurveyStepperScreenWrapper from '../Authentified/SurveyStepper/wrapper'
 import SettingsScreenWrapper from '../Authentified/Settings/wrapper'
+import EditSurveyScreenWrapper from '../Authentified/EditSurvey/wrapper'
 
 import LoveHomeScreen from '../Love/Home'
 import LoveSurveyScreenWrapper from '../Love/SurveyStepper/wrapper'
@@ -79,6 +80,7 @@ const Layout = (props) => {
 					<Stack.Screen name="Notification" component={NotificationScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="SurveyStepper" component={SurveyStepperScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Settings" component={SettingsScreenWrapper} options={{ headerShown: false }} />
+					<Stack.Screen name="EditSurvey" component={EditSurveyScreenWrapper} options={{ headerShown: false }} />
 					{/* Love screens */}
 					<Stack.Screen name="LoveHome" component={LoveHomeScreen} options={{ headerShown: false }} />
 					<Stack.Screen name="LoveSurvey" component={LoveSurveyScreenWrapper} options={{ headerShown: false }} />

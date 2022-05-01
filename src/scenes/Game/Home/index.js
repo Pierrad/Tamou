@@ -36,6 +36,10 @@ const GameHomeScreen = ({ navigation }) => (
 			title={'Go to Game Partner Profile'}
 			onPress={() => navigation.navigate('GamePartnerProfile')}
 		/>
+		<Button
+			title="Go to Edit Game survey"
+			onPress={() => navigation.navigate('EditSurvey', { category: 'game' /* pass toggles in future */ })}
+		/>
 	</SC.Container>
 )
 

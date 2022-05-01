@@ -28,6 +28,10 @@ const LoveHomeScreen = ({ navigation }) => (
 			title="Go to Love match"
 			onPress={() => navigation.navigate('LoveMatch')}
 		/>
+		<Button
+			title="Go to Edit Love survey"
+			onPress={() => navigation.navigate('EditSurvey', { category: 'love' /* pass toggles in future */ })}
+		/>
 	</SC.Container>
 )
 
