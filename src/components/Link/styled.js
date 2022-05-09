@@ -10,5 +10,5 @@ export const Link = styled.TouchableHighlight`
 
 export const Text = styled.Text`
   font-family: 'Poppins-Regular';
-  color: #F99030;
+  color: ${props => props.textColor || '#F99030'} ;
 `
