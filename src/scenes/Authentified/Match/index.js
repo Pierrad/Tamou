@@ -5,19 +5,17 @@ import Link from '../../../components/Link'
 import * as SC from './styled'
 
 
-const LoveMatchScreen = (props) => {
-	const { theme, translations, onButtonPress,user1,user2 } = props
+const MatchScreen = (props) => {
+	const { theme, translations, onButtonPress, user1, user2, color, icon } = props
 	
-
-
 	return (
-		<SC.Container>
-			<SC.Icon1 name="heart" size={35} color="#FFF" />
-			<SC.Icon2 name="heart" size={50} color="#FFF" />
-			<SC.Icon3 name="heart" size={60} color="#FFF" />
-			<SC.Icon4 name="heart" size={40} color="#FFF" />
-			<SC.Icon5 name="heart" size={45} color="#FFF" />
-			<SC.Icon6 name="heart" size={30} color="#FFF" />
+		<SC.Container color={color}>
+			<SC.Icon1 name={icon} size={35} color="#FFF" />
+			<SC.Icon2 name={icon} size={50} color="#FFF" />
+			<SC.Icon3 name={icon} size={60} color="#FFF" />
+			<SC.Icon4 name={icon} size={40} color="#FFF" />
+			<SC.Icon5 name={icon} size={45} color="#FFF" />
+			<SC.Icon6 name={icon} size={30} color="#FFF" />
 			<SC.TextContainer>
 				<SC.Title>
 					Match🎉
@@ -31,7 +29,7 @@ const LoveMatchScreen = (props) => {
 				<SC.LikeButton
 					underlayColor='#fff'
 				>
-					<SC.Icon name="heart" size={30} color="#FFF" />
+					<SC.Icon name={icon} size={30} color="#FFF" />
 				</SC.LikeButton>
 				<SC.Image2 source={{uri: user2}} alt="PictureCurrentUser" />
 			</SC.MatchContainer>
@@ -39,7 +37,7 @@ const LoveMatchScreen = (props) => {
 				<SC.Button
 					title={translations.title}
 					onPress={onButtonPress}
-					underlayColor={theme.love}
+					underlayColor={color}
 					textColor={theme.orange}
 					style={SC.styles.button}
 				/>
@@ -57,8 +55,10 @@ const LoveMatchScreen = (props) => {
 	)
 }
 
-LoveMatchScreen.propTypes = {
+MatchScreen.propTypes = {
 	theme: PropTypes.object,
+	color: PropTypes.string,
+	icon: PropTypes.string,
 	translations: PropTypes.objectOf(PropTypes.string),
 	onButtonPress: PropTypes.func,
 	headerData: PropTypes.shape(ConnectedHeader.propTypes),
@@ -67,4 +67,4 @@ LoveMatchScreen.propTypes = {
 	user2: PropTypes.string,
 }
 
-export default LoveMatchScreen
+export default MatchScreen

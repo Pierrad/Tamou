@@ -23,12 +23,12 @@ import NotificationScreenWrapper from '../Authentified/Notification/wrapper'
 import SurveyStepperScreenWrapper from '../Authentified/SurveyStepper/wrapper'
 import SettingsScreenWrapper from '../Authentified/Settings/wrapper'
 import EditSurveyScreenWrapper from '../Authentified/EditSurvey/wrapper'
+import MatchScreenWrapper from '../Authentified/Match/wrapper'
 
 import LoveHomeScreen from '../Love/Home'
 import LoveSurveyScreenWrapper from '../Love/SurveyStepper/wrapper'
 import LoveDashboardScreenWrapper from '../Love/Dashboard/wrapper'
 import LoveSwipeScreenWrapper from '../Love/Swipe/wrapper'
-import LoveMatchScreenWrapper from '../Love/Match/wrapper'
 
 import GameHomeScreen from '../Game/Home'
 import GameSurveyScreenWrapper from '../Game/SurveyStepper/wrapper'
@@ -81,12 +81,12 @@ const Layout = (props) => {
 					<Stack.Screen name="SurveyStepper" component={SurveyStepperScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="Settings" component={SettingsScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="EditSurvey" component={EditSurveyScreenWrapper} options={{ headerShown: false }} />
+					<Stack.Screen name="Match" component={MatchScreenWrapper} options={{ headerShown: false }} />
 					{/* Love screens */}
 					<Stack.Screen name="LoveHome" component={LoveHomeScreen} options={{ headerShown: false }} />
 					<Stack.Screen name="LoveSurvey" component={LoveSurveyScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="LoveDashboard" component={LoveDashboardScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="LoveSwipe" component={LoveSwipeScreenWrapper} options={{ headerShown: false }} />
-					<Stack.Screen name="LoveMatch" component={LoveMatchScreenWrapper} options={{ headerShown: false }} />
 					{/* Game screens */}
 					<Stack.Screen name="GameHome" component={GameHomeScreen} options={{ headerShown: false }} />
 					<Stack.Screen name="GameSurvey" component={GameSurveyScreenWrapper} options={{ headerShown: false }} />

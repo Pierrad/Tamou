@@ -26,7 +26,7 @@ const LoveHomeScreen = ({ navigation }) => (
 		/>
 		<Button
 			title="Go to Love match"
-			onPress={() => navigation.navigate('LoveMatch')}
+			onPress={() => navigation.navigate('Match', { category: 'love' /* pass toggles in future */ })}
 		/>
 		<Button
 			title="Go to Edit Love survey"
