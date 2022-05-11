@@ -17,6 +17,7 @@ const colors = {
 	refuse: '#FF2D2D',
 	green: '#7CFC00',
 	validation: '#21CC87',
+	detail: '#555555',
 }
 
 export const darkTheme = {

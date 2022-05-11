@@ -29,6 +29,7 @@ import LoveHomeScreen from '../Love/Home'
 import LoveSurveyScreenWrapper from '../Love/SurveyStepper/wrapper'
 import LoveDashboardScreenWrapper from '../Love/Dashboard/wrapper'
 import LoveSwipeScreenWrapper from '../Love/Swipe/wrapper'
+import LoveDetailProfileWrapper from '../Love/DetailProfil/wrapper'
 
 import GameHomeScreen from '../Game/Home'
 import GameSurveyScreenWrapper from '../Game/SurveyStepper/wrapper'
@@ -87,6 +88,7 @@ const Layout = (props) => {
 					<Stack.Screen name="LoveSurvey" component={LoveSurveyScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="LoveDashboard" component={LoveDashboardScreenWrapper} options={{ headerShown: false }} />
 					<Stack.Screen name="LoveSwipe" component={LoveSwipeScreenWrapper} options={{ headerShown: false }} />
+					<Stack.Screen name="LoveProfile" component={LoveDetailProfileWrapper} options={{ headerShown: false }} />
 					{/* Game screens */}
 					<Stack.Screen name="GameHome" component={GameHomeScreen} options={{ headerShown: false }} />
 					<Stack.Screen name="GameSurvey" component={GameSurveyScreenWrapper} options={{ headerShown: false }} />
