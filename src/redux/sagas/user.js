@@ -11,7 +11,7 @@ import { POST_REGISTER, POST_LOGIN, CHECK_EXISTING_SESSION, SET_USER, POST_REQUE
 import { INCREMENT_STEP, RESET_STEP, SET_ERROR, SET_VALIDATION, START_LOADING, STOP_LOADING } from '../actions/app'
 import { register, login, requestPasswordChange, resetPassword, uploadUserPicture } from '../api/user'
 import * as RootNavigation from '../../navigation/RootNavigation'
-import { translateMessage } from '../../helpers/apiHelpers'
+import { translateMessage } from '../../helpers/api'
 
 
 function* checkExistingSession() {

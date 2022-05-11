@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { validateEmail, validatePassword } from '../../helpers/stringHelpers'
+import { validateEmail, validatePassword } from '../../helpers/string'
 
 import * as SC from './styled'
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
 import { POST_LOGIN } from '../../../redux/actions/user'
-import { validateEmail } from '../../../helpers/stringHelpers'
+import { validateEmail } from '../../../helpers/string'
 
 import LoginScreen from './index'
 

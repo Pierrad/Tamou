@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
-import { isBirthdayIsValid } from '../../../helpers/dateHelpers'
+import { isBirthdayIsValid } from '../../../helpers/date'
 
 import * as SC from './styled'
 

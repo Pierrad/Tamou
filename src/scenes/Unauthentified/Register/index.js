@@ -5,7 +5,7 @@ import Input from '../../../components/Input'
 import ActionButton from '../../../components/ActionButton'
 import Link from '../../../components/Link'
 import DismissKeyboardHOC from '../../../helpers/useDismissKeyboardView'
-import { isBirthdayIsValid } from '../../../helpers/dateHelpers'
+import { isBirthdayIsValid } from '../../../helpers/date'
 
 import * as SC from './styled'
 

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import ResetScreen from './index'
 import { POST_REQUEST_PASSWORD_CHANGE, POST_RESET_PASSWORD } from '../../../redux/actions/user'
-import { validatePassword } from '../../../helpers/stringHelpers'
+import { validatePassword } from '../../../helpers/string'
 import { SET_ERROR } from '../../../redux/actions/app'
 
 const ResetScreenWrapper = (props) => {

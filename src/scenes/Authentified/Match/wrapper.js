@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
-import { categoryIcons } from '../../../helpers/iconHelpers'
+import { categoryIcons } from '../../../helpers/icon'
 
 import MatchScreen from './index'
 

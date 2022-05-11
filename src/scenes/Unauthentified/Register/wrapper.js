@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import RegisterScreen from './index'
 import { POST_REGISTER } from '../../../redux/actions/user'
-import { validateEmail, validatePassword } from '../../../helpers/stringHelpers'
+import { validateEmail, validatePassword } from '../../../helpers/string'
 
 const RegisterScreenWrapper = (props) => {
 	const { navigation, onSubmit, isPending, theme } = props
