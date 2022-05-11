@@ -112,13 +112,12 @@ export const uploadUserPicture = async (payload) => {
 
 export const setGames = async (payload) => {
 	try {
-		console.log(payload)
 		const body = {
 			game: payload.game,
 			mood: payload.mood,
-			...((payload.name === 'WOW' || payload.name === 'FORTNITE') && { level: payload.rank }),
-			...((payload.name === 'LOL' || payload.name === 'VALORANT') && { rank: rankingIntegerTranslation[payload.rank] }),
-			...(payload.name === 'COD' && { ratio: payload.rank }),
+			...((payload.game === 'WOW' || payload.game === 'FORTNITE') && { level: payload.rank }),
+			...((payload.game === 'LOL' || payload.game === 'VALORANT') && { rank: rankingIntegerTranslation[payload.rank] }),
+			...(payload.game === 'COD' && { ratio: payload.rank }),
 		}
 
 		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/setGames`, {
