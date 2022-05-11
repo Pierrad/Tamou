@@ -1,7 +1,6 @@
 import styled from 'styled-components/native'
 import AIcon from 'react-native-vector-icons/AntDesign'
 
-
 export const Container = styled.SafeAreaView`
   flex: 1;
   display: flex;
@@ -14,6 +13,21 @@ export const Title = styled.Text`
   font-size: 45px;
   color: ${(props) => props.theme.pureWhite};
   margin-top: 50px;
+  margin-bottom: 20px;
+`
+
+export const Input = styled.TextInput`
+  font-family: 'Poppins-Bold';
+  font-size: 30px;
+  color: ${(props) => props.theme.pureBlack};
+  border: 1px solid ${(props) => props.theme.veryLightGrey};
+  background-color: ${(props) => props.theme.pureWhite};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 30px;
+  border-radius: 10px;
 `
 
 export const Button = styled.TouchableOpacity`

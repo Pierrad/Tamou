@@ -86,6 +86,20 @@
     "game_search_input_placeholder": "League of legends...",
     "game_swipe_title": "Recherche",
     "game_partner_profile_cta_label": "Messagerie",
-    "edit_survey_header_title": "À propos de moi"
+    "edit_survey_header_title": "À propos de moi",
+    "rank_iron": "Fer",
+    "rank_bronze": "Bronze",
+    "rank_silver": "Argent",
+    "rank_gold": "Or",
+    "rank_platinum": "Platine",
+    "rank_diamond": "Diamant",
+    "rank_master": "Maitre",
+    "rank_challenger": "Challenger",
+    "rank_unranked": "Non classé",
+    "rank_immortal": "Immortel",
+    "rank_radiant": "Radiant",
+    "ratio": "Ratio",
+    "level": "Niveau",
+    "rank_placeholder": "Votre niveau"
   }
 }

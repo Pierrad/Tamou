@@ -1,61 +1,73 @@
-import React, { useState, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import * as SC from './styled'
 
 const SurveyStepperScreen = (props) => {
-	const { navigation, headerData, researchToggles, typeOfNightToggles} = props
+	const {
+		translations,
+		headerData,
+		nextStep,
+		onSubmit,
+		step,
+		gamesToggles,
+		onGamePress,
+		game,
+		typeOfPlayerToggles,
+		onTypeOfPlayerPress,
+		typeOfPlayer,
+		rankingToggles,
+		onRankingPress,
+		ranking,
+		goToDashboard,
+	} = props
 
-	const [step, setStep] = useState(0)
-	const [research, setResearch] = useState('')
-	const [typeOfNight, setTypeOfNight] = useState('')
-
-	const nextStep = useCallback(() => {
-		setStep(step + 1)
-	}, [step])
-
-	
-	const onResearchPress = useCallback((value) => {
-		setResearch(value)
-	}, [])
-
-	const onTypeOfNightPress = useCallback((value) => {
-		setTypeOfNight(value)
-	}, [])
-
-	
-	const submit = useCallback(() => {
-		console.log('submit')
-		navigation.navigate('GameDashboard')
-	}, [navigation])
 
 	const renderStep = useCallback((step) => {
 		switch (step) {
 		case 0:
 			return <SC.ToggleButtonListContainer
-				onArrowPress={research.length ? nextStep : null}
+				onArrowPress={game.length ? nextStep : null}
 				title="Je joue à..."
-				onPress={onResearchPress}
-				values={research}
-				toggles={researchToggles}
+				onPress={onGamePress}
+				values={game}
+				toggles={gamesToggles}
 			/>
 		case 1:
-			return <SC.ToggleButtonListContainer
-				onArrowPress={typeOfNight.length ? nextStep : null}
-				title="Je suis plutôt..."
-				onPress={onTypeOfNightPress}
-				values={typeOfNight}
-				toggles={typeOfNightToggles}
-			/>
-		
+			return !rankingToggles?.text
+				? (
+					<SC.ToggleButtonListContainer
+						onArrowPress={ranking.length ? nextStep : null}
+						title={translations.rankPlaceholder}
+						onPress={onRankingPress}
+						values={ranking}
+						toggles={rankingToggles}
+					/>
+				)
+				: (
+					<SC.Input
+						onArrowPress={ranking.length ? nextStep : null}
+						title={translations.rankPlaceholder}
+						value={ranking}
+						onInputChange={onRankingPress}
+					/>
+				)
 		case 2:
+			return <SC.ToggleButtonListContainer
+				onArrowPress={typeOfPlayer.length ? onSubmit : null}
+				title="Je suis plutôt..."
+				onPress={onTypeOfPlayerPress}
+				values={typeOfPlayer}
+				toggles={typeOfPlayerToggles}
+			/>
+		case 3:
 			return <SC.ValidateSurveyContainer
-				onArrowPress={submit}
+				onArrowPress={goToDashboard}
 			/>
 		default:
 			return null
 		}
-	}, [nextStep, research, onResearchPress, researchToggles, typeOfNight, onTypeOfNightPress, typeOfNightToggles, submit])
+	}, [game, nextStep, onGamePress, gamesToggles, rankingToggles, ranking, translations.rankPlaceholder, onRankingPress, typeOfPlayer, onSubmit, onTypeOfPlayerPress, typeOfPlayerToggles, goToDashboard])
 
 	return (
 		<SC.Container>
@@ -66,9 +78,7 @@ const SurveyStepperScreen = (props) => {
 }
 
 SurveyStepperScreen.propTypes = {
-	navigation: PropTypes.shape({
-		navigate: PropTypes.func.isRequired,
-	}).isRequired,
+	translations: PropTypes.objectOf(PropTypes.string),
 	headerData: PropTypes.shape({
 		onButtonPress: PropTypes.func,
 		color: PropTypes.string,
@@ -76,11 +86,19 @@ SurveyStepperScreen.propTypes = {
 		title: PropTypes.string,
 		onDotPress: PropTypes.func,
 	}),
-	researchToggles: PropTypes.array,
-	typeOfNightToggles: PropTypes.array,
-	holidayToggles: PropTypes.array,
-	smokeToggles: PropTypes.array,
-	movieToggles: PropTypes.array,
+	step: PropTypes.number,
+	gamesToggles: PropTypes.array,
+	onGamePress: PropTypes.func,
+	game: PropTypes.string,
+	typeOfPlayerToggles: PropTypes.array,
+	onTypeOfPlayerPress: PropTypes.func,
+	typeOfPlayer: PropTypes.string,
+	rankingToggles: PropTypes.oneOfType([PropTypes.array,PropTypes.object]),
+	onRankingPress: PropTypes.func,
+	ranking: PropTypes.string,
+	nextStep: PropTypes.func,
+	onSubmit: PropTypes.func,
+	goToDashboard: PropTypes.func,
 }
 
 export default SurveyStepperScreen

@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 import AIcon from 'react-native-vector-icons/AntDesign'
 
@@ -24,15 +25,15 @@ export const Title = styled.Text`
   margin: 30px 20px;
 `
 
-export const Buttons = styled.View`
+export const Buttons = styled.ScrollView`
   flex: 1;
   width: 90%;
-  justify-content: space-evenly;
-  align-items: center;
   margin-bottom: 50px;
 `
 
-export const ToggleButton = styled(ToggleButtonC)``
+export const ToggleButton = styled(ToggleButtonC)`
+  margin-bottom: 20px;
+`
 
 export const Button = styled.TouchableOpacity`
   display: flex;
@@ -42,8 +43,15 @@ export const Button = styled.TouchableOpacity`
   background-color: ${(props) => props.theme.pureWhite};
   padding: 10px;
   position: absolute;
-  top: 92%;
-  right: 6%;
+  top: 90%;
+  right: 10%;
 `
 
 export const Icon = styled(AIcon)``
+
+export const styles = StyleSheet.create({
+	buttons: {
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+})

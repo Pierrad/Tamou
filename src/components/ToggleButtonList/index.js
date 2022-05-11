@@ -10,7 +10,9 @@ const ToggleButtonList = (props) => {
 			<SC.TitleWrapper>
 				<SC.Title>{title}</SC.Title>
 			</SC.TitleWrapper>
-			<SC.Buttons>
+			<SC.Buttons
+				contentContainerStyle={SC.styles.buttons}
+			>
 				{toggles.map((toggle, index) => (
 					<SC.ToggleButton
 						key={index}

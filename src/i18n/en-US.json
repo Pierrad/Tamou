@@ -83,6 +83,20 @@
     "game_search_input_placeholder": "League of legends...",
     "game_swipe_title": "Search",
     "game_partner_profile_cta_label": "Chat",
-    "edit_survey_header_title": "About me"
+    "edit_survey_header_title": "About me",
+    "rank_iron": "Iron",
+    "rank_bronze": "Bronze",
+    "rank_silver": "Silver",
+    "rank_gold": "Gold",
+    "rank_platinum": "Platinum",
+    "rank_diamond": "Diamond",
+    "rank_master": "Master",
+    "rank_challenger": "Challenger",
+    "rank_unranked": "Unranked",
+    "rank_immortal": "Immortal",
+    "rank_radiant": "Radiant",
+    "ratio": "Ratio",
+    "level": "Level",
+    "rank_placeholder": "Your level"
   }
 }
