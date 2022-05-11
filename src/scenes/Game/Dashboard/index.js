@@ -5,28 +5,7 @@ import ConnectedHeader from '../../../components/ConnecterHeader'
 import * as SC from './styled'
 
 const GameDashboardScreen = (props) => {
-	const { theme, translations, headerData, navigation } = props
-
-
-	const cards = [
-		{
-			image: 'https://www.pedagojeux.fr/wp-content/uploads/2019/11/1280x720_LoL.jpg',
-			onPress: () => navigation.navigate('GamePartner'),
-		},
-		{
-			image: 'https://seeklogo.com/images/V/valorant-logo-FAB2CA0E55-seeklogo.com.png',
-			onPress: () => navigation.navigate('GamePartner'),
-		},
-		{
-			image: 'https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_Minecraft.jpg',
-			onPress: () => navigation.navigate('GamePartner'),
-		},
-		{
-			image: 'https://cdn2.unrealengine.com/7up-v2-3840x2160-e11fc91a84d6.jpg',
-			onPress: () => navigation.navigate('GamePartner'),
-		},
-		
-	]
+	const { theme, translations, headerData, navigation, cards } = props
 
 	const renderMatchCard = ({ item }) => (
 		<SC.MatchCard
@@ -65,6 +44,11 @@ GameDashboardScreen.propTypes = {
 		navigate: PropTypes.func.isRequired,
 		goBack: PropTypes.func.isRequired,
 	}).isRequired,
+	cards: PropTypes.arrayOf(PropTypes.shape({
+		game: PropTypes.string,
+		image: PropTypes.string,
+		onPress: PropTypes.func,
+	})),
 }
 
 export default GameDashboardScreen

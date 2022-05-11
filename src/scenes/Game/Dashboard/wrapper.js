@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
+import { imageTranslation } from '../../../helpers/game'
+
 import GameDashboardScreen from './index'
 
 const GameDashboardScreenWrapper = (props) => {
-	const { theme, navigation } = props
+	const { theme, navigation, user } = props
 	const { t } = useTranslation()
 
 	const translations = {
@@ -14,6 +16,15 @@ const GameDashboardScreenWrapper = (props) => {
 		subtitle: t('game_dashboard_subtitle'),
 		cta: t('game_dashboard_cta_swipe'),
 	}
+
+	const gamesCard = user.gameSection.games.map((game) => {
+		return {
+			game: game.game,
+			image: imageTranslation[game.game],
+			onPress: () => navigation.navigate('GamePartner', { game: game.game }),
+		}
+	})
+
 
 	const headerData = useMemo(() => ({
 		onButtonPress: () => navigation.navigate('Dashboard'),
@@ -29,6 +40,7 @@ const GameDashboardScreenWrapper = (props) => {
 			headerData={headerData}
 			translations={translations}
 			navigation={navigation}
+			cards={gamesCard}
 		/>
 	)
 }
@@ -39,10 +51,12 @@ GameDashboardScreenWrapper.propTypes = {
 		navigate: PropTypes.func.isRequired,
 		goBack: PropTypes.func.isRequired,
 	}).isRequired,
+	user: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
 	theme: state.themeReducer.theme,
+	user: state.userReducer.user,
 })
 
 const mapDispatchToProps = () => ({
