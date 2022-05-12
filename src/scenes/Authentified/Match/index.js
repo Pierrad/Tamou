@@ -6,7 +6,7 @@ import * as SC from './styled'
 
 
 const MatchScreen = (props) => {
-	const { theme, translations, onButtonPress, user1, user2, color, icon } = props
+	const { theme, translations, onButtonPress, user, match, color, icon } = props
 	
 	return (
 		<SC.Container color={color}>
@@ -25,13 +25,13 @@ const MatchScreen = (props) => {
 				</SC.Subtitle>
 			</SC.TextContainer>
 			<SC.MatchContainer>
-				<SC.Image1 source={{uri: user1}} alt="PictureUser" />
+				<SC.Image1 source={{uri: user.avatar}} alt="PictureUser" />
 				<SC.LikeButton
 					underlayColor='#fff'
 				>
 					<SC.Icon name={icon} size={30} color="#FFF" />
 				</SC.LikeButton>
-				<SC.Image2 source={{uri: user2}} alt="PictureCurrentUser" />
+				<SC.Image2 source={{uri: match.image}} alt="PictureCurrentUser" />
 			</SC.MatchContainer>
 			<SC.ButtonContainer>
 				<SC.Button
@@ -63,8 +63,8 @@ MatchScreen.propTypes = {
 	onButtonPress: PropTypes.func,
 	headerData: PropTypes.shape(ConnectedHeader.propTypes),
 	textColor: PropTypes.string,
-	user1: PropTypes.string,
-	user2: PropTypes.string,
+	user: PropTypes.object,
+	match: PropTypes.object,
 }
 
 export default MatchScreen

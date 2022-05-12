@@ -7,9 +7,9 @@ import * as Keychain from 'react-native-keychain'
 import { Platform } from 'react-native'
 import { API_URL_ANDROID, APP_ENV } from '@env'
 
-import { POST_REGISTER, POST_LOGIN, CHECK_EXISTING_SESSION, SET_USER, POST_REQUEST_PASSWORD_CHANGE, POST_RESET_PASSWORD, POST_NEW_PROFIL_PICTURE, POST_INITIAL_GAME } from '../actions/user'
+import { POST_REGISTER, POST_LOGIN, CHECK_EXISTING_SESSION, SET_USER, POST_REQUEST_PASSWORD_CHANGE, POST_RESET_PASSWORD, POST_NEW_PROFIL_PICTURE } from '../actions/user'
 import { INCREMENT_STEP, RESET_STEP, SET_ERROR, SET_VALIDATION, START_LOADING, STOP_LOADING } from '../actions/app'
-import { register, login, requestPasswordChange, resetPassword, uploadUserPicture, setGames } from '../api/user'
+import { register, login, requestPasswordChange, resetPassword, uploadUserPicture } from '../api/user'
 import * as RootNavigation from '../../navigation/RootNavigation'
 import { translateMessage } from '../../helpers/api'
 
@@ -120,23 +120,6 @@ function* uploadProfilePicture({ payload }) {
 	}
 }
 
-function* postInitialGame({ payload }) {
-	yield put({ type: START_LOADING })
-
-	const authResponse = yield call(setGames, payload)
-
-	console.log(authResponse)
-
-	if (authResponse.success === true) {
-		yield put({ type: STOP_LOADING })
-		yield put({ type: SET_VALIDATION, payload: translateMessage(authResponse.data.message) })
-	} else if (authResponse && authResponse.success === false) {
-		yield put({ type: STOP_LOADING })
-		yield put({ type: SET_ERROR, payload: translateMessage(authResponse.data.message) })
-	}
-}
-
-
 
 export default function* userSagas() {
 	yield takeLeading(POST_REGISTER, registration)
@@ -145,5 +128,4 @@ export default function* userSagas() {
 	yield takeLeading(POST_REQUEST_PASSWORD_CHANGE, requestPasswordCode)
 	yield takeLeading(POST_RESET_PASSWORD, resetPasswordSaga)
 	yield takeLeading(POST_NEW_PROFIL_PICTURE, uploadProfilePicture)
-	yield takeLeading(POST_INITIAL_GAME, postInitialGame)
 }

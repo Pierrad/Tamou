@@ -7,3 +7,8 @@ export const validateEmail = (email) => {
 }
 
 export const validatePassword = (password) => String(password).match(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,30}$/)
+
+
+export const capitalizeFirstLetter = (string) => {
+	return string.charAt(0).toUpperCase() + string.slice(1)
+}

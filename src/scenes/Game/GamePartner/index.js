@@ -7,7 +7,7 @@ import PlayerCard from '../../../components/PlayerCard'
 import * as SC from './styled'
 
 const GamePartner = props => {
-	const { theme, translations, headerData, partners, onSearchPress, isSearchMode, onSearchInput, searchValue } = props
+	const { theme, translations, headerData, partners, onSearchPress, isSearchMode, onSearchInput, searchValue, goToMatch } = props
 
 	return (
 		<SC.Container>
@@ -50,7 +50,7 @@ const GamePartner = props => {
 			</SC.Partners>
 			<SC.Button
 				title={translations.cta}
-				onPress={() => {}}
+				onPress={goToMatch}
 				underlayColor={theme.game}
 				textColor={theme.pureWhite}
 				style={SC.styles.button}
@@ -68,6 +68,7 @@ GamePartner.propTypes = {
 	isSearchMode: PropTypes.bool,
 	onSearchInput: PropTypes.func,
 	searchValue: PropTypes.string,
+	goToMatch: PropTypes.func,
 }
 
 export default GamePartner

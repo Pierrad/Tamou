@@ -1,15 +1,15 @@
-// combineReducers come from redux that used for combining reducers that we just made.
 import { combineReducers } from 'redux'
 
-// Reducers
 import themeReducer from './theme'
 import userReducer from './user'
 import appReducer from './app'
+import gameReducer from './game'
 
 const createRootReducer = combineReducers({
 	themeReducer,
 	userReducer,
 	appReducer,
+	gameReducer,
 })
 
 export default createRootReducer

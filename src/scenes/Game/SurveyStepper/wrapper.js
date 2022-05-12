@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import SurveyStepperScreen from './index'
 import { games, typeOfPlayer, ranking } from './config'
-import { POST_INITIAL_GAME } from '../../../redux/actions/user'
+import { POST_INITIAL_GAME } from '../../../redux/actions/game'
 
 const SurveyStepperScreenWrapper = (props) => {
 	const { theme, navigation, onSubmit, user } = props 

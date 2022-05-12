@@ -17,7 +17,7 @@ const SWIPE_OUT_DURATION = 250
 
 
 const SwipeGameCard = (props) => {
-	const { style, image, title, subtitle, onLike, onDislike, game } = props
+	const { style, image, username, subtitle, onLike, onDislike, game } = props
 	const { t } = useTranslation()
 
 	const [isRight, setIsRight] = useState(false)
@@ -108,7 +108,7 @@ const SwipeGameCard = (props) => {
 					source={{
 						uri: image,
 					}} />
-				<SC.Title>{title}</SC.Title>
+				<SC.Title>{username}</SC.Title>
 				<SC.Subtitle>{subtitle}</SC.Subtitle>
 				{isRight && (
 					<SC.Like>
@@ -129,10 +129,11 @@ SwipeGameCard.propTypes = {
 	style: PropTypes.array,
 	image: PropTypes.string,
 	game: PropTypes.string,
-	title: PropTypes.string,
+	username: PropTypes.string,
 	subtitle: PropTypes.string,
 	onLike: PropTypes.func,
 	onDislike: PropTypes.func,
+	publicID: PropTypes.string,
 }
 
 

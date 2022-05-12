@@ -8,8 +8,6 @@ import SwipeGameCard from '../../../components/SwipeGameCard'
 const GameSwipe = (props) => {
 	const { headerData, toggles, selectedToggles, card, onLike, onDislike } = props
 
-
-
 	return (
 		<SC.Container>
 			<SC.Header {...headerData} />
@@ -24,18 +22,21 @@ const GameSwipe = (props) => {
 					/>
 				))}
 			</SC.Toggles>
-			<SC.Card 
+			<SC.Card
 				{...card}
+				key={card}
+				onLike={onLike}
+				onDislike={onDislike}
 			/>
 			<SC.Buttons>
 				<SC.DislikeButton
-					onPress={onDislike}
+					onPress={onLike}
 					underlayColor='#fff'
 				>
 					<SC.Icon name="close" size={30} color="#FFF" />
 				</SC.DislikeButton>
 				<SC.LikeButton
-					onPress={onLike}
+					onPress={onDislike}
 					underlayColor='#fff'
 				>
 					<SC.Icon2 name="game-controller" size={30} color="#FFF" />

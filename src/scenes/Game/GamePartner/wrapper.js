@@ -6,7 +6,8 @@ import { useTranslation } from 'react-i18next'
 import GamePartner from './index'
 
 const GamePartnerWrapper = (props) => {
-	const { theme, navigation } = props
+	const { theme, navigation, route } = props
+	const { game } = route.params
 	const { t } = useTranslation()
 	const [partners, setPartners] = useState([])
 	const [searchMode, setSearchMode] = useState(false)
@@ -63,6 +64,10 @@ const GamePartnerWrapper = (props) => {
 		setPartners(matches)
 	}
 
+	const goToMatch = () => {
+		navigation.navigate('GameSwipe', { game })
+	}
+
 	return (
 		<GamePartner
 			theme={theme}
@@ -73,6 +78,7 @@ const GamePartnerWrapper = (props) => {
 			isSearchMode={searchMode}
 			onSearchInput={onSearchInput}
 			searchValue={search}
+			goToMatch={goToMatch}
 		/>
 	)
 }
@@ -83,6 +89,7 @@ GamePartnerWrapper.propTypes = {
 		navigate: PropTypes.func.isRequired,
 		goBack: PropTypes.func.isRequired,
 	}).isRequired,
+	route: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({

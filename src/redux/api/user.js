@@ -1,7 +1,6 @@
 import { Platform } from 'react-native'
 import { API_URL, API_URL_ANDROID } from '@env'
 const FormData = global.FormData
-import { rankingIntegerTranslation } from '../../helpers/game'
 
 export const register = async (payload) => {
 	try {
@@ -110,24 +109,15 @@ export const uploadUserPicture = async (payload) => {
 	}
 }
 
-export const setGames = async (payload) => {
+export const getPublicProfile = async (payload) => {
 	try {
-		const body = {
-			game: payload.game,
-			mood: payload.mood,
-			...((payload.game === 'WOW' || payload.game === 'FORTNITE') && { level: payload.rank }),
-			...((payload.game === 'LOL' || payload.game === 'VALORANT') && { rank: rankingIntegerTranslation[payload.rank] }),
-			...(payload.game === 'COD' && { ratio: payload.rank }),
-		}
-
-		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/setGames`, {
-			method: 'POST',
+		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/public/${payload.id}`, {
+			method: 'GET',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
 				'Authorization': payload.token,
 			},
-			body: JSON.stringify(body)
 		})
 
 		const json = await res.json()

@@ -53,3 +53,21 @@ export const imageTranslation = {
 	'WOW': 'https://image.jeuxvideo.com/images/pc/w/o/wowapc0f.jpg',
 	'COD': 'https://xboxplay.games/uploadStream/16994.jpg',
 }
+
+export const gameToId = {
+	'LOL': 0,
+	'VALORANT': 1,
+	'MINECRAFT': 2,
+	'FORTNITE': 3,
+	'WOW': 4,
+	'COD': 5,
+}
+
+export const IdToGame = {
+	0: 'LOL',
+	1: 'VALORANT',
+	2: 'MINECRAFT',
+	3: 'FORTNITE',
+	4: 'WOW',
+	5: 'COD',
+}

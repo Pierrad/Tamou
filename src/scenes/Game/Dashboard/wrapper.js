@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
@@ -6,10 +6,15 @@ import { useTranslation } from 'react-i18next'
 import { imageTranslation } from '../../../helpers/game'
 
 import GameDashboardScreen from './index'
+import { CHECK_EXISTING_SESSION } from '../../../redux/actions/user'
 
 const GameDashboardScreenWrapper = (props) => {
-	const { theme, navigation, user } = props
+	const { theme, navigation, user, reloadUser } = props
 	const { t } = useTranslation()
+
+	useEffect(() => {
+		reloadUser()
+	}, [reloadUser])
 
 	const translations = {
 		title: t('game_dashboard_title'),
@@ -52,6 +57,7 @@ GameDashboardScreenWrapper.propTypes = {
 		goBack: PropTypes.func.isRequired,
 	}).isRequired,
 	user: PropTypes.object,
+	reloadUser: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
@@ -59,7 +65,8 @@ const mapStateToProps = (state) => ({
 	user: state.userReducer.user,
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
+	reloadUser: () => dispatch({ type: CHECK_EXISTING_SESSION }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameDashboardScreenWrapper)
