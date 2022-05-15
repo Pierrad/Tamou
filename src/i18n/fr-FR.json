@@ -102,6 +102,11 @@
     "ratio": "Ratio",
     "level": "Niveau",
     "rank_placeholder": "Votre niveau",
-    "game_swipe_no_more_match": "Revenez un peu plus tard pour découvrir de nouveaux profils"
+    "game_swipe_no_more_match": "Revenez un peu plus tard pour découvrir de nouveaux profils",
+    "settings_screen_language": "Langue de l'application",
+    "settings_screen_language_french": "Français",
+    "settings_screen_language_english": "Anglais",
+    "settings_screen_delete_cta": "Supprimer mon compte",
+    "settings_screen_delete_confirmation": "Êtes-vous sûr de vouloir supprimer votre compte ?"
   }
 }

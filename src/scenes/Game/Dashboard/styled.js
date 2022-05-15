@@ -1,7 +1,7 @@
 import styled from 'styled-components/native'
-import ConnectedHeader from '../../../components/ConnecterHeader'
 import { StyleSheet } from 'react-native'
  
+import ConnectedHeader from '../../../components/ConnecterHeader'
 import HomeCard from '../../../components/HomeCard'
 import ActionButton from '../../../components/ActionButton'
 
