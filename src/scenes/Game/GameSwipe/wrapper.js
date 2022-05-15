@@ -10,7 +10,7 @@ import GameSwipe from './index'
 
 const GameSwipeWrapper = (props) => {
 	const { theme, navigation, route, potentialMatch, getProfileFromID, onSwipe, error } = props
-	const { game } = route.params
+	const game = route.params?.game ?? ''
 	const { t } = useTranslation()
 	const [selected, isSelected] = useState([gameToId[game]])
 
@@ -111,24 +111,21 @@ const GameSwipeWrapper = (props) => {
 		navigation.navigate('GamePartnerProfile', { user: potentialMatch, game })
 	}, [game, navigation, potentialMatch])
 
-	if (potentialMatch) {
-		return (
-			<GameSwipe 
-				key={potentialMatch}
-				translations={translations}
-				headerData={headerData}
-				toggles={gamesToggles}
-				selectedToggles={selected}
-				card={potentialMatch}
-				onLike={onLike}
-				onDislike={onDislike}
-				onProfile={onProfile}
-				hasError={error}
-			/>
-		)
-	}
+	return (
+		<GameSwipe 
+			key={potentialMatch}
+			translations={translations}
+			headerData={headerData}
+			toggles={gamesToggles}
+			selectedToggles={selected}
+			card={potentialMatch}
+			onLike={onLike}
+			onDislike={onDislike}
+			onProfile={onProfile}
+			hasError={error}
+		/>
+	)
 
-	return null
 }
 
 GameSwipeWrapper.propTypes = {

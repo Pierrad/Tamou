@@ -73,7 +73,8 @@ export const MatchContainer = styled.SafeAreaView`
   display: flex;
   flex-direction: row;
   align-items: center;
-  left:45px;
+  width: 100%;
+  justify-content: center;
 `
 
 export const Image1 = styled.Image`
