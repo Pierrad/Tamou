@@ -21,28 +21,8 @@ const GameHomeScreen = ({ navigation }) => (
 			onPress={() => navigation.navigate('GameDashboard')}
 		/>
 		<Button
-			title="Go to Game Partner"
-			onPress={() => navigation.navigate('GamePartner')}
-		/>
-		<Button
-			title="Go to Game Search"
-			onPress={() => navigation.navigate('GameSearch')}
-		/>
-		<Button
-			title="Go to Game Swipe"
-			onPress={() => navigation.navigate('GameSwipe')}
-		/>
-		<Button
-			title={'Go to Game Partner Profile'}
-			onPress={() => navigation.navigate('GamePartnerProfile')}
-		/>
-		<Button
 			title="Go to Edit Game survey"
 			onPress={() => navigation.navigate('EditSurvey', { category: 'game' /* pass toggles in future */ })}
-		/>
-		<Button
-			title="Go to Game Match"
-			onPress={() => navigation.navigate('Match', { category: 'game' /* pass toggles in future */ })}
 		/>
 	</SC.Container>
 )

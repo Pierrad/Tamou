@@ -10,3 +10,7 @@ export const isBirthdayIsValid = (birthday) => {
 	}
 	return true
 }
+
+export const getAgeFromTimestamp = (timestamp) => {
+	return parseInt(((new Date()).getTime() - timestamp) / (1000 * 60 * 60 * 24 * 365))
+}

@@ -6,45 +6,49 @@ export const Container = styled.SafeAreaView`
 	justify-content: center;
 	align-items: center;
 `
-export const GameName = styled.Text`
-	font-family: 'Poppins-Bold';
-	font-size: 26px;
-	color: ${props => props.theme.game};
-  position: absolute;
-	top: 13%;
-	left: 50%;
-  transform: translate(-115px, 0px);
-`
-
-export const Touchable = styled.TouchableOpacity`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-`
 
 export const Image = styled.Image`
   width: 150px;
   height: 150px;
+	margin-bottom: 150px;
+`
+
+export const Profil = styled.View`
+	position: absolute;
+	bottom: 10%;
+	left: 9%;
 `
 
 export const Title = styled.Text`
-	position: absolute;
-	bottom: 10%;
-	left: 8%;
 	font-family: 'Poppins-Bold';
 	font-size: 20px;
 	color: ${props => props.theme.pureBlack};
 `
 
 export const Subtitle = styled.Text`
-	position: absolute;
-	bottom: 4%;
-	left: 9%;
 	font-family: 'Poppins-Regular';
 	font-size: 16px;
 	color: ${props => props.theme.pureBlack};
+`
+
+export const Game = styled.View`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+`
+
+export const Label = styled.Text`
+  font-family: "Poppins-Medium";
+  font-size: 18px;
+  color: ${props => props.theme.backgroundInverted};
+	text-transform: uppercase;
+	margin-right: 5px;
+`
+
+export const Value = styled.Text`
+  font-family: "Poppins-Medium";
+  font-size: 16px;
+  color: ${props => props.theme.game};
 `
 
 export const Like = styled.View`

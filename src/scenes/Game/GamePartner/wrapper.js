@@ -3,11 +3,13 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
+import { gameTranslation } from '../../../helpers/game'
+
 import GamePartner from './index'
 
 const GamePartnerWrapper = (props) => {
 	const { theme, navigation, route } = props
-	const { game } = route.params
+	const game = route.params?.game ?? ''
 	const { t } = useTranslation()
 	const [partners, setPartners] = useState([])
 	const [searchMode, setSearchMode] = useState(false)
@@ -21,11 +23,11 @@ const GamePartnerWrapper = (props) => {
 
 	const headerData = useMemo(() => ({
 		onButtonPress: () => navigation.navigate('GameDashboard'),
-		title: 'League of Legends',
+		title: gameTranslation[game],
 		leftIconName: 'chevron-left',
 		onParametersPress: () => {console.log('')},
 		theme: theme
-	}), [navigation, theme])
+	}), [game, navigation, theme])
 
 	const initialPartners = useMemo(()  => [
 		{

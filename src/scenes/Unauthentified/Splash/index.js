@@ -15,7 +15,6 @@ const SplashScreenWrapper = (props) => {
 		setScroll(s => s + 1)
 		
 	}
-	console.log(scroll)
 	
 	let scrollArrow
 	

@@ -26,6 +26,7 @@ const DashboardScreenWrapper = (props) => {
 			theme={theme}
 			translations={translations}
 			avatar={user.avatar}
+			hasGameSection={user.gameSection.games.length > 0}
 		/>
 	)
 }
@@ -39,6 +40,9 @@ DashboardScreenWrapper.propTypes = {
 	user: PropTypes.shape({
 		username: PropTypes.string.isRequired,
 		avatar: PropTypes.string.isRequired,
+		gameSection: PropTypes.shape({
+			games: PropTypes.array,
+		}),
 	}),
 }
 

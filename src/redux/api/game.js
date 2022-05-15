@@ -44,6 +44,8 @@ export const getMatches = async (payload) => {
 				games: payload.games,
 			})
 		})
+
+
 		
 		const json = await res.json()
 		return json
@@ -54,8 +56,6 @@ export const getMatches = async (payload) => {
 
 export const sendSwipe = async (payload) => {
 	try {
-		console.log('userID API', payload.userId)
-
 		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/swipe`, {
 			method: 'POST',
 			headers: {

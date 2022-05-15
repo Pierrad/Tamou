@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
 import { rankingStringTranslation, gameTranslation } from '../../../helpers/game'
+import { getAgeFromTimestamp } from '../../../helpers/date'
 import { POST_SWIPE } from '../../../redux/actions/game'
 
 import PartnerProfile from './index'
@@ -36,7 +37,7 @@ const PartnerProfileWrapper = (props) => {
 		goBack()
 	}
 
-	const age = parseInt(((new Date()).getTime() - user.birthday) / (1000 * 60 * 60 * 24 * 365))
+	const age = getAgeFromTimestamp(user.birthday)
 
 	const profile = {
 		name: `${user.username}, ${age} ans`,

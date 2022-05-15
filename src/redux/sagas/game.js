@@ -54,7 +54,7 @@ function* fetchPublicProfile({ payload }) {
 	let currentGameMatchesIndex = yield select(gameSelectors.matchesIndex)
 	const user = yield select(userSelectors.user)
 
-	if (matches === null || currentGameMatchesIndex === matches.length - 1) {
+	if (matches === null || currentGameMatchesIndex === matches.length - 1 || matches.length === 0) {
 		const res = yield call(getMatches, { ...payload, token: user.token.token })
 		if (res.success === true) {
 			matches = res.data.potentialMatch

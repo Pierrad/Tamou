@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { gameToId, IdToGame } from '../../../helpers/game'
 import { GET_PUBLIC_PROFILE, POST_SWIPE } from '../../../redux/actions/game'
 
+import { togglesConfig } from './config'
 import GameSwipe from './index'
 
 const GameSwipeWrapper = (props) => {
@@ -46,54 +47,12 @@ const GameSwipeWrapper = (props) => {
 		isSelected(newSelected)
 	}, [selected])
 
-	const gamesToggles = useMemo(() => [
-		{
-			id: 0,
-			text: 'League of Legends',
-			backgroundSelectedColor: theme.game,
-			onPress: () => onSelectGame(0),
-			borderColor: theme.game,
-		},
-		{
-			id: 1,
-			text: 'Valorant',
-			backgroundSelectedColor: theme.game,
-			onPress: () => onSelectGame(1),
-			borderColor: theme.game,
-		},
-		{
-			id: 2,
-			text: 'Minecraft',
-			backgroundSelectedColor: theme.game,
-			onPress: () => onSelectGame(2),
-			borderColor: theme.game,
-		},
-		{
-			id: 3,
-			text: 'Fortnite',
-			backgroundSelectedColor: theme.game,
-			onPress: () => onSelectGame(3),
-			borderColor: theme.game,
-		},
-		{
-			id: 4,
-			text: 'WoW',
-			backgroundSelectedColor: theme.game,
-			onPress: () => onSelectGame(4),
-			borderColor: theme.game,
-		},
-		{
-			id: 5,
-			text: 'Call of Duty',
-			backgroundSelectedColor: theme.game,
-			onPress: () => onSelectGame(5),
-			borderColor: theme.game,
-		},
-	], [onSelectGame, theme.game])
+	const toggles = useMemo(() => {
+		return togglesConfig(theme, onSelectGame)
+	}, [theme, onSelectGame])
 
 	const onLike = useCallback(() => {
 		getCurrentProfile()
-		console.log('like')
 		onSwipe({
 			like: true,
 		})
@@ -101,7 +60,6 @@ const GameSwipeWrapper = (props) => {
 
 	const onDislike = useCallback(() => {
 		getCurrentProfile()
-		console.log('dislike')
 		onSwipe({
 			like: false,
 		})
@@ -116,7 +74,7 @@ const GameSwipeWrapper = (props) => {
 			key={potentialMatch}
 			translations={translations}
 			headerData={headerData}
-			toggles={gamesToggles}
+			toggles={toggles}
 			selectedToggles={selected}
 			card={potentialMatch}
 			onLike={onLike}
@@ -125,7 +83,6 @@ const GameSwipeWrapper = (props) => {
 			hasError={error}
 		/>
 	)
-
 }
 
 GameSwipeWrapper.propTypes = {

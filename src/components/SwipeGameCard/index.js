@@ -9,7 +9,10 @@ import {
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 
+import { getAgeFromTimestamp } from '../../helpers/date'
+
 import * as SC from './styled'
+import { gameTranslation, rankingStringTranslation } from '../../helpers/game'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 const SCREEN_HEIGHT = Dimensions.get('window').height
@@ -19,12 +22,20 @@ const SWIPE_OUT_DURATION = 250
 
 
 const SwipeGameCard = (props) => {
-	const { style, image, username, subtitle, onLike, onDislike, onProfile, game } = props
+	const { style, image, username, subtitle, onLike, onDislike, onProfile } = props
 	const { t } = useTranslation()
 
 	const [isRight, setIsRight] = useState(false)
 	const [isLeft, setIsLeft] = useState(false)
 	const [isBottom, setIsBottom] = useState(false)
+
+	const age = getAgeFromTimestamp(props.birthday)
+
+	const games = props?.gameSection?.games?.map((game) => ({
+		name: gameTranslation[game.game],
+		level: game.level || game.ratio || t(rankingStringTranslation[game.rank]),
+	}))
+
 
 	const position = useRef(new Animated.ValueXY()).current
 	const panResponder = React.useRef(
@@ -111,6 +122,13 @@ const SwipeGameCard = (props) => {
 		setIsBottom(false)
 	}
 
+	const renderGames = games ? games?.map((game, i) => (
+		<SC.Game key={i}>
+			<SC.Label>{game.name}</SC.Label>
+			<SC.Value>{game.level}</SC.Value>
+		</SC.Game>
+	)) : null
+
 	return (
 		<SC.Container style={style ? style[0] : {}}>
 			<Animated.View
@@ -120,13 +138,16 @@ const SwipeGameCard = (props) => {
 				]}
 				{...panResponder.panHandlers}
 			>
-				<SC.GameName>{game}</SC.GameName>
 				<SC.Image
 					source={{
 						uri: image,
 					}} />
-				<SC.Title>{username}</SC.Title>
-				<SC.Subtitle>{subtitle}</SC.Subtitle>
+
+				<SC.Profil>
+					<SC.Title>{`${username}, ${age} ans`}</SC.Title>
+					<SC.Subtitle>{subtitle}</SC.Subtitle>
+					{renderGames}
+				</SC.Profil>
 				{isRight && (
 					<SC.Like>
 						<SC.Text>{t('love_swipe_screen_like')}</SC.Text>
@@ -150,13 +171,14 @@ const SwipeGameCard = (props) => {
 SwipeGameCard.propTypes = {
 	style: PropTypes.array,
 	image: PropTypes.string,
-	game: PropTypes.string,
 	username: PropTypes.string,
 	subtitle: PropTypes.string,
 	onLike: PropTypes.func,
 	onDislike: PropTypes.func,
 	onProfile: PropTypes.func,
 	publicID: PropTypes.string,
+	birthday: PropTypes.number,
+	gameSection: PropTypes.object,
 }
 
 
