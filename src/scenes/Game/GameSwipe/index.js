@@ -6,7 +6,8 @@ import ToggleRectButton from '../../../components/ToggleRectButton'
 import SwipeGameCard from '../../../components/SwipeGameCard'
 
 const GameSwipe = (props) => {
-	const { headerData, toggles, selectedToggles, card, onLike, onDislike } = props
+	const { translations, headerData, toggles, selectedToggles, card, onLike, onDislike, onProfile, hasError } = props
+	
 
 	return (
 		<SC.Container>
@@ -22,31 +23,44 @@ const GameSwipe = (props) => {
 					/>
 				))}
 			</SC.Toggles>
-			<SC.Card
-				{...card}
-				key={card}
-				onLike={onLike}
-				onDislike={onDislike}
-			/>
-			<SC.Buttons>
-				<SC.DislikeButton
-					onPress={onLike}
-					underlayColor='#fff'
-				>
-					<SC.Icon name="close" size={30} color="#FFF" />
-				</SC.DislikeButton>
-				<SC.LikeButton
-					onPress={onDislike}
-					underlayColor='#fff'
-				>
-					<SC.Icon2 name="game-controller" size={30} color="#FFF" />
-				</SC.LikeButton>
-			</SC.Buttons>
+			{hasError ? (
+				<SC.Error>
+					<SC.ErrorText>
+						{translations.error}
+					</SC.ErrorText>
+				</SC.Error>
+			) : (
+				<>
+					<SC.Card
+						{...card}
+						key={card}
+						onLike={onLike}
+						onDislike={onDislike}
+						onProfile={onProfile}
+					/>
+					<SC.Buttons>
+						<SC.DislikeButton
+							onPress={onLike}
+							underlayColor='#fff'
+						>
+							<SC.Icon name="close" size={30} color="#FFF" />
+						</SC.DislikeButton>
+						<SC.LikeButton
+							onPress={onDislike}
+							underlayColor='#fff'
+						>
+							<SC.Icon2 name="game-controller" size={30} color="#FFF" />
+						</SC.LikeButton>
+					</SC.Buttons>
+				</>
+			)}
+
 		</SC.Container>
 	)
 }
 
 GameSwipe.propTypes = {
+	translations: PropTypes.object,
 	headerData: PropTypes.shape({
 		onButtonPress: PropTypes.func,
 		color: PropTypes.string,
@@ -59,6 +73,8 @@ GameSwipe.propTypes = {
 	card: PropTypes.shape(SwipeGameCard.propTypes),
 	onLike: PropTypes.func,
 	onDislike: PropTypes.func,
+	onProfile: PropTypes.func,
+	hasError: PropTypes.bool,
 }
 
 export default GameSwipe

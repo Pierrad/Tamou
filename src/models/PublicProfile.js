@@ -1,5 +1,6 @@
 export const User = (props) => {
 	return {
+		...props,
 		firstname: props.firstname,
 		lastname: props.lastname,
 		username: props.username,

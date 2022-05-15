@@ -68,6 +68,7 @@
     "love_swipe_title": "Swipe",
     "love_swipe_screen_like": "Like",
     "love_swipe_screen_dislike": "Dislike",
+    "love_swipe_screen_profile": "Profile",
     "love_match_title": "Talk to him",
     "game_dashboard_title": "Online game",
     "game_dashboard_subtitle": "Your games",
@@ -97,6 +98,7 @@
     "rank_radiant": "Radiant",
     "ratio": "Ratio",
     "level": "Level",
-    "rank_placeholder": "Your level"
+    "rank_placeholder": "Your level",
+    "game_swipe_no_more_match": "Come back a little later to find more matches!"
   }
 }

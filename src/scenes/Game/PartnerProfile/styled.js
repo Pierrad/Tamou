@@ -88,11 +88,17 @@ export const Title = styled.Text`
   color: ${props => props.theme.backgroundInverted};
 `
 
-export const Other = styled.View`
+export const Game = styled.View`
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+
+`
+
+export const Field = styled.View`
 	display: flex;
 	flex-direction: row;
-	margin-top: 20px;
-	align-items: center;
+  align-items: center;
 `
 
 export const Label = styled.Text`
@@ -107,7 +113,13 @@ export const Value = styled.Text`
   font-family: "Poppins-Medium";
   font-size: 16px;
   color: ${props => props.theme.game};
+`
 
+export const Divider = styled.View`
+  width: 100%;
+  height: 1px;
+  background-color: ${props => props.theme.backgroundInverted};
+  margin: 10px 0px;
 `
 
 export const Button = styled(ActionButton)`

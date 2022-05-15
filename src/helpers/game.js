@@ -45,6 +45,27 @@ export const rankingIntegerTranslation = {
 	'rank_radiant': 8,
 }
 
+export const rankingStringTranslation = {
+	0: 'rank_unranked',
+	1: 'rank_iron',
+	2: 'rank_bronze',
+	3: 'rank_silver',
+	4: 'rank_gold',
+	5: 'rank_platinum',
+	6: 'rank_diamond',
+	7: 'rank_master',
+	8: 'rank_challenger',
+}
+
+export const gameTranslation = {
+	'WOW': 'World of Warcraft',
+	'LOL': 'League of Legends',
+	'COD': 'Call of Duty',
+	'FORTNITE': 'Fortnite',
+	'MINECRAFT': 'Minecraft',
+	'VALORANT': 'Valorant',
+}
+
 export const imageTranslation = {
 	'LOL': 'https://www.pedagojeux.fr/wp-content/uploads/2019/11/1280x720_LoL.jpg',
 	'VALORANT': 'https://seeklogo.com/images/V/valorant-logo-FAB2CA0E55-seeklogo.com.png',

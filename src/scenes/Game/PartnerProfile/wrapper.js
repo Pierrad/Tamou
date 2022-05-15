@@ -3,10 +3,15 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
+import { rankingStringTranslation, gameTranslation } from '../../../helpers/game'
+import { POST_SWIPE } from '../../../redux/actions/game'
+
 import PartnerProfile from './index'
 
 const PartnerProfileWrapper = (props) => {
-	const { theme, navigation } = props
+	const { theme, navigation, route, onSwipe } = props
+	const user = route.params.user ?? ''
+	const game = route.params.game ?? ''
 	const { t } = useTranslation()
 
 	const translations = {
@@ -18,21 +23,29 @@ const PartnerProfileWrapper = (props) => {
 	}
 
 	const onLike = () => {
-		console.log('onLike')
+		onSwipe({
+			like: true,
+		})
+		goBack()
 	}
 
 	const onDislike = () => {
-		console.log('onDislike')
+		onSwipe({
+			like: false,
+		})
+		goBack()
 	}
 
-	const user = {
-		name: '@The_Lion_Vassal',
-		rank: require('../../../assets/images/lol/bronze.png'),
-		others: {
-			position: ': Mid',
-			type: ': Rageux',
-			personnage: ': Talon',
-		},
+	const age = parseInt(((new Date()).getTime() - user.birthday) / (1000 * 60 * 60 * 24 * 365))
+
+	const profile = {
+		name: `${user.username}, ${age} ans`,
+		rank: user.image,
+		games: user.gameSection.games.map((game) => ({
+			name: gameTranslation[game.game],
+			mood: game.mood,
+			level: game.level || game.ratio || t(rankingStringTranslation[game.rank]),
+		})),
 	}
 
 	return (
@@ -40,8 +53,8 @@ const PartnerProfileWrapper = (props) => {
 			theme={theme}
 			translations={translations}
 			goBack={goBack}
-			user={user}
-			isInSwipeMode={true}
+			user={profile}
+			isInSwipeMode={game !== ''}
 			onLike={onLike}
 			onDislike={onDislike}
 		/>
@@ -54,13 +67,16 @@ PartnerProfileWrapper.propTypes = {
 		navigate: PropTypes.func.isRequired,
 		goBack: PropTypes.func.isRequired,
 	}).isRequired,
+	route: PropTypes.object,
+	onSwipe: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
 	theme: state.themeReducer.theme,
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
+	onSwipe: (input) => dispatch({ type: POST_SWIPE, payload: input }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PartnerProfileWrapper)

@@ -16,6 +16,14 @@ export const GameName = styled.Text`
   transform: translate(-115px, 0px);
 `
 
+export const Touchable = styled.TouchableOpacity`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+`
+
 export const Image = styled.Image`
   width: 150px;
   height: 150px;
@@ -59,6 +67,19 @@ export const Dislike = styled.View`
 	height: 40px;
 	border-radius: 5px;
 	border: 1px solid ${props => props.theme.red};
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0px 5px;
+`
+
+export const Profile = styled.View`
+	position: absolute;
+	top: 5%;
+	right: 30%;
+	height: 40px;
+	border-radius: 5px;
+	border: 1px solid ${props => props.theme.game};
 	display: flex;
 	justify-content: center;
 	align-items: center;

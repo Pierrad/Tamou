@@ -12,16 +12,19 @@ import { useTranslation } from 'react-i18next'
 import * as SC from './styled'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
+const SCREEN_HEIGHT = Dimensions.get('window').height
 const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH
+const SWIPE_THRESHOLD_HEIGHT = 0.10 * SCREEN_HEIGHT
 const SWIPE_OUT_DURATION = 250
 
 
 const SwipeGameCard = (props) => {
-	const { style, image, username, subtitle, onLike, onDislike, game } = props
+	const { style, image, username, subtitle, onLike, onDislike, onProfile, game } = props
 	const { t } = useTranslation()
 
 	const [isRight, setIsRight] = useState(false)
 	const [isLeft, setIsLeft] = useState(false)
+	const [isBottom, setIsBottom] = useState(false)
 
 	const position = useRef(new Animated.ValueXY()).current
 	const panResponder = React.useRef(
@@ -38,6 +41,10 @@ const SwipeGameCard = (props) => {
 				} else if(gesture.dx < -SWIPE_THRESHOLD) {
 					setIsRight(false)
 					setIsLeft(true)
+				} else if(gesture.dy > SWIPE_THRESHOLD_HEIGHT) {
+					setIsRight(false)
+					setIsLeft(false)
+					setIsBottom(true)
 				}
 			},
 			onPanResponderRelease: (event, gesture) => {
@@ -47,6 +54,9 @@ const SwipeGameCard = (props) => {
 				} else if (gesture.dx < -SWIPE_THRESHOLD) {
 					forceSwipe('left')
 					onDislike()
+				} else if(gesture.dy > SWIPE_THRESHOLD_HEIGHT) {
+					forceSwipe('down')
+					onProfile()
 				} else {
 					resetPosition()
 				}
@@ -60,10 +70,15 @@ const SwipeGameCard = (props) => {
 	}, [])
 
 	const forceSwipe = (direction) => {
-		const x = direction === 'right' ? SCREEN_WIDTH : -SCREEN_WIDTH
+		const x = direction === 'right'
+			? SCREEN_WIDTH
+			: direction === 'left'
+				? -SCREEN_WIDTH
+				: 0
+		const y = direction === 'down' ? SCREEN_HEIGHT : 0
 		Animated.timing(position, {
 			useNativeDriver: false,
-			toValue: {x, y: 0},
+			toValue: {x, y},
 			duration: SWIPE_OUT_DURATION,
 		}).start(() => onSwipeComplete())
 	}
@@ -72,6 +87,7 @@ const SwipeGameCard = (props) => {
 		position.setValue({x: 0, y: 0})
 		setIsLeft(false)
 		setIsRight(false)
+		setIsBottom(false)
 	}
 
 	const getCardStyle = () => {
@@ -92,6 +108,7 @@ const SwipeGameCard = (props) => {
 		}).start()
 		setIsRight(false)
 		setIsLeft(false)
+		setIsBottom(false)
 	}
 
 	return (
@@ -120,6 +137,11 @@ const SwipeGameCard = (props) => {
 						<SC.Text>{t('love_swipe_screen_dislike')}</SC.Text>
 					</SC.Dislike>
 				)}
+				{isBottom && (
+					<SC.Profile>
+						<SC.Text>{t('love_swipe_screen_profile')}</SC.Text>
+					</SC.Profile>
+				)}
 			</Animated.View>
 		</SC.Container>
 	)
@@ -133,6 +155,7 @@ SwipeGameCard.propTypes = {
 	subtitle: PropTypes.string,
 	onLike: PropTypes.func,
 	onDislike: PropTypes.func,
+	onProfile: PropTypes.func,
 	publicID: PropTypes.string,
 }
 

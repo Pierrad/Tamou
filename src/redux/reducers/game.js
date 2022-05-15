@@ -2,6 +2,7 @@ import {
 	SET_MATCHES,
 	SET_MATCHES_INDEX,
 	SET_PUBLIC_PROFILE,
+	SET_GET_MATCH_ERROR,
 } from '../actions/game'
 
 const initialState = {
@@ -9,6 +10,7 @@ const initialState = {
 	matches: null,
 	matchesIndex: 0,
 	potentialMatchProfil: null,
+	error: false,
 }
 
 const reducer = (state = initialState, {type, payload}) => {
@@ -27,6 +29,11 @@ const reducer = (state = initialState, {type, payload}) => {
 		return {
 			...state,
 			potentialMatchProfil: payload
+		}
+	case SET_GET_MATCH_ERROR:
+		return {
+			...state,
+			error: payload
 		}
 	default:
 		return state

@@ -9,10 +9,14 @@ import { GET_PUBLIC_PROFILE, POST_SWIPE } from '../../../redux/actions/game'
 import GameSwipe from './index'
 
 const GameSwipeWrapper = (props) => {
-	const { theme, navigation, route, potentialMatch, getProfileFromID, onSwipe } = props
+	const { theme, navigation, route, potentialMatch, getProfileFromID, onSwipe, error } = props
 	const { game } = route.params
 	const { t } = useTranslation()
 	const [selected, isSelected] = useState([gameToId[game]])
+
+	const translations = {
+		error: t('game_swipe_no_more_match'),
+	}
 
 	const getCurrentProfile = useCallback(() => {
 		getProfileFromID({
@@ -103,16 +107,23 @@ const GameSwipeWrapper = (props) => {
 		})
 	}, [getCurrentProfile, onSwipe])
 
+	const onProfile = useCallback(() => {
+		navigation.navigate('GamePartnerProfile', { user: potentialMatch, game })
+	}, [game, navigation, potentialMatch])
+
 	if (potentialMatch) {
 		return (
 			<GameSwipe 
 				key={potentialMatch}
+				translations={translations}
 				headerData={headerData}
 				toggles={gamesToggles}
 				selectedToggles={selected}
 				card={potentialMatch}
 				onLike={onLike}
 				onDislike={onDislike}
+				onProfile={onProfile}
+				hasError={error}
 			/>
 		)
 	}
@@ -130,11 +141,13 @@ GameSwipeWrapper.propTypes = {
 	potentialMatch: PropTypes.object,
 	getProfileFromID: PropTypes.func,
 	onSwipe: PropTypes.func,
+	error: PropTypes.bool,
 }
 
 const mapStateToProps = (state) => ({
 	theme: state.themeReducer.theme,
 	potentialMatch: state.gameReducer.potentialMatchProfil,
+	error: state.gameReducer.error,
 })
 
 const mapDispatchToProps = (dispatch) => ({

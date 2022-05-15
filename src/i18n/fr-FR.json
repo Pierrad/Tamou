@@ -69,6 +69,7 @@
     "love_swipe_title": "Swipe",
     "love_swipe_screen_like": "J'aime",
     "love_swipe_screen_dislike": "Je n'aime pas",
+    "love_swipe_screen_profile": "Voir le profil",
     "love_match_title":"Parlez lui",
     "love_screen_continue_swipe_button_label": "Continuer à swiper",
     "love_screen_continue_swipe_button_action": "Continuer à swiper",
@@ -100,6 +101,7 @@
     "rank_radiant": "Radiant",
     "ratio": "Ratio",
     "level": "Niveau",
-    "rank_placeholder": "Votre niveau"
+    "rank_placeholder": "Votre niveau",
+    "game_swipe_no_more_match": "Revenez un peu plus tard pour découvrir de nouveaux profils"
   }
 }

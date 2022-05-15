@@ -53,3 +53,18 @@ export const DislikeButton = styled.TouchableOpacity`
 export const Icon = styled(AIcon)``
 
 export const Icon2 = styled(IIcon)``
+
+export const Error = styled.View`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  padding: 10px;
+  flex: 10;
+`
+
+export const ErrorText = styled.Text`
+	font-family: 'Poppins-Bold';
+	font-size: 26px;
+	color: ${props => props.theme.game};
+  text-align: center;
+`

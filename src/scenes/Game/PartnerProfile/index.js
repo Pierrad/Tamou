@@ -6,11 +6,19 @@ import * as SC from './styled'
 const PartnerProfile = props => {
 	const { theme, translations, goBack, user, isInSwipeMode, onLike, onDislike } = props
 
-	const renderOthers = Object.keys(user.others).map((other, i) => (
-		<SC.Other key={i}>
-			<SC.Label>{other}</SC.Label>
-			<SC.Value>{user.others[other]}</SC.Value>
-		</SC.Other>
+	const renderGames = user.games.map((game, i) => (
+		<SC.Game key={i}>
+			<SC.Label>{game.name}</SC.Label>
+			<SC.Field>
+				<SC.Label>Mood</SC.Label>
+				<SC.Value>{game.mood}</SC.Value>
+			</SC.Field>
+			<SC.Field>
+				<SC.Label>Niveau</SC.Label>
+				<SC.Value>{game.level}</SC.Value>
+			</SC.Field>
+			<SC.Divider />
+		</SC.Game>
 	))
 
 	return (
@@ -25,7 +33,7 @@ const PartnerProfile = props => {
 					/>
 				</SC.IconBox>
 				<SC.Image
-					source={user.rank}
+					source={{ uri: user.rank }}
 				/>
 				{isInSwipeMode && (
 					<SC.Buttons>
@@ -47,7 +55,7 @@ const PartnerProfile = props => {
 			</SC.Wrapper>
 			<SC.Content>
 				<SC.Title>{user.name}</SC.Title>
-				{renderOthers}
+				{renderGames}
 			</SC.Content>
 			<SC.Button
 				title={translations.cta}
@@ -67,8 +75,8 @@ PartnerProfile.propTypes = {
 	goBack: PropTypes.func,
 	user: PropTypes.shape({
 		name: PropTypes.string,
-		rank: PropTypes.number,
-		others: PropTypes.object,
+		rank: PropTypes.string,
+		games: PropTypes.array,
 	}),
 	isInSwipeMode: PropTypes.bool,
 	onLike: PropTypes.func,
