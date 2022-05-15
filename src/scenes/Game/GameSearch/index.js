@@ -7,14 +7,19 @@ import HomeCard from '../../../components/HomeCard'
 import * as SC from './styled'
 
 const GameSearch = props => {
-	const { theme, translations, headerData, searchValue, onSearchInput, games, selectedGames } = props
+	const { theme, translations, headerData, searchValue, onSearchInput, games, selectedGame, onSubmit } = props
 
-	const renderMatchCard = useCallback(({ item }) => (
-		<SC.MatchCard
-			{...item}
-			isSelected={selectedGames.includes(item.id)}
-		/>
-	), [selectedGames])
+	const renderMatchCard = useCallback(({ item }) => {
+		if (item.isAlreadyAdded) {
+			return null
+		}
+		return (
+			<SC.MatchCard
+				{...item}
+				isSelected={item.id === selectedGame}
+			/>
+		)
+	}, [selectedGame])
 
 	return (
 		<SC.Container>
@@ -33,7 +38,7 @@ const GameSearch = props => {
 			/>
 			<SC.Button
 				title={translations.cta}
-				onPress={() => {}}
+				onPress={onSubmit}
 				underlayColor={theme.game}
 				textColor={theme.pureWhite}
 				style={SC.styles.button}
@@ -49,7 +54,8 @@ GameSearch.propTypes = {
 	searchValue: PropTypes.string,
 	onSearchInput: PropTypes.func,
 	games: PropTypes.arrayOf(PropTypes.shape(HomeCard.PropTypes)),
-	selectedGames: PropTypes.arrayOf(PropTypes.number),
+	selectedGame: PropTypes.number,
+	onSubmit: PropTypes.func,
 }
 
 export default GameSearch

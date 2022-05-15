@@ -8,15 +8,16 @@ import { games, typeOfPlayer, ranking } from './config'
 import { POST_INITIAL_GAME } from '../../../redux/actions/game'
 
 const SurveyStepperScreenWrapper = (props) => {
-	const { theme, navigation, onSubmit, user } = props 
+	const { theme, navigation, onSubmit, user, route } = props 
 	const { t } = useTranslation()
+	const game = route.params?.game ?? ''
 
 	const translations = {
 		rankPlaceholder: t('rank_placeholder'),
 	}
 
-	const [step, setStep] = useState(0)
-	const [gameInput, setGameInput] = useState('')
+	const [step, setStep] = useState(game === 'MINECRAFT' ? 2 : game ? 1 : 0)
+	const [gameInput, setGameInput] = useState(game)
 	const [rankingInput, setRankingInput] = useState('')
 	const [typeOfPlayerInput, setTypeOfPlayerInput] = useState('')
 
@@ -106,6 +107,7 @@ SurveyStepperScreenWrapper.propTypes = {
 			token: PropTypes.string,
 		}),
 	}),
+	route: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
