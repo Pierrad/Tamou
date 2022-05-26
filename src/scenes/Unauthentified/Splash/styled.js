@@ -38,7 +38,7 @@ export const Caption = styled.Text`
 `
 
 export const DotWrapper = styled.View`
-  top: 70px;
+  top: 40px;
   flex-direction: row;
   margin-top: 250px;
   align-items: center;

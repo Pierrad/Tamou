@@ -8,14 +8,24 @@ import * as Keychain from 'react-native-keychain'
 import { Platform } from 'react-native'
 import { API_URL_ANDROID, APP_ENV } from '@env'
 
-import { POST_REGISTER, POST_LOGIN, CHECK_EXISTING_SESSION, SET_USER, POST_REQUEST_PASSWORD_CHANGE, POST_RESET_PASSWORD, POST_NEW_PROFIL_PICTURE, POST_DELETE_ACCOUNT } from '../actions/user'
+import { POST_REGISTER, POST_LOGIN, CHECK_EXISTING_SESSION, SESSION_REDIRECTION, SET_USER, POST_REQUEST_PASSWORD_CHANGE, POST_RESET_PASSWORD, POST_NEW_PROFIL_PICTURE, POST_DELETE_ACCOUNT, POST_LOGOUT } from '../actions/user'
 import { INCREMENT_STEP, RESET_STEP, SET_ERROR, SET_VALIDATION, START_LOADING, STOP_LOADING } from '../actions/app'
 import { register, login, requestPasswordChange, resetPassword, uploadUserPicture, deleteAccount } from '../api/user'
 import * as RootNavigation from '../../navigation/RootNavigation'
 import { translateMessage } from '../../helpers/api'
+import { hasSubscribeToCategories } from '../../helpers/user'
 import * as userSelectors from '../selectors/user'
 import { User } from '../../models/User'
 
+
+function* sessionRedirect() {
+	const hasSession = yield call(checkExistingSession)
+	if (!hasSession) {
+		RootNavigation.navigate('Splash')
+	} else {
+		RootNavigation.navigate('Dashboard')
+	}
+}
 
 function* checkExistingSession() {
 	const credentials = yield call(Keychain.getGenericPassword)
@@ -31,11 +41,10 @@ function* checkExistingSession() {
 						: authResponse.data.user.imageProfile,
 			}
 			yield put({ type: SET_USER, payload: User(user) })
-			RootNavigation.navigate('Dashboard')
+			return true
 		}
-	} else {
-		RootNavigation.navigate('Splash')
 	}
+	return false
 }
 
 function* registration({ payload }) {
@@ -68,13 +77,23 @@ function* connect({ payload }) {
 					? `${API_URL_ANDROID}/images/${authResponse.data.user.imageProfile.split('/').pop()}`
 					: authResponse.data.user.imageProfile,
 		}
-		yield put({ type: SET_USER, payload: user })
+		yield put({ type: SET_USER, payload: User(user) })
 		yield call(Keychain.setGenericPassword, ...[payload.email, payload.password])
-		RootNavigation.navigate('Dashboard')
+
+		if (hasSubscribeToCategories(user)) {
+			RootNavigation.navigate('Dashboard')
+		} else {
+			RootNavigation.navigate('SurveyStepper')
+		}
 	} else if (authResponse && authResponse.success === false) {
 		yield put({ type: STOP_LOADING })
 		yield put({ type: SET_ERROR, payload: translateMessage(authResponse.data.message) })
 	}
+}
+
+function* logout() {
+	yield call(Keychain.resetGenericPassword)
+	RootNavigation.navigate('Login')
 }
 
 function* requestPasswordCode({ payload }) {
@@ -109,16 +128,14 @@ function* resetPasswordSaga({ payload }) {
 
 function* uploadProfilePicture({ payload }) {
 	yield put({ type: START_LOADING })
+	const user = yield select(userSelectors.user)
 
-	const authResponse = yield call(uploadUserPicture, payload)
-
-	console.log(authResponse)
+	const authResponse = yield call(uploadUserPicture, { ...payload, token: user.token })
 
 	if (authResponse.success === true) {
 		yield put({ type: STOP_LOADING })
-		// yield put({ type: SET_VALIDATION, payload: translateMessage(authResponse.data.message) })
-		// RootNavigation.navigate('Login')
-		yield put({ type: RESET_STEP })
+		yield put({ type: SET_VALIDATION, payload: translateMessage(authResponse.data.message) })
+		yield put({ type: CHECK_EXISTING_SESSION })
 	} else if (authResponse && authResponse.success === false) {
 		yield put({ type: STOP_LOADING })
 		yield put({ type: SET_ERROR, payload: translateMessage(authResponse.data.message) })
@@ -128,9 +145,7 @@ function* uploadProfilePicture({ payload }) {
 function* handleDeleteAccount() {
 	const user = yield select(userSelectors.user)
 
-	const authResponse = yield call(deleteAccount, { token: user.token.token })
-
-	console.log(authResponse)
+	const authResponse = yield call(deleteAccount, { token: user.token })
 
 	if (authResponse.success === true) {
 		RootNavigation.navigate('Login')
@@ -146,6 +161,8 @@ function* handleDeleteAccount() {
 export default function* userSagas() {
 	yield takeLeading(POST_REGISTER, registration)
 	yield takeLeading(POST_LOGIN, connect)
+	yield takeLeading(POST_LOGOUT, logout)
+	yield takeLeading(SESSION_REDIRECTION, sessionRedirect)
 	yield takeLeading(CHECK_EXISTING_SESSION, checkExistingSession)
 	yield takeLeading(POST_REQUEST_PASSWORD_CHANGE, requestPasswordCode)
 	yield takeLeading(POST_RESET_PASSWORD, resetPasswordSaga)

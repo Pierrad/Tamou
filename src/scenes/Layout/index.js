@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components/native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { CHECK_EXISTING_SESSION } from '../../redux/actions/user'
+import { SESSION_REDIRECTION } from '../../redux/actions/user'
 import { RESET_ERROR, RESET_VALIDATION } from '../../redux/actions/app'
 
 import { navigationRef } from '../../navigation/RootNavigation'
@@ -121,7 +121,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	init: () => dispatch({ type: CHECK_EXISTING_SESSION }),
+	init: () => dispatch({ type: SESSION_REDIRECTION }),
 	resetError: () => dispatch({ type: RESET_ERROR }),
 	resetValidation: () => dispatch({ type: RESET_VALIDATION })
 })

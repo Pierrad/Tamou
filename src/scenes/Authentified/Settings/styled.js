@@ -42,6 +42,15 @@ export const Button = styled(ActionButton)`
   border: 1px solid ${props => props.theme.refuse};
 `
 
+export const LogoutButton = styled(ActionButton)`
+  position: absolute;
+  bottom: 15%;
+  right: 5%;
+  left: 5%;
+  background-color: ${props => props.theme.orange};
+  border: 1px solid ${props => props.theme.orange};
+`
+
 export const Modal = styled.Modal``
 
 export const ModalView = styled.View`

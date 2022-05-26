@@ -8,18 +8,18 @@ import * as SC from './styled'
 const PictureInput = ({ onChange }) => {
 	const { t } = useTranslation()
 
-	console.log(onChange)
-
 	const handleLibraryPress = () => {
 		launchImageLibrary({
 			mediaType: 'photo',
 			quality: 1,
 		}, (response) => {
-			onChange({
-				uri: response.assets[0].uri.replace('file://', ''),
-				name: response.assets[0].fileName,
-				type: response.assets[0].type,
-			})
+			if (response && response.assets) {
+				onChange({
+					uri: response.assets[0].uri.replace('file://', ''),
+					name: response.assets[0].fileName,
+					mimetype: response.assets[0].type,
+				})
+			}
 		})
 	}
 
@@ -29,7 +29,13 @@ const PictureInput = ({ onChange }) => {
 			quality: 1,
 			includeBase64: true,
 		}, (response) => {
-			onChange(response.assets[0].uri)
+			if (response && response.assets) {
+				onChange({
+					uri: response.assets[0].uri.replace('file://', ''),
+					name: response.assets[0].fileName,
+					mimetype: response.assets[0].type,
+				})
+			}
 		})
 	}
 

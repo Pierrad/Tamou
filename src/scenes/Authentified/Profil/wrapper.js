@@ -11,8 +11,10 @@ const ProfilScreenWrapper = (props) => {
 	const { t } = useTranslation()
 
 	const handleSubmitPicture = useCallback((picture) => {
-		updateProfilPicture({ picture, token: user.token.token })
-	}, [updateProfilPicture, user.token.token])
+		if (picture) {
+			updateProfilPicture({ picture })
+		}
+	}, [updateProfilPicture])
 
 	const data = useMemo(() => ({
 		headerData: {
@@ -68,9 +70,6 @@ ProfilScreenWrapper.propTypes = {
 		avatar: PropTypes.string,
 		name: PropTypes.string,
 		location: PropTypes.string,
-		token: PropTypes.shape({
-			token: PropTypes.string,
-		}),
 	}),
 	updateProfilPicture: PropTypes.func,
 }

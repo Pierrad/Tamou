@@ -107,6 +107,7 @@
     "settings_screen_language_french": "Français",
     "settings_screen_language_english": "Anglais",
     "settings_screen_delete_cta": "Supprimer mon compte",
-    "settings_screen_delete_confirmation": "Êtes-vous sûr de vouloir supprimer votre compte ?"
+    "settings_screen_delete_confirmation": "Êtes-vous sûr de vouloir supprimer votre compte ?",
+    "settings_screen_logout": "Déconnexion"
   }
 }

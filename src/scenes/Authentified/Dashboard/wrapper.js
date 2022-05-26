@@ -9,8 +9,6 @@ const DashboardScreenWrapper = (props) => {
 	const { theme, navigation, user } = props
 	const { t } = useTranslation()
 
-	console.log(user)
-
 	const translations = {
 		hello: t('dashboard_screen_hello', { name: user.username }),
 		categories: t('dashboard_screen_personal_categories'),

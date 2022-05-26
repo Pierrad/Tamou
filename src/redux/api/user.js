@@ -1,6 +1,8 @@
 import { Platform } from 'react-native'
 import { API_URL, API_URL_ANDROID } from '@env'
-const FormData = global.FormData
+import RNFetchBlob from 'rn-fetch-blob'
+
+import { getTimestampFromBirthday } from '../../helpers/date'
 
 export const register = async (payload) => {
 	try {
@@ -15,7 +17,8 @@ export const register = async (payload) => {
 				password: payload.password,
 				username: payload.username,
 				firstname: payload.firstname,
-				lastname: payload.lastname
+				lastname: payload.lastname,
+				birthday: getTimestampFromBirthday(payload.birthday),
 			})
 		})
 
@@ -90,18 +93,13 @@ export const resetPassword = async (payload) => {
 
 export const uploadUserPicture = async (payload) => {
 	try {
-		const data = new FormData()
-		data.append('file', payload.picture)
-		console.log(data)
-		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/profilePic`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'multipart/form-data; charset=utf-8;',
-				'Authorization': payload.token,
-			},
-			body: data
-		})
-
+		const res = await RNFetchBlob.fetch('POST', `${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/profilePic`, {
+			'Content-Type': 'multipart/form-data,octet-stream',
+			'Authorization': payload.token,
+		}, [
+			{ name: 'file', filename: payload.picture.name, data: RNFetchBlob.wrap(payload.picture.uri) },
+		])
+		
 		const json = await res.json()
 		return json
 	} catch(err) {

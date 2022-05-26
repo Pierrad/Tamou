@@ -4,7 +4,7 @@ import { Picker } from '@react-native-picker/picker'
 
 import * as SC from './styled'
 
-const SettingsScreen = ({ theme, headerData, translations, onLanguageChange, selectedLanguage, onDeleteAccount, isModalVisible, onChangeModalVisibility }) => {
+const SettingsScreen = ({ theme, headerData, translations, onLanguageChange, selectedLanguage, onDeleteAccount, isModalVisible, onChangeModalVisibility, onLogout }) => {
 
 
 	const renderModal = useMemo(() => {
@@ -53,6 +53,13 @@ const SettingsScreen = ({ theme, headerData, translations, onLanguageChange, sel
 					</Picker>
 				</SC.Content>
 			</SC.Wrapper>
+			<SC.LogoutButton
+				title={translations.logout}
+				onPress={onLogout}
+				underlayColor={theme.orange}
+				textColor={theme.pureWhite}
+				style={SC.styles.button}
+			/>
 			<SC.Button
 				title={translations.deleteCTA}
 				onPress={() => onChangeModalVisibility(true)}
@@ -80,6 +87,7 @@ SettingsScreen.propTypes = {
 	onDeleteAccount: PropTypes.func,
 	isModalVisible: PropTypes.bool,
 	onChangeModalVisibility: PropTypes.func,
+	onLogout: PropTypes.func,
 }
 
 export default SettingsScreen

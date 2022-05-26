@@ -25,11 +25,5 @@ If you have problems with ios, you can
 - Run ```pod install```
 
 
-## Notes
-
-- Make a form component that can handle array of fields, values, validation ? 
-- Better way to handle icons ?
-- Enable dark mode on Swipe love page
-- Block app in portrait mode
-- Make button and some element not flat
-
+If you have 'React-Native-Fetch-Blob' dependency cycles warnings, run 
+- ```npm run fix-react-native-fetch-blob```

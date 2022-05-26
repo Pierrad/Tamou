@@ -8,7 +8,7 @@ import { games, typeOfPlayer, ranking } from './config'
 import { POST_INITIAL_GAME } from '../../../redux/actions/game'
 
 const SurveyStepperScreenWrapper = (props) => {
-	const { theme, navigation, onSubmit, user, route } = props 
+	const { theme, navigation, onSubmit, route } = props 
 	const { t } = useTranslation()
 	const game = route.params?.game ?? ''
 
@@ -50,10 +50,9 @@ const SurveyStepperScreenWrapper = (props) => {
 			game: gameInput,
 			mood: typeOfPlayerInput,
 			rank: rankingInput,
-			token: user.token.token,
 		})
 		nextStep()
-	}, [gameInput, nextStep, onSubmit, rankingInput, typeOfPlayerInput, user.token])
+	}, [gameInput, nextStep, onSubmit, rankingInput, typeOfPlayerInput])
 
 	const goToDashboard = useCallback(() => {
 		navigation.navigate('GameDashboard')
@@ -102,17 +101,11 @@ SurveyStepperScreenWrapper.propTypes = {
 		goBack: PropTypes.func.isRequired,
 	}).isRequired,
 	onSubmit: PropTypes.func,
-	user: PropTypes.shape({
-		token: PropTypes.shape({
-			token: PropTypes.string,
-		}),
-	}),
 	route: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
 	theme: state.themeReducer.theme,
-	user: state.userReducer.user,
 })
 
 const mapDispatchToProps = (dispatch) => ({
