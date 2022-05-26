@@ -1,4 +1,4 @@
-export const PublicUser = (props) => {
+export const User = (props) => {
 	return {
 		...props,
 		firstname: props.firstname,

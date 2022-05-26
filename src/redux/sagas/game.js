@@ -10,7 +10,7 @@ import { SET_ERROR, SET_VALIDATION, START_LOADING, STOP_LOADING } from '../actio
 import { setGames, getMatches, sendSwipe } from '../api/game'
 import * as gameSelectors from '../selectors/game'
 import * as userSelectors from '../selectors/user'
-import { User } from '../../models/PublicProfile'
+import { PublicUser } from '../../models/PublicProfile'
 import * as RootNavigation from '../../navigation/RootNavigation'
 
 import { translateMessage } from '../../helpers/api'
@@ -81,7 +81,7 @@ function* fetchPublicProfile({ payload }) {
 	if (authResponse.success === true) {
 		yield put({ type: SET_MATCHES_INDEX, payload: currentGameMatchesIndex + 1 })
 		yield put({ type: STOP_LOADING })
-		yield put({ type: SET_PUBLIC_PROFILE, payload: User(authResponse.data.user) })
+		yield put({ type: SET_PUBLIC_PROFILE, payload: PublicUser(authResponse.data.user) })
 	} else if (authResponse && authResponse.success === false) {
 		yield put({ type: STOP_LOADING })
 		yield put({ type: SET_ERROR, payload: translateMessage(authResponse.data.message) })

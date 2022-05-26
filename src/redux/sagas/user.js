@@ -14,6 +14,7 @@ import { register, login, requestPasswordChange, resetPassword, uploadUserPictur
 import * as RootNavigation from '../../navigation/RootNavigation'
 import { translateMessage } from '../../helpers/api'
 import * as userSelectors from '../selectors/user'
+import { User } from '../../models/User'
 
 
 function* checkExistingSession() {
@@ -29,9 +30,11 @@ function* checkExistingSession() {
 						? `${API_URL_ANDROID}/images/${authResponse.data.user.imageProfile.split('/').pop()}`
 						: authResponse.data.user.imageProfile,
 			}
-			yield put({ type: SET_USER, payload: user })
-			// RootNavigation.navigate('Dashboard')
+			yield put({ type: SET_USER, payload: User(user) })
+			RootNavigation.navigate('Dashboard')
 		}
+	} else {
+		RootNavigation.navigate('Splash')
 	}
 }
 
