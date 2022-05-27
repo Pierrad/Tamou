@@ -24,8 +24,8 @@ export const Button = styled.TouchableOpacity`
   background-color: ${(props) => props.theme.pureWhite};
   padding: 10px;
   position: absolute;
-  top: 90%;
-  right: 10%;
+  top: 92%;
+  right: 6%;
 `
 
 export const Icon = styled(AIcon)``

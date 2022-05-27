@@ -40,6 +40,7 @@
     "category_cook": "Cooking",
     "category_study": "Study",
     "category_pet": "Pet",
+    "dashboard_screen_add_category": "Add a category",
     "notification_screen_title": "Notifications",
     "notification_screen_empty_state_title": "No notification",
     "notification_screen_new_notification_date_ago": "{{time}} ",

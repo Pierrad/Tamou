@@ -18,6 +18,11 @@ const DashboardScreenWrapper = (props) => {
 		cookingCategoryTitle: t('category_cook'),
 		studyCategoryTitle: t('category_study'),
 		petCategoryTitle: t('category_pet'),
+		addCategory: t('dashboard_screen_add_category'),
+	}
+
+	const handleAddCategoryPress = () => {
+		navigation.navigate('SurveyStepper', { step: 2 })
 	}
 
 	return (
@@ -27,6 +32,7 @@ const DashboardScreenWrapper = (props) => {
 			translations={translations}
 			avatar={user.avatar}
 			hasGameSection={user.gameSection.games.length > 0}
+			onAddCategory={handleAddCategoryPress}
 		/>
 	)
 }

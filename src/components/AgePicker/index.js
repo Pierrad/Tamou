@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
+import DismissKeyboardHOC from '../../helpers/useDismissKeyboardView'
+
 import * as SC from './styled'
 
 const AgePicker = (props) => {
@@ -19,35 +21,37 @@ const AgePicker = (props) => {
 	return (
 		<SC.Container style={style ? style[0] : {}}>
 			<SC.Title>{title}</SC.Title>
-			<SC.Inputs>
-				<SC.Input
-					placeholder="JJ"
-					keyboardType="numeric"
-					maxLength={2}
-					onChangeText={(text) => setDay(text)}
-					value={day}
-					placeholderTextColor='#898989'
-					textAlign={'center'}
-				/>
-				<SC.Input
-					placeholder="MM"
-					keyboardType="numeric"
-					maxLength={2}
-					onChangeText={(text) => setMonth(text)}
-					value={month}
-					placeholderTextColor='#898989'
-					textAlign={'center'}
-				/>
-				<SC.Input
-					placeholder="AAAA"
-					keyboardType="numeric"
-					maxLength={4}
-					onChangeText={(text) => setYear(text)}
-					value={year}
-					placeholderTextColor='#898989'
-					textAlign={'center'}
-				/>
-			</SC.Inputs>
+			<DismissKeyboardHOC flex={5}>
+				<SC.Inputs>
+					<SC.Input
+						placeholder="JJ"
+						keyboardType="numeric"
+						maxLength={2}
+						onChangeText={(text) => setDay(text)}
+						value={day}
+						placeholderTextColor='#898989'
+						textAlign={'center'}
+					/>
+					<SC.Input
+						placeholder="MM"
+						keyboardType="numeric"
+						maxLength={2}
+						onChangeText={(text) => setMonth(text)}
+						value={month}
+						placeholderTextColor='#898989'
+						textAlign={'center'}
+					/>
+					<SC.Input
+						placeholder="AAAA"
+						keyboardType="numeric"
+						maxLength={4}
+						onChangeText={(text) => setYear(text)}
+						value={year}
+						placeholderTextColor='#898989'
+						textAlign={'center'}
+					/>
+				</SC.Inputs>
+			</DismissKeyboardHOC>
 			<SC.Button
 				onPress={handleArrowPress}
 				underlayColor='#fff'

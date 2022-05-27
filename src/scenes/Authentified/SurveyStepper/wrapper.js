@@ -8,8 +8,10 @@ import { SET_ERROR } from '../../../redux/actions/app'
 import SurveyStepperScreen from './index'
 
 const SurveyStepperScreenWrapper = (props) => {
-	const { theme, navigation, setError } = props 
+	const { theme, navigation, setError, route, user } = props
+	const step = route.params?.step ?? 0
 	const { t } = useTranslation()
+	const categoriesAlreadySelected = []
 
 	const translations = {
 		genderTitle: t('initial_survey_stepper_gender_title'),
@@ -18,6 +20,12 @@ const SurveyStepperScreenWrapper = (props) => {
 		categoriesTitle: t('initial_survey_stepper_choose_categories_title'),
 		completeTitle: t('initial_survey_stepper_complete'),
 		birthdayError: t('initial_survey_stepper_age_error')
+	}
+
+	if (user && user.gameSection) {
+		categoriesAlreadySelected.push('game')
+	} else if (user && user.loveSection) {
+		categoriesAlreadySelected.push('love')
 	}
 
 	const onError = (error) => {
@@ -34,6 +42,8 @@ const SurveyStepperScreenWrapper = (props) => {
 			translations={translations}
 			onSubmit={onSubmit}
 			onError={onError}
+			artificialStep={step}
+			categoriesAlreadySelected={categoriesAlreadySelected}
 		/>
 	)
 }
@@ -44,10 +54,13 @@ SurveyStepperScreenWrapper.propTypes = {
 		navigate: PropTypes.func,
 	}),
 	setError: PropTypes.func,
+	route: PropTypes.object,
+	user: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
 	theme: state.themeReducer.theme,
+	user: state.userReducer.user,
 })
 
 const mapDispatchToProps = (dispatch) => ({

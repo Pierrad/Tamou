@@ -6,7 +6,7 @@ import IoIcon from 'react-native-vector-icons/Ionicons'
 import * as SC from './styled'
 
 const DashboardScreen = (props) => {
-	const { theme, navigation, translations, avatar, hasLoveSection, hasGameSection } = props
+	const { theme, navigation, translations, avatar, hasLoveSection, hasGameSection, onAddCategory } = props
 
 	return (
 		<SC.Container>
@@ -39,6 +39,13 @@ const DashboardScreen = (props) => {
 					/>
 				)}
 			</SC.CardList>
+			<SC.Button
+				title={translations.addCategory}
+				onPress={onAddCategory}
+				underlayColor={theme.orange}
+				textColor={theme.pureWhite}
+				style={SC.styles.button}
+			/>
 		</SC.Container>
 	)
 }
@@ -53,6 +60,7 @@ DashboardScreen.propTypes = {
 	avatar: PropTypes.string,
 	hasLoveSection: PropTypes.bool,
 	hasGameSection: PropTypes.bool,
+	onAddCategory: PropTypes.func,
 }
 
 export default DashboardScreen

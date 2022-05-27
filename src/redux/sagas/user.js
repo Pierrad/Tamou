@@ -5,8 +5,6 @@ import {
 	takeLeading,
 } from 'redux-saga/effects'
 import * as Keychain from 'react-native-keychain'
-import { Platform } from 'react-native'
-import { API_URL_ANDROID, APP_ENV } from '@env'
 
 import { POST_REGISTER, POST_LOGIN, CHECK_EXISTING_SESSION, SESSION_REDIRECTION, SET_USER, POST_REQUEST_PASSWORD_CHANGE, POST_RESET_PASSWORD, POST_NEW_PROFIL_PICTURE, POST_DELETE_ACCOUNT, POST_LOGOUT } from '../actions/user'
 import { INCREMENT_STEP, RESET_STEP, SET_ERROR, SET_VALIDATION, START_LOADING, STOP_LOADING } from '../actions/app'
@@ -29,18 +27,11 @@ function* sessionRedirect() {
 
 function* checkExistingSession() {
 	const credentials = yield call(Keychain.getGenericPassword)
+
 	if (credentials) {
 		const authResponse = yield call(login, { email: credentials.username, password: credentials.password })
 		if (authResponse.success === true) {
-			const user = {
-				...authResponse.data.user,
-				avatar: Platform.OS === 'ios'
-					? authResponse.data.user.imageProfile
-					: APP_ENV === 'local'
-						? `${API_URL_ANDROID}/images/${authResponse.data.user.imageProfile.split('/').pop()}`
-						: authResponse.data.user.imageProfile,
-			}
-			yield put({ type: SET_USER, payload: User(user) })
+			yield put({ type: SET_USER, payload: User(authResponse.data.user) })
 			return true
 		}
 	}
@@ -69,18 +60,10 @@ function* connect({ payload }) {
 
 	if (authResponse.success === true) {
 		yield put({ type: STOP_LOADING })
-		const user = {
-			...authResponse.data.user,
-			avatar: Platform.OS === 'ios'
-				? authResponse.data.user.imageProfile
-				: APP_ENV === 'local'
-					? `${API_URL_ANDROID}/images/${authResponse.data.user.imageProfile.split('/').pop()}`
-					: authResponse.data.user.imageProfile,
-		}
-		yield put({ type: SET_USER, payload: User(user) })
+		yield put({ type: SET_USER, payload: User(authResponse.data.user) })
 		yield call(Keychain.setGenericPassword, ...[payload.email, payload.password])
 
-		if (hasSubscribeToCategories(user)) {
+		if (hasSubscribeToCategories(authResponse.data.user)) {
 			RootNavigation.navigate('Dashboard')
 		} else {
 			RootNavigation.navigate('SurveyStepper')

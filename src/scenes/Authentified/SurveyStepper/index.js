@@ -6,12 +6,12 @@ import { isBirthdayIsValid } from '../../../helpers/date'
 import * as SC from './styled'
 
 const SurveyStepperScreen = (props) => {
-	const { theme, translations, onSubmit, onError } = props
-	const [step, setStep] = useState(0)
+	const { theme, translations, onSubmit, onError, artificialStep, categoriesAlreadySelected } = props
+	const [step, setStep] = useState(artificialStep ?? 0)
 	const [genderValue, setGenderValue] = useState('')
 	// eslint-disable-next-line no-unused-vars
 	const [ageValue, setAgeValue] = useState(new Date())
-	const [categoryValues, setCategoryValues] = useState([])
+	const [categoryValues, setCategoryValues] = useState(categoriesAlreadySelected ?? [])
 
 	const nextStep = useCallback(() => {
 		setStep(step + 1)
@@ -37,6 +37,7 @@ const SurveyStepperScreen = (props) => {
 			setCategoryValues([...categoryValues, value])
 		}
 	}, [categoryValues])
+
 	
 	const renderStep = useCallback((step) => {
 		switch (step) {
@@ -82,6 +83,8 @@ SurveyStepperScreen.propTypes = {
 	translations: PropTypes.objectOf(PropTypes.string),
 	onSubmit: PropTypes.func,
 	onError: PropTypes.func,
+	artificialStep: PropTypes.number,
+	categoriesAlreadySelected: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default SurveyStepperScreen

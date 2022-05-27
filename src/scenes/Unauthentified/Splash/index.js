@@ -25,7 +25,7 @@ const SplashScreenWrapper = props => {
 					</SC.Text>
 				</SC.View>
 				<SC.ArrowContain>
-					<SC.Arrow onPress={handleClick} name="arrowright" size={45} />
+					<SC.Arrow onPress={handleClick} name="arrowright" size={45} color="#000" />
 				</SC.ArrowContain>
 			</SC.Contain2>
 		)
@@ -36,7 +36,7 @@ const SplashScreenWrapper = props => {
 					<SC.Text>Amour, jeu, sport, cuisine, étude... Votre partenaire vous attend avec impatience! 🤩</SC.Text>
 				</SC.View>
 				<SC.ArrowContain>
-					<SC.Arrow onPress={handleClick} name="arrowright" size={45} />
+					<SC.Arrow onPress={handleClick} name="arrowright" size={45} color="#000" />
 				</SC.ArrowContain>
 			</SC.Contain2>
 		)
@@ -47,7 +47,7 @@ const SplashScreenWrapper = props => {
 					<SC.Text>Préparez vous à rencontrer des personnes spécialement présenté pour vous ! 😮</SC.Text>
 				</SC.View>
 				<SC.ArrowContain>
-					<SC.Arrow onPress={handleClick} name="arrowright" size={45} />
+					<SC.Arrow onPress={handleClick} name="arrowright" size={45} color="#000" />
 				</SC.ArrowContain>
 			</SC.Contain2>
 		)
@@ -62,6 +62,8 @@ const SplashScreenWrapper = props => {
 						primary={false}
 						title="Commencer"
 						onPress={() => navigation.navigate('Register')}
+						textColor="#000"
+						underlayColor="white"
 					/>
 				</SC.ContainButton>
 			</SC.Contain3>

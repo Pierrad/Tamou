@@ -7,7 +7,7 @@ export const Container = styled.SafeAreaView`
 `
 
 export const Head = styled.View`
-  top:-30px;
+  top: -30px;
   padding: 60px 0px 60px 0px;
   background-color: ${props => props.theme.orange};
 `
@@ -40,7 +40,7 @@ export const Contain1 = styled.SafeAreaView`
 export const Contain2 = styled.SafeAreaView`
   flex: 1;
   background-color: ${props => props.theme.pureWhite};
-  margin: 30px 30px 15px 30px;
+  margin: 15px 30px 30px 30px;
 `
 
 export const Title = styled.Text`
@@ -57,19 +57,19 @@ export const Subtitle = styled.Text`
 export const Contain3 = styled.SafeAreaView`
   flex: 9;
   justify-content: space-evenly;
-  margin: 0px 30px 0px 30px;
+  margin: 0px 30px -50px 30px;
   background-color: transparent;
 `
 
 export const Contain4 = styled.SafeAreaView`
   flex: 2;
-  margin: 0px 30px -100px 30px;
+  margin: 70px 30px -100px 30px;
   background-color: transparent;
 `
 
 export const Contain5 = styled.SafeAreaView`
   flex: 1;
-  margin-top:100px;
+  margin: 100px 0px 0px 0px;
 `
 
 export const Hide = styled.View`

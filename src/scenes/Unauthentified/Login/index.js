@@ -74,7 +74,7 @@ const LoginScreen = (props) => {
 						isOutlined={true}
 						title={translations.registerButtonLabel} 
 						onPress={()=> navigation.navigate('Register')} 
-						underlayColor="silver"
+						underlayColor="white"
 					/>
 				</SC.Contain6>
 				<SC.Hide />
