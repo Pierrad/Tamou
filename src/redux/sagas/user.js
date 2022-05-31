@@ -6,15 +6,16 @@ import {
 } from 'redux-saga/effects'
 import * as Keychain from 'react-native-keychain'
 
-import { POST_REGISTER, POST_LOGIN, CHECK_EXISTING_SESSION, SESSION_REDIRECTION, SET_USER, POST_REQUEST_PASSWORD_CHANGE, POST_RESET_PASSWORD, POST_NEW_PROFIL_PICTURE, POST_DELETE_ACCOUNT, POST_LOGOUT, SET_MULTIPLE_PARTNERS, GET_MULTIPLE_PARTNERS } from '../actions/user'
+import { POST_REGISTER, POST_LOGIN, CHECK_EXISTING_SESSION, SESSION_REDIRECTION, SET_USER, POST_REQUEST_PASSWORD_CHANGE, POST_RESET_PASSWORD, POST_NEW_PROFIL_PICTURE, POST_DELETE_ACCOUNT, POST_LOGOUT, SET_MULTIPLE_PARTNERS, GET_MULTIPLE_PARTNERS, DELETE_NOTIFICATION } from '../actions/user'
 import { INCREMENT_STEP, RESET_STEP, SET_ERROR, SET_VALIDATION, START_LOADING, STOP_LOADING } from '../actions/app'
-import { register, login, requestPasswordChange, resetPassword, uploadUserPicture, deleteAccount, getMultiplePublicProfile } from '../api/user'
+import { register, login, requestPasswordChange, resetPassword, uploadUserPicture, deleteAccount, getMultiplePublicProfile, deleteNotification } from '../api/user'
 import * as RootNavigation from '../../navigation/RootNavigation'
 import { translateMessage } from '../../helpers/api'
 import { hasSubscribeToCategories } from '../../helpers/user'
 import * as userSelectors from '../selectors/user'
 import { User } from '../../models/User'
 import { PublicUser } from '../../models/PublicProfile'
+import i18n from '../../i18n/i18n'
 
 
 function* sessionRedirect() {
@@ -144,10 +145,25 @@ function* handleDeleteAccount() {
 function* fetchMultiplePublicProfile({ payload }) {
 	const user = yield select(userSelectors.user)
 
-	const authResponse = yield call(getMultiplePublicProfile, { token: user.token, publicIds: payload.publicIds })
+	const uniqueIds = [...new Set(payload.publicIds)]
+
+	const authResponse = yield call(getMultiplePublicProfile, { token: user.token, publicIds: uniqueIds })
 
 	if (authResponse.success === true) {
 		yield put({ type: SET_MULTIPLE_PARTNERS, payload: authResponse.data.users.map((user) => PublicUser(user)) })
+	} else if (authResponse && authResponse.success === false) {
+		yield put({ type: STOP_LOADING })
+		yield put({ type: SET_ERROR, payload: translateMessage(authResponse.data.message) })
+	}
+}
+
+function* handleDeleteNotification({ payload }) {
+	const user = yield select(userSelectors.user)
+
+	const authResponse = yield call(deleteNotification, { token: user.token, id: payload.id })
+
+	if (authResponse.success === true) {
+		yield put({ type: SET_VALIDATION, payload: i18n.t('') })
 	} else if (authResponse && authResponse.success === false) {
 		yield put({ type: STOP_LOADING })
 		yield put({ type: SET_ERROR, payload: translateMessage(authResponse.data.message) })
@@ -166,4 +182,5 @@ export default function* userSagas() {
 	yield takeLeading(POST_NEW_PROFIL_PICTURE, uploadProfilePicture)
 	yield takeLeading(POST_DELETE_ACCOUNT, handleDeleteAccount)
 	yield takeLeading(GET_MULTIPLE_PARTNERS, fetchMultiplePublicProfile)
+	yield takeLeading(DELETE_NOTIFICATION, handleDeleteNotification)
 }

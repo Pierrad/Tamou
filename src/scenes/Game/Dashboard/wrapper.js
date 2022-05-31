@@ -1,7 +1,8 @@
-import React, { useMemo, useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
+
 
 import { imageTranslation } from '../../../helpers/game'
 
@@ -13,8 +14,12 @@ const GameDashboardScreenWrapper = (props) => {
 	const { t } = useTranslation()
 
 	useEffect(() => {
-		reloadUser()
-	}, [reloadUser])
+		const listener = navigation.addListener('focus', () => {
+			reloadUser()
+		})
+
+		return listener
+	}, [navigation, reloadUser])
 
 	const translations = {
 		title: t('game_dashboard_title'),
@@ -54,6 +59,7 @@ GameDashboardScreenWrapper.propTypes = {
 	navigation: PropTypes.shape({
 		navigate: PropTypes.func.isRequired,
 		goBack: PropTypes.func.isRequired,
+		addListener: PropTypes.func.isRequired
 	}).isRequired,
 	user: PropTypes.object,
 	reloadUser: PropTypes.func,

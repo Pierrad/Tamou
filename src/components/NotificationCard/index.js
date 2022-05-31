@@ -3,10 +3,13 @@ import PropTypes from 'prop-types'
 import { Swipeable } from 'react-native-gesture-handler'
 import { Animated } from 'react-native'
 
+import { getElapsedTime } from '../../helpers/date'
+import { getDurationHintFromDelay } from '../../helpers/notification'
+
 import * as SC from './styled'
 
 const NotificationCard = (props) => {
-	const { id, title, isNew, dateAgo , onDelete } = props
+	const { id, title, date , onDelete, message } = props
 	const [_, set_] = useState(null)
 	const AnimatedView = Animated.createAnimatedComponent(SC.Options)
 
@@ -43,11 +46,12 @@ const NotificationCard = (props) => {
 			renderRightActions={renderRightActions}
 		>
 			<SC.Container
-				isNew={isNew}
+				isNew={true}
 			>
 				<SC.Wrapper>
-					<SC.Date>{dateAgo}</SC.Date>
-					<SC.Text>{title}</SC.Text>
+					<SC.Date>{getDurationHintFromDelay(getElapsedTime(date))}</SC.Date>
+					<SC.Title>{title}</SC.Title>
+					<SC.Text>{message}</SC.Text>
 				</SC.Wrapper>
 			</SC.Container>
 		</Swipeable>
@@ -55,11 +59,12 @@ const NotificationCard = (props) => {
 }
 
 NotificationCard.propTypes = {
-	id: PropTypes.number,
+	id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	title: PropTypes.string,
 	isNew: PropTypes.bool,
-	dateAgo: PropTypes.string,
+	date: PropTypes.number,
 	onDelete: PropTypes.func,
+	message: PropTypes.string,
 }
 
 export default NotificationCard

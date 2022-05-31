@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 
 import * as SC from './styled'
 
-const NotificationScreen = ({ headerData, notifications, onDelete }) => {
+const NotificationScreen = ({ headerData, translations, notifications, onDelete,  }) => {
+
+	console.log(notifications)
 
 	return (
 		<SC.Container>
@@ -12,9 +14,14 @@ const NotificationScreen = ({ headerData, notifications, onDelete }) => {
 					<SC.Header {...headerData} />
 				</SC.Content>
 				<SC.Content>
-					{notifications.map((notification, index) => (
-						<SC.Notification key={index} id={index} {...notification} onDelete={onDelete} />
-					))}
+					{notifications.length !== 0 ? notifications.map((notification, index) => (
+						<SC.Notification key={index} {...notification} onDelete={onDelete} />
+					))
+						: (
+							<SC.EmptyNotification>
+								{translations.noNotifications}
+							</SC.EmptyNotification>
+						)}
 				</SC.Content>
 			</SC.Wrapper>
 		</SC.Container>
@@ -29,6 +36,7 @@ NotificationScreen.propTypes = {
 		title: PropTypes.string,
 		onDotPress: PropTypes.func,
 	}),
+	translations: PropTypes.object,
 	notifications: PropTypes.arrayOf(PropTypes.shape({
 		title: PropTypes.string,
 		isNew: PropTypes.bool,

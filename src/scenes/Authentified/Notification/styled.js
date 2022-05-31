@@ -23,3 +23,11 @@ export const Header = styled(BasicHeader)`
 `
 
 export const Notification = styled(NotificationCard)``
+
+export const EmptyNotification = styled.Text`
+  font-family: 'Poppins-Bold';
+  font-size: 18px;
+  margin-top: 50px;
+  width: 100%;
+  text-align: center;
+`

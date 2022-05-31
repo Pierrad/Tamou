@@ -23,5 +23,6 @@ export const User = (props) => {
 		birthday: getAgeFromTimestamp(props.birthday),
 		gameSection: props.gameSection,
 		loveSection: props?.loveSection,
+		notifications: props.notifications || [],
 	}
 }

@@ -164,3 +164,20 @@ export const getMultiplePublicProfile = async (payload) => {
 	}
 }
 
+export const deleteNotification = async (payload) => {
+	try {
+		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/notif/${payload.id}`, {
+			method: 'DELETE',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+				'Authorization': payload.token,
+			},
+		})
+
+		const json = await res.json()
+		return json
+	} catch(err) {
+		return {error: true, message: err?.response?.data?.message || 'Internal error'}
+	}
+}

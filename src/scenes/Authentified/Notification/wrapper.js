@@ -4,33 +4,19 @@ import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
 import NotificationScreen from './index'
+import { DELETE_NOTIFICATION } from '../../../redux/actions/user'
 
 const NotificationScreenWrapper = (props) => {
-	const { navigation, theme } = props
+	const { navigation, theme, user, deleteNotification } = props
 	const { t } = useTranslation()
 
-	const [notifications, setNotifications] = useState([
-		{
-			isNew: true,
-			dateAgo: t('notification_screen_new_notification_date_ago', { time: '2h' }),
-			title: t('notification_screen_new_message_from', { name: 'John Doe' }),
-		},
-		{
-			isNew: true,
-			dateAgo: t('notification_screen_new_notification_date_ago', { time: '3h' }),
-			title: t('notification_screen_new_match_with', { name: 'John Doe' }),
-		},
-		{
-			isNew: false,
-			dateAgo: t('notification_screen_new_notification_date_ago', { time: '4h' }),
-			title: t('notification_screen_push_discover_category'),
-		},
-	])
+	const [notifications, setNotifications] = useState(user.notifications)
 
 	const onDeletePress = useCallback((id) => {
-		const newNotifications = notifications.filter((item, i) => i !== id)
+		const newNotifications = notifications.filter((item) => item.id !== id)
 		setNotifications(newNotifications)
-	}, [notifications])
+		deleteNotification(id)
+	}, [deleteNotification, notifications])
 
 	const headerData = useMemo(() => ({
 		onButtonPress: () => navigation.goBack(),
@@ -39,13 +25,18 @@ const NotificationScreenWrapper = (props) => {
 		title: t('notification_screen_title'),
 	}), [navigation, t, theme.background, theme.backgroundInverted])
 
+	const translations = useMemo(() => ({
+		noNotifications: t('notification_screen_no_notifications'),
+	}), [t])
+
 	const renderNotificationScreen = useCallback(() => (
 		<NotificationScreen
 			headerData={headerData}	
+			translations={translations}
 			notifications={notifications}
 			onDelete={onDeletePress}
 		/>
-	), [headerData, notifications, onDeletePress])
+	), [headerData, notifications, onDeletePress, translations])
 
 
 	return renderNotificationScreen()
@@ -57,13 +48,19 @@ NotificationScreenWrapper.propTypes = {
 		navigate: PropTypes.func.isRequired,
 		goBack: PropTypes.func.isRequired,
 	}).isRequired,
+	user: PropTypes.shape({
+		notifications: PropTypes.array,
+	}),
+	deleteNotification: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
 	theme: state.themeReducer.theme,
+	user: state.userReducer.user,
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
+	deleteNotification: (id) => dispatch({ type: DELETE_NOTIFICATION, payload: { id } }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotificationScreenWrapper)

@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
+import { CHECK_EXISTING_SESSION } from '../../../redux/actions/user'
+
 import DashboardScreen from './index'
 
 const DashboardScreenWrapper = (props) => {
-	const { theme, navigation, user } = props
+	const { theme, navigation, user, reloadUser } = props
 	const { t } = useTranslation()
+
+	useEffect(() => {
+		const listener = navigation.addListener('focus', () => {
+			reloadUser()
+		})
+
+		return listener
+	}, [navigation, reloadUser])
 
 	const translations = {
 		hello: t('dashboard_screen_hello', { name: user.username }),
@@ -33,6 +43,7 @@ const DashboardScreenWrapper = (props) => {
 			avatar={user.avatar}
 			hasGameSection={user.gameSection.games.length > 0}
 			onAddCategory={handleAddCategoryPress}
+			numberOfNotifications={user.notifications.length}
 		/>
 	)
 }
@@ -40,8 +51,9 @@ const DashboardScreenWrapper = (props) => {
 DashboardScreenWrapper.propTypes = {
 	theme: PropTypes.object,
 	navigation: PropTypes.shape({
-		navigate: PropTypes.func.isRequired,
-		goBack: PropTypes.func.isRequired,
+		navigate: PropTypes.func,
+		goBack: PropTypes.func,
+		addListener: PropTypes.func
 	}).isRequired,
 	user: PropTypes.shape({
 		username: PropTypes.string.isRequired,
@@ -49,7 +61,9 @@ DashboardScreenWrapper.propTypes = {
 		gameSection: PropTypes.shape({
 			games: PropTypes.array,
 		}),
+		notifications: PropTypes.array,
 	}),
+	reloadUser: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
@@ -57,7 +71,8 @@ const mapStateToProps = (state) => ({
 	user: state.userReducer.user,
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
+	reloadUser: () => dispatch({ type: CHECK_EXISTING_SESSION }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreenWrapper)

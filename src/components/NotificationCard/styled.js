@@ -17,12 +17,18 @@ export const Wrapper = styled.View`
 export const Date = styled.Text`
   font-family: 'Poppins-Regular';
   font-size: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+`
+
+export const Title = styled.Text`
+  font-family: 'Poppins-Bold';
+  font-size: 18px;
+  margin-bottom: 5px;
 `
 
 export const Text = styled.Text`
-  font-family: 'Poppins-Bold';
-  font-size: 16px;
+  font-family: 'Poppins-Regular';
+  font-size: 14px;
 `
 
 export const Options = styled.View`

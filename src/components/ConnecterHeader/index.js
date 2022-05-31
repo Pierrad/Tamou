@@ -16,7 +16,7 @@ const ConnectedHeader = (props) => {
 				/>
 				<SC.Title>{title}</SC.Title>
 			</SC.Content>
-			{onNotificationPress && numberOfNotification && onAvatarPress && avatar && (
+			{onNotificationPress && onAvatarPress && avatar && (
 				<SC.Content>
 					<SC.Notification>
 						<SC.Icon
