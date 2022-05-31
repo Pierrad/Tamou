@@ -10,7 +10,7 @@ export const Wrapper = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid ${props => props.theme.backgroundInverted};
+  border: 1px solid ${props => props.theme.game};
   border-radius: 10px;
   padding: 10px;
 `

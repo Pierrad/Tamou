@@ -9,7 +9,7 @@ const PlayerCard = (props) => {
 	return (
 		<SC.Container style={style ? style[0] : 0}>
 			<SC.Pressable onPress={onCardPress}>
-				<SC.Wrapper >
+				<SC.Wrapper>
 					<SC.Left>
 						<SC.Image source={badge} />
 						<SC.Pseudo>{username}</SC.Pseudo>

@@ -22,5 +22,6 @@ export const User = (props) => {
 		gender: props.gender,
 		birthday: getAgeFromTimestamp(props.birthday),
 		gameSection: props.gameSection,
+		loveSection: props?.loveSection,
 	}
 }
