@@ -92,7 +92,7 @@ export const Game = styled.View`
 	display: flex;
 	flex-direction: column;
 	margin-top: 20px;
-
+  position: relative;
 `
 
 export const Field = styled.View`
@@ -120,6 +120,14 @@ export const Divider = styled.View`
   height: 1px;
   background-color: ${props => props.theme.backgroundInverted};
   margin: 10px 0px;
+`
+
+export const Badge = styled.Image`
+  position: absolute;
+  top: -5px;
+  right: 20px;
+  width: 75px;
+  height: 75px;
 `
 
 export const Button = styled(ActionButton)`

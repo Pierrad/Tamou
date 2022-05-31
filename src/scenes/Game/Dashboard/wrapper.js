@@ -30,7 +30,6 @@ const GameDashboardScreenWrapper = (props) => {
 		}
 	})
 
-
 	const headerData = useMemo(() => ({
 		onButtonPress: () => navigation.navigate('Dashboard'),
 		title: translations.title,

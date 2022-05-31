@@ -7,7 +7,7 @@ import PlayerCard from '../../../components/PlayerCard'
 import * as SC from './styled'
 
 const GamePartner = props => {
-	const { theme, translations, headerData, partners, onSearchPress, isSearchMode, onSearchInput, searchValue, goToMatch } = props
+	const { theme, translations, headerData, partners, onSearchPress, isSearchMode, onSearchInput, searchValue, goToMatch, onPartnerPress } = props
 
 	return (
 		<SC.Container>
@@ -41,12 +41,16 @@ const GamePartner = props => {
 					)}
 			</SC.Box>
 			<SC.Partners>
-				{partners.map((partner, i) => (
+				{partners && partners.length !== 0 ? partners.map((partner, i) => (
 					<SC.Card
 						key={i}
+						onCardPress={() => onPartnerPress(partner.publicID)}
 						{...partner}
 					/>
-				))}
+				))
+					:
+					<SC.Text>{translations.noPartners}</SC.Text>
+				}
 			</SC.Partners>
 			<SC.Button
 				title={translations.cta}
@@ -69,6 +73,7 @@ GamePartner.propTypes = {
 	onSearchInput: PropTypes.func,
 	searchValue: PropTypes.string,
 	goToMatch: PropTypes.func,
+	onPartnerPress: PropTypes.func,
 }
 
 export default GamePartner

@@ -6,6 +6,7 @@ import * as SC from './styled'
 const PartnerProfile = props => {
 	const { theme, translations, goBack, user, isInSwipeMode, onLike, onDislike } = props
 
+
 	const renderGames = user.games.map((game, i) => (
 		<SC.Game key={i}>
 			<SC.Label>{game.name}</SC.Label>
@@ -18,6 +19,9 @@ const PartnerProfile = props => {
 				<SC.Value>{game.level}</SC.Value>
 			</SC.Field>
 			<SC.Divider />
+			{game.badge && (
+				<SC.Badge source={game.badge}/>
+			)}
 		</SC.Game>
 	))
 

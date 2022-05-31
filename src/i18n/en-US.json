@@ -79,6 +79,7 @@
     "game_partner_subtitle": "Your partners",
     "game_partner_find_new_player": "Find a new player",
     "game_partner_search_placeholder": "Search for a player...",
+    "game_partner_no_partners": "You don't have any game partners yet",
     "game_search_title": "Online game",
     "game_search_subtitle": "Search for a game",
     "game_search_cta_label": "Add selected game",

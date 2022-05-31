@@ -4,10 +4,11 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 
 import { gameToId, IdToGame } from '../../../helpers/game'
-import { GET_PUBLIC_PROFILE, POST_SWIPE } from '../../../redux/actions/game'
 
 import { togglesConfig } from './config'
 import GameSwipe from './index'
+import { POST_SWIPE } from '../../../redux/actions/game'
+import { GET_PUBLIC_PROFILE } from '../../../redux/actions/user'
 
 const GameSwipeWrapper = (props) => {
 	const { theme, navigation, route, potentialMatch, getProfileFromID, onSwipe, error } = props
@@ -100,7 +101,7 @@ GameSwipeWrapper.propTypes = {
 
 const mapStateToProps = (state) => ({
 	theme: state.themeReducer.theme,
-	potentialMatch: state.gameReducer.potentialMatchProfil,
+	potentialMatch: state.userReducer.potentialMatchProfil,
 	error: state.gameReducer.error,
 })
 

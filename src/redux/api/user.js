@@ -50,6 +50,24 @@ export const login = async (payload) => {
 	}
 }
 
+export const deleteAccount = async (payload) => {
+	try {
+		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/deleteProfile`, {
+			method: 'DELETE',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+				'Authorization': payload.token,
+			},
+		})
+
+		const json = await res.json()
+		return json
+	} catch(err) {
+		return {error: true, message: err?.response?.data?.message || 'Internal error'}
+	}
+}
+
 export const requestPasswordChange = async (payload) => {
 	try {
 		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/forgetPassword`, {
@@ -125,15 +143,18 @@ export const getPublicProfile = async (payload) => {
 	}
 }
 
-export const deleteAccount = async (payload) => {
+export const getMultiplePublicProfile = async (payload) => {
 	try {
-		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/deleteProfile`, {
-			method: 'DELETE',
+		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/public/multiple`, {
+			method: 'POST',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
 				'Authorization': payload.token,
 			},
+			body: JSON.stringify({
+				publicIds: payload.publicIds,
+			}),
 		})
 
 		const json = await res.json()
@@ -142,3 +163,4 @@ export const deleteAccount = async (payload) => {
 		return {error: true, message: err?.response?.data?.message || 'Internal error'}
 	}
 }
+

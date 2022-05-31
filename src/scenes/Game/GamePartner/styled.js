@@ -52,6 +52,13 @@ export const Partners = styled.View`
 
 export const Card = styled(PlayerCard)``
 
+export const Text = styled.Text`
+	font-family: 'Poppins-Bold';
+	font-size: 26px;
+	color: ${props => props.theme.game};
+  text-align: center;
+`
+
 export const Button = styled(ActionButton)`
   position: absolute;
   bottom: 5%;

@@ -19,6 +19,18 @@ export const lolRanking = {
 	'CHALLENGER': 'rank_challenger'
 }
 
+export const lolBadgeTranslation = {
+	'rank_unranked': '',
+	'rank_iron': require('../assets/images/lol/rank_iron.png'),
+	'rank_bronze': require('../assets/images/lol/rank_bronze.png'),
+	'rank_silver': require('../assets/images/lol/rank_silver.png'),
+	'rank_gold': require('../assets/images/lol/rank_gold.png'),
+	'rank_platinum': require('../assets/images/lol/rank_platinum.png'),
+	'rank_diamond': require('../assets/images/lol/rank_diamond.png'),
+	'rank_master': require('../assets/images/lol/rank_master.png'),
+	'rank_challenger': require('../assets/images/lol/rank_challenger.png'),
+}
+
 export const valorantRanking = {
 	'UNRANKED': 'rank_unranked',
 	'IRON': 'rank_iron',
@@ -29,6 +41,18 @@ export const valorantRanking = {
 	'DIAMOND': 'rank_diamond',
 	'IMMORTAL': 'rank_immortal',
 	'RADIANT': 'rank_radiant',
+}
+
+export const valorantBadgeTranslation = {
+	'rank_unranked': '',
+	'rank_iron': require('../assets/images/valorant/rank_iron.png'),
+	'rank_bronze': require('../assets/images/valorant/rank_bronze.png'),
+	'rank_silver': require('../assets/images/valorant/rank_silver.png'),
+	'rank_gold': require('../assets/images/valorant/rank_gold.png'),
+	'rank_platinum': require('../assets/images/valorant/rank_platinum.png'),
+	'rank_diamond': require('../assets/images/valorant/rank_diamond.png'),
+	'rank_master': require('../assets/images/valorant/rank_immortal.png'),
+	'rank_challenger': require('../assets/images/valorant/rank_radiant.png'),
 }
 
 export const rankingIntegerTranslation = {

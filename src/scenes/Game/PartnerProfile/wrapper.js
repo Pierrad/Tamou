@@ -46,6 +46,7 @@ const PartnerProfileWrapper = (props) => {
 			name: gameTranslation[game.game],
 			mood: game.mood,
 			level: game.level || game.ratio || t(rankingStringTranslation[game.rank]),
+			badge: game?.badge,
 		})),
 	}
 

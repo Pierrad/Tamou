@@ -13,8 +13,6 @@ const MatchScreenWrapper = (props) => {
 	const { category, match } = route.params
 	const { t } = useTranslation()
 
-	console.log('MatchScreenWrapper', match)
-
 	const translations = {
 		title: t('love_match_title'),
 		continueSwipeButtonAction: t('love_screen_continue_swipe_button_label'),

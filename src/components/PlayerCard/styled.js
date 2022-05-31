@@ -15,6 +15,8 @@ export const Wrapper = styled.View`
   padding: 10px;
 `
 
+export const Pressable = styled.TouchableWithoutFeedback``
+
 export const Left = styled.View`
   display: flex;
   flex-direction: row;

@@ -5,7 +5,8 @@ import {
 	takeLeading,
 } from 'redux-saga/effects'
 
-import {  POST_INITIAL_GAME, SET_MATCHES, SET_MATCHES_INDEX, GET_PUBLIC_PROFILE, SET_PUBLIC_PROFILE, POST_SWIPE, SET_GET_MATCH_ERROR } from '../actions/game'
+import {  POST_INITIAL_GAME, SET_MATCHES, SET_MATCHES_INDEX, POST_SWIPE, SET_GET_MATCH_ERROR } from '../actions/game'
+import { GET_PUBLIC_PROFILE, SET_PUBLIC_PROFILE } from '../actions/user'
 import { SET_ERROR, SET_VALIDATION, START_LOADING, STOP_LOADING } from '../actions/app'
 import { setGames, getMatches, sendSwipe } from '../api/game'
 import * as gameSelectors from '../selectors/game'
@@ -75,7 +76,7 @@ function* fetchPublicProfile({ payload }) {
 
 function* postSwipe({ payload }) {
 	yield put({ type: START_LOADING })
-	const potentialMatch = yield select(gameSelectors.potentialMatchProfil)
+	const potentialMatch = yield select(userSelectors.potentialMatchProfil)
 	const user = yield select(userSelectors.user)
 
 	const newPayload = {
