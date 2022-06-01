@@ -7,8 +7,8 @@ import * as SC from './styled'
 const GameDashboardScreen = (props) => {
 	const { theme, translations, headerData, navigation, cards } = props
 
-	const renderMatchCard = ({ item }) => (
-		<SC.MatchCard
+	const renderGameCard = ({ item }) => (
+		<SC.GameCard
 			text={item.text}
 			image={item.image}
 			onPress={item.onPress}
@@ -19,9 +19,9 @@ const GameDashboardScreen = (props) => {
 		<SC.Container>
 			<SC.Header {...headerData} />
 			<SC.Title>{translations.subtitle}</SC.Title>
-			<SC.MatchList
+			<SC.CardList
 				data={cards}
-				renderItem={renderMatchCard}
+				renderItem={renderGameCard}
 				numColumns={2}
 				contentContainerStyle={SC.styles.flatList}
 			/>
@@ -46,7 +46,7 @@ GameDashboardScreen.propTypes = {
 	}).isRequired,
 	cards: PropTypes.arrayOf(PropTypes.shape({
 		game: PropTypes.string,
-		image: PropTypes.string,
+		image: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 		onPress: PropTypes.func,
 	})),
 }

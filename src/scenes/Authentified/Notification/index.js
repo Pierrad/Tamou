@@ -5,8 +5,6 @@ import * as SC from './styled'
 
 const NotificationScreen = ({ headerData, translations, notifications, onDelete,  }) => {
 
-	console.log(notifications)
-
 	return (
 		<SC.Container>
 			<SC.Wrapper>

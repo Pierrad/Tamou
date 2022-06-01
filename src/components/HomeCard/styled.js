@@ -2,6 +2,8 @@ import styled from 'styled-components/native'
 import { StyleSheet } from 'react-native'
 import AIcon from 'react-native-vector-icons/AntDesign'
 
+import ImageC from '../Image'
+
 export const Container = styled.SafeAreaView`
   flex: 1;
   position: relative;
@@ -15,7 +17,7 @@ export const ImageWrapper = styled.TouchableOpacity`
   position: relative;
 `
 
-export const Image = styled.Image`
+export const Image = styled(ImageC)`
   width: 85%;
   height: 100%;
   border-radius: 10px;

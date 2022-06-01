@@ -91,12 +91,12 @@ export const gameTranslation = {
 }
 
 export const imageTranslation = {
-	'LOL': 'https://www.pedagojeux.fr/wp-content/uploads/2019/11/1280x720_LoL.jpg',
-	'VALORANT': 'https://seeklogo.com/images/V/valorant-logo-FAB2CA0E55-seeklogo.com.png',
-	'MINECRAFT': 'https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_Minecraft.jpg',
-	'FORTNITE': 'https://cdn2.unrealengine.com/7up-v2-3840x2160-e11fc91a84d6.jpg',
-	'WOW': 'https://image.jeuxvideo.com/images/pc/w/o/wowapc0f.jpg',
-	'COD': 'https://xboxplay.games/uploadStream/16994.jpg',
+	'LOL': require('../assets/images/games/lol.jpg'),
+	'VALORANT': require('../assets/images/games/valorant.png'),
+	'MINECRAFT': require('../assets/images/games/minecraft.jpg'),
+	'FORTNITE': require('../assets/images/games/fortnite.jpg'),
+	'WOW': require('../assets/images/games/wow.jpg'),
+	'COD': require('../assets/images/games/cod.jpg'),
 }
 
 export const gameToId = {

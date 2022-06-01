@@ -10,9 +10,7 @@ const HomeCard = (props) => {
 		<SC.Container style={style ? {...style[0], ...SC.style.container} : SC.style.container}>
 			<SC.ImageWrapper onPress={onPress}>
 				<SC.Image
-					source={{
-						uri: image,
-					}}
+					source={image}
 				/>
 				<SC.Text>{text}</SC.Text>
 				{isInSelectMode && (
@@ -41,7 +39,7 @@ const HomeCard = (props) => {
 
 HomeCard.propTypes = {
 	style: PropTypes.array,
-	image: PropTypes.string,
+	image: PropTypes.any,
 	text: PropTypes.string,
 	onPress: PropTypes.func,
 	isInSelectMode: PropTypes.bool,

@@ -32,7 +32,7 @@ const DashboardScreenWrapper = (props) => {
 	}
 
 	const handleAddCategoryPress = () => {
-		navigation.navigate('SurveyStepper', { step: 2 })
+		navigation.navigate('SurveyStepper', { step: 1 })
 	}
 
 	return (

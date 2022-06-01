@@ -25,7 +25,7 @@ export const Title = styled.Text`
   color: ${props => props.theme.backgroundInverted};
 `
 
-export const MatchList = styled.FlatList`
+export const CardList = styled.FlatList`
   flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
@@ -34,7 +34,7 @@ export const MatchList = styled.FlatList`
   margin: 10px 15px 0px 15px;
 `
 
-export const MatchCard = styled(HomeCard)`
+export const GameCard = styled(HomeCard)`
   flex: 1;
   height: 230px;
   margin-bottom: 15px;
