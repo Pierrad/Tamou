@@ -4,8 +4,7 @@ import { Picker } from '@react-native-picker/picker'
 
 import * as SC from './styled'
 
-const SettingsScreen = ({ theme, headerData, translations, onLanguageChange, selectedLanguage, onDeleteAccount, isModalVisible, onChangeModalVisibility, onLogout }) => {
-
+const SettingsScreen = ({ theme, headerData, translations, onLanguageChange, selectedLanguage, onDeleteAccount, isModalVisible, onChangeModalVisibility, onLogout, onThemeChange, selectedTheme }) => {
 
 	const renderModal = useMemo(() => {
 		return (
@@ -47,9 +46,34 @@ const SettingsScreen = ({ theme, headerData, translations, onLanguageChange, sel
 						selectedValue={selectedLanguage}
 						onValueChange={(itemValue) =>
 							onLanguageChange(itemValue)
-						}>
-						<Picker.Item label={translations.french} value="fr" />
-						<Picker.Item label={translations.english} value="en" />
+						}
+						itemStyle={{ color: theme.backgroundInverted }}
+					>
+						<Picker.Item
+							label={translations.french}
+							value="fr"
+						/>
+						<Picker.Item 
+							label={translations.english}
+							value="en"
+						/>
+					</Picker>
+					<SC.Text>{translations.theme}</SC.Text>
+					<Picker
+						selectedValue={selectedTheme}
+						onValueChange={(itemValue) =>
+							onThemeChange(itemValue)
+						}
+						itemStyle={{ color: theme.backgroundInverted }}
+					>
+						<Picker.Item
+							label={translations.light}
+							value="light"
+						/>
+						<Picker.Item
+							label={translations.dark}
+							value="dark"
+						/>
 					</Picker>
 				</SC.Content>
 			</SC.Wrapper>
@@ -84,6 +108,8 @@ SettingsScreen.propTypes = {
 	translations: PropTypes.object,
 	selectedLanguage: PropTypes.string,
 	onLanguageChange: PropTypes.func,
+	onThemeChange: PropTypes.func,
+	selectedTheme: PropTypes.string,
 	onDeleteAccount: PropTypes.func,
 	isModalVisible: PropTypes.bool,
 	onChangeModalVisibility: PropTypes.func,

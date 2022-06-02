@@ -31,6 +31,7 @@ export const Text = styled.Text`
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: -40px;
+  color: ${props => props.theme.backgroundInverted};
 `
 
 export const Button = styled(ActionButton)`

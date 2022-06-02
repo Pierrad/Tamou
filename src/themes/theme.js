@@ -27,7 +27,7 @@ export const darkTheme = {
 	secondaryTextColor: '#ffffff',
 	primaryButtonColor: '#F99030',
 	secondaryButtonColor: '#FFFFFF',
-	background: '#000000',
+	background: '#424242',
 	backgroundInverted: '#ffffff',
 	...colors,
 }
