@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import DismissKeyboardHOC from '../../helpers/useDismissKeyboardView'
+import DismissKeyboardHOC from '../../hooks/useDismissKeyboardView'
 
 import * as SC from './styled'
 

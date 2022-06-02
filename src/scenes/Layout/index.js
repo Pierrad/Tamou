@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import { SESSION_REDIRECTION } from '../../redux/actions/user'
 import { RESET_ERROR, RESET_VALIDATION } from '../../redux/actions/app'
 
-import { navigationRef } from '../../navigation/RootNavigation'
+import { navigationRef } from '../../helpers/navigation'
 import { lightTheme } from '../../themes/theme'
 
 import HomeScreen from '../Home'

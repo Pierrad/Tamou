@@ -12,7 +12,7 @@ import { setGames, getMatches, sendSwipe } from '../api/game'
 import * as gameSelectors from '../selectors/game'
 import * as userSelectors from '../selectors/user'
 import { PublicUser } from '../../models/PublicProfile'
-import * as RootNavigation from '../../navigation/RootNavigation'
+import * as RootNavigation from '../../helpers/navigation'
 
 import { translateMessage } from '../../helpers/api'
 import { getPublicProfile } from '../api/user'
