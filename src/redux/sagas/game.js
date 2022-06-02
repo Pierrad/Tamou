@@ -40,7 +40,10 @@ function* fetchPublicProfile({ payload }) {
 	let currentGameMatchesIndex = yield select(gameSelectors.matchesIndex)
 	const user = yield select(userSelectors.user)
 
-	if (matches === null || currentGameMatchesIndex === matches.length - 1 || matches.length === 0) {
+	console.log(currentGameMatchesIndex)
+	console.log(matches)
+
+	if (matches === null || currentGameMatchesIndex === 0 || currentGameMatchesIndex === matches.length - 1 || matches.length === 0) {
 		const res = yield call(getMatches, { ...payload, token: user.token })
 		if (res.success === true) {
 			matches = res.data.potentialMatch
@@ -53,6 +56,7 @@ function* fetchPublicProfile({ payload }) {
 	if (matches && currentGameMatchesIndex >= matches.length) {
 		yield put({ type: STOP_LOADING })
 		yield put({ type: SET_GET_MATCH_ERROR, payload: true })
+		console.log('no more matches')
 		return
 	}
 

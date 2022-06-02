@@ -9,12 +9,12 @@ import * as SC from './styled'
 const GameSearch = props => {
 	const { theme, translations, headerData, searchValue, onSearchInput, games, selectedGame, onSubmit } = props
 
-	const renderMatchCard = useCallback(({ item }) => {
+	const renderGameCard = useCallback(({ item }) => {
 		if (item.isAlreadyAdded) {
 			return null
 		}
 		return (
-			<SC.MatchCard
+			<SC.GameCard
 				{...item}
 				isSelected={item.id === selectedGame}
 			/>
@@ -30,9 +30,9 @@ const GameSearch = props => {
 				onChangeText={onSearchInput}
 				placeholder={translations.searchPlaceholder}
 			/>
-			<SC.MatchList
+			<SC.GameList
 				data={games}
-				renderItem={renderMatchCard}
+				renderItem={renderGameCard}
 				numColumns={2}
 				contentContainerStyle={SC.styles.flatList}
 			/>

@@ -47,11 +47,11 @@ const ProfilScreenWrapper = (props) => {
 				},
 				{
 					label: t('profil_screen_catchphrase_field_label'),
-					value: 'fmermffnejznrzf',
+					value: user.tagline,
 				},
 			]
 		},
-	}), [theme.backgroundInverted, theme.background, t, user.avatar, user.firstname, user.lastname, user.location, user.email, user.username, handleSubmitPicture, navigation])
+	}), [theme.backgroundInverted, theme.background, t, user.avatar, user.firstname, user.lastname, user.location, user.email, user.username, user.tagline, handleSubmitPicture, navigation])
 
 	return (
 		<ProfilScreen {...data} />
@@ -71,6 +71,7 @@ ProfilScreenWrapper.propTypes = {
 		firstname: PropTypes.string,
 		lastname: PropTypes.string,
 		location: PropTypes.string,
+		tagline: PropTypes.string,
 	}),
 	updateProfilPicture: PropTypes.func,
 }

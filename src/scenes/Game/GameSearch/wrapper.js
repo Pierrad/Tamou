@@ -101,7 +101,7 @@ const GameSearchWrapper = props => {
 	}
 
 	const onSubmit = () => {
-		if (selectedGame) {
+		if (typeof selectedGame === 'number') {
 			navigation.navigate('GameSurvey', { game: initialGames.filter((game) => game.id === selectedGame)[0].minName })
 		}
 	}

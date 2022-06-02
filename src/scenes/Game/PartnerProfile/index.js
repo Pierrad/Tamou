@@ -9,6 +9,7 @@ const PartnerProfile = props => {
 
 	const renderGames = user.games.map((game, i) => (
 		<SC.Game key={i}>
+			<SC.Divider />
 			<SC.Label>{game.name}</SC.Label>
 			<SC.Field>
 				<SC.Label>Mood</SC.Label>
@@ -39,7 +40,7 @@ const PartnerProfile = props => {
 				<SC.Image
 					source={{ uri: user.rank }}
 				/>
-				{isInSwipeMode && (
+				{!isInSwipeMode && (
 					<SC.Buttons>
 						<SC.DislikeButton
 							onPress={onDislike}
@@ -59,6 +60,7 @@ const PartnerProfile = props => {
 			</SC.Wrapper>
 			<SC.Content>
 				<SC.Title>{user.name}</SC.Title>
+				<SC.TagLine>{`"${user.tagline}"`}</SC.TagLine>
 				{renderGames}
 			</SC.Content>
 			<SC.Button
@@ -79,6 +81,7 @@ PartnerProfile.propTypes = {
 	goBack: PropTypes.func,
 	user: PropTypes.shape({
 		name: PropTypes.string,
+		tagline: PropTypes.string,
 		rank: PropTypes.string,
 		games: PropTypes.array,
 	}),

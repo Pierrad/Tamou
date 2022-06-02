@@ -41,6 +41,7 @@ const PartnerProfileWrapper = (props) => {
 
 	const profile = {
 		name: `${user.username}, ${age} ans`,
+		tagline: user.tagline,
 		rank: user.image,
 		games: user.gameSection.games.map((game) => ({
 			name: gameTranslation[game.game],

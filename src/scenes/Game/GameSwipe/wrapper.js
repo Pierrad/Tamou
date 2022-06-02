@@ -7,11 +7,11 @@ import { gameToId, IdToGame } from '../../../helpers/game'
 
 import { togglesConfig } from './config'
 import GameSwipe from './index'
-import { POST_SWIPE } from '../../../redux/actions/game'
+import { POST_SWIPE, RESET_MATCHES } from '../../../redux/actions/game'
 import { GET_PUBLIC_PROFILE } from '../../../redux/actions/user'
 
 const GameSwipeWrapper = (props) => {
-	const { theme, navigation, route, potentialMatch, getProfileFromID, onSwipe, error } = props
+	const { theme, navigation, route, potentialMatch, getProfileFromID, onSwipe, error, resetMatch } = props
 	const game = route.params?.game ?? ''
 	const { t } = useTranslation()
 	const [selected, isSelected] = useState([gameToId[game]])
@@ -19,6 +19,20 @@ const GameSwipeWrapper = (props) => {
 	const translations = {
 		error: t('game_swipe_no_more_match'),
 	}
+
+	useEffect(() => {
+		const listener = navigation.addListener('focus', () => {
+			resetMatch()
+		})
+
+		return listener
+	}, [navigation, resetMatch])
+
+	useEffect(() => {
+		return () => {
+			resetMatch()
+		}
+	}, [resetMatch])
 
 	const getCurrentProfile = useCallback(() => {
 		getProfileFromID({
@@ -29,6 +43,10 @@ const GameSwipeWrapper = (props) => {
 	useEffect(() => {
 		getCurrentProfile()
 	}, [getCurrentProfile])
+
+	const currentProfile = useMemo(() => {
+		return potentialMatch
+	}, [potentialMatch])
 
 	const headerData = useMemo(() => ({
 		onButtonPress: () => navigation.goBack(),
@@ -46,7 +64,8 @@ const GameSwipeWrapper = (props) => {
 			newSelected.splice(index, 1)
 		}
 		isSelected(newSelected)
-	}, [selected])
+		resetMatch()
+	}, [resetMatch, selected])
 
 	const toggles = useMemo(() => {
 		return togglesConfig(theme, onSelectGame)
@@ -67,17 +86,18 @@ const GameSwipeWrapper = (props) => {
 	}, [getCurrentProfile, onSwipe])
 
 	const onProfile = useCallback(() => {
-		navigation.navigate('GamePartnerProfile', { user: potentialMatch, game })
-	}, [game, navigation, potentialMatch])
+		navigation.navigate('GamePartnerProfile', { user: currentProfile, game })
+	}, [game, navigation, currentProfile])
+
 
 	return (
 		<GameSwipe 
-			key={potentialMatch}
+			key={currentProfile}
 			translations={translations}
 			headerData={headerData}
 			toggles={toggles}
 			selectedToggles={selected}
-			card={potentialMatch}
+			card={currentProfile}
 			onLike={onLike}
 			onDislike={onDislike}
 			onProfile={onProfile}
@@ -91,12 +111,14 @@ GameSwipeWrapper.propTypes = {
 	navigation: PropTypes.shape({
 		navigate: PropTypes.func.isRequired,
 		goBack: PropTypes.func.isRequired,
+		addListener: PropTypes.func.isRequired,
 	}).isRequired,
 	route: PropTypes.object,
 	potentialMatch: PropTypes.object,
 	getProfileFromID: PropTypes.func,
 	onSwipe: PropTypes.func,
 	error: PropTypes.bool,
+	resetMatch: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
@@ -108,6 +130,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 	getProfileFromID: (input) => dispatch({ type: GET_PUBLIC_PROFILE, payload: input }),
 	onSwipe: (input) => dispatch({ type: POST_SWIPE, payload: input }),
+	resetMatch: () => dispatch({ type: RESET_MATCHES }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameSwipeWrapper)

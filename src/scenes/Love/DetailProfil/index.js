@@ -47,6 +47,7 @@ const DetailScreen = props => {
 			</SC.Wrapper>
 			<SC.Content>
 				<SC.Title>{user.nameAndAge}</SC.Title>
+				<SC.TagLine>{`"${user.tagline}"`}</SC.TagLine>
 				{renderOthers}
 			</SC.Content>
 			<SC.Button
@@ -67,6 +68,7 @@ DetailScreen.propTypes = {
 	goBack: PropTypes.func,
 	user: PropTypes.shape({
 		nameAndAge: PropTypes.string,
+		tagline: PropTypes.string,
 		image: PropTypes.string,
 		others: PropTypes.object,
 	}),

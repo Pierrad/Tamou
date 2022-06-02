@@ -181,3 +181,30 @@ export const deleteNotification = async (payload) => {
 		return {error: true, message: err?.response?.data?.message || 'Internal error'}
 	}
 }
+
+export const editUser = async (payload) => {
+	try {
+		const content = JSON.stringify({
+			...(payload.orientation && { orientation: payload.orientation }),
+			...(payload.gender && { gender: payload.gender }),
+			...(payload.tagline && { tagline: payload.tagline }),
+			...(payload.loveSection && { loveSection: payload.loveSection }),
+			...(payload.gameSection && { gameSection: payload.gameSection })
+		})
+
+		const res = await fetch(`${Platform.OS === 'ios' ? API_URL : API_URL_ANDROID}/users/edit`, {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+				'Authorization': payload.token,
+			},
+			body: content,
+		})
+
+		const json = await res.json()
+		return json
+	} catch(err) {
+		return {error: true, message: err?.response?.data?.message || 'Internal error'}
+	}
+}

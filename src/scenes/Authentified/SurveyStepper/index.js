@@ -5,11 +5,10 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const SurveyStepperScreen = (props) => {
-	const { theme, translations, onSubmit, artificialStep, categoriesAlreadySelected } = props
+	const { theme, translations, onSubmit, artificialStep, categoriesAlreadySelected, handleEditUser } = props
 	const [step, setStep] = useState(artificialStep ?? 0)
 	const [genderValue, setGenderValue] = useState('')
-	// eslint-disable-next-line no-unused-vars
-	const [ageValue, setAgeValue] = useState(new Date())
+	const [tagLineValue, setTagLineValue] = useState('')
 	const [categoryValues, setCategoryValues] = useState(categoriesAlreadySelected ?? [])
 
 	const nextStep = useCallback(() => {
@@ -28,6 +27,16 @@ const SurveyStepperScreen = (props) => {
 		}
 	}, [categoryValues])
 
+	const handleSubmit = useCallback(() => {
+		handleEditUser({
+			gender: genderValue,
+			tagline: tagLineValue,
+			...(categoryValues.includes('love') && { loveSection: true }),
+			...(categoryValues.includes('game') && { gameSection: true }),
+		})
+		onSubmit()
+	}, [categoryValues, genderValue, handleEditUser, onSubmit, tagLineValue])
+
 	
 	const renderStep = useCallback((step) => {
 		switch (step) {
@@ -39,6 +48,13 @@ const SurveyStepperScreen = (props) => {
 				title={translations.genderTitle}
 			/>
 		case 1:
+			return <SC.TagLineContainer
+				onArrowPress={tagLineValue ? nextStep : null}
+				title={translations.taglineTitle}
+				value={tagLineValue}
+				onValueChange={setTagLineValue}
+			/>
+		case 2:
 			return <SC.CategoriesPickerContainer
 				onArrowPress={categoryValues.length ? nextStep : null}
 				theme={theme}
@@ -46,15 +62,15 @@ const SurveyStepperScreen = (props) => {
 				values={categoryValues}
 				title={translations.categoriesTitle}
 			/>
-		case 2:
+		case 3:
 			return <SC.ValidateSurveyContainer
-				onArrowPress={onSubmit}
+				onArrowPress={handleSubmit}
 				title={translations.completeTitle}
 			/>
 		default:
 			return null
 		}
-	}, [categoryValues, genderValue, nextStep, onCategoryPress, onSubmit, theme, translations])
+	}, [categoryValues, genderValue, handleSubmit, nextStep, onCategoryPress, tagLineValue, theme, translations.categoriesTitle, translations.completeTitle, translations.genderTitle, translations.taglineTitle])
 
 	return (
 		<SC.Container>
@@ -69,6 +85,7 @@ SurveyStepperScreen.propTypes = {
 	onSubmit: PropTypes.func,
 	artificialStep: PropTypes.number,
 	categoriesAlreadySelected: PropTypes.arrayOf(PropTypes.string),
+	handleEditUser: PropTypes.func,
 }
 
 export default SurveyStepperScreen

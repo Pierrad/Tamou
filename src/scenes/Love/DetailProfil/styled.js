@@ -46,6 +46,13 @@ export const Image = styled.Image`
 	border-bottom-right-radius: 40px;
 `
 
+export const TagLine = styled.Text`
+  font-family: 'Poppins-Medium';
+  font-size: 20px;
+  color: ${props => props.theme.pureBlack};
+  margin-top: 5px;
+`
+
 export const Buttons = styled.View`
 	position: absolute;
 	width: 100%;

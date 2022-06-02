@@ -32,7 +32,15 @@ const DashboardScreenWrapper = (props) => {
 	}
 
 	const handleAddCategoryPress = () => {
-		navigation.navigate('SurveyStepper', { step: 1 })
+		navigation.navigate('SurveyStepper', { step: 2 })
+	}
+
+	const handleNavigationToGame = () => {
+		if (user.gameSection.games.length === 0) {
+			navigation.navigate('GameSurvey')
+		} else {
+			navigation.navigate('GameDashboard')
+		}
 	}
 
 	return (
@@ -41,9 +49,11 @@ const DashboardScreenWrapper = (props) => {
 			theme={theme}
 			translations={translations}
 			avatar={user.avatar}
-			hasGameSection={user.gameSection.games.length > 0}
+			hasGameSection={user.gameSection.requested}
+			hasLoveSection={user.loveSection.requested}
 			onAddCategory={handleAddCategoryPress}
 			numberOfNotifications={user.notifications.length}
+			handleNavigationToGame={handleNavigationToGame}
 		/>
 	)
 }
@@ -60,6 +70,11 @@ DashboardScreenWrapper.propTypes = {
 		avatar: PropTypes.string.isRequired,
 		gameSection: PropTypes.shape({
 			games: PropTypes.array,
+			requested: PropTypes.bool,
+		}),
+		loveSection: PropTypes.shape({
+			matchs: PropTypes.array,
+			requested: PropTypes.bool,
 		}),
 		notifications: PropTypes.array,
 	}),

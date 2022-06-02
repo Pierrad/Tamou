@@ -6,7 +6,7 @@ import IoIcon from 'react-native-vector-icons/Ionicons'
 import * as SC from './styled'
 
 const DashboardScreen = (props) => {
-	const { theme, navigation, translations, avatar, hasLoveSection, hasGameSection, onAddCategory, numberOfNotifications } = props
+	const { theme, navigation, translations, avatar, hasLoveSection, hasGameSection, onAddCategory, numberOfNotifications, handleNavigationToGame } = props
 
 	return (
 		<SC.Container>
@@ -35,7 +35,7 @@ const DashboardScreen = (props) => {
 						title={translations.gameCategoryTitle}
 						icon={<IoIcon name="game-controller-outline" size={24} color={theme.background} />}
 						backgroundColor={theme.game}
-						onClick={() => navigation.navigate('GameDashboard')}
+						onClick={handleNavigationToGame}
 					/>
 				)}
 			</SC.CardList>
@@ -62,6 +62,7 @@ DashboardScreen.propTypes = {
 	hasGameSection: PropTypes.bool,
 	onAddCategory: PropTypes.func,
 	numberOfNotifications: PropTypes.number,
+	handleNavigationToGame: PropTypes.func,
 }
 
 export default DashboardScreen

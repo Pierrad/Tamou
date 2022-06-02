@@ -25,11 +25,12 @@ export const Title = styled.Text`
 `
 
 export const CardList = styled.View`
-  flex: 1;
-  margin: 20px 15px 60px 15px;
+  margin: 20px 15px 10px 15px;
 `
 
-export const DCard = styled(DomainCard)``
+export const DCard = styled(DomainCard)`
+  margin-bottom: 20px;
+`
 
 export const Button = styled(ActionButton)`
   position: absolute;
