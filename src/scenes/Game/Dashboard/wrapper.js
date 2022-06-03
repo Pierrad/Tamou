@@ -39,7 +39,7 @@ const GameDashboardScreenWrapper = (props) => {
 		onButtonPress: () => navigation.navigate('Dashboard'),
 		title: translations.title,
 		leftIconName: 'chevron-left',
-		onParametersPress: () => {console.log('')},
+		// onParametersPress: () => {console.log('')},
 		theme: theme
 	}), [navigation, theme, translations.title])
 

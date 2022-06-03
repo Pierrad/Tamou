@@ -37,6 +37,8 @@ const PartnerProfileWrapper = (props) => {
 		goBack()
 	}
 
+	console.log(game)
+
 	const age = getAgeFromTimestamp(user.birthday)
 
 	const profile = {

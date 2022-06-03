@@ -31,7 +31,7 @@ export const Image = styled.Image`
 export const Pseudo = styled.Text`
   font-family: 'Poppins-Bold';
   font-size: 18px;
-  color: ${props => props.theme.pureBlack};
+  color: ${props => props.theme.backgroundInverted};
 `
 
 export const Level = styled.Text`

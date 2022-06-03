@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import { StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 
 import ActionButton from '../../../components/ActionButton'
 import BasicHeader from '../../../components/BasicHeader'
@@ -30,8 +30,8 @@ export const Text = styled.Text`
   font-family: 'Poppins-Bold';
   font-size: 20px;
   margin-top: 20px;
-  margin-bottom: -40px;
-  color: ${props => props.theme.backgroundInverted};
+  margin-bottom: ${Platform.OS === 'android' ? '0px' : '-40px'};
+  color: ${props => props.theme.backgroundInverted}; 
 `
 
 export const Button = styled(ActionButton)`

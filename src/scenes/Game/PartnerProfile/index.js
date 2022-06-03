@@ -34,13 +34,13 @@ const PartnerProfile = props => {
 						onPress={goBack}
 						name="chevron-left"
 						size={30}
-						color={theme.backgroundInverted}
+						color={theme.pureBlack}
 					/>
 				</SC.IconBox>
 				<SC.Image
 					source={{ uri: user.rank }}
 				/>
-				{!isInSwipeMode && (
+				{isInSwipeMode && (
 					<SC.Buttons>
 						<SC.DislikeButton
 							onPress={onDislike}

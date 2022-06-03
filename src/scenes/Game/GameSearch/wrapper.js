@@ -25,13 +25,16 @@ const GameSearchWrapper = props => {
 		onButtonPress: () => navigation.navigate('GameDashboard'),
 		title: t('game_search_title'),
 		leftIconName: 'chevron-left',
-		onParametersPress: () => {console.log('')},
+		// onParametersPress: () => {console.log('')},
 		theme: theme
 	}), [navigation, t, theme])
 
 	const onSelectGame = useCallback((game) => {
 		setSelectedGame(game)
 	}, [])
+
+	console.log(userGames)
+	console.log(userGames.filter((game) => game.name === 'COD').length > 0)
 
 	const initialGames = useMemo(() => [
 		{
@@ -77,7 +80,7 @@ const GameSearchWrapper = props => {
 			image: imageTranslation['COD'],
 			isInSelectMode: true,
 			onPress: () => onSelectGame(4),
-			isAlreadyAdded: userGames.filter((game) => game.name === 'COD').length > 0,
+			isAlreadyAdded: userGames.filter((game) => game.game === 'COD').length > 0,
 		},
 		{
 			id: 5,
