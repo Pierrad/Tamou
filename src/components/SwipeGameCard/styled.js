@@ -8,9 +8,10 @@ export const Container = styled.SafeAreaView`
 `
 
 export const Image = styled.Image`
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
 	margin-bottom: 150px;
+	border-radius: 50px;
 `
 
 export const Profil = styled.View`

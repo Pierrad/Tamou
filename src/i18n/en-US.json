@@ -117,6 +117,7 @@
     "settings_screen_logout": "Logout",
     "settings_screen_theme": "Aplication theme",
     "settings_screen_theme_light": "Light",
-    "settings_screen_theme_dark": "Dark"
+    "settings_screen_theme_dark": "Dark",
+    "chat_screen_title": "Chat"
   }
 }

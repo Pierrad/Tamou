@@ -120,6 +120,7 @@
     "settings_screen_logout": "Déconnexion",
     "settings_screen_theme": "Thème de l'application",
     "settings_screen_theme_light": "Clair",
-    "settings_screen_theme_dark": "Sombre"
+    "settings_screen_theme_dark": "Sombre",
+    "chat_screen_title": "Messagerie"
   }
 }

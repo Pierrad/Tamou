@@ -32,11 +32,25 @@ export const DCard = styled(DomainCard)`
   margin-bottom: 20px;
 `
 
-export const Button = styled(ActionButton)`
+export const Buttons = styled.View`
+  display: flex;
+  flex-direction: row;
   position: absolute;
   bottom: 5%;
   right: 5%;
   left: 5%;
+  width: 100%;
+`
+
+export const PrincipalButton = styled(ActionButton)`
+  width: 65%;
+  background-color: ${props => props.theme.orange};
+  border: 1px solid ${props => props.theme.orange};
+  margin-right: 20px;
+`
+
+export const SecondaryButton = styled(ActionButton)`
+  width: 20%;
   background-color: ${props => props.theme.orange};
   border: 1px solid ${props => props.theme.orange};
 `

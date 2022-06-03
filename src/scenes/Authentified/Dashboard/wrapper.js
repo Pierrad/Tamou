@@ -43,6 +43,10 @@ const DashboardScreenWrapper = (props) => {
 		}
 	}
 
+	const handleNavigationToChat = () => {
+		navigation.navigate('Chat')
+	}
+
 	return (
 		<DashboardScreen 
 			navigation={navigation}
@@ -54,6 +58,7 @@ const DashboardScreenWrapper = (props) => {
 			onAddCategory={handleAddCategoryPress}
 			numberOfNotifications={user.notifications.length}
 			handleNavigationToGame={handleNavigationToGame}
+			handleNavigationToChat={handleNavigationToChat}
 		/>
 	)
 }

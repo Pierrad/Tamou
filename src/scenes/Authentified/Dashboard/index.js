@@ -2,11 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import AntIcon from 'react-native-vector-icons/AntDesign'
 import IoIcon from 'react-native-vector-icons/Ionicons'
+import IconE from 'react-native-vector-icons/Entypo'
 
 import * as SC from './styled'
 
 const DashboardScreen = (props) => {
-	const { theme, navigation, translations, avatar, hasLoveSection, hasGameSection, onAddCategory, numberOfNotifications, handleNavigationToGame } = props
+	const { theme, navigation, translations, avatar, hasLoveSection, hasGameSection, onAddCategory, numberOfNotifications, handleNavigationToGame, handleNavigationToChat } = props
 
 	return (
 		<SC.Container>
@@ -39,13 +40,27 @@ const DashboardScreen = (props) => {
 					/>
 				)}
 			</SC.CardList>
-			<SC.Button
-				title={translations.addCategory}
-				onPress={onAddCategory}
-				underlayColor={theme.orange}
-				textColor={theme.pureWhite}
-				style={SC.styles.button}
-			/>
+			<SC.Buttons>
+				<SC.PrincipalButton
+					title={translations.addCategory}
+					onPress={onAddCategory}
+					underlayColor={theme.orange}
+					textColor={theme.pureWhite}
+					style={SC.styles.button}
+				/>
+				<SC.SecondaryButton
+					onPress={handleNavigationToChat}
+					underlayColor={theme.orange}
+					style={SC.styles.button}
+				>
+					<IconE
+						name="chat"
+						size={24}
+						color={theme.pureWhite}
+					/>
+				</SC.SecondaryButton>
+			</SC.Buttons>
+			
 		</SC.Container>
 	)
 }
@@ -63,6 +78,7 @@ DashboardScreen.propTypes = {
 	onAddCategory: PropTypes.func,
 	numberOfNotifications: PropTypes.number,
 	handleNavigationToGame: PropTypes.func,
+	handleNavigationToChat: PropTypes.func,
 }
 
 export default DashboardScreen
