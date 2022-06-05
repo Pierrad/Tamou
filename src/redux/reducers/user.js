@@ -2,6 +2,7 @@ import {
 	SET_MULTIPLE_PARTNERS,
 	SET_PUBLIC_PROFILE,
 	SET_USER,
+	RESET_PUBLIC_PROFILE,
 } from '../actions/user'
 
 const initialState = {
@@ -27,6 +28,11 @@ const reducer = (state = initialState, {type, payload}) => {
 		return {
 			...state,
 			partners: payload
+		}
+	case RESET_PUBLIC_PROFILE:
+		return {
+			...state,
+			potentialMatchProfil: null
 		}
 	default:
 		return state

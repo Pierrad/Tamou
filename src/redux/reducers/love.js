@@ -1,8 +1,8 @@
 import { 
-	SET_MATCHES,
-	SET_MATCHES_INDEX,
-	SET_GET_MATCH_ERROR,
-	RESET_MATCHES,
+	SET_LOVE_MATCHES,
+	SET_LOVE_MATCHES_INDEX,
+	SET_LOVE_GET_MATCH_ERROR,
+	RESET_LOVE_MATCHES,
 } from '../actions/love'
 
 const initialState = {
@@ -14,22 +14,22 @@ const initialState = {
 
 const reducer = (state = initialState, {type, payload}) => {
 	switch(type) {
-	case SET_MATCHES:
+	case SET_LOVE_MATCHES:
 		return {
 			...state,
 			matches: payload
 		}
-	case SET_MATCHES_INDEX:
+	case SET_LOVE_MATCHES_INDEX:
 		return {
 			...state,
 			matchesIndex: payload
 		}
-	case SET_GET_MATCH_ERROR:
+	case SET_LOVE_GET_MATCH_ERROR:
 		return {
 			...state,
 			error: payload
 		}
-	case RESET_MATCHES:
+	case RESET_LOVE_MATCHES:
 		return {
 			...state,
 			matches: null,

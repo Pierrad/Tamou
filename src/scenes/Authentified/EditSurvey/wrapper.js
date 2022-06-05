@@ -37,7 +37,6 @@ const EditSurveyWrapper = (props) => {
 	}
 
 	const submitSurvey = () => {
-		console.log(questions[0].value)
 		setPreferences({
 			orientation: questions[0].value.length > 1 ? 'mf' : questions[0].value[0],
 			search: questions[1].value,

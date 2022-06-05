@@ -60,17 +60,19 @@ const PartnerProfile = props => {
 			</SC.Wrapper>
 			<SC.Content>
 				<SC.Title>{user.name}</SC.Title>
-				<SC.TagLine>{`"${user.tagline}"`}</SC.TagLine>
+				<SC.TagLine>{user.tagline}</SC.TagLine>
 				{renderGames}
 			</SC.Content>
-			<SC.Button
-				title={translations.cta}
-				onPress={() => {}}
-				underlayColor={theme.game}
-				textColor={theme.game}
-				style={SC.styles.button}
-				isOutlined
-			/>
+			{!isInSwipeMode && (
+				<SC.Button
+					title={translations.cta}
+					onPress={() => {}}
+					underlayColor={theme.game}
+					textColor={theme.game}
+					style={SC.styles.button}
+					isOutlined
+				/>
+			)}
 		</SC.Container>
 	)
 }

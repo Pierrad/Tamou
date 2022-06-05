@@ -37,13 +37,11 @@ const PartnerProfileWrapper = (props) => {
 		goBack()
 	}
 
-	console.log(game)
-
 	const age = getAgeFromTimestamp(user.birthday)
 
 	const profile = {
 		name: `${user.username}, ${age} ans`,
-		tagline: user.tagline,
+		tagline: user.tagline ? `"${user.tagline}"` : '',
 		rank: user.image,
 		games: user.gameSection.games.map((game) => ({
 			name: gameTranslation[game.game],

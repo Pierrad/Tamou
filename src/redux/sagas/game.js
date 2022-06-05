@@ -9,14 +9,13 @@ import {  POST_INITIAL_GAME, SET_MATCHES, SET_MATCHES_INDEX, POST_SWIPE, SET_GET
 import { GET_PUBLIC_PROFILE, SET_PUBLIC_PROFILE } from '../actions/user'
 import { SET_ERROR, SET_VALIDATION, START_LOADING, STOP_LOADING } from '../actions/app'
 import { setGames, getMatches, sendSwipe } from '../api/game'
+import { getPublicProfile } from '../api/user'
 import * as gameSelectors from '../selectors/game'
 import * as userSelectors from '../selectors/user'
 import { PublicUser } from '../../models/PublicProfile'
 import * as RootNavigation from '../../helpers/navigation'
 
 import { translateMessage } from '../../helpers/api'
-import { getPublicProfile } from '../api/user'
-
 
 
 function* postInitialGame({ payload }) {
@@ -61,16 +60,18 @@ function* fetchPublicProfile({ payload }) {
 		token: user.token,
 		id: matches ? matches[currentGameMatchesIndex]._id : '',
 	}
-	
-	const authResponse = yield call(getPublicProfile, newPayload)
 
-	if (authResponse.success === true) {
-		yield put({ type: SET_MATCHES_INDEX, payload: currentGameMatchesIndex + 1 })
-		yield put({ type: STOP_LOADING })
-		yield put({ type: SET_PUBLIC_PROFILE, payload: PublicUser(authResponse.data.user) })
-	} else if (authResponse && authResponse.success === false) {
-		yield put({ type: STOP_LOADING })
-		yield put({ type: SET_ERROR, payload: translateMessage(authResponse.data.message) })
+	if (newPayload.id !== '') {
+		const authResponse = yield call(getPublicProfile, newPayload)
+
+		if (authResponse.success === true) {
+			yield put({ type: SET_MATCHES_INDEX, payload: currentGameMatchesIndex + 1 })
+			yield put({ type: STOP_LOADING })
+			yield put({ type: SET_PUBLIC_PROFILE, payload: PublicUser(authResponse.data.user) })
+		} else if (authResponse && authResponse.success === false) {
+			yield put({ type: STOP_LOADING })
+			yield put({ type: SET_ERROR, payload: translateMessage(authResponse.data.message) })
+		}
 	}
 }
 

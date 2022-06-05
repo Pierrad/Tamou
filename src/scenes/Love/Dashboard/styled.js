@@ -39,6 +39,7 @@ export const MatchCard = styled(HomeCard)`
   flex: 1;
   height: 230px;
   margin-bottom: 15px;
+  max-width: 50%;
 `
 
 export const NoMatch = styled.Text`

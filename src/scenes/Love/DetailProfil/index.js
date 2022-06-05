@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const DetailScreen = props => {
-	const { theme, translations, goBack, user, isInSwipeMode, onLike, onDislike } = props
+	const { theme, translations, goBack, user, isInSwipeMode, onLike, onDislike, goToChat } = props
 
 	const renderOthers = Object.keys(user.others).map((other, i) => (
 		<SC.Other key={i}>
-			<SC.Label>{other}</SC.Label>
+			<SC.Label>{translations[other]}</SC.Label>
 			<SC.Value>{user.others[other]}</SC.Value>
 		</SC.Other>
 	))
@@ -47,17 +47,19 @@ const DetailScreen = props => {
 			</SC.Wrapper>
 			<SC.Content>
 				<SC.Title>{user.nameAndAge}</SC.Title>
-				<SC.TagLine>{`"${user.tagline}"`}</SC.TagLine>
+				<SC.TagLine>{user.tagline}</SC.TagLine>
 				{renderOthers}
 			</SC.Content>
-			<SC.Button
-				title={translations.cta}
-				onPress={() => {}}
-				underlayColor={theme.love}
-				textColor={theme.love}
-				style={SC.styles.button}
-				isOutlined
-			/>
+			{!isInSwipeMode && (
+				<SC.Button
+					title={translations.cta}
+					onPress={goToChat}
+					underlayColor={theme.love}
+					textColor={theme.love}
+					style={SC.styles.button}
+					isOutlined
+				/>
+			)}
 		</SC.Container>
 	)
 }
@@ -75,6 +77,7 @@ DetailScreen.propTypes = {
 	isInSwipeMode: PropTypes.bool,
 	onLike: PropTypes.func,
 	onDislike: PropTypes.func,
+	goToChat: PropTypes.func,
 }
 
 export default DetailScreen

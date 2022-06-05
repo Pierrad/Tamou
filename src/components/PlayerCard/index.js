@@ -28,7 +28,7 @@ PlayerCard.propTypes = {
 	onCardPress: PropTypes.func,
 	badge: PropTypes.number,
 	username: PropTypes.string,
-	level: PropTypes.string,
+	level: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }
 
 export default PlayerCard

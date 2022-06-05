@@ -57,6 +57,19 @@ export const Dislike = styled.View`
 	padding: 0px 5px;
 `
 
+export const Profile = styled.View`
+	position: absolute;
+	top: 5%;
+	right: 30%;
+	height: 40px;
+	border-radius: 5px;
+	border: 1px solid ${props => props.theme.game};
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0px 5px;
+`
+
 export const Text = styled.Text`
 	font-family: 'Poppins-Bold';
 	font-size: 20px;

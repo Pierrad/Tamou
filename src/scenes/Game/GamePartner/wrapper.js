@@ -33,7 +33,6 @@ const GamePartnerWrapper = (props) => {
 		onButtonPress: () => navigation.navigate('GameDashboard'),
 		title: gameTranslation[game],
 		leftIconName: 'chevron-left',
-		// onParametersPress: () => {console.log('')},
 		theme: theme
 	}), [game, navigation, theme])
 

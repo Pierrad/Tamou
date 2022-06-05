@@ -32,5 +32,6 @@ export const PublicUser = (props) => {
 				}
 			})
 		},
+		loveSection: props.loveSection,
 	}
 }

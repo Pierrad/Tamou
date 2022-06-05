@@ -25,16 +25,12 @@ const GameSearchWrapper = props => {
 		onButtonPress: () => navigation.navigate('GameDashboard'),
 		title: t('game_search_title'),
 		leftIconName: 'chevron-left',
-		// onParametersPress: () => {console.log('')},
 		theme: theme
 	}), [navigation, t, theme])
 
 	const onSelectGame = useCallback((game) => {
 		setSelectedGame(game)
 	}, [])
-
-	console.log(userGames)
-	console.log(userGames.filter((game) => game.name === 'COD').length > 0)
 
 	const initialGames = useMemo(() => [
 		{

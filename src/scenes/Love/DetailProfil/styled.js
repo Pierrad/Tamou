@@ -14,7 +14,7 @@ export const Container = styled.SafeAreaView`
 `
 
 export const Wrapper = styled.View`
-    height:350px;
+  height:350px;
 	position: relative;
 	background-color: ${props => props.theme.love};
 	display: flex;
@@ -31,6 +31,7 @@ export const IconBox = styled.View`
   border-radius: 30px;
   background-color: ${props => props.theme.pureWhite};
 	width: 30px;
+  z-index: 1000;
 `
 
 export const LeftIcon = styled(FIcon)`
@@ -41,16 +42,9 @@ export const LeftIcon = styled(FIcon)`
 
 export const Image = styled.Image`
 	width: 100%;
-    height:100%;
-    border-bottom-left-radius: 40px;
+  height:100%;
+  border-bottom-left-radius: 40px;
 	border-bottom-right-radius: 40px;
-`
-
-export const TagLine = styled.Text`
-  font-family: 'Poppins-Medium';
-  font-size: 20px;
-  color: ${props => props.theme.pureBlack};
-  margin-top: 5px;
 `
 
 export const Buttons = styled.View`
@@ -86,7 +80,7 @@ export const Icon = styled(AIcon)``
 export const Icon2 = styled(IIcon)``
 
 export const Content = styled.ScrollView`
-  margin: 35px 15px 20px 15px;
+  margin: 35px 15px 60px 15px;
 `
 
 export const Title = styled.Text`
@@ -95,26 +89,28 @@ export const Title = styled.Text`
   color: ${props => props.theme.backgroundInverted};
 `
 
+export const TagLine = styled.Text`
+  font-family: 'Poppins-Medium';
+  font-size: 20px;
+  color: ${props => props.theme.pureBlack};
+  margin-top: 5px;
+  margin-bottom: 20px;
+`
+
 export const Other = styled.View`
 	display: flex;
-	flex-direction: row;
-	margin-top: 20px;
-	align-items: center;
+	flex-direction: column;
+  margin-bottom: 10px;
 `
 
 export const Label = styled.Text`
-  font-family: "Poppins-Medium";
+  font-family: "Poppins-Bold";
   font-size: 18px;
-  color: ${props => props.theme.backgroundInverted};
-	text-transform: capitalize;
-	margin-right: 5px;
-    margin-top: -170px;
+  color: ${props => props.theme.love};
 `
 
 export const Value = styled.Text`
   font-family: "Poppins-Medium";
-  margin-top: 60px;
-  margin-left:-58px;
   font-size: 16px;
   color: ${props => props.theme.detail};
   max-width:98%;

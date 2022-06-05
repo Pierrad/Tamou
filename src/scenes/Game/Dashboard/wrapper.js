@@ -3,23 +3,23 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
-
+import { CHECK_EXISTING_SESSION, RESET_PUBLIC_PROFILE } from '../../../redux/actions/user'
 import { imageTranslation } from '../../../helpers/game'
 
 import GameDashboardScreen from './index'
-import { CHECK_EXISTING_SESSION } from '../../../redux/actions/user'
 
 const GameDashboardScreenWrapper = (props) => {
-	const { theme, navigation, user, reloadUser } = props
+	const { theme, navigation, user, reloadUser, resetPublicProfile } = props
 	const { t } = useTranslation()
 
 	useEffect(() => {
 		const listener = navigation.addListener('focus', () => {
 			reloadUser()
+			resetPublicProfile()
 		})
 
 		return listener
-	}, [navigation, reloadUser])
+	}, [navigation, reloadUser, resetPublicProfile])
 
 	const translations = {
 		title: t('game_dashboard_title'),
@@ -39,7 +39,6 @@ const GameDashboardScreenWrapper = (props) => {
 		onButtonPress: () => navigation.navigate('Dashboard'),
 		title: translations.title,
 		leftIconName: 'chevron-left',
-		// onParametersPress: () => {console.log('')},
 		theme: theme
 	}), [navigation, theme, translations.title])
 
@@ -63,6 +62,7 @@ GameDashboardScreenWrapper.propTypes = {
 	}).isRequired,
 	user: PropTypes.object,
 	reloadUser: PropTypes.func,
+	resetPublicProfile: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
@@ -72,6 +72,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	reloadUser: () => dispatch({ type: CHECK_EXISTING_SESSION }),
+	resetPublicProfile: () => dispatch({ type: RESET_PUBLIC_PROFILE }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameDashboardScreenWrapper)

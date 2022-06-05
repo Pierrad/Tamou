@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
-import { CHECK_EXISTING_SESSION } from '../../../redux/actions/user'
+import { CHECK_EXISTING_SESSION, GET_MULTIPLE_PARTNERS, RESET_PUBLIC_PROFILE } from '../../../redux/actions/user'
 
 import LoveDashboardScreen from './index'
 
 const LoveDashboardScreenWrapper = (props) => {
-	const { theme, navigation, reloadUser, matches } = props
+	const { theme, navigation, reloadUser, user, partners, fetchPartners, resetPublicProfile } = props
 	const { t } = useTranslation()
 
 	const translations = {
@@ -21,21 +21,27 @@ const LoveDashboardScreenWrapper = (props) => {
 	useEffect(() => {
 		const listener = navigation.addListener('focus', () => {
 			reloadUser()
+			resetPublicProfile()
 		})
 
 		return listener
-	}, [navigation, reloadUser])
+	}, [navigation, reloadUser, resetPublicProfile])
 
+	useEffect(() => {
+		fetchPartners({
+			publicIds: user.loveSection.matchs.map((match) => match.id),
+		})
+	}, [fetchPartners, user.gameSection, user.loveSection.matchs])
 
 	const matchsCard = useMemo(() => {
-		return matches && matches.map((match) => {
+		return partners && partners.map((match) => {
 			return {
-				text: match.match,
-				image: match.match.image,
+				text: match.username,
+				image: match.avatar,
 				onPress: () => navigation.navigate('LoveProfile', { profile: match }),
 			}
 		})
-	}, [matches, navigation])
+	}, [navigation, partners])
 
 	const handleButtonPress = () => {
 		navigation.navigate('LoveSwipe')
@@ -69,16 +75,21 @@ LoveDashboardScreenWrapper.propTypes = {
 	}).isRequired,
 	reloadUser: PropTypes.func,
 	user: PropTypes.object,
-	matches: PropTypes.array,
+	partners: PropTypes.array,
+	fetchPartners: PropTypes.func,
+	resetPublicProfile: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
 	theme: state.themeReducer.theme,
 	user: state.userReducer.user,
+	partners: state.userReducer.partners,
 })
 
 const mapDispatchToProps = (dispatch) => ({
 	reloadUser: () => dispatch({ type: CHECK_EXISTING_SESSION }),
+	resetPublicProfile: () => dispatch({ type: RESET_PUBLIC_PROFILE }),
+	fetchPartners: (input) => dispatch({ type: GET_MULTIPLE_PARTNERS, payload: input }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoveDashboardScreenWrapper)
