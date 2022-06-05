@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const SurveyStepperScreen = (props) => {
-	const { navigation, headerData, researchToggles, typeOfNightToggles, holidayToggles, smokeToggles, movieToggles } = props
+	const { navigation, headerData, researchToggles, typeOfNightToggles, holidayToggles, smokeToggles, movieToggles, sendPreferences } = props
 
 	const [step, setStep] = useState(0)
 	const [genderValues, setGenderValues] = useState([])
@@ -47,9 +47,16 @@ const SurveyStepperScreen = (props) => {
 	}, [])
 	
 	const submit = useCallback(() => {
-		console.log('submit')
+		sendPreferences({
+			orientation: genderValues.length > 1 ? 'mf' : genderValues[0],
+			search: research,
+			mood: typeOfNight,
+			holiday: holiday,
+			smoke: smoke,
+			movie: movie,
+		})
 		navigation.navigate('LoveDashboard')
-	}, [navigation])
+	}, [genderValues, holiday, movie, navigation, research, sendPreferences, smoke, typeOfNight])
 
 	const renderStep = useCallback((step) => {
 		switch (step) {
@@ -133,6 +140,7 @@ SurveyStepperScreen.propTypes = {
 	holidayToggles: PropTypes.array,
 	smokeToggles: PropTypes.array,
 	movieToggles: PropTypes.array,
+	sendPreferences: PropTypes.func,
 }
 
 export default SurveyStepperScreen

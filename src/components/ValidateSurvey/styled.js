@@ -25,7 +25,7 @@ export const Button = styled.TouchableOpacity`
   padding: 10px;
   position: absolute;
   top: 92%;
-  right: 6%;
+  right: 10%;
 `
 
 export const Icon = styled(AIcon)``

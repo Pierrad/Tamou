@@ -7,7 +7,7 @@ import IconE from 'react-native-vector-icons/Entypo'
 import * as SC from './styled'
 
 const DashboardScreen = (props) => {
-	const { theme, navigation, translations, avatar, hasLoveSection, hasGameSection, onAddCategory, numberOfNotifications, handleNavigationToGame, handleNavigationToChat } = props
+	const { theme, navigation, translations, avatar, hasLoveSection, hasGameSection, onAddCategory, numberOfNotifications, handleNavigationToGame, handleNavigationToChat, handleNavigationToLove } = props
 
 	return (
 		<SC.Container>
@@ -28,7 +28,7 @@ const DashboardScreen = (props) => {
 						title={translations.loveCategoryTitle}
 						icon={<AntIcon name="hearto" size={24} color={theme.background} />}
 						backgroundColor={theme.love}
-						onClick={() => navigation.navigate('LoveSurvey')}
+						onClick={handleNavigationToLove}
 					/>
 				)}
 				{hasGameSection && (
@@ -79,6 +79,7 @@ DashboardScreen.propTypes = {
 	numberOfNotifications: PropTypes.number,
 	handleNavigationToGame: PropTypes.func,
 	handleNavigationToChat: PropTypes.func,
+	handleNavigationToLove: PropTypes.func,
 }
 
 export default DashboardScreen

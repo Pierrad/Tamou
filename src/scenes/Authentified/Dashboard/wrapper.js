@@ -43,6 +43,14 @@ const DashboardScreenWrapper = (props) => {
 		}
 	}
 
+	const handleNavigationToLove = () => {
+		if (user.loveSection.hasAlreadySetPreferences) {
+			navigation.navigate('LoveDashboard')
+		} else {
+			navigation.navigate('LoveSurvey')
+		}
+	}
+
 	const handleNavigationToChat = () => {
 		navigation.navigate('Chat')
 	}
@@ -59,6 +67,7 @@ const DashboardScreenWrapper = (props) => {
 			numberOfNotifications={user.notifications.length}
 			handleNavigationToGame={handleNavigationToGame}
 			handleNavigationToChat={handleNavigationToChat}
+			handleNavigationToLove={handleNavigationToLove}
 		/>
 	)
 }
@@ -80,6 +89,7 @@ DashboardScreenWrapper.propTypes = {
 		loveSection: PropTypes.shape({
 			matchs: PropTypes.array,
 			requested: PropTypes.bool,
+			hasAlreadySetPreferences: PropTypes.bool,
 		}),
 		notifications: PropTypes.array,
 	}),

@@ -41,7 +41,7 @@ GamePartner.propTypes = {
 	onSubmit: PropTypes.func,
 	questions: PropTypes.arrayOf(PropTypes.shape({
 		label: PropTypes.string,
-		value: PropTypes.string,
+		value: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 		options: PropTypes.arrayOf(PropTypes.shape({
 			label: PropTypes.string,
 			value: PropTypes.string,

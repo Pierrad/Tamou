@@ -4,9 +4,10 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 
 import SurveyStepperScreen from './index'
+import { SET_PREFERENCES } from '../../../redux/actions/love'
 
 const SurveyStepperScreenWrapper = (props) => {
-	const { theme, navigation } = props 
+	const { theme, navigation, sendPreferences } = props 
 	const { t } = useTranslation()
 
 	const researchToggles = [
@@ -20,13 +21,13 @@ const SurveyStepperScreenWrapper = (props) => {
 			text: 'La perle rare',
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
-			value: 'lifeLove',
+			value: 'life',
 		},
 		{
 			text: 'Un plan d\'un soir',
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
-			value: 'sex',
+			value: 'night',
 		},
 	]
 
@@ -35,7 +36,7 @@ const SurveyStepperScreenWrapper = (props) => {
 			text: 'Netflix & Chill',
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
-			value: 'chill',
+			value: 'netflix',
 		},
 		{
 			text: 'Sortie en boîte',
@@ -47,7 +48,7 @@ const SurveyStepperScreenWrapper = (props) => {
 			text: 'Soirée entre amis',
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
-			value: 'friends',
+			value: 'friend',
 		},
 		{
 			text: 'Sortie amoureuse',
@@ -89,13 +90,13 @@ const SurveyStepperScreenWrapper = (props) => {
 			text: 'Redibitoire',
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
-			value: 'noSmoke',
+			value: 'yes',
 		},
 		{
 			text: 'Pas de soucis',
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
-			value: 'smoke',
+			value: 'no',
 		},
 	]
 
@@ -116,7 +117,7 @@ const SurveyStepperScreenWrapper = (props) => {
 			text: 'Fast and Furious',
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
-			value: 'ff',
+			value: 'faf',
 		},
 		{
 			text: 'Avengers',
@@ -154,6 +155,7 @@ const SurveyStepperScreenWrapper = (props) => {
 			holidayToggles={holidayToggles}
 			smokeToggles={smokeToggles}
 			movieToggles={movieToggles}
+			sendPreferences={sendPreferences}
 		/>
 	)
 }
@@ -164,13 +166,15 @@ SurveyStepperScreenWrapper.propTypes = {
 		navigate: PropTypes.func.isRequired,
 		goBack: PropTypes.func.isRequired,
 	}).isRequired,
+	sendPreferences: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
 	theme: state.themeReducer.theme,
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
+	sendPreferences: (preferences) => dispatch({ type: SET_PREFERENCES, payload: preferences }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SurveyStepperScreenWrapper)
