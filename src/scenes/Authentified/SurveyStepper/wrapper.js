@@ -55,6 +55,7 @@ SurveyStepperScreenWrapper.propTypes = {
 	theme: PropTypes.object,
 	navigation: PropTypes.shape({
 		navigate: PropTypes.func,
+		replace: PropTypes.func,
 	}),
 	setError: PropTypes.func,
 	route: PropTypes.object,

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const PartnerProfile = props => {
-	const { theme, translations, goBack, user, isInSwipeMode, onLike, onDislike } = props
+	const { theme, translations, goBack, user, isInSwipeMode, onLike, onDislike, goToChat } = props
 
 
 	const renderGames = user.games.map((game, i) => (
@@ -66,7 +66,7 @@ const PartnerProfile = props => {
 			{!isInSwipeMode && (
 				<SC.Button
 					title={translations.cta}
-					onPress={() => {}}
+					onPress={goToChat}
 					underlayColor={theme.game}
 					textColor={theme.game}
 					style={SC.styles.button}
@@ -90,6 +90,7 @@ PartnerProfile.propTypes = {
 	isInSwipeMode: PropTypes.bool,
 	onLike: PropTypes.func,
 	onDislike: PropTypes.func,
+	goToChat: PropTypes.func,
 }
 
 export default PartnerProfile

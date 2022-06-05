@@ -60,7 +60,6 @@ const DashboardScreen = (props) => {
 					/>
 				</SC.SecondaryButton>
 			</SC.Buttons>
-			
 		</SC.Container>
 	)
 }

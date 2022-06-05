@@ -34,6 +34,49 @@ const SettingsScreen = ({ theme, headerData, translations, onLanguageChange, sel
 		)
 	}, [isModalVisible, onChangeModalVisibility, onDeleteAccount, theme.pureWhite, theme.refuse, translations.deleteCTA, translations.deleteConfirmation])
 
+	const renderLanguagePicker = useMemo(() => {
+		return (
+			<Picker
+				selectedValue={selectedLanguage}
+				onValueChange={(itemValue) =>
+					onLanguageChange(itemValue)
+				}
+				itemStyle={{ color: theme.backgroundInverted }}
+			>
+				<Picker.Item
+					label={translations.french}
+					value="fr"
+				/>
+				<Picker.Item 
+					label={translations.english}
+					value="en"
+				/>
+			</Picker>
+		)
+	}, [onLanguageChange, selectedLanguage, theme.backgroundInverted, translations.english, translations.french])
+
+	const renderThemePicker = useMemo(() => {
+		return (
+			<Picker
+				selectedValue={selectedTheme}
+				onValueChange={(itemValue) =>
+					onThemeChange(itemValue)
+				}
+				itemStyle={{ color: theme.backgroundInverted }}
+			>
+				<Picker.Item
+					label={translations.light}
+					value="light"
+				/>
+				<Picker.Item
+					label={translations.dark}
+					value="dark"
+				/>
+			</Picker>
+		)
+
+	}, [onThemeChange, selectedTheme, theme.backgroundInverted, translations.dark, translations.light])
+
 	return (
 		<SC.Container>
 			<SC.Wrapper>
@@ -42,39 +85,9 @@ const SettingsScreen = ({ theme, headerData, translations, onLanguageChange, sel
 				</SC.Content>
 				<SC.Content>
 					<SC.Text>{translations.language}</SC.Text>
-					<Picker
-						selectedValue={selectedLanguage}
-						onValueChange={(itemValue) =>
-							onLanguageChange(itemValue)
-						}
-						itemStyle={{ color: theme.backgroundInverted }}
-					>
-						<Picker.Item
-							label={translations.french}
-							value="fr"
-						/>
-						<Picker.Item 
-							label={translations.english}
-							value="en"
-						/>
-					</Picker>
+					{renderLanguagePicker}
 					<SC.Text>{translations.theme}</SC.Text>
-					<Picker
-						selectedValue={selectedTheme}
-						onValueChange={(itemValue) =>
-							onThemeChange(itemValue)
-						}
-						itemStyle={{ color: theme.backgroundInverted }}
-					>
-						<Picker.Item
-							label={translations.light}
-							value="light"
-						/>
-						<Picker.Item
-							label={translations.dark}
-							value="dark"
-						/>
-					</Picker>
+					{renderThemePicker}
 				</SC.Content>
 			</SC.Wrapper>
 			<SC.LogoutButton

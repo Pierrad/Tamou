@@ -23,6 +23,10 @@ const PartnerProfileWrapper = (props) => {
 		navigation.goBack()
 	}
 
+	const goToChat = () => {
+		navigation.navigate('Chat')
+	}
+
 	const onLike = () => {
 		onSwipe({
 			like: true,
@@ -60,6 +64,7 @@ const PartnerProfileWrapper = (props) => {
 			isInSwipeMode={game !== ''}
 			onLike={onLike}
 			onDislike={onDislike}
+			goToChat={goToChat}
 		/>
 	)
 }
