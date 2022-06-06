@@ -82,7 +82,7 @@
     "love_profile_orientation_title": "Attraction",
     "love_profile_search_title": "What the person is looking for",
     "love_profile_mood_title": "Evenings",
-    "love_profile_holiday": "Holidays",
+    "love_profile_holiday_title": "Holidays",
     "love_profile_smoke_title": "Opinions on smokers",
     "love_profile_movie_title": "Type of movies",
     "love_profile_orientation_female": "Women",
@@ -147,6 +147,17 @@
     "settings_screen_theme": "Aplication theme",
     "settings_screen_theme_light": "Light",
     "settings_screen_theme_dark": "Dark",
-    "chat_screen_title": "Chat"
+    "chat_screen_title": "Chat",
+    "love_edit_title_orientation": "I an interested in...",
+    "love_edit_title_search": "I am looking for...",
+    "love_edit_title_mood": "I am...",
+    "love_edit_title_holiday": "For my holidays, I prefer...",
+    "love_edit_title_smoke": "For me, smokers are...",
+    "love_edit_title_movie": "What kind of movies I like...",
+    "game_edit_title_game": "I am playing...",
+    "game_edit_title_mood": "I am...",
+    "game_edit_value_mood_chill": "Chill",
+    "game_edit_value_mood_tryhard": "Tryhard",
+    "game_edit_value_mood_fun": "Fun"
   }
 }

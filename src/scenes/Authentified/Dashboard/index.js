@@ -26,7 +26,7 @@ const DashboardScreen = (props) => {
 				{hasLoveSection && (
 					<SC.DCard
 						title={translations.loveCategoryTitle}
-						icon={<AntIcon name="hearto" size={24} color={theme.background} />}
+						icon={<AntIcon name="hearto" size={24} color={theme.pureWhite} />}
 						backgroundColor={theme.love}
 						onClick={handleNavigationToLove}
 					/>
@@ -34,7 +34,7 @@ const DashboardScreen = (props) => {
 				{hasGameSection && (
 					<SC.DCard
 						title={translations.gameCategoryTitle}
-						icon={<IoIcon name="game-controller-outline" size={24} color={theme.background} />}
+						icon={<IoIcon name="game-controller-outline" size={24} color={theme.pureWhite} />}
 						backgroundColor={theme.game}
 						onClick={handleNavigationToGame}
 					/>

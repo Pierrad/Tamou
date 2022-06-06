@@ -21,7 +21,7 @@ const DetailScreen = props => {
 						onPress={goBack}
 						name="chevron-left"
 						size={30}
-						color={theme.backgroundInverted}
+						color={theme.pureBlack}
 					/>
 				</SC.IconBox>
 				<SC.Image

@@ -19,7 +19,6 @@ const TagLineInput = (props) => {
 			<SC.Title>{title}</SC.Title>
 			<DismissKeyboardHOC flex={5}>
 				<SC.Input
-					placeholder="Une phrase qui décrit ton profil"
 					onChangeText={onValueChange}
 					value={value}
 					placeholderTextColor='#898989'

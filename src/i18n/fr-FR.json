@@ -109,7 +109,7 @@
     "love_profile_movie_avengers": "Avengers",
     "love_profile_movie_faf": "Fast And Furious",
     "love_profile_movie_raiponse": "Raiponse",
-    "love_profile_movie_shades": "50 shades of grey",
+    "love_profile_movie_shades": "50 shades of grey 😏",
     "game_dashboard_title": "Jeu en ligne",
     "game_dashboard_subtitle": "Vos jeux",
     "game_dashboard_empty_state_subtitle": "Vous n'avez pas encore de jeux",
@@ -150,6 +150,17 @@
     "settings_screen_theme": "Thème de l'application",
     "settings_screen_theme_light": "Clair",
     "settings_screen_theme_dark": "Sombre",
-    "chat_screen_title": "Messagerie"
+    "chat_screen_title": "Messagerie",
+    "love_edit_title_orientation": "Je suis intéressé par...",
+    "love_edit_title_search": "Je recherche...",
+    "love_edit_title_mood": "Je suis plutôt...",
+    "love_edit_title_holiday": "Pour mes vacances, je préfère...",
+    "love_edit_title_smoke": "Un fumeur, pour moi, c'est...",
+    "love_edit_title_movie": "On regarde quoi ce soir...",
+    "game_edit_title_game": "Je joue à...",
+    "game_edit_title_mood": "Je suis plutôt...",
+    "game_edit_value_mood_chill": "Chill",
+    "game_edit_value_mood_tryhard": "La win ou rien",
+    "game_edit_value_mood_fun": "Fun"
   }
 }

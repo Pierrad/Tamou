@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next' 
 
 import * as SC from './styled'
 
@@ -22,13 +23,14 @@ const SurveyStepperScreen = (props) => {
 		goToDashboard,
 	} = props
 
+	const { t } = useTranslation()
 
 	const renderStep = useCallback((step) => {
 		switch (step) {
 		case 0:
 			return <SC.ToggleButtonListContainer
 				onArrowPress={game.length ? nextStep : null}
-				title="Je joue à..."
+				title={t('game_edit_title_game')}
 				onPress={onGamePress}
 				values={game}
 				toggles={gamesToggles}
@@ -55,7 +57,7 @@ const SurveyStepperScreen = (props) => {
 		case 2:
 			return <SC.ToggleButtonListContainer
 				onArrowPress={typeOfPlayer.length ? onSubmit : null}
-				title="Je suis plutôt..."
+				title={t('game_edit_title_mood')}
 				onPress={onTypeOfPlayerPress}
 				values={typeOfPlayer}
 				toggles={typeOfPlayerToggles}
@@ -67,7 +69,7 @@ const SurveyStepperScreen = (props) => {
 		default:
 			return null
 		}
-	}, [game, nextStep, onGamePress, gamesToggles, rankingToggles, ranking, translations.rankPlaceholder, onRankingPress, typeOfPlayer, onSubmit, onTypeOfPlayerPress, typeOfPlayerToggles, goToDashboard])
+	}, [game, nextStep, t, onGamePress, gamesToggles, rankingToggles, ranking, translations.rankPlaceholder, onRankingPress, typeOfPlayer, onSubmit, onTypeOfPlayerPress, typeOfPlayerToggles, goToDashboard])
 
 	return (
 		<SC.Container>

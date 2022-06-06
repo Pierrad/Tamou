@@ -25,5 +25,9 @@ export const User = (props) => {
 		gameSection: props.gameSection,
 		loveSection: props.loveSection,
 		notifications: props.notifications || [],
+		sportSection: props.sportSection,
+		cookSection: props.cookSection,
+		studySection: props.studySection,
+		petSection: props.petSection,
 	}
 }

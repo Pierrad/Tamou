@@ -23,7 +23,13 @@ function* sessionRedirect() {
 	if (!hasSession) {
 		RootNavigation.navigate('Splash')
 	} else {
-		RootNavigation.navigate('Dashboard')
+		const user = yield select(userSelectors.user)
+
+		if (hasSubscribeToCategories(user)) {
+			RootNavigation.navigate('Dashboard')
+		} else {
+			RootNavigation.navigate('SurveyStepper')
+		}
 	}
 }
 

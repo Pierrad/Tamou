@@ -80,7 +80,7 @@ export const Icon = styled(AIcon)``
 export const Icon2 = styled(IIcon)``
 
 export const Content = styled.ScrollView`
-  margin: 35px 15px 60px 15px;
+  margin: 35px 15px 90px 15px;
 `
 
 export const Title = styled.Text`
@@ -92,7 +92,7 @@ export const Title = styled.Text`
 export const TagLine = styled.Text`
   font-family: 'Poppins-Medium';
   font-size: 20px;
-  color: ${props => props.theme.pureBlack};
+  color: ${props => props.theme.backgroundInverted};
   margin-top: 5px;
   margin-bottom: 20px;
 `
@@ -112,7 +112,7 @@ export const Label = styled.Text`
 export const Value = styled.Text`
   font-family: "Poppins-Medium";
   font-size: 16px;
-  color: ${props => props.theme.detail};
+  color: ${props => props.theme.backgroundInverted};
   max-width:98%;
   text-align: justify;
 `

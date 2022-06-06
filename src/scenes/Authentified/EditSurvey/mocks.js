@@ -1,126 +1,128 @@
+import i18n from '../../../i18n/i18n'
+
 export const questionsMock = (section) => [
 	{
 		id: 0,
-		label: 'Je suis intéressé par...',
+		label: i18n.t('love_edit_title_orientation'),
 		value: section.orientation === 'mf' ? ['male', 'female'] : [section.orientation],
 		options: [
 			{
-				label: 'Femme',
+				label: i18n.t('love_profile_orientation_female'),
 				value: 'female',
 			},
 			{
-				label: 'Homme',
+				label: i18n.t('love_profile_orientation_male'),
 				value: 'male',
 			},
 		]
 	},
 	{
 		id: 1,
-		label: 'Je recherche...',
+		label: i18n.t('love_edit_title_search'),
 		value: section.search,
 		options: [
 			{
-				label: 'L\'Amour',
+				label: i18n.t('love_profile_search_love'),
 				value: 'love',
 			},
 			{
-				label: 'La perle rare',
+				label: i18n.t('love_profile_search_life'),
 				value: 'life',
 			},
 			{
-				label: 'Un plan d\'un soir',
+				label: i18n.t('love_profile_search_night'),
 				value: 'night',
 			},
 		]
 	},
 	{
 		id: 2,
-		label: 'Je suis plutôt...',
+		label: i18n.t('love_edit_title_mood'),
 		value: section.mood,
 		options: [
 			{
-				label: 'Netflix & Chill',
+				label: i18n.t('love_profile_mood_netflix'),
 				value: 'netflix',
 			},
 			{
-				label: 'Sortie en boîte',
+				label: i18n.t('love_profile_mood_nightclub'),
 				value: 'nightclub',
 			},
 			{
-				label: 'Soirée entre amis',
+				label: i18n.t('love_profile_mood_friend'),
 				value: 'friend',
 			},
 			{
-				label: 'Sortie amoureuse',
+				label: i18n.t('love_profile_mood_love'),
 				value: 'love',
 			},
 		]
 	},
 	{
 		id: 3,
-		label: 'Pour mes vacances, je préfère...',
+		label: i18n.t('love_edit_title_holiday'),
 		value: section.holiday,
 		options: [
 			{
-				label: 'Ski à la montagne',
+				label: i18n.t('love_profile_holiday_mountain'),
 				value: 'mountain',
 			},
 			{
-				label: 'Bronzette à la plage',
+				label: i18n.t('love_profile_holiday_beach'),
 				value: 'beach',
 			},
 			{
-				label: 'Rando en forêt',
+				label: i18n.t('love_profile_holiday_forest'),
 				value: 'forest',
 			},
 			{
-				label: 'Chill à la maison',
+				label: i18n.t('love_profile_holiday_house'),
 				value: 'house',
 			},
 		]
 	},
 	{
 		id: 4,
-		label: 'Un fumeur, pour moi, c\'est...',
+		label: i18n.t('love_edit_title_smoke'),
 		value: section.smoke,
 		options: [
 			{
-				label: 'Redibitoire',
+				label: i18n.t('love_profile_smoke_yes'),
 				value: 'no',
 			},
 			{
-				label: 'Pas de soucis',
+				label: i18n.t('love_profile_smoke_no'),
 				value: 'yes',
 			},
 		]
 	},
 	{
 		id: 5,
-		label: 'On regarde quoi ce soir...',
+		label: i18n.t('love_edit_title_movie'),
 		value: section.movie,
 		options: [
 			{
-				label: 'Titanic',
+				label: i18n.t('love_profile_movie_titanic'),
 				value: 'titanic',
 			},
 			{
-				label: 'Lalaland',
+				label: i18n.t('love_profile_movie_lalaland'),
 				value: 'lalaland',
 			},
 			{
-				label: 'Fast And Furious',
+				label: i18n.t('love_profile_movie_faf'),
 				value: 'faf',
 			},
 			{
-				label: 'Avengers',
+				label: i18n.t('love_profile_movie_avengers'),
 				value: 'avengers',
 			},
 			{
-				label: 'Raiponce',
+				label: i18n.t('love_profile_movie_raiponse'),
 				value: 'raiponce',
 			},
 			{
-				label: '50 nuances de gray 😏',
+				label: i18n.t('love_profile_movie_shades'),
 				value: 'shades',
 			},
 		]

@@ -12,19 +12,19 @@ const SurveyStepperScreenWrapper = (props) => {
 
 	const researchToggles = [
 		{
-			text: 'L\'amour',
+			text: t('love_profile_search_love'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'love',
 		},
 		{
-			text: 'La perle rare',
+			text: t('love_profile_search_life'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'life',
 		},
 		{
-			text: 'Un plan d\'un soir',
+			text: t('love_profile_search_night'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'night',
@@ -33,25 +33,25 @@ const SurveyStepperScreenWrapper = (props) => {
 
 	const typeOfNightToggles = [
 		{
-			text: 'Netflix & Chill',
+			text: t('love_profile_mood_netflix'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'netflix',
 		},
 		{
-			text: 'Sortie en boîte',
+			text: t('love_profile_mood_nightclub'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'nightclub',
 		},
 		{
-			text: 'Soirée entre amis',
+			text: t('love_profile_mood_friend'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'friend',
 		},
 		{
-			text: 'Sortie amoureuse',
+			text: t('love_profile_mood_love'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'love',
@@ -60,25 +60,25 @@ const SurveyStepperScreenWrapper = (props) => {
 
 	const holidayToggles = [
 		{
-			text: 'Ski à la montagne',
+			text: t('love_profile_holiday_mountain'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'mountain',
 		},
 		{
-			text: 'Bronzette à la plage',
+			text: t('love_profile_holiday_beach'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'beach',
 		},
 		{
-			text: 'Rando en forêt',
+			text: t('love_profile_holiday_forest'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'forest',
 		},
 		{
-			text: 'Chill à la maison',
+			text: t('love_profile_holiday_house'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'house',
@@ -87,13 +87,13 @@ const SurveyStepperScreenWrapper = (props) => {
 
 	const smokeToggles = [
 		{
-			text: 'Redibitoire',
+			text: t('love_profile_smoke_yes'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'yes',
 		},
 		{
-			text: 'Pas de soucis',
+			text: t('love_profile_smoke_no'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'no',
@@ -102,37 +102,37 @@ const SurveyStepperScreenWrapper = (props) => {
 
 	const movieToggles = [
 		{
-			text: 'Titanic',
+			text: t('love_profile_movie_titanic'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'titanic',
 		},
 		{
-			text: 'Lalaland',
+			text: t('love_profile_movie_lalaland'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'lalaland',
 		},
 		{
-			text: 'Fast and Furious',
+			text: t('love_profile_movie_faf'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'faf',
 		},
 		{
-			text: 'Avengers',
+			text: t('love_profile_movie_avengers'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'avengers',
 		},
 		{
-			text: 'Raiponse',
+			text: t('love_profile_movie_raiponse'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'raiponse',
 		},
 		{
-			text: '50 shades of grey 😏',
+			text: t('love_profile_movie_shades'),
 			backgroundSelectedColor: theme.pureBlack,
 			textColor: theme.pureWhite,
 			value: 'shades',

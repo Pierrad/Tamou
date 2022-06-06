@@ -41,19 +41,20 @@ const SettingsScreen = ({ theme, headerData, translations, onLanguageChange, sel
 				onValueChange={(itemValue) =>
 					onLanguageChange(itemValue)
 				}
-				itemStyle={{ color: theme.backgroundInverted }}
 			>
 				<Picker.Item
 					label={translations.french}
 					value="fr"
+					style={{ color: theme.orange }}
 				/>
 				<Picker.Item 
 					label={translations.english}
 					value="en"
+					style={{ color: theme.orange }}
 				/>
 			</Picker>
 		)
-	}, [onLanguageChange, selectedLanguage, theme.backgroundInverted, translations.english, translations.french])
+	}, [onLanguageChange, selectedLanguage, theme.orange, translations.english, translations.french])
 
 	const renderThemePicker = useMemo(() => {
 		return (
@@ -62,20 +63,21 @@ const SettingsScreen = ({ theme, headerData, translations, onLanguageChange, sel
 				onValueChange={(itemValue) =>
 					onThemeChange(itemValue)
 				}
-				itemStyle={{ color: theme.backgroundInverted }}
 			>
 				<Picker.Item
 					label={translations.light}
 					value="light"
+					style={{ color: theme.orange }}
 				/>
 				<Picker.Item
 					label={translations.dark}
 					value="dark"
+					style={{ color: theme.orange }}
 				/>
 			</Picker>
 		)
 
-	}, [onThemeChange, selectedTheme, theme.backgroundInverted, translations.dark, translations.light])
+	}, [onThemeChange, selectedTheme, theme.orange, translations.dark, translations.light])
 
 	return (
 		<SC.Container>
