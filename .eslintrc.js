@@ -15,12 +15,12 @@ module.exports = {
 		'sourceType': 'module'
 	},
 	'plugins': [
-		'react'
+		'react',
+		'react-hooks'
 	],
 	'rules': {
 		'indent': [
-			'error',
-			'tab'
+			'error', 'tab'
 		],
 		'linebreak-style': [
 			'error',
@@ -33,6 +33,17 @@ module.exports = {
 		'semi': [
 			'error',
 			'never'
-		]
+		],
+		'key-spacing': [
+			2, 
+			{
+				'beforeColon': false,
+				'afterColon': true
+			}
+		],
+		'react-hooks/exhaustive-deps': 'warn',
+	},
+	'globals': {
+		'fetch': false
 	}
 }
