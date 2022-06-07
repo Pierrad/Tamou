@@ -39,6 +39,15 @@ export const MatchCard = styled(HomeCard)`
   flex: 1;
   height: 230px;
   margin-bottom: 15px;
+  max-width: 50%;
+`
+
+export const NoMatch = styled.Text`
+  font-family: "Poppins-Bold";
+  font-size: 24px;
+  margin: 30px 15px 10px 15px;
+  color: ${props => props.theme.love};
+  text-align: center;
 `
 
 export const Button = styled(ActionButton)`

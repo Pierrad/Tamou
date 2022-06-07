@@ -34,7 +34,7 @@ export const SearchInput = styled.TextInput`
   font-family: "Poppins-Regular";
 `
 
-export const MatchList = styled.FlatList`
+export const GameList = styled.FlatList`
   flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
@@ -43,7 +43,7 @@ export const MatchList = styled.FlatList`
   margin: 10px 15px 0px 15px;
 `
 
-export const MatchCard = styled(HomeCard)`
+export const GameCard = styled(HomeCard)`
   flex: 1;
   height: 230px;
   margin-bottom: 15px;

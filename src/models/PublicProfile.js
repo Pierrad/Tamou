@@ -15,6 +15,7 @@ export const PublicUser = (props) => {
 		orientation: props.orientation,
 		gender: props.gender,
 		publicID: props.publicId,
+		tagline: props.tagline,
 		avatar: Platform.OS === 'ios'
 			? props.imageProfile
 			: APP_ENV === 'local'
@@ -31,5 +32,6 @@ export const PublicUser = (props) => {
 				}
 			})
 		},
+		loveSection: props.loveSection,
 	}
 }

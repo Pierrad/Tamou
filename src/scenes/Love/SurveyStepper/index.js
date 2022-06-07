@@ -1,10 +1,13 @@
 import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import * as SC from './styled'
 
 const SurveyStepperScreen = (props) => {
-	const { navigation, headerData, researchToggles, typeOfNightToggles, holidayToggles, smokeToggles, movieToggles } = props
+	const { navigation, headerData, researchToggles, typeOfNightToggles, holidayToggles, smokeToggles, movieToggles, sendPreferences } = props
+
+	const { t } = useTranslation()
 
 	const [step, setStep] = useState(0)
 	const [genderValues, setGenderValues] = useState([])
@@ -47,9 +50,16 @@ const SurveyStepperScreen = (props) => {
 	}, [])
 	
 	const submit = useCallback(() => {
-		console.log('submit')
+		sendPreferences({
+			orientation: genderValues.length > 1 ? 'mf' : genderValues[0],
+			search: research,
+			mood: typeOfNight,
+			holiday: holiday,
+			smoke: smoke,
+			movie: movie,
+		})
 		navigation.navigate('LoveDashboard')
-	}, [navigation])
+	}, [genderValues, holiday, movie, navigation, research, sendPreferences, smoke, typeOfNight])
 
 	const renderStep = useCallback((step) => {
 		switch (step) {
@@ -58,12 +68,12 @@ const SurveyStepperScreen = (props) => {
 				onArrowPress={genderValues.length > 0 ? nextStep : null}
 				onPickerPress={onPickerPress}
 				value={genderValues}
-				title="Je suis intéressé par..."
+				title={t('love_edit_title_orientation')}
 			/>
 		case 1:
 			return <SC.ToggleButtonListContainer
 				onArrowPress={research.length ? nextStep : null}
-				title="Je recherche..."
+				title={t('love_edit_title_search')}
 				onPress={onResearchPress}
 				values={research}
 				toggles={researchToggles}
@@ -71,7 +81,7 @@ const SurveyStepperScreen = (props) => {
 		case 2:
 			return <SC.ToggleButtonListContainer
 				onArrowPress={typeOfNight.length ? nextStep : null}
-				title="Je suis plutôt..."
+				title={t('love_edit_title_mood')}
 				onPress={onTypeOfNightPress}
 				values={typeOfNight}
 				toggles={typeOfNightToggles}
@@ -79,7 +89,7 @@ const SurveyStepperScreen = (props) => {
 		case 3:
 			return <SC.ToggleButtonListContainer
 				onArrowPress={holiday.length ? nextStep : null}
-				title="Pour mes vacances, je préfère..."
+				title={t('love_edit_title_holiday')}
 				onPress={onHolidayPress}
 				values={holiday}
 				toggles={holidayToggles}
@@ -87,7 +97,7 @@ const SurveyStepperScreen = (props) => {
 		case 4:
 			return <SC.ToggleButtonListContainer
 				onArrowPress={smoke.length ? nextStep : null}
-				title="Un fumeur, pour moi c'est..."
+				title={t('love_edit_title_smoke')}
 				onPress={onSmokePress}
 				values={smoke}
 				toggles={smokeToggles}
@@ -95,7 +105,7 @@ const SurveyStepperScreen = (props) => {
 		case 5:
 			return <SC.ToggleButtonListContainer
 				onArrowPress={movie.length ? nextStep : null}
-				title="Ce soir, on regarde..."
+				title={t('love_edit_title_movie')}
 				onPress={onMoviePress}
 				values={movie}
 				toggles={movieToggles}
@@ -107,7 +117,7 @@ const SurveyStepperScreen = (props) => {
 		default:
 			return null
 		}
-	}, [genderValues, nextStep, onPickerPress, research, onResearchPress, researchToggles, typeOfNight, onTypeOfNightPress, typeOfNightToggles, holiday, onHolidayPress, holidayToggles, smoke, onSmokePress, smokeToggles, movie, onMoviePress, movieToggles, submit])
+	}, [genderValues, nextStep, onPickerPress, t, research, onResearchPress, researchToggles, typeOfNight, onTypeOfNightPress, typeOfNightToggles, holiday, onHolidayPress, holidayToggles, smoke, onSmokePress, smokeToggles, movie, onMoviePress, movieToggles, submit])
 
 	return (
 		<SC.Container>
@@ -133,6 +143,7 @@ SurveyStepperScreen.propTypes = {
 	holidayToggles: PropTypes.array,
 	smokeToggles: PropTypes.array,
 	movieToggles: PropTypes.array,
+	sendPreferences: PropTypes.func,
 }
 
 export default SurveyStepperScreen

@@ -5,50 +5,10 @@ import ConnectedHeader from '../../../components/ConnecterHeader'
 import * as SC from './styled'
 
 const LoveDashboardScreen = (props) => {
-	const { theme, translations, onButtonPress, headerData } = props
+	const { theme, translations, onButtonPress, headerData, profiles } = props
 
-	const cards = [
-		{
-			text: 'Ben',
-			image: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
-			onPress: () => {},
-		},
-		{
-			text: 'Julia',
-			image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
-			onPress: () => {},
-		},
-		{
-			text: 'Robert',
-			image: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
-			onPress: () => {},
-		},
-		{
-			text: 'Catherine',
-			image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=922&q=80',
-			onPress: () => {},
-		},
-		{
-			text: 'Tom',
-			image: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
-			onPress: () => {},
-		},
-		{
-			text: 'Alex',
-			image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
-			onPress: () => {},
-		},
-		{
-			text: 'Yin',
-			image: 'https://images.unsplash.com/photo-1569913486515-b74bf7751574?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=778&q=80',
-			onPress: () => {},
-		},
-		{
-			text: 'Huguette',
-			image: 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
-			onPress: () => {},
-		}
-	]
+
+
 
 	const renderMatchCard = ({ item }) => (
 		<SC.MatchCard
@@ -62,12 +22,17 @@ const LoveDashboardScreen = (props) => {
 		<SC.Container>
 			<SC.Header {...headerData} />
 			<SC.Title>{translations.subtitle}</SC.Title>
-			<SC.MatchList
-				data={cards}
-				renderItem={renderMatchCard}
-				numColumns={2}
-				contentContainerStyle={SC.styles.flatList}
-			/>
+			{profiles && profiles.length > 0 ? (
+				<SC.MatchList
+					data={profiles}
+					renderItem={renderMatchCard}
+					numColumns={2}
+					contentContainerStyle={SC.styles.flatList}
+				/>
+			) : (
+				<SC.NoMatch>{translations.noMatches}</SC.NoMatch>
+			)}
+
 			<SC.Button
 				title={translations.cta}
 				onPress={onButtonPress}
@@ -83,7 +48,8 @@ LoveDashboardScreen.propTypes = {
 	theme: PropTypes.object,
 	translations: PropTypes.objectOf(PropTypes.string),
 	onButtonPress: PropTypes.func,
-	headerData: PropTypes.shape(ConnectedHeader.propTypes)
+	headerData: PropTypes.shape(ConnectedHeader.propTypes),
+	profiles: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default LoveDashboardScreen

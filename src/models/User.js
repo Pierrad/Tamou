@@ -20,9 +20,14 @@ export const User = (props) => {
 				: props.imageProfile,
 		orientation: props.orientation,
 		gender: props.gender,
+		tagline: props.tagline,
 		birthday: getAgeFromTimestamp(props.birthday),
 		gameSection: props.gameSection,
-		loveSection: props?.loveSection,
+		loveSection: props.loveSection,
 		notifications: props.notifications || [],
+		sportSection: props.sportSection,
+		cookSection: props.cookSection,
+		studySection: props.studySection,
+		petSection: props.petSection,
 	}
 }

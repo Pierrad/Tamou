@@ -4,17 +4,25 @@ import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
 import { gameTranslation } from '../../../helpers/game'
+import { CHECK_EXISTING_SESSION, GET_MULTIPLE_PARTNERS } from '../../../redux/actions/user'
 
 import GamePartner from './index'
-import { GET_MULTIPLE_PARTNERS } from '../../../redux/actions/user'
 
 const GamePartnerWrapper = (props) => {
-	const { theme, navigation, route, user, partners: _partners, fetchPartners } = props
+	const { theme, navigation, route, user, partners: _partners, fetchPartners, reloadUser } = props
 	const game = route.params?.game ?? ''
 	const { t } = useTranslation()
 	const [partners, setPartners] = useState([])
 	const [searchMode, setSearchMode] = useState(false)
 	const [search, setSearch] = useState('')
+
+	useEffect(() => {
+		const listener = navigation.addListener('focus', () => {
+			reloadUser()
+		})
+
+		return listener
+	}, [navigation, reloadUser])
 
 	useEffect(() => {
 		fetchPartners({
@@ -33,7 +41,6 @@ const GamePartnerWrapper = (props) => {
 		onButtonPress: () => navigation.navigate('GameDashboard'),
 		title: gameTranslation[game],
 		leftIconName: 'chevron-left',
-		onParametersPress: () => {console.log('')},
 		theme: theme
 	}), [game, navigation, theme])
 
@@ -92,11 +99,13 @@ GamePartnerWrapper.propTypes = {
 	navigation: PropTypes.shape({
 		navigate: PropTypes.func.isRequired,
 		goBack: PropTypes.func.isRequired,
+		addListener: PropTypes.func.isRequired,
 	}).isRequired,
 	route: PropTypes.object,
 	user: PropTypes.object,
 	fetchPartners: PropTypes.func,
 	partners: PropTypes.arrayOf(PropTypes.object),
+	reloadUser: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
@@ -107,6 +116,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	fetchPartners: (input) => dispatch({ type: GET_MULTIPLE_PARTNERS, payload: input }),
+	reloadUser: () => dispatch({ type: CHECK_EXISTING_SESSION }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(GamePartnerWrapper)

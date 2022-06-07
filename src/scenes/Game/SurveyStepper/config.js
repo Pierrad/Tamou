@@ -77,19 +77,19 @@ export const ranking = (game, theme) => {
 
 export const typeOfPlayer = (theme) => [
 	{
-		text: 'Chill',
+		text: i18n.t('game_edit_value_mood_chill'),
 		backgroundSelectedColor: theme.pureBlack,
 		textColor: theme.pureWhite,
 		value: 'chill',
 	},
 	{
-		text: 'La win ou rien',
+		text: i18n.t('game_edit_value_mood_tryhard'),
 		backgroundSelectedColor: theme.pureBlack,
 		textColor: theme.pureWhite,
 		value: 'tryhard',
 	},
 	{
-		text: 'Fun',
+		text: i18n.t('game_edit_value_mood_fun'),
 		backgroundSelectedColor: theme.pureBlack,
 		textColor: theme.pureWhite,
 		value: 'fun',

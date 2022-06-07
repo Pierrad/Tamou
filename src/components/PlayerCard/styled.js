@@ -1,6 +1,5 @@
 import styled from 'styled-components/native'
 
-
 export const Container = styled.SafeAreaView`
   margin-bottom: 15px;
 `
@@ -32,7 +31,7 @@ export const Image = styled.Image`
 export const Pseudo = styled.Text`
   font-family: 'Poppins-Bold';
   font-size: 18px;
-  color: ${props => props.theme.pureBlack};
+  color: ${props => props.theme.backgroundInverted};
 `
 
 export const Level = styled.Text`
@@ -40,3 +39,4 @@ export const Level = styled.Text`
   font-size: 18px;
   color: ${props => props.theme.game};
 `
+

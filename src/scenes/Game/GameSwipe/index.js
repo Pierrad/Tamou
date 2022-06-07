@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import * as SC from './styled'
@@ -8,6 +8,17 @@ import SwipeGameCard from '../../../components/SwipeGameCard'
 const GameSwipe = (props) => {
 	const { translations, headerData, toggles, selectedToggles, card, onLike, onDislike, onProfile, hasError } = props
 	
+	const renderCard = useMemo(() => {
+		return (
+			<SC.Card
+				{...card}
+				key={card}
+				onLike={onLike}
+				onDislike={onDislike}
+				onProfile={onProfile}
+			/>
+		)
+	}, [card, onDislike, onLike, onProfile])
 
 	return (
 		<SC.Container>
@@ -23,7 +34,7 @@ const GameSwipe = (props) => {
 					/>
 				))}
 			</SC.Toggles>
-			{hasError ? (
+			{hasError || card === null ? (
 				<SC.Error>
 					<SC.ErrorText>
 						{translations.error}
@@ -31,13 +42,7 @@ const GameSwipe = (props) => {
 				</SC.Error>
 			) : (
 				<>
-					<SC.Card
-						{...card}
-						key={card}
-						onLike={onLike}
-						onDislike={onDislike}
-						onProfile={onProfile}
-					/>
+					{renderCard}
 					<SC.Buttons>
 						<SC.DislikeButton
 							onPress={onLike}

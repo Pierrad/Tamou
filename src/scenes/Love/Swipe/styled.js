@@ -5,7 +5,8 @@ import BasicHeader from '../../../components/BasicHeader'
 import SwipeCard from '../../../components/SwipeCard'
 
 export const Container = styled.SafeAreaView`
-background-color: ${props => props.theme.background};
+  background-color: ${props => props.theme.background};
+  flex: 1;
 `
 
 export const Header = styled(BasicHeader)`
@@ -39,6 +40,20 @@ export const DislikeButton = styled.TouchableOpacity`
   border-radius: 70px;
   background-color: ${(props) => props.theme.refuse};
   padding: 20px;
+`
+
+export const Error = styled.View`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  padding: 10px;
+  flex: 1;
+`
+export const ErrorText = styled.Text`
+	font-family: 'Poppins-Bold';
+	font-size: 26px;
+	color: ${props => props.theme.love};
+  text-align: center;
 `
 
 export const Icon = styled(AIcon)``

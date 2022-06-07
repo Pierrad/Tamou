@@ -11,7 +11,7 @@ export const Container = styled.SafeAreaView`
 export const Label = styled.Text`
   font-family: 'Poppins-Regular';
   font-size: 18px;
-  color: ${(props) => props.theme.pureBlack};
+  color: ${(props) => props.theme.backgroundInverted};
   margin: 10px 0;
 `
 

@@ -82,7 +82,6 @@ export const Image1 = styled.Image`
   width: 120px;
   height: 120px;
   border-radius:70px;
-  border: 7px solid #FFFFFF;
   transform: translate(20px);
 `
 
@@ -91,7 +90,6 @@ export const Image2 = styled.Image`
   width: 120px;
   height: 120px;
   border-radius: 70px;
-  border: 7px solid #FFFFFF;
   transform: translate(-20px);
 `
 

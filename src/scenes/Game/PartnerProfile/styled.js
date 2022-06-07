@@ -44,6 +44,14 @@ export const Image = styled.Image`
 	margin-bottom: 50px;
 	width: 200px;
 	height: 200px;
+  border-radius: 50px;
+`
+
+export const TagLine = styled.Text`
+  font-family: 'Poppins-Medium';
+  font-size: 20px;
+  color: ${props => props.theme.backgroundInverted};
+  margin-top: 5px;
 `
 
 export const Buttons = styled.View`
@@ -124,7 +132,7 @@ export const Divider = styled.View`
 
 export const Badge = styled.Image`
   position: absolute;
-  top: -5px;
+  top: 15px;
   right: 20px;
   width: 75px;
   height: 75px;

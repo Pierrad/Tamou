@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 
 import { SET_ERROR } from '../../../redux/actions/app'
+import { EDIT_USER } from '../../../redux/actions/user'
 
 import SurveyStepperScreen from './index'
 
 const SurveyStepperScreenWrapper = (props) => {
-	const { theme, navigation, setError, route, user } = props
+	const { theme, navigation, setError, route, user, editUser } = props
 	const step = route.params?.step ?? 0
 	const { t } = useTranslation()
 	const categoriesAlreadySelected = []
@@ -19,12 +20,13 @@ const SurveyStepperScreenWrapper = (props) => {
 		ageFemaleTitle: t('initial_survey_stepper_age_female_title'),
 		categoriesTitle: t('initial_survey_stepper_choose_categories_title'),
 		completeTitle: t('initial_survey_stepper_complete'),
-		birthdayError: t('initial_survey_stepper_age_error')
+		taglineTitle: t('initial_survey_stepper_tagline_title'),
 	}
 
 	if (user && user.gameSection) {
 		categoriesAlreadySelected.push('game')
-	} else if (user && user.loveSection) {
+	}
+	if (user && user.loveSection) {
 		categoriesAlreadySelected.push('love')
 	}
 
@@ -44,6 +46,7 @@ const SurveyStepperScreenWrapper = (props) => {
 			onError={onError}
 			artificialStep={step}
 			categoriesAlreadySelected={categoriesAlreadySelected}
+			handleEditUser={editUser}
 		/>
 	)
 }
@@ -52,10 +55,12 @@ SurveyStepperScreenWrapper.propTypes = {
 	theme: PropTypes.object,
 	navigation: PropTypes.shape({
 		navigate: PropTypes.func,
+		replace: PropTypes.func,
 	}),
 	setError: PropTypes.func,
 	route: PropTypes.object,
 	user: PropTypes.object,
+	editUser: PropTypes.func,
 }
 
 const mapStateToProps = (state) => ({
@@ -65,6 +70,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	setError: (error) => dispatch({ type: SET_ERROR, payload: error }),
+	editUser: (user) => dispatch({ type: EDIT_USER, payload: user }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SurveyStepperScreenWrapper)

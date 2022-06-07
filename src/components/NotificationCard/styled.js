@@ -18,17 +18,20 @@ export const Date = styled.Text`
   font-family: 'Poppins-Regular';
   font-size: 12px;
   margin-bottom: 10px;
+  color: ${props => props.theme.pureBlack};
 `
 
 export const Title = styled.Text`
   font-family: 'Poppins-Bold';
   font-size: 18px;
   margin-bottom: 5px;
+  color: ${props => props.theme.pureBlack};
 `
 
 export const Text = styled.Text`
   font-family: 'Poppins-Regular';
   font-size: 14px;
+  color: ${props => props.theme.pureBlack};
 `
 
 export const Options = styled.View`

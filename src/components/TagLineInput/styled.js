@@ -15,25 +15,20 @@ export const Title = styled.Text`
   margin-top: 50px;
 `
 
-export const Inputs = styled.View`
-  flex: 1;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-bottom: 50px;
-`
-
 export const Input = styled.TextInput`
   font-family: 'Poppins-Bold';
-  font-size: 50px;
+  font-size: 20px;
   color: ${(props) => props.theme.pureBlack};
   border: 1px solid ${(props) => props.theme.veryLightGrey};
   background-color: ${(props) => props.theme.pureWhite};
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 5px 25px;
+  padding: 5px;
   border-radius: 10px;
+  min-width: 85%;
+  max-width: 85%;
+  margin-top: 50px;
 `
 
 export const Button = styled.TouchableOpacity`

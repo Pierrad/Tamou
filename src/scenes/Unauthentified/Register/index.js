@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Input from '../../../components/Input'
 import ActionButton from '../../../components/ActionButton'
 import Link from '../../../components/Link'
-import DismissKeyboardHOC from '../../../helpers/useDismissKeyboardView'
+import DismissKeyboardHOC from '../../../hooks/useDismissKeyboardView'
 
 import * as SC from './styled'
 

@@ -16,7 +16,7 @@ const ToggleRectButtonList = (props) => {
 						borderColor={color}
 						backgroundSelectedColor={color}
 						onPress={() => onPress(id, toggle.value)}
-						isSelected={value === toggle.value}
+						isSelected={typeof value === 'object' ? value.includes(toggle.value) : value === toggle.value}
 					/>
 				))}
 			</SC.Buttons>
@@ -28,7 +28,7 @@ ToggleRectButtonList.propTypes = {
 	style: PropTypes.array,
 	id: PropTypes.number,
 	label: PropTypes.string,
-	value: PropTypes.string,
+	value: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 	options: PropTypes.arrayOf(PropTypes.shape(SC.ToggleButton.PropTypes)),
 	onPress: PropTypes.func,
 	color: PropTypes.string,

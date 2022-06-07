@@ -1,73 +1,25 @@
 import React from 'react'
-import {Button} from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { darkTheme, lightTheme } from '../../themes/theme'
-
+import { ActivityIndicator } from 'react-native'
 
 import * as SC from './styled'
 
-const HomeScreen = ({ navigation, onSwitchTheme, theme }) => (
+const HomeScreen = ({ theme }) => (
 	<SC.Container>
-		<SC.Text>Home Screen</SC.Text>
-		<Button
-			title="Go to Login"
-			onPress={() => navigation.navigate('Login')}
-		/>
-		<Button
-			title="Go to Dashboard"
-			onPress={() => navigation.navigate('Dashboard')}
-		/>
-		<Button
-			title="Go to register"
-			onPress={() => navigation.navigate('Register')}
-		/>
-		<Button
-			title="Go to reset"
-			onPress={() => navigation.navigate('Reset')}
-		/>
-		<Button
-			title="Go to SurveyStepper"
-			onPress={() => navigation.navigate('SurveyStepper')}
-		/>
-		<Button
-			title="Go to Love Homepage"
-			onPress={() => navigation.navigate('LoveHome')}
-		/>
-		<Button
-			title="Go to Game Homepage"
-			onPress={() => navigation.navigate('GameHome')}
-		/>
-		<Button
-			title="Go to SplashScreen"
-			onPress={() => navigation.navigate('Splash')}
-		/>
-		{theme && theme.mode === 'light' ? (
-			<Button title="Switch to Dark Theme" onPress={() => onSwitchTheme(darkTheme)} />
-		) : (
-			<Button title="Switch to Light Theme" onPress={() => onSwitchTheme(lightTheme)} />
-		)}
+		<ActivityIndicator size="large" color={theme.orange} />
 	</SC.Container>
-
 )
 
 HomeScreen.propTypes = {
-	navigation: PropTypes.shape({
-		navigate: PropTypes.func.isRequired,
-		goBack: PropTypes.func.isRequired,
-	}).isRequired,
-	onSwitchTheme: PropTypes.func.isRequired,
-	theme: PropTypes.shape({
-		mode: PropTypes.string.isRequired,
-	})
+	theme: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
 	theme: state?.themeReducer?.theme
 })
 
-const mapDispatchToProps = (dispatch) => ({
-	onSwitchTheme: (theme) => dispatch({ type: 'SWITCH_THEME', theme })
+const mapDispatchToProps = () => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

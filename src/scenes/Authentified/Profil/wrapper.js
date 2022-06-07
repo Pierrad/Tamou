@@ -22,7 +22,7 @@ const ProfilScreenWrapper = (props) => {
 			color: theme.backgroundInverted,
 			colorInverted: theme.background,
 			title: t('profil_screen_title'),
-			onDotPress: () => {},
+			// onDotPress: () => {},
 		},
 		profilHeaderData: {
 			avatar: user.avatar || 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
@@ -47,11 +47,11 @@ const ProfilScreenWrapper = (props) => {
 				},
 				{
 					label: t('profil_screen_catchphrase_field_label'),
-					value: 'fmermffnejznrzf',
+					value: user.tagline,
 				},
 			]
 		},
-	}), [theme.backgroundInverted, theme.background, t, user.avatar, user.firstname, user.lastname, user.location, user.email, user.username, handleSubmitPicture, navigation])
+	}), [theme.backgroundInverted, theme.background, t, user.avatar, user.firstname, user.lastname, user.location, user.email, user.username, user.tagline, handleSubmitPicture, navigation])
 
 	return (
 		<ProfilScreen {...data} />
@@ -71,6 +71,7 @@ ProfilScreenWrapper.propTypes = {
 		firstname: PropTypes.string,
 		lastname: PropTypes.string,
 		location: PropTypes.string,
+		tagline: PropTypes.string,
 	}),
 	updateProfilPicture: PropTypes.func,
 }

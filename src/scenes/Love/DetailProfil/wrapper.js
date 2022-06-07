@@ -3,33 +3,63 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
+import { POST_LOVE_SWIPE } from '../../../redux/actions/love'
+import { getAgeFromTimestamp } from '../../../helpers/date'
+import { orientation, holiday, mood, movie, search, smoke } from '../../../helpers/love'
+
 import DetailScreen from './index'
 
 const DetailProfileWrapper = (props) => {
-	const { theme, navigation } = props
+	const { theme, navigation, onSwipe, route } = props
+	const user = route.params.profile ?? ''
+	const isInSwipeMode = route.params.isInSwipeMode ?? false
 	const { t } = useTranslation()
 
 	const translations = {
 		cta: t('game_partner_profile_cta_label'),
+		orientation: t('love_profile_orientation_title'),
+		holiday: t('love_profile_holiday_title'),
+		mood: t('love_profile_mood_title'),
+		movie: t('love_profile_movie_title'),
+		search: t('love_profile_search_title'),
+		smoke: t('love_profile_smoke_title'),
 	}
 
 	const goBack = () => {
 		navigation.goBack()
 	}
 
+	const goToChat = () => {
+		navigation.navigate('Chat')
+	}
+
 	const onLike = () => {
-		console.log('onLike')
+		onSwipe({
+			like: true,
+		})
+		goBack()
 	}
 
 	const onDislike = () => {
-		console.log('onDislike')
+		onSwipe({
+			like: false,
+		})
+		goBack()
 	}
 
-	const user = {
-		nameAndAge: 'Reza E Prasetyo, 26',
-		image: 'https://s3-alpha-sig.figma.com/img/217b/6897/790fbb7f6df024c7369f8364bfe5fe63?Expires=1653264000&Signature=Gyl9rd1FBPRS-OUKBHDu2GRLexobco194PDJti6jPtvfPc0X4Td~sz5Q1yTgLjluuC1-az1jxQFt4HvkzZdpnOekbo92rV-3HmjvSEP-2SRvu8SEiyF88dVfUCJ2Ibsozb1m3lPZkhMzgnDq1DC~RevsqEyYD5kG29BDd8w2yjmBNB60~-HYfIxRmttWjqUmGfSH334dzTiL8vxX5NVMUWgO0xnXFfktS7CEhxJy3lmMFbsPQ~HN0NGKuQKcI3RkskpAu4vFcDozj-8qXGXwXDfBoO9NDXDrQKndp5HwoqhjfrmB-lWrcbrKbydS6nGbgysreqvnby1eWdmWY7C2wA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
+	const age = getAgeFromTimestamp(user.birthday)
+
+	const profile = {
+		nameAndAge: `${user.username}, ${age} ans`,
+		tagline: user.tagline ? `"${user.tagline}"` : '',
+		image: user.avatar,
 		others: {
-			about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempus lacus in quam laoreet, eget finibus orci pharetra. Sed molestie leo eget urna egestas tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec nec luctus tortor, at sagittis orci.',
+			orientation: orientation(user.loveSection.orientation),
+			holiday: holiday(user.loveSection.holiday),
+			mood: mood(user.loveSection.mood),
+			movie: movie(user.loveSection.movie),
+			search: search(user.loveSection.search),
+			smoke: smoke(user.loveSection.smoke),
 		},
 	}
 
@@ -38,10 +68,11 @@ const DetailProfileWrapper = (props) => {
 			theme={theme}
 			translations={translations}
 			goBack={goBack}
-			user={user}
-			isInSwipeMode={true}
+			user={profile}
+			isInSwipeMode={isInSwipeMode}
 			onLike={onLike}
 			onDislike={onDislike}
+			goToChat={goToChat}
 		/>
 	)
 }
@@ -52,13 +83,17 @@ DetailProfileWrapper.propTypes = {
 		navigate: PropTypes.func.isRequired,
 		goBack: PropTypes.func.isRequired,
 	}).isRequired,
+	onSwipe: PropTypes.func,
+	route: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({
 	theme: state.themeReducer.theme,
 })
 
-const mapDispatchToProps = () => ({
+
+const mapDispatchToProps = (dispatch) => ({
+	onSwipe: (input) => dispatch({ type: POST_LOVE_SWIPE, payload: input }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailProfileWrapper)

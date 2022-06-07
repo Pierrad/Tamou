@@ -8,9 +8,10 @@ export const Container = styled.SafeAreaView`
 `
 
 export const Image = styled.Image`
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
 	margin-bottom: 150px;
+	border-radius: 50px;
 `
 
 export const Profil = styled.View`
@@ -22,13 +23,13 @@ export const Profil = styled.View`
 export const Title = styled.Text`
 	font-family: 'Poppins-Bold';
 	font-size: 20px;
-	color: ${props => props.theme.pureBlack};
+	color: ${props => props.theme.backgroundInverted};
 `
 
 export const Subtitle = styled.Text`
 	font-family: 'Poppins-Regular';
 	font-size: 16px;
-	color: ${props => props.theme.pureBlack};
+	color: ${props => props.theme.backgroundInverted};
 `
 
 export const Game = styled.View`
@@ -93,7 +94,7 @@ export const Profile = styled.View`
 export const Text = styled.Text`
 	font-family: 'Poppins-Bold';
 	font-size: 20px;
-	color: ${props => props.theme.pureBlack};
+	color: ${props => props.theme.backgroundInverted};
 `
 
 export const styles = StyleSheet.create({

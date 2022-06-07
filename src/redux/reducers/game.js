@@ -2,6 +2,7 @@ import {
 	SET_MATCHES,
 	SET_MATCHES_INDEX,
 	SET_GET_MATCH_ERROR,
+	RESET_MATCHES,
 } from '../actions/game'
 
 const initialState = {
@@ -27,6 +28,13 @@ const reducer = (state = initialState, {type, payload}) => {
 		return {
 			...state,
 			error: payload
+		}
+	case RESET_MATCHES:
+		return {
+			...state,
+			matches: null,
+			matchesIndex: 0,
+			error: false,
 		}
 	default:
 		return state

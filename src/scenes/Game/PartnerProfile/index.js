@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 import * as SC from './styled'
 
 const PartnerProfile = props => {
-	const { theme, translations, goBack, user, isInSwipeMode, onLike, onDislike } = props
+	const { theme, translations, goBack, user, isInSwipeMode, onLike, onDislike, goToChat } = props
 
 
 	const renderGames = user.games.map((game, i) => (
 		<SC.Game key={i}>
+			<SC.Divider />
 			<SC.Label>{game.name}</SC.Label>
 			<SC.Field>
 				<SC.Label>Mood</SC.Label>
@@ -33,7 +34,7 @@ const PartnerProfile = props => {
 						onPress={goBack}
 						name="chevron-left"
 						size={30}
-						color={theme.backgroundInverted}
+						color={theme.pureBlack}
 					/>
 				</SC.IconBox>
 				<SC.Image
@@ -59,16 +60,19 @@ const PartnerProfile = props => {
 			</SC.Wrapper>
 			<SC.Content>
 				<SC.Title>{user.name}</SC.Title>
+				<SC.TagLine>{user.tagline}</SC.TagLine>
 				{renderGames}
 			</SC.Content>
-			<SC.Button
-				title={translations.cta}
-				onPress={() => {}}
-				underlayColor={theme.game}
-				textColor={theme.game}
-				style={SC.styles.button}
-				isOutlined
-			/>
+			{!isInSwipeMode && (
+				<SC.Button
+					title={translations.cta}
+					onPress={goToChat}
+					underlayColor={theme.game}
+					textColor={theme.game}
+					style={SC.styles.button}
+					isOutlined
+				/>
+			)}
 		</SC.Container>
 	)
 }
@@ -79,12 +83,14 @@ PartnerProfile.propTypes = {
 	goBack: PropTypes.func,
 	user: PropTypes.shape({
 		name: PropTypes.string,
+		tagline: PropTypes.string,
 		rank: PropTypes.string,
 		games: PropTypes.array,
 	}),
 	isInSwipeMode: PropTypes.bool,
 	onLike: PropTypes.func,
 	onDislike: PropTypes.func,
+	goToChat: PropTypes.func,
 }
 
 export default PartnerProfile

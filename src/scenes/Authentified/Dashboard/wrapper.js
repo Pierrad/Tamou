@@ -32,7 +32,27 @@ const DashboardScreenWrapper = (props) => {
 	}
 
 	const handleAddCategoryPress = () => {
-		navigation.navigate('SurveyStepper', { step: 1 })
+		navigation.navigate('SurveyStepper', { step: 2 })
+	}
+
+	const handleNavigationToGame = () => {
+		if (user.gameSection.games.length === 0) {
+			navigation.navigate('GameSurvey')
+		} else {
+			navigation.navigate('GameDashboard')
+		}
+	}
+
+	const handleNavigationToLove = () => {
+		if (user.loveSection.hasAlreadySetPreferences) {
+			navigation.navigate('LoveDashboard')
+		} else {
+			navigation.navigate('LoveSurvey')
+		}
+	}
+
+	const handleNavigationToChat = () => {
+		navigation.navigate('Chat')
 	}
 
 	return (
@@ -41,9 +61,13 @@ const DashboardScreenWrapper = (props) => {
 			theme={theme}
 			translations={translations}
 			avatar={user.avatar}
-			hasGameSection={user.gameSection.games.length > 0}
+			hasGameSection={user.gameSection.requested}
+			hasLoveSection={user.loveSection.requested}
 			onAddCategory={handleAddCategoryPress}
 			numberOfNotifications={user.notifications.length}
+			handleNavigationToGame={handleNavigationToGame}
+			handleNavigationToChat={handleNavigationToChat}
+			handleNavigationToLove={handleNavigationToLove}
 		/>
 	)
 }
@@ -60,6 +84,12 @@ DashboardScreenWrapper.propTypes = {
 		avatar: PropTypes.string.isRequired,
 		gameSection: PropTypes.shape({
 			games: PropTypes.array,
+			requested: PropTypes.bool,
+		}),
+		loveSection: PropTypes.shape({
+			matchs: PropTypes.array,
+			requested: PropTypes.bool,
+			hasAlreadySetPreferences: PropTypes.bool,
 		}),
 		notifications: PropTypes.array,
 	}),

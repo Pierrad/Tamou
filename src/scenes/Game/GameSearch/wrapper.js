@@ -25,7 +25,6 @@ const GameSearchWrapper = props => {
 		onButtonPress: () => navigation.navigate('GameDashboard'),
 		title: t('game_search_title'),
 		leftIconName: 'chevron-left',
-		onParametersPress: () => {console.log('')},
 		theme: theme
 	}), [navigation, t, theme])
 
@@ -77,7 +76,7 @@ const GameSearchWrapper = props => {
 			image: imageTranslation['COD'],
 			isInSelectMode: true,
 			onPress: () => onSelectGame(4),
-			isAlreadyAdded: userGames.filter((game) => game.name === 'COD').length > 0,
+			isAlreadyAdded: userGames.filter((game) => game.game === 'COD').length > 0,
 		},
 		{
 			id: 5,
@@ -101,7 +100,7 @@ const GameSearchWrapper = props => {
 	}
 
 	const onSubmit = () => {
-		if (selectedGame) {
+		if (typeof selectedGame === 'number') {
 			navigation.navigate('GameSurvey', { game: initialGames.filter((game) => game.id === selectedGame)[0].minName })
 		}
 	}

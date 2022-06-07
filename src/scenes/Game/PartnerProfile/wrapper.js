@@ -23,6 +23,10 @@ const PartnerProfileWrapper = (props) => {
 		navigation.goBack()
 	}
 
+	const goToChat = () => {
+		navigation.navigate('Chat')
+	}
+
 	const onLike = () => {
 		onSwipe({
 			like: true,
@@ -41,6 +45,7 @@ const PartnerProfileWrapper = (props) => {
 
 	const profile = {
 		name: `${user.username}, ${age} ans`,
+		tagline: user.tagline ? `"${user.tagline}"` : '',
 		rank: user.image,
 		games: user.gameSection.games.map((game) => ({
 			name: gameTranslation[game.game],
@@ -59,6 +64,7 @@ const PartnerProfileWrapper = (props) => {
 			isInSwipeMode={game !== ''}
 			onLike={onLike}
 			onDislike={onDislike}
+			goToChat={goToChat}
 		/>
 	)
 }

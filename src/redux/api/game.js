@@ -24,6 +24,7 @@ export const setGames = async (payload) => {
 		})
 
 		const json = await res.json()
+
 		return json
 	} catch(err) {
 		return {error: true, message: err?.response?.data?.message || 'Internal error'}
