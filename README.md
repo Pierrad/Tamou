@@ -1,5 +1,9 @@
 # Front 
 
+## Figma 
+
+https://www.figma.com/file/VeaTYjP9sXfmsRy49rjJhl/Meeting-app?node-id=0%3A1
+
 ## Installation
 
 - Follow the basic installation guide at https://reactnative.dev/docs/environment-setup
