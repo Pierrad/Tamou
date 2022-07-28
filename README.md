@@ -1,5 +1,7 @@
 # Front 
 
+Meet the right person with this multi categories meeting mobile app (love, gaming, sport, study...).
+
 ## Figma 
 
 https://www.figma.com/file/VeaTYjP9sXfmsRy49rjJhl/Meeting-app?node-id=0%3A1
