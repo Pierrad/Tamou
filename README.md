@@ -1,10 +1,18 @@
-# Front 
+# Tamou
 
 Meet the right person with this multi categories meeting mobile app (love, gaming, sport, study...).
 
 ## Figma 
 
-https://www.figma.com/file/VeaTYjP9sXfmsRy49rjJhl/Meeting-app?node-id=0%3A1
+![screen1.png](images/screen1.png)
+![screen2.png](images/screen2.png)
+![screen3.png](images/screen3.png)
+
+## Technologies
+
+- React Native
+- Styled Components
+- Redux / Redux-Saga
 
 ## Installation
 
